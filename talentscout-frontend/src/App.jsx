@@ -8,7 +8,6 @@ function App() {
         <>
             <div>
                 <h1 className="text-3xl font-bold text-red-500">This is TalentScout Testing 1</h1>
-                <h1 className="text-5xl font-bold text-blue-500">This is TalentScout Testing 2</h1>
             </div>
         </>
     )
