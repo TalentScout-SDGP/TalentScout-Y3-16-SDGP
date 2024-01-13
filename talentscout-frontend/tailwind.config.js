@@ -32,6 +32,8 @@ export default {
                     green: '#15B712',
                     //Text color for placeholder text
                     light_gray: '#A0AEC0',
+                    //Bg color for footer form textfields
+                    footer_gray: '#FFFFFF33'
                 },
                 black: '#000000',
                 white: '#ffffff',

@@ -25,9 +25,10 @@ import FrontendSulan from "./pages/FrontendSulan.jsx";
 import FrontendDulhan from "./pages/FrontendDulhan.jsx";
 import FrontendLinuka from "./pages/FrontendLinuka.jsx";
 import Footer from "./components/shared/Footer.jsx";
+import AboutUs from "./pages/AboutUs.jsx";
+import OurTeam from "./pages/OurTeam.jsx";
 
 function App() {
-
     return (
         <div className='bg-white'>
             <Router>
@@ -42,7 +43,8 @@ function App() {
                     {/*<Route exact path='/add_players' element={<AddPlayers/>}/>*/}
                     <Route exact path='/login' element={<Login/>}/>
                     <Route exact path='/signup' element={<Signup/>}/>
-
+                    <Route exact path='/aboutus' element={<AboutUs/>}/>
+                    <Route exact path='/ourteam' element={<OurTeam/>}/>
                     {/*TODO End:Delete Following Routes & Page Files*/}
                     <Route exact path='/sulan' element={<FrontendSulan/>}/>
                     <Route exact path='/agrani' element={<FrontendAgrani/>}/>
