@@ -2,14 +2,14 @@ import {useState} from 'react'
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 import './App.css'
 
-import Navbar from "./components/shared/header/Navbar.jsx";
-import Home from "./pages/home/Home.jsx";
-import ExplorePlayers from "./pages/explore players/Explore Players.jsx";
-import ComparePlayers from "./pages/compare players/Compare Players.jsx";
-import PlayerProfiles from "./pages/player profiles/Player Profiles.jsx";
-import ManagePlayers from "./pages/manage players/Manage Players.jsx";
-import Login from "./pages/login/Login.jsx";
-import Signup from "./pages/signup/Signup.jsx";
+import Navbar from "./components/shared/Navbar.jsx";
+import Home from "./pages/Home.jsx";
+import ExplorePlayers from "./pages/ExplorePlayers.jsx";
+import ComparePlayers from "./pages/ComparePlayers.jsx";
+import PlayerProfiles from "./pages/PlayerProfiles.jsx";
+import ManagePlayers from "./pages/ManagePlayers.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 
 function App() {
 
