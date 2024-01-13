@@ -4,10 +4,11 @@ import {Link} from 'react-router-dom';
 const Footer = () => {
     return (
         <div className="bg-primary-ts_blue text-white font-poppins">
-            <div className="container grid grid-cols-12 py-8">
-                <div className="flex flex-col col-span-4 gap-y-4">
-                    <h2 className="text-4xl font-semibold">TalentScout</h2>
-                    <div className="flex gap-x-8 items-center ">
+            <div className="md:container grid grid-cols-12 py-8 gap-y-8">
+                <div
+                    className="flex flex-col col-span-12 lg:col-span-4 gap-y-8 items-center lg:items-start order-3 lg:order-1">
+                    <h2 className="lg:block hidden text-4xl font-semibold">TalentScout</h2>
+                    <div className="flex gap-x-8 items-center mt-8 lg:mt-0">
                         <a className="self-center" href="#">
                             <img className="w-6 mt-[3px]" src="../../../public/Twitter.png" alt="Twitter"></img>
                         </a>
@@ -25,7 +26,8 @@ const Footer = () => {
                         <img className="w-68" src="../../../public/dummy_qr.png" alt="QR Code"></img>
                     </div>
                 </div>
-                <div className=" flex flex-col gap-y-4 text-white col-span-3 mt-16">
+                <div
+                    className="flex lg:gap-y-6 flex-col gap-y-8 text-white col-span-12 lg:col-span-3 mt-8 lg:mt-16 ps-6 lg:ps-0 items-center lg:items-start order-2 lg:order-2">
                     <Link to="/aboutus" className="text-md">
                         About Us
                     </Link>
@@ -33,8 +35,10 @@ const Footer = () => {
                         Our Team
                     </Link>
                 </div>
-                <div className="col-span-5 pt-4 ">
-                    <h2 className="text-2xl font-semibold">Contact Us</h2>
+                <div
+                    className="flex flex-col col-span-12 lg:col-span-5 pt-4 items-center lg:items-start order-1 lg:order-3 px-4 lg:px-0">
+                    <h2 className="lg:hidden block mb-8 text-4xl font-semibold">TalentScout</h2>
+                    <h2 className="text-2xl font-semibold mb-8 lg:mb-0 lg">Contact Us</h2>
                     <form className="w-full max-w-lg">
                         <div className="flex flex-wrap -mx-3 my-2">
                             <div className="w-full md:w-1/2 px-3 md:mb-0">
@@ -62,9 +66,11 @@ const Footer = () => {
                                   placeholder="Message"></textarea>
                             </div>
                         </div>
-                        <button
-                            className="float-end bg-[#D9D9D9] text-black py-2 px-6 font-semibold rounded-2xl transition-transform duration-3000 transform hover:scale-105">Send
-                        </button>
+                        <div className="flex lg:block justify-center lg:justify-end">
+                            <button
+                                className="lg:float-end bg-[#D9D9D9] text-black py-2 px-6 font-semibold rounded-2xl transition-transform duration-3000 transform hover:scale-105">Send
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
