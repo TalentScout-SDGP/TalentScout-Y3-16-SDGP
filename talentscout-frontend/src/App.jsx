@@ -42,9 +42,9 @@ function App() {
                     {/*TODO Have to check if we need a separate page for add players (with a route)*/}
                     {/*<Route exact path='/add_players' element={<AddPlayers/>}/>*/}
                     <Route exact path='/login' element={<Login/>}/>
-                    <Route exact path='/signup' element={<Signup/>}/>
-                    <Route exact path='/aboutus' element={<AboutUs/>}/>
-                    <Route exact path='/ourteam' element={<OurTeam/>}/>
+                    <Route exact path='/sign_up' element={<Signup/>}/>
+                    <Route exact path='/about_us' element={<AboutUs/>}/>
+                    <Route exact path='/our_team' element={<OurTeam/>}/>
                     {/*TODO End:Delete Following Routes & Page Files*/}
                     <Route exact path='/sulan' element={<FrontendSulan/>}/>
                     <Route exact path='/agrani' element={<FrontendAgrani/>}/>

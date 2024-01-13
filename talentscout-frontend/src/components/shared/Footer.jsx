@@ -9,29 +9,33 @@ const Footer = () => {
                     className="flex flex-col col-span-12 lg:col-span-4 gap-y-8 items-center lg:items-start order-3 lg:order-1">
                     <h2 className="lg:block hidden text-4xl font-semibold">TalentScout</h2>
                     <div className="flex gap-x-8 items-center mt-8 lg:mt-0">
-                        <a className="self-center" href="#">
+                        <a className="self-center transition-transform duration-3000 transform hover:scale-125"
+                           href="#">
                             <img className="w-6 mt-[3px]" src="../../../public/Twitter.png" alt="Twitter"></img>
                         </a>
-                        <a className="self-center" href="#">
+                        <a className="self-center transition-transform duration-3000 transform hover:scale-125"
+                           href="#">
                             <img className="w-8" src="../../../public/LinkedIn.png" alt="LinkedIn"></img>
                         </a>
-                        <a className="self-center" href="#">
+                        <a className="self-center transition-transform duration-3000 transform hover:scale-125"
+                           href="#">
                             <img className="w-8" src="../../../public/Facebook.png" alt="Facebook"></img>
                         </a>
-                        <a className="self-center" href="#">
+                        <a className="self-center transition-transform duration-3000 transform hover:scale-125"
+                           href="#">
                             <img className="w-8 mt-[2px]" src="../../../public/Instagram.png" alt="Instagram"></img>
                         </a>
                     </div>
                     <div className="">
-                        <img className="w-68" src="../../../public/dummy_qr.png" alt="QR Code"></img>
+                        <img className="w-60" src="../../../public/qr-code.png" alt="QR Code"></img>
                     </div>
                 </div>
                 <div
                     className="flex lg:gap-y-6 flex-col gap-y-8 text-white col-span-12 lg:col-span-3 mt-8 lg:mt-16 ps-6 lg:ps-0 items-center lg:items-start order-2 lg:order-2">
-                    <Link to="/aboutus" className="text-md">
+                    <Link to="/about_us" className="text-md">
                         About Us
                     </Link>
-                    <Link to="/ourteam" className="text-md">
+                    <Link to="/our_team" className="text-md">
                         Our Team
                     </Link>
                 </div>
@@ -68,7 +72,7 @@ const Footer = () => {
                         </div>
                         <div className="flex lg:block justify-center lg:justify-end">
                             <button
-                                className="lg:float-end bg-[#D9D9D9] text-black py-2 px-6 font-semibold rounded-2xl transition-transform duration-3000 transform hover:scale-105">Send
+                                className="lg:float-end bg-primary-footer_button text-black py-2 px-6 font-semibold rounded-2xl transition-transform duration-3000 transform hover:scale-105">Send
                             </button>
                         </div>
                     </form>

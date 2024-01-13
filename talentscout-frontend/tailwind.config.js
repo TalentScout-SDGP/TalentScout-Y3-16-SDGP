@@ -7,8 +7,6 @@ export default {
     theme: {
         extend: {
             container: {
-                paddingLeft: '2rem',
-                paddingRight: '2rem',
                 center: true,
             },
             screens: {
@@ -33,7 +31,9 @@ export default {
                     //Text color for placeholder text
                     light_gray: '#A0AEC0',
                     //Bg color for footer form textfields
-                    footer_gray: '#FFFFFF33'
+                    footer_gray: '#FFFFFF33',
+                    //Footer button color
+                    footer_button: '#D9D9D9',
                 },
                 black: '#000000',
                 white: '#ffffff',
