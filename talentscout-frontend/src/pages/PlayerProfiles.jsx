@@ -1,5 +1,7 @@
+import React from 'react';
+
 const PlayerProfiles = () => {
-    return(
+    return (
         <div>
             <h1>Player Profiles Page</h1>
         </div>

@@ -1,5 +1,7 @@
+import React from 'react';
+
 const ComparePlayers = () => {
-    return(
+    return (
         <div>
             <h1>Compare Players Page</h1>
         </div>

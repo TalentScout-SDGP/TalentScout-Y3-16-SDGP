@@ -1,5 +1,7 @@
+import React from 'react';
+
 const ExplorePlayers = () => {
-    return(
+    return (
         <div>
             <h1>Explore Players Page</h1>
         </div>
