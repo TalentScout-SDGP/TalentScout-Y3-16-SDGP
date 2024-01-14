@@ -1,7 +1,9 @@
+import React from 'react';
+
 const Signup = () => {
-    return(
+    return (
         <div>
-            <h1>Signup Page</h1>
+            <h1>Sign Up Page</h1>
         </div>
     )
 }

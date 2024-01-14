@@ -1,5 +1,7 @@
+import React from 'react';
+
 const ManagePlayers = () => {
-    return(
+    return (
         <div>
             <h1>Manage Players Page</h1>
         </div>
