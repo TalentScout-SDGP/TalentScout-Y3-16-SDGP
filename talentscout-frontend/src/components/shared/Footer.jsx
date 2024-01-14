@@ -16,7 +16,8 @@ const Footer = () => {
                         </a>
                         <a className="self-center transition-transform duration-3000 transform hover:scale-125"
                            href="#">
-                            <img className="w-8" src={import.meta.env.BASE_URL + 'Linkedin.png'} alt="LinkedIn"></img>
+                            <img className="w-8" src={import.meta.env.BASE_URL + 'LinkedIn.png'} alt="LinkedIn">
+                            </img>
                         </a>
                         <a className="self-center transition-transform duration-3000 transform hover:scale-125"
                            href="#">
