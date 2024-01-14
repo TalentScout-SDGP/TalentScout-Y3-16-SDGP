@@ -11,23 +11,25 @@ const Footer = () => {
                     <div className="flex gap-x-8 items-center mt-8 lg:mt-0">
                         <a className="self-center transition-transform duration-3000 transform hover:scale-125"
                            href="#">
-                            <img className="w-6 mt-[3px]" src="../../../public/Twitter.png" alt="Twitter"></img>
+                            <img className="w-6 mt-[3px]" src={import.meta.env.BASE_URL + 'Twitter.png'}
+                                 alt="Twitter"></img>
                         </a>
                         <a className="self-center transition-transform duration-3000 transform hover:scale-125"
                            href="#">
-                            <img className="w-8" src="../../../public/LinkedIn.png" alt="LinkedIn"></img>
+                            <img className="w-8" src={import.meta.env.BASE_URL + 'Linkedin.png'} alt="LinkedIn"></img>
                         </a>
                         <a className="self-center transition-transform duration-3000 transform hover:scale-125"
                            href="#">
-                            <img className="w-8" src="../../../public/Facebook.png" alt="Facebook"></img>
+                            <img className="w-8" src={import.meta.env.BASE_URL + 'Facebook.png'} alt="Facebook"></img>
                         </a>
                         <a className="self-center transition-transform duration-3000 transform hover:scale-125"
                            href="#">
-                            <img className="w-8 mt-[2px]" src="../../../public/Instagram.png" alt="Instagram"></img>
+                            <img className="w-8 mt-[2px]" src={import.meta.env.BASE_URL + 'Instagram.png'}
+                                 alt="Instagram"></img>
                         </a>
                     </div>
                     <div className="">
-                        <img className="w-60" src="../../../public/qr-code.png" alt="QR Code"></img>
+                        <img className="w-60" src={import.meta.env.BASE_URL + 'qr-code.png'} alt="QR Code"></img>
                     </div>
                 </div>
                 <div

@@ -22,7 +22,8 @@ const Navbar = () => {
             <div className="md:container flex flex-col lg:flex-row justify-between gap-x-2 lg:items-center py-3">
                 <div className="flex items-center px-3 lg:p-0 lg:justify-center">
                     <Link to="/" className="text-sm text-black">
-                        <img className="w-36 xl:w-fit self-center" src="../../../public/ts_logo.png" alt="Logo"/>
+                        <img className="w-36 xl:w-fit self-center" src={import.meta.env.BASE_URL + 'ts_logo.png'}
+                             alt="Logo"/>
                     </Link>
                 </div>
                 <div
