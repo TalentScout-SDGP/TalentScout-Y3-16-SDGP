@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {faEye, faEyeSlash, faMinus} from "@fortawesome/free-solid-svg-icons";
+import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination, Autoplay} from 'swiper/modules';
@@ -7,10 +7,7 @@ import 'swiper/css/bundle';
 import 'swiper/css/pagination';
 import '../swiper.css'
 
-// import required modules
-
-
-function SignUpComp() {
+function SignUp() {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
@@ -226,4 +223,4 @@ function SignUpComp() {
     );
 }
 
-export default SignUpComp;
+export default SignUp;
