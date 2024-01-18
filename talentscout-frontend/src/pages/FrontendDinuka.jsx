@@ -1,10 +1,10 @@
 import React from 'react';
-import SignUp from "../components/SignUp.jsx";
+import SignUpComp from "../components/SignUpComp.jsx";
 
 const FrontendDinuka = () => {
     return (
         <div className="">
-            <SignUp/>
+            <SignUpComp/>
         </div>
     );
 }
