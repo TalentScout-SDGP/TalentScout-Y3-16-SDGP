@@ -17,8 +17,8 @@ function SignUpComp() {
 
     return (
         <div className="font-poppins">
-            <div className="container pt-16 grid grid-cols-2">
-                <div className="pb-16 pe-16">
+            <div className="container pt-16 grid grid-cols-1 lg:grid-cols-2">
+                <div className="pb-16 lg:pe-16">
                     <div className="text-primary-ts_blue text-2xl font-bold">Create your account</div>
                     <form className="w-full py-8">
                         <div className="flex flex-wrap -mx-3 my-2">
@@ -104,7 +104,7 @@ function SignUpComp() {
                             </div>
                         </div>
                         <div className="flex flex-wrap -mx-3 my-2">
-                            <div className="w-1/2 px-3 md:mb-0 relative">
+                            <div className="w-full lg:w-1/2 px-3 md:mb-0 relative">
                                 <label className="text-primary-ts_blue text-lg font-semibold">Role</label>
                                 <select
                                     className="appearance-none cursor-pointer block w-full bg-white text-black placeholder-primary-light_gray border border-black rounded-lg py-3 px-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none text-md font-semibold">
@@ -163,7 +163,7 @@ function SignUpComp() {
                         </a>
                     </div>
                 </div>
-                <div className="relative">
+                <div className="relative hidden lg:block">
                     <div className="h-full"
                          style={{
                              background: 'linear-gradient(180deg, #0C1857 0%, #3587C4 71.1%, #46B3F1 100%)',

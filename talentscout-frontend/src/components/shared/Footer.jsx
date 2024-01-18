@@ -34,7 +34,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div
-                    className="flex lg:gap-y-6 flex-col gap-y-8 text-white col-span-12 lg:col-span-3 mt-8 lg:mt-16 ps-6 lg:ps-0 items-center lg:items-start order-2 lg:order-2">
+                    className="flex lg:gap-y-6 flex-col gap-y-8 text-white col-span-12 lg:col-span-3 mt-8 lg:mt-16 lg:ps-0 items-center lg:items-start order-2 lg:order-2">
                     <Link to="/about_us" className="text-md">
                         About Us
                     </Link>
