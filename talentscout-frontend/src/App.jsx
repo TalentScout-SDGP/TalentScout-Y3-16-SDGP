@@ -30,8 +30,6 @@ import FrontendLinuka from "./pages/FrontendLinuka.jsx";
 
 
 function App() {
-    const isProduction = import.meta.env.PROD;
-    const basename = isProduction ? '/development-talentscout-sdgp' : '';
 
     return (
         <div className='bg-white'>
