@@ -1,12 +1,12 @@
 import React from 'react';
 import SignUp from "../components/SignUp.jsx";
 
-const FrontendDinuka = () => {
+const SignUpPage = () => {
     return (
-        <div className="">
+        <div>
             <SignUp/>
         </div>
-    );
+    )
 }
 
-export default FrontendDinuka;
+export default SignUpPage

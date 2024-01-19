@@ -8,6 +8,7 @@ export default {
         extend: {
             container: {
                 center: true,
+                padding: '2rem',
             },
             screens: {
                 'sm': '480px',
@@ -61,7 +62,8 @@ export default {
                 button: '40px',
             },
             boxShadow: {
-                'outer': '0px 4px 20px 0px rgba(0, 0, 0, 0.40)'
+                'outer': '0px 4px 20px 0px rgba(0, 0, 0, 0.40)',
+                'signup': '0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
             },
         },
     },
