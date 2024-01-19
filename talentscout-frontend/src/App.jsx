@@ -33,7 +33,7 @@ function App() {
 
     return (
         <div className='bg-white'>
-            <Router basename={basename}>
+            <Router>
                 <Navbar/>
                 <Routes>
                     <Route exact path='/' element={<Home/>}/>
