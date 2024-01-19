@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/sign_up",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/sign_up/*",
+      "destination": "/index.html"
+    }
+  ]
+}
