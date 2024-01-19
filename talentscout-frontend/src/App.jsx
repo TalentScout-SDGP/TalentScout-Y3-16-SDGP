@@ -28,10 +28,12 @@ import FrontendSulan from "./pages/FrontendSulan.jsx";
 import FrontendDulhan from "./pages/FrontendDulhan.jsx";
 import FrontendLinuka from "./pages/FrontendLinuka.jsx";
 
+
 function App() {
+
     return (
         <div className='bg-white'>
-            <Router>
+            <Router basename={basename}>
                 <Navbar/>
                 <Routes>
                     <Route exact path='/' element={<Home/>}/>
@@ -44,7 +46,7 @@ function App() {
                     <Route exact path='/login' element={<LoginPage/>}/>
                     <Route exact path='/sign_up' element={<SignUpPage/>}/>
                     <Route exact path='/about_us' element={<AboutUs/>}/>
-                    <Route exact path='/our_team' element={<OurTeam/>}/>
+                    <Route exact path='/our_team' element={<OurTeam/>}/>a
                     {/*TODO End:Delete Following Routes & Page Files*/}
                     <Route exact path='/sulan' element={<FrontendSulan/>}/>
                     <Route exact path='/agrani' element={<FrontendAgrani/>}/>
