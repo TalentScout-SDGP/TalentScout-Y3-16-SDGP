@@ -12,7 +12,6 @@ function Login() {
         setIsPasswordVisible((prevState) => !prevState);
     }
 
-
     return (
         <div className="font-poppins">
             <div className="container pt-16 grid grid-cols-1 lg:grid-cols-2">
@@ -36,7 +35,7 @@ function Login() {
                         </Link>
                     </div>
                     <form className="w-full py-4 lg:py-8">
-                        <div className="w-full flex flex-wrap mr-16 my-2">
+                        <div className="w-full flex flex-wrap my-2">
                             <div className="w-full md:mb-0 relative">
                                 <label
                                     className="text-primary-ts_blue text-sm lg:text-lg font-semibold">Username</label>
@@ -47,7 +46,7 @@ function Login() {
                                         fill="black"/>
                                 </svg>
                                 <input
-                                    className="appearance-none block w-full bg-white ml-1 text-black placeholder:text-sm placeholder:lg:text-md placeholder-primary-light_gray border border-black rounded-lg py-3 ps-12 pe-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none"
+                                    className="appearance-none block w-full bg-white text-black placeholder:text-sm placeholder:lg:text-md placeholder-primary-light_gray border border-black rounded-lg py-3 ps-12 pe-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none"
                                     id="sign-up-username" type="text" placeholder="Your username"/>
                             </div>
                             <div className="w-full md:mb-0 relative mt-3">
@@ -68,21 +67,21 @@ function Login() {
                                     </defs>
                                 </svg>
                                 <input
-                                    className="appearance-none block w-full bg-white ml-1 text-black placeholder:text-sm placeholder:lg:text-md placeholder-primary-light_gray border border-black rounded-lg py-3 ps-12 pe-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none"
+                                    className="appearance-none block w-full bg-white text-black placeholder:text-sm placeholder:lg:text-md placeholder-primary-light_gray border border-black rounded-lg py-3 ps-12 pe-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none"
                                     id="sign-up-password" type={isPasswordVisible ? "text" : "password"}
                                     placeholder="Password"/>
-                                <button className="absolute right-6 top-11"
+                                <button className="absolute right-6 top-10 lg:top-11"
                                         onClick={(e) => togglePasswordVisibility(e)}>
                                     <FontAwesomeIcon icon={isPasswordVisible ? faEyeSlash : faEye}/>
                                 </button>
                             </div>
-                            <div className="flex flex-wrap mt-8 mb-6">
+                            <div className="grid grid-cols 1 sm:grid-cols-2 gap-y-4 sm:gap-y-0 gap-x-2 w-full mt-6">
                                 {/*Login BUTTON*/}
                                 <button
-                                    className="flex-1 bg-primary-ts_blue text-white text-sm lg:text-base ml-1 py-3 w-96 font-semibold rounded-lg">LOGIN
+                                    className="bg-primary-ts_blue text-white text-sm lg:text-base py-3 font-semibold rounded-lg">LOGIN
                                 </button>
                                 <button
-                                    className="flex-1 bg-primary-white text-primary-ts_blue text-sm lg:text-base ml-2 py-3 w-96  font-semibold rounded-lg border border-solid border-primary-ts_blue">Forgot
+                                    className="bg-primary-white text-primary-ts_blue text-sm lg:text-base py-3 font-semibold rounded-lg border border-solid border-primary-ts_blue">Forgot
                                     Password
                                 </button>
                             </div>
@@ -97,7 +96,7 @@ function Login() {
                         <button
                             className="block w-full bg-white text-primary-ts_blue text-sm lg:text-md font-semibold border border-black rounded-lg py-3 px-4 mt-1 mb-3 shadow-signup leading-tight">
                             <img src={import.meta.env.BASE_URL + 'user-google.png'} alt="google-logo"
-                                 className="inline me-2"></img> Sign up
+                                 className="inline me-2"></img> Sign in
                             with Google
                         </button>
                     </div>
@@ -105,18 +104,13 @@ function Login() {
                         <button
                             className="block w-full bg-white text-primary-ts_blue text-sm lg:text-md font-semibold border border-black rounded-lg py-3 px-4 mt-1 mb-20 shadow-signup leading-tight">
                             <img src={import.meta.env.BASE_URL + 'user-facebook.png'} alt="google-logo"
-                                 className="inline me-2"></img>Sign up with
+                                 className="inline me-2"></img>Sign in with
                             Facebook
                         </button>
                     </div>
-
                 </div>
-
             </div>
-
-
         </div>
-
     );
 }
 
