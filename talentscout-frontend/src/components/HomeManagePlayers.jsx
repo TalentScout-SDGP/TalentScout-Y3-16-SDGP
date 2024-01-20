@@ -28,7 +28,7 @@ function HomeManagePlayers() {
                                 <FontAwesomeIcon icon={faSquarePlus} size={iconSize}/>
                             </div>
                             <p className="text-white text-xs lg:text-sm font-semibold select-none">Add New Players</p>
-                            <p className="text-white text-xs lg:text-sm text-center select-none xl:h-24">Discover
+                            <p className="text-white text-xs lg:text-sm text-center select-none xl:h-32 2xl:h-24">Discover
                                 Future Stars! Add new
                                 players,
                                 capture stats,
@@ -41,7 +41,7 @@ function HomeManagePlayers() {
                             </div>
                             <p className="text-black text-xs lg:text-sm font-semibold select-none">View Existing
                                 Players</p>
-                            <p className="text-black text-xs lg:text-sm text-center select-none xl:h-24">Explore
+                            <p className="text-black text-xs lg:text-sm text-center select-none xl:h-32 2xl:h-24">Explore
                                 Player Profiles: Dive
                                 into detailed player
                                 profiles, track metrics, and uncover the untapped potential of your players.</p>
@@ -53,7 +53,8 @@ function HomeManagePlayers() {
                             </div>
                             <p className="text-black text-xs lg:text-sm font-semibold select-none">Update Player
                                 Details</p>
-                            <p className="text-black text-xs lg:text-sm text-center select-none xl:h-24">Stay Sharp:
+                            <p className="text-black text-xs lg:text-sm text-center select-none xl:h-32 2xl:h-24">Stay
+                                Sharp:
                                 Keep player profiles
                                 current.
                                 Modify
@@ -65,7 +66,7 @@ function HomeManagePlayers() {
                                 <FontAwesomeIcon icon={faTrash} size={iconSize}/>
                             </div>
                             <p className="text-white text-xs lg:text-sm font-semibold select-none">Delete Players</p>
-                            <p className="text-white text-xs lg:text-sm text-center select-none xl:h-24">Strategic
+                            <p className="text-white text-xs lg:text-sm text-center select-none xl:h-32 2xl:h-24">Strategic
                                 Roster Management:
                                 Refine
                                 your
