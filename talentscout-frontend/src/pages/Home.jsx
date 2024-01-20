@@ -1,9 +1,10 @@
 import React from 'react';
+import HomeManagePlayers from "../components/HomeManagePlayers.jsx";
 
 const Home = () => {
     return (
         <div className="">
-            <h1>Homepage</h1>
+            <HomeManagePlayers/>
         </div>
     )
 }
