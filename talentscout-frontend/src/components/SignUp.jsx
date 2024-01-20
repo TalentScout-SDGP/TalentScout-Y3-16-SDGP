@@ -6,6 +6,7 @@ import {Pagination, Autoplay} from 'swiper/modules';
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
 import '../swiper.css'
+import {Link} from "react-router-dom";
 
 function SignUp() {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -171,10 +172,10 @@ function SignUp() {
                     </div>
                     <div className="text-sm lg:text-md">
                         Already have an account?&nbsp;
-                        <a className="underline cursor-pointer text-sm lg:text-md font-semibold text-primary-ts_blue"
-                           href="#">
+                        <Link to="/login"
+                              className="underline cursor-pointer text-sm lg:text-md font-semibold text-primary-ts_blue">
                             Log in
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="relative hidden lg:block">
