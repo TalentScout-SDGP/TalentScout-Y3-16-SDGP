@@ -1,9 +1,10 @@
 import React from 'react';
+import PlayerProfilesSearch from "../components/PlayerProfilesSearch.jsx";
 
 const PlayerProfiles = () => {
     return (
         <div>
-            <h1>Player Profiles Page</h1>
+            <PlayerProfilesSearch/>
         </div>
     )
 }
