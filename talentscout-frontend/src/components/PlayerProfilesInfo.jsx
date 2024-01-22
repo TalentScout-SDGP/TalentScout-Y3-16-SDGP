@@ -1,28 +1,34 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 function PlayerProfilesInfo() {
 
     return (
         <div className="md:container px-8 my-2">
             <div
-                className="grid grid-cols-1 bg-primary-ts_purple mlg:grid-cols-1 my-10 shadow-outer rounded-lg px-2 py-2">
-                <div className="flex bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 h-96 overflow-hidden">
-                    <img src={import.meta.env.BASE_URL + 'Player-dummy-image.png'} alt="search-icon"
-                         className="sm:w-48 sm:py-16 sm:mx-auto md:w-52 md:py-16 lg:w-60 md:ml-2 mx-auto pt-2 w-36 lg:py-12 xl:w-80 2xl:w-80 xl:py-4 py-4 h-auto"></img>
-                    <div
-                        className="w-full px-14 h-auto py-14 text-white text-base 2xl:text-xl 2xl:py-5 xl:text-lg xl:py-6 lg:text-lg lg:py-12 md:text-sm md:py-14 sm:text-xs sm:px-20 sm:py-28">
-                        <p className="2xl:mb-6 xl:mb-6 lg:mb-4 md:mb-4 sm:mb-2">Name : Dhananjaya De Silva</p>
-                        <p className="2xl:mb-6 xl:mb-6 lg:mb-4 md:mb-4 sm:mb-2">Born : September 06, 1991,
-                            Colombo</p>
-                        <p className="2xl:mb-6 xl:mb-6 lg:mb-4 md:mb-4 sm:mb-2">Playing Role : All-Rounder</p>
-                        <p className="2xl:mb-6 xl:mb-6 lg:mb-4 md:mb-4 sm:mb-2">Batting Style : Right-Handed</p>
-                        <p className="2xl:mb-2 xl:mb-4 lg:mb-2 md:mb-4 sm:mb-0">Bowling Style : Right-Arm
-                            OffBreak</p>
-                        <button className="bg-primary-yellow text-black px-1 py-1 rounded-3xl mt-3">
+                className="bg-primary-ts_purple mlg:grid-cols-1 my-10 shadow-outer rounded-lg px-2 py-2">
+                <div
+                    className="grid grid-cols-1 md:grid-cols-12 bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden">
+                    <div className="flex items-center text-center col-span-4">
+                        <img src={import.meta.env.BASE_URL + 'Player-dummy-image.png'} alt="search-icon"
+                             className="min-[600px]:w-3/5 w-3/5 md:w-4/5 mx-auto"></img>
+                    </div>
+                    <div className="mt-0 md:mt-0 md:mx-6 col-span-8 py-12 text-white ps-2 sm:ps-16 md:ps-0">
+                        <div className="text-xs sm:text-sm md:text-base flex flex-col gap-y-4">
+                            <p className="">Name : Dhananjaya De Silva</p>
+                            <p className="">Born : September 06, 1991,
+                                Colombo</p>
+                            <p className="">Playing Role : All-Rounder</p>
+                            <p className="">Batting Style : Right-Handed</p>
+                            <p className="">Bowling Style : Right-Arm
+                                OffBreak</p>
+                        </div>
+                        <Link to="/compare_players" className="mx-18 px-16 xl:mt-4 md:mx-1 lg:mx-1 sm:px-14 sm:mx-18 sm:mt-4 2xl:mx-1 xl:mx-1 mt-2 inline-block text-sm bg-primary-yellow text-black font-semibold rounded-button text-center md:px-8 lg:py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform">
                             <img src={import.meta.env.BASE_URL + 'compare-icon.png'} alt="compare-icon"
-                                 className="inline me-2"></img>
+                                 className="inline px-0"></img>
                             Compare
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
