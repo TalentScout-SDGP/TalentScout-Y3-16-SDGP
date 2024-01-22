@@ -30,7 +30,6 @@ import FrontendLinuka from "./pages/FrontendLinuka.jsx";
 
 
 function App() {
-
     return (
         <div className='bg-white'>
             <Router>
