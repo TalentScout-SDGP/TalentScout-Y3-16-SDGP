@@ -16,7 +16,7 @@ function HomeManagePlayers() {
                             Cricket Excellence: Your gateway to player mastery. Uncover talent, refine skills, and shape
                             a winning legacy with our intuitive
                             Player Management feature.</p>
-                        <Link to="/manage_players" className="text-xs lg:text-sm front-semibold bg-primary-ts_blue text-white rounded-button px-4 py-1 lg:py-2 shadow-lg
+                        <Link to="/manage_players" className="text-xs lg:text-sm font-semibold bg-primary-ts_blue text-white rounded-button px-4 py-1 lg:py-2 shadow-lg
                                     duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                             Manage Players
                         </Link>
