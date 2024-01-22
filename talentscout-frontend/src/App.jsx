@@ -11,7 +11,7 @@ import SignUpPage from "./pages/SignUpPage.jsx";
 import AddPlayers from "./pages/AddPlayers.jsx";
 import Footer from "./components/shared/Footer.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
-import OurTeam from "./pages/OurTeam.jsx";
+import OurTeamPage from "./pages/OurTeamPage.jsx";
 // FontAwesome Packages
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fab} from '@fortawesome/free-brands-svg-icons';
@@ -46,7 +46,7 @@ function App() {
                     <Route exact path='/login' element={<LoginPage/>}/>
                     <Route exact path='/sign_up' element={<SignUpPage/>}/>
                     <Route exact path='/about_us' element={<AboutUs/>}/>
-                    <Route exact path='/our_team' element={<OurTeam/>}/>a
+                    <Route exact path='/our_team' element={<OurTeamPage/>}/>a
                     {/*TODO End:Delete Following Routes & Page Files*/}
                     <Route exact path='/sulan' element={<FrontendSulan/>}/>
                     <Route exact path='/agrani' element={<FrontendAgrani/>}/>
