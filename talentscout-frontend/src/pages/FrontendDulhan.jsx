@@ -1,9 +1,10 @@
 import React from 'react';
+import OurTeam from "../components/OurTeam.jsx";
 
 const FrontendDulhan = () => {
     return (
         <div className="">
-            <h1>Dulhan</h1>
+            <OurTeam/>
         </div>
     );
 }
