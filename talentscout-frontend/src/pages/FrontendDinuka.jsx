@@ -2,12 +2,12 @@ import React from 'react';
 import HomeManagePlayers from "../components/HomeManagePlayers.jsx";
 import HomeHero from "../components/HomeHero.jsx";
 import HomeComparePlayers from "../components/HomeComparePlayers.jsx";
-import ComparePlayerStats from "../components/ComparePlayerStats.jsx";
+import ComparePlayerInfo from "../components/ComparePlayerInfo.jsx";
 
 const FrontendDinuka = () => {
     return (
         <div>
-            <ComparePlayerStats/>
+            <ComparePlayerInfo/>
             {/*<HomeHero/>*/}
             {/*<HomeComparePlayers/>*/}
             {/*<HomeManagePlayers/>*/}
