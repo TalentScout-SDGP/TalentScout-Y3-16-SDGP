@@ -1,8 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-function HomeManagePlayers() {
-
+function HomeComparePlayers() {
     return (
         <div className="font-poppins">
             <div className="md:container px-8">
@@ -48,4 +47,4 @@ function HomeManagePlayers() {
     );
 }
 
-export default HomeManagePlayers;
+export default HomeComparePlayers;
