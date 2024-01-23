@@ -32,22 +32,22 @@ function OurTeam() {
                         <div className="text-center">Team Member</div>
                     </div>
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team-member" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Sulan Kumarapperuma</div>
                         <div className="text-center">Team Member</div>
                     </div>
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team-member" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Linuka Rivi Rihan</div>
                         <div className="text-center">Team Member</div>
                     </div>
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team-member" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Chamath Mahapatuna</div>
                         <div className="text-center">Team Member</div>
                     </div>
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team-member" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Agrani Ranathunga</div>
                         <div className="text-center">Team Member</div>
                     </div>
