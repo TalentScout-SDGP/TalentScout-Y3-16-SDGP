@@ -22,7 +22,7 @@ function OurTeam() {
                 {/*Member Details*/}
                 <div className="grid grid-cols-3 gap-x-9 gap-y-11 pb-11 place-items-center">
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team-leader" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Dulhan Perera</div>
                         <div className="text-center">Team Leader</div>
                     </div>
