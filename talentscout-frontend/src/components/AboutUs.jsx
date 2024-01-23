@@ -13,7 +13,7 @@ function AboutUs() {
                                 cricket experience for enthusiasts through a professionally curated platform. Join us on this remarkable journey where the sophistication
                                 of the game meets intuitive tools for a refined cricket experience.</p>
                         </div>
-                        <img className="size-80 mx-auto 2xl:mx-2" src={import.meta.env.BASE_URL + 'default-image.png'} alt=""/>
+                        <img className="size-80 mx-auto 2xl:mx-2 rounded-3xl" src={import.meta.env.BASE_URL + 'about_us.png'} alt=""/>
                     </div>
 
                     <div className="mx-auto p-8 mt-8 mb-10">
