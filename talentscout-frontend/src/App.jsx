@@ -8,10 +8,11 @@ import PlayerProfiles from "./pages/PlayerProfiles.jsx";
 import ManagePlayers from "./pages/ManagePlayers.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
+// eslint-disable-next-line no-unused-vars
 import AddPlayers from "./pages/AddPlayers.jsx";
 import Footer from "./components/shared/Footer.jsx";
 import AboutUsPage from "./pages/AboutUsPage.jsx";
-import OurTeam from "./pages/OurTeam.jsx";
+import OurTeamPage from "./pages/OurTeamPage.jsx";
 // FontAwesome Packages
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fab} from '@fortawesome/free-brands-svg-icons';
@@ -45,7 +46,7 @@ function App() {
                     <Route exact path='/login' element={<LoginPage/>}/>
                     <Route exact path='/sign_up' element={<SignUpPage/>}/>
                     <Route exact path='/about_us' element={<AboutUsPage/>}/>
-                    <Route exact path='/our_team' element={<OurTeam/>}/>a
+                    <Route exact path='/our_team' element={<OurTeamPage/>}/>a
                     {/*TODO End:Delete Following Routes & Page Files*/}
                     <Route exact path='/sulan' element={<FrontendSulan/>}/>
                     <Route exact path='/agrani' element={<FrontendAgrani/>}/>

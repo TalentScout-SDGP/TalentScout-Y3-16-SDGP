@@ -1,5 +1,3 @@
-import React from 'react';
-
 function ComparePlayerInfo() {
     return (
         <div className="font-poppins">
