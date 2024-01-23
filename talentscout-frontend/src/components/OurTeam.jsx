@@ -22,32 +22,32 @@ function OurTeam() {
                 {/*Member Details*/}
                 <div className="grid grid-cols-3 gap-x-9 gap-y-11 pb-11 place-items-center">
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="teamleader" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Dulhan Perera</div>
                         <div className="text-center">Team Leader</div>
                     </div>
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="teammember" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Dinuka Heshan</div>
                         <div className="text-center">Team Member</div>
                     </div>
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="teammember" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Sulan Kumarapperuma</div>
                         <div className="text-center">Team Member</div>
                     </div>
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="teammember" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Linuka Rivi Rihan</div>
                         <div className="text-center">Team Member</div>
                     </div>
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="teammember" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Chamath Mahapatuna</div>
                         <div className="text-center">Team Member</div>
                     </div>
                     <div className="">
-                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="teammember" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Agrani Ranathunga</div>
                         <div className="text-center">Team Member</div>
                     </div>
