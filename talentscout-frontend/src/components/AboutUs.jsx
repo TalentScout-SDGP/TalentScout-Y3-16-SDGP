@@ -15,6 +15,8 @@ function AboutUs() {
                         </div>
                         <img className="size-80 mx-auto 2xl:mx-2" src={import.meta.env.BASE_URL + 'default-image.png'} alt=""/>
                     </div>
+
+
                 </div>
             </div>
         </div>
