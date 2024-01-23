@@ -28,12 +28,12 @@ function OurTeam() {
                     </div>
                     <div className="">
                         <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
-                        <div className="pt-2 font-bold text-center">Dinuka</div>
+                        <div className="pt-2 font-bold text-center">Dinuka Heshan</div>
                         <div className="text-center">Team Member</div>
                     </div>
                     <div className="">
                         <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
-                        <div className="pt-2 font-bold text-center">Sulan K</div>
+                        <div className="pt-2 font-bold text-center">Sulan Kumarapperuma</div>
                         <div className="text-center">Team Member</div>
                     </div>
                     <div className="">
