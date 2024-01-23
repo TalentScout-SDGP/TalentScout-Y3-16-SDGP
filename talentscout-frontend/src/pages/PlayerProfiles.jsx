@@ -1,9 +1,13 @@
-import React from 'react';
+import PlayerProfilesSearch from "../components/PlayerProfilesSearch.jsx";
+import PlayerProfilesInfo from "../components/PlayerProfilesInfo.jsx";
 
 const PlayerProfiles = () => {
     return (
-        <div>
-            <h1>Player Profiles Page</h1>
+        <div className="font-poppins">
+            <div>
+                <PlayerProfilesSearch/>
+                <PlayerProfilesInfo/>
+            </div>
         </div>
     )
 }

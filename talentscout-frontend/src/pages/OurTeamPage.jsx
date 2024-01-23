@@ -1,11 +1,11 @@
 import OurTeam from "../components/OurTeam.jsx";
 
-const FrontendDulhan = () => {
+const OurTeamPage = () => {
     return (
-        <div className="">
+        <div>
             <OurTeam/>
         </div>
-    );
+    )
 }
 
-export default FrontendDulhan;
+export default OurTeamPage

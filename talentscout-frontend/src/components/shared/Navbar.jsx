@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {NavLink, Link} from 'react-router-dom';
 import {faBars, faX} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -61,7 +61,7 @@ const Navbar = () => {
                     </Link>
                 </div>
             </div>
-            <div className="lg:hidden absolute top-3 right-10">
+            <div className="lg:hidden absolute top-4 right-10">
                 <button onClick={toggleNavbar}>
                     <FontAwesomeIcon icon={isOpen ? faX : faBars}/>
                 </button>

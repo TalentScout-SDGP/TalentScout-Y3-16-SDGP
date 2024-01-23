@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
+import {Link} from "react-router-dom";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination, Autoplay} from 'swiper/modules';
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
-import '../swiper.css'
-import {Link} from "react-router-dom";
 
 function SignUp() {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
