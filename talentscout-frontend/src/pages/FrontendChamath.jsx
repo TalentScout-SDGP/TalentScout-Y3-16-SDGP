@@ -1,5 +1,3 @@
-import React from 'react';
-
 const FrontendChamath = () => {
     return (
         <div className="">
