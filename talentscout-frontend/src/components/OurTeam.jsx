@@ -15,7 +15,7 @@ function OurTeam() {
                         </div>
                     </div>
                     <div className="flex flex-col justify-center items-center">
-                        <img src={import.meta.env.BASE_URL + ''} alt="team" className="rounded-lg"/>
+                        <img src={import.meta.env.BASE_URL + 'ourTeamIntro.jpg'} alt="team" className="px-8 rounded-lg"/>
                     </div>
                 </div>
 
