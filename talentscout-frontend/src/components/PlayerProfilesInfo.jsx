@@ -10,7 +10,7 @@ function PlayerProfilesInfo() {
                     className="grid grid-cols-1 md:grid-cols-12 bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden">
                     <div className="flex items-center text-center col-span-4">
                         <img src={import.meta.env.BASE_URL + 'Player-dummy-image.png'} alt="search-icon"
-                             className="min-[600px]:w-3/5 w-3/5 md:w-4/5 mx-auto"></img>
+                             className="min-[600px]:w-3/5 w-3/5 md:w-4/5 mx-auto 2xl:px-8 xl:px-4"></img>
                     </div>
                     <div className="mt-0 md:mt-0 md:mx-6 col-span-8 py-12 text-white ps-2 sm:ps-16 md:ps-0">
                         <div className="text-xs sm:text-sm md:text-base flex flex-col gap-y-4">
@@ -32,9 +32,7 @@ function PlayerProfilesInfo() {
                 </div>
             </div>
         </div>
-
     )
-
 }
 
 export default PlayerProfilesInfo;
