@@ -1,7 +1,13 @@
+import ComparePlayersSearch from "../components/ComparePlayersSearch.jsx";
+import ComparePlayerStats from "../components/ComparePlayerStats.jsx";
+import ComparePlayerInfo from "../components/ComparePlayerInfo.jsx";
+
 const ComparePlayers = () => {
     return (
         <div>
-            <h1>Compare Players Page</h1>
+            <ComparePlayersSearch/>
+            <ComparePlayerInfo/>
+            <ComparePlayerStats/>
         </div>
     )
 }
