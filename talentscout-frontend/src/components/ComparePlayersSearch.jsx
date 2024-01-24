@@ -9,7 +9,7 @@ function ComparePlayersSearch() {
                         className="bg-primary-ts_blue grid grid-cols-1 mt-2 mb-6 sm:mt-4 my-12 px-12 sm:px-10">
                         <div className="flex flex-col items-center justify-center">
                             <input type="text"
-                                   className="w-48 2xl:w-80 lg:w-64 md:w-48 bg-primary-ts_purple sm:w-80 py-2 rounded-2xl my-3 text-left ps-6"
+                                   className="w-48 xl:w-80 lg:w-64 md:w-48 bg-primary-ts_purple sm:w-80 py-2 rounded-2xl my-3 text-left ps-6"
                                    placeholder="Player Name">
                             </input>
                             <button className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-6 py-1 lg:py-2 shadow-lg border-primary-ts_blue border-2
@@ -35,7 +35,7 @@ function ComparePlayersSearch() {
                         className="bg-primary-ts_blue grid grid-cols-1 mb-6 mt-2 my-12 sm:mt-4 px-10 sm:px-10">
                         <div className="flex flex-col items-center justify-center">
                             <input type="text"
-                                   className="w-48 2xl:w-80 lg:w-64 md:w-48 bg-primary-ts_purple sm:w-80 py-2 rounded-2xl mb-3 text-left ps-6"
+                                   className="w-48 xl:w-80 lg:w-64 md:w-48 bg-primary-ts_purple sm:w-80 py-2 rounded-2xl mb-3 text-left ps-6"
                                    placeholder="Player Name">
                             </input>
                             <button className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-6 py-1 lg:py-2 shadow-lg border-primary-ts_blue border-2
