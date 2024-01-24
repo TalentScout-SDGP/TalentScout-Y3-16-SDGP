@@ -14,8 +14,8 @@ function OurTeam() {
                             talents that propel us to new heights.
                         </div>
                     </div>
-                    <div className="flex flex-col justify-center items-center">
-                        <img src={import.meta.env.BASE_URL + 'ourTeamIntro.jpg'} alt="team" className="px-8 rounded-lg"/>
+                    <div className="flex flex-col justify-center items-center px-8">
+                        <img src={import.meta.env.BASE_URL + 'ourTeamIntro.jpg'} alt="team" className="rounded-lg"/>
                     </div>
                 </div>
 
