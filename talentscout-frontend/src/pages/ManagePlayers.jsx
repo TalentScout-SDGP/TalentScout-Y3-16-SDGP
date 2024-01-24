@@ -1,7 +1,9 @@
+import ManagePlayers_LP from "../components/ManagePlayers_LP.jsx";
+
 const ManagePlayers = () => {
     return (
         <div>
-            <h1>Manage Players Page</h1>
+            <ManagePlayers_LP/>
         </div>
     )
 }
