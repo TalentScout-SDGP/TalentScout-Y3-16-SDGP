@@ -14,39 +14,39 @@ function OurTeam() {
                             talents that propel us to new heights.
                         </div>
                     </div>
-                    <div className="flex flex-col justify-center items-center">
-                        <img src={import.meta.env.BASE_URL + ''} alt="team" className="rounded-lg"/>
+                    <div className="flex flex-col justify-center items-center px-8">
+                        <img src={import.meta.env.BASE_URL + 'ourTeamIntro.jpg'} alt="team" className="rounded-lg"/>
                     </div>
                 </div>
 
                 {/*Member Details*/}
                 <div className="grid grid-cols-3 gap-x-9 gap-y-11 pb-11 place-items-center">
-                    <div className="transition duration-300 ease-in-out hover:scale-110">
+                    <div className="transition duration-300 ease-in-out hover:scale-105">
                         <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="teamleader" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Dulhan Perera</div>
                         <div className="text-center">Team Leader</div>
                     </div>
-                    <div className="transition duration-300 ease-in-out hover:scale-110">
+                    <div className="transition duration-300 ease-in-out hover:scale-105">
                         <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Dinuka Amarasinghe</div>
                         <div className="text-center">Team Member</div>
                     </div>
-                    <div className="transition duration-300 ease-in-out hover:scale-110">
+                    <div className="transition duration-300 ease-in-out hover:scale-105">
                         <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Sulan Kumarapperuma</div>
                         <div className="text-center">Team Member</div>
                     </div>
-                    <div className="transition duration-300 ease-in-out hover:scale-110">
+                    <div className="transition duration-300 ease-in-out hover:scale-105">
                         <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Linuka Rivi Rihan</div>
                         <div className="text-center">Team Member</div>
                     </div>
-                    <div className="transition duration-300 ease-in-out hover:scale-110">
+                    <div className="transition duration-300 ease-in-out hover:scale-105">
                         <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Chamath Mahapatuna</div>
                         <div className="text-center">Team Member</div>
                     </div>
-                    <div className=" transition duration-300 ease-in-out hover:scale-110">
+                    <div className=" transition duration-300 ease-in-out hover:scale-105">
                         <img src={import.meta.env.BASE_URL + 'profile-photo-2.jpg'} alt="team" className="rounded-lg"/>
                         <div className="pt-2 font-bold text-center">Agrani Ranathunga</div>
                         <div className="text-center">Team Member</div>
