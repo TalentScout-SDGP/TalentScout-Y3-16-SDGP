@@ -114,7 +114,6 @@ const ComparePlayerStats = () => {
         },
     };
 
-
     return (
         <div className="font-poppins">
             <div className="container my-16">
@@ -122,32 +121,17 @@ const ComparePlayerStats = () => {
                     className="tab-header flex justify-center gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl">
                     <button
                         onClick={() => handleMainTabChange(1)}
-                        className={
-                            mainTab === 1
-                                ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl'
-                                : 'font-semibold text-lg py-1 px-8'
-                        }
-                    >
+                        className={mainTab === 1 ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-lg py-1 px-8'}>
                         Batting
                     </button>
                     <button
                         onClick={() => handleMainTabChange(2)}
-                        className={
-                            mainTab === 2
-                                ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl'
-                                : 'font-semibold text-lg py-1 px-8'
-                        }
-                    >
+                        className={mainTab === 2 ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-lg py-1 px-8'}>
                         Bowling
                     </button>
                     <button
                         onClick={() => handleMainTabChange(3)}
-                        className={
-                            mainTab === 3
-                                ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl'
-                                : 'font-semibold text-lg py-1 px-8'
-                        }
-                    >
+                        className={mainTab === 3 ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-lg py-1 px-8'}>
                         Wicket-Keeping
                     </button>
                 </div>
@@ -155,363 +139,231 @@ const ComparePlayerStats = () => {
                     className="tab-header flex justify-center gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl my-8">
                     <button
                         onClick={() => handleNestedTabChange(4)}
-                        className={
-                            nestedTab === 4
-                                ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl'
-                                : 'font-semibold text-lg py-1 px-8'
-                        }
-                    >
+                        className={nestedTab === 4 ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-lg py-1 px-8'}>
                         Test
                     </button>
                     <button
                         onClick={() => handleNestedTabChange(5)}
-                        className={
-                            nestedTab === 5
-                                ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl'
-                                : 'font-semibold text-lg py-1 px-8'
-                        }
-                    >
+                        className={nestedTab === 5 ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-lg py-1 px-8'}>
                         ODI
                     </button>
                     <button
                         onClick={() => handleNestedTabChange(6)}
-                        className={
-                            nestedTab === 6
-                                ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl'
-                                : 'font-semibold text-lg py-1 px-8'
-                        }
-                    >
+                        className={nestedTab === 6 ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-lg py-1 px-8'}>
                         T20
                     </button>
                 </div>
                 <div className="tab-content my-8 bg-primary-ts_purple rounded-lg">
-                    {(mainTab === 1 && nestedTab === 4) && (
+                    {mainTab === 1 && nestedTab === 4 && (
                         <div className="stats-list">
                             {playerStats.Batting.Test.map((stat, index) => (
                                 <div
                                     key={stat.id}
-                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${
-                                        index !== playerStats.Batting.Test.length - 1 ? 'border-b-2 border-primary-light_gray' : ''
-                                    } py-3`}
-                                >
+                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== playerStats.Batting.Test.length - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer1 !== '-'
-                                                ? stat.statPlayer1 > stat.statPlayer2
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer1 !== '-' ? (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer1}
                                     </div>
                                     <div
                                         className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer2 !== '-'
-                                                ? stat.statPlayer2 > stat.statPlayer1
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer2 !== '-' ? (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer2}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    {(mainTab === 1 && nestedTab === 5) && (
+                    {mainTab === 1 && nestedTab === 5 && (
                         <div className="stats-list">
                             {playerStats.Batting.ODI.map((stat, index) => (
                                 <div
                                     key={stat.id}
-                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${
-                                        index !== playerStats.Batting.ODI.length - 1 ? 'border-b-2 border-primary-light_gray' : ''
-                                    } py-3`}
-                                >
+                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== playerStats.Batting.ODI.length - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer1 !== '-'
-                                                ? stat.statPlayer1 > stat.statPlayer2
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer1 !== '-' ? (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer1}
                                     </div>
                                     <div
                                         className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer2 !== '-'
-                                                ? stat.statPlayer2 > stat.statPlayer1
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer2 !== '-' ? (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer2}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    {(mainTab === 1 && nestedTab === 6) && (
+                    {mainTab === 1 && nestedTab === 6 && (
                         <div className="stats-list">
                             {playerStats.Batting.T20.map((stat, index) => (
                                 <div
                                     key={stat.id}
-                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${
-                                        index !== playerStats.Batting.T20.length - 1 ? 'border-b-2 border-primary-light_gray' : ''
-                                    } py-3`}
-                                >
+                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== playerStats.Batting.T20.length - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer1 !== '-'
-                                                ? stat.statPlayer1 > stat.statPlayer2
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer1 !== '-' ? (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer1}
                                     </div>
                                     <div
                                         className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer2 !== '-'
-                                                ? stat.statPlayer2 > stat.statPlayer1
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer2 !== '-' ? (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer2}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    {(mainTab === 2 && nestedTab === 4) && (
+                    {mainTab === 2 && nestedTab === 4 && (
                         <div className="stats-list">
                             {playerStats.Bowling.Test.map((stat, index) => (
                                 <div
                                     key={stat.id}
-                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${
-                                        index !== playerStats.Bowling.Test - 1 ? 'border-b-2 border-primary-light_gray' : ''
-                                    } py-3`}
-                                >
+                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== playerStats.Bowling.Test - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer1 !== '-'
-                                                ? stat.statPlayer1 > stat.statPlayer2
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer1 !== '-' ? (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer1}
                                     </div>
                                     <div
                                         className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer2 !== '-'
-                                                ? stat.statPlayer2 > stat.statPlayer1
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer2 !== '-' ? (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer2}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    {(mainTab === 2 && nestedTab === 5) && (
+                    {mainTab === 2 && nestedTab === 5 && (
                         <div className="stats-list">
                             {playerStats.Bowling.ODI.map((stat, index) => (
                                 <div
                                     key={stat.id}
-                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${
-                                        index !== playerStats.Bowling.ODI - 1 ? 'border-b-2 border-primary-light_gray' : ''
-                                    } py-3`}
-                                >
+                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== playerStats.Bowling.ODI - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer1 !== '-'
-                                                ? stat.statPlayer1 > stat.statPlayer2
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer1 !== '-' ? (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer1}
                                     </div>
                                     <div
                                         className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer2 !== '-'
-                                                ? stat.statPlayer2 > stat.statPlayer1
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer2 !== '-' ? (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer2}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    {(mainTab === 2 && nestedTab === 6) && (
+                    {mainTab === 2 && nestedTab === 6 && (
                         <div className="stats-list">
                             {playerStats.Bowling.T20.map((stat, index) => (
                                 <div
                                     key={stat.id}
-                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${
-                                        index !== playerStats.Bowling.T20 - 1 ? 'border-b-2 border-primary-light_gray' : ''
-                                    } py-3`}
-                                >
+                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== playerStats.Bowling.T20 - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer1 !== '-'
-                                                ? stat.statPlayer1 > stat.statPlayer2
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer1 !== '-' ? (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer1}
                                     </div>
                                     <div
                                         className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer2 !== '-'
-                                                ? stat.statPlayer2 > stat.statPlayer1
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer2 !== '-' ? (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer2}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    {(mainTab === 3 && nestedTab === 4) && (
+                    {mainTab === 3 && nestedTab === 4 && (
                         <div className="stats-list">
                             {playerStats.WicketKeeping.Test.map((stat, index) => (
                                 <div
                                     key={stat.id}
-                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${
-                                        index !== playerStats.WicketKeeping.Test - 1 ? 'border-b-2 border-primary-light_gray' : ''
-                                    } py-3`}
-                                >
+                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== playerStats.WicketKeeping.Test - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer1 !== '-'
-                                                ? stat.statPlayer1 > stat.statPlayer2
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer1 !== '-' ? (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer1}
                                     </div>
                                     <div
                                         className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer2 !== '-'
-                                                ? stat.statPlayer2 > stat.statPlayer1
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer2 !== '-' ? (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer2}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    {(mainTab === 3 && nestedTab === 5) && (
+                    {mainTab === 3 && nestedTab === 5 && (
                         <div className="stats-list">
                             {playerStats.WicketKeeping.ODI.map((stat, index) => (
                                 <div
                                     key={stat.id}
-                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${
-                                        index !== playerStats.WicketKeeping.ODI - 1 ? 'border-b-2 border-primary-light_gray' : ''
-                                    } py-3`}
-                                >
+                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== playerStats.WicketKeeping.ODI - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer1 !== '-'
-                                                ? stat.statPlayer1 > stat.statPlayer2
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer1 !== '-' ? (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer1}
                                     </div>
                                     <div
                                         className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer2 !== '-'
-                                                ? stat.statPlayer2 > stat.statPlayer1
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer2 !== '-' ? (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer2}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    {(mainTab === 3 && nestedTab === 6) && (
+                    {mainTab === 3 && nestedTab === 6 && (
                         <div className="stats-list">
                             {playerStats.WicketKeeping.T20.map((stat, index) => (
                                 <div
                                     key={stat.id}
-                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${
-                                        index !== playerStats.WicketKeeping.T20 - 1 ? 'border-b-2 border-primary-light_gray' : ''
-                                    } py-3`}
-                                >
+                                    className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== playerStats.WicketKeeping.T20 - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer1 !== '-'
-                                                ? stat.statPlayer1 > stat.statPlayer2
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer1 !== '-' ? (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer1}
                                     </div>
                                     <div
                                         className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                                     <div
                                         className={`col-span-4 text-lg text-center ${
-                                            stat.statPlayer2 !== '-'
-                                                ? stat.statPlayer2 > stat.statPlayer1
-                                                    ? 'bg-primary-green'
-                                                    : 'bg-primary-red'
-                                                : 'bg-primary-light_gray'
-                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}
-                                    >
+                                            stat.statPlayer2 !== '-' ? (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                        } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                                         {stat.statPlayer2}
                                     </div>
                                 </div>
@@ -525,3 +377,4 @@ const ComparePlayerStats = () => {
 };
 
 export default ComparePlayerStats;
+
