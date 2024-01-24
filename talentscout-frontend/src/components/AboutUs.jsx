@@ -6,7 +6,7 @@ function AboutUs() {
                     <div className="lg:flex sm:grid sm:grid-cols-1 2xl:w-11/12 md:items-center md:justify-center mx-auto mt-16 p-8 bg-primary-ts_purple rounded-2xl shadow-outer">
                         <div className="lg:w-2/3 lg:flex lg:flex-col md:grid md:grid-cols-1 text-center md:text-center lg:text-left">
                             <div className="text-3xl font-bold pt-8">ABOUT US</div>
-                            <p className="lg:max-w-xl sm:text-xs md:text-base pt-12 pb-10">Welcome to
+                            <p className="lg:max-w-xl sm:text-xs md:text-base text-justify pt-12 pb-10">Welcome to
                                 TalentScout, an advanced platform tailored exclusively
                                 for cricket enthusiasts seeking a comprehensive and refined experience. At TalentScout,
                                 our commitment is to redefine and elevate the
