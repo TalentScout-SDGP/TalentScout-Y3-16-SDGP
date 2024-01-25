@@ -1,7 +1,9 @@
+import CRUDManagePlayers from "../components/CRUDManagePlayers.jsx";
+
 const ManagePlayers = () => {
     return (
         <div>
-            <h1>Manage Players Page</h1>
+            <CRUDManagePlayers/>
         </div>
     )
 }

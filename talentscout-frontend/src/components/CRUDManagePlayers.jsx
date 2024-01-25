@@ -7,6 +7,18 @@ const CRUDManagePlayers = () => {
         {id: 1, name: 'Player 1', fullName: 'Full Name 1', playingRole: 'Role 1'},
         {id: 2, name: 'Player 2', fullName: 'Full Name 2', playingRole: 'Role 2'},
         {id: 3, name: 'Player 3', fullName: 'Full Name 3', playingRole: 'Role 3'},
+        {id: 4, name: 'Player 4', fullName: 'Full Name 4', playingRole: 'Role 4'},
+        {id: 5, name: 'Player 5', fullName: 'Full Name 5', playingRole: 'Role 5'},
+        {id: 6, name: 'Player 6', fullName: 'Full Name 6', playingRole: 'Role 6'},
+        {id: 7, name: 'Player 7', fullName: 'Full Name 7', playingRole: 'Role 7'},
+        {id: 8, name: 'Player 8', fullName: 'Full Name 8', playingRole: 'Role 8'},
+        {id: 9, name: 'Player 9', fullName: 'Full Name 9', playingRole: 'Role 9'},
+        {id: 10, name: 'Player 10', fullName: 'Full Name 10', playingRole: 'Role 10'},
+        {id: 11, name: 'Player 11', fullName: 'Full Name 11', playingRole: 'Role 11'},
+        {id: 12, name: 'Player 12', fullName: 'Full Name 12', playingRole: 'Role 12'},
+        {id: 13, name: 'Player 13', fullName: 'Full Name 13', playingRole: 'Role 13'},
+        {id: 14, name: 'Player 14', fullName: 'Full Name 14', playingRole: 'Role 14'},
+        {id: 15, name: 'Player 15', fullName: 'Full Name 15', playingRole: 'Role 15'},
         // ... other players
     ];
 
@@ -21,7 +33,7 @@ const CRUDManagePlayers = () => {
     };
 
     return (
-        <div className="font-poppins mb-12">
+        <div className="font-poppins py-12">
             <div className="md:container px-8">
                 <div
                     className="tab-header p-4 bg-primary-ts_blue text-white flex justify-between items-center rounded-t-2xl">
@@ -48,8 +60,8 @@ const CRUDManagePlayers = () => {
                 </div>
 
                 <div className="tab-content bg-primary-ts_purple rounded-b-2xl"
-                     style={{paddingBottom: '100px', justifyContent: 'center', textAlign: 'center'}}>
-                    <div className="flex mb-10 border-b-2 border-gray-500 py-4 ">
+                     style={{paddingBottom: '150px', justifyContent: 'center', textAlign: 'center'}}>
+                    <div className="flex  border-b-2 border-gray-300 pt-5 py-4">
                         <div className="ml-20 w-20 mt-8"><input type="checkbox"/></div>
                         <div className="font-bold flex-1 mt-8">Name</div>
                         <div className="font-bold flex-1 mt-8">Full Name</div>
@@ -59,7 +71,7 @@ const CRUDManagePlayers = () => {
                     {playersArray && playersArray.length > 0 ? (
                         playersArray.map((player) => (
                             <div key={player.id}
-                                 className="flex mb-10 border-b-2 border-gray-500 py-2 ">
+                                 className="flex py-5 border-b-2 border-gray-300  ">
                                 <div className="ml-20 w-20">
                                     <input type="checkbox"/>
                                 </div>
