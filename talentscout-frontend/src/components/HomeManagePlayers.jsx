@@ -8,7 +8,7 @@ function HomeManagePlayers() {
     return (
         <div className="font-poppins">
             <div className="md:container px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-12 my-16 shadow-outer rounded-lg px-2 py-4">
+                <div className="grid grid-cols-1 lg:grid-cols-12 my-16 shadow-outer px-2 py-4 rounded-3xl">
                     <div
                         className="flex justify-center items-center lg:items-start flex-col gap-y-8 my-12 lg:gap-y-16 col-span-6 px-4 md:px-8 lg:px-16 xl:px-24">
                         <p className="text-black text-base lg:text-2xl font-bold text-center lg:text-start leading-relaxed"> Crafting
