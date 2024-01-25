@@ -55,9 +55,10 @@ function AddNewPlayersStats() {
 
     return (
         <div className="font-poppins">
-            <div className="md:container px-8">
-                <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-                    <div className="bg-primary-ts_purple grid grid-cols-2 gap-4 my-8  rounded-lg px-10 py-20">
+            <div className="md:container px-8 ">
+                <form onSubmit={handleSubmit} className="mx-auto">
+                    <div
+                        className="bg-primary-ts_purple grid grid-cols-2 gap-20 my-12 lg:w-full rounded-lg px-16 py-24">
                         {/* Left Column */}
                         <div>
                             <div className="mb-4 flex items-center justify-between">
@@ -70,7 +71,7 @@ function AddNewPlayersStats() {
                                     value={matches}
                                     onChange={(e) => setMatches(e.target.value)}
                                     required
-                                    className="lg:w-1/2 mt-1 p-2 w-full border rounded-3xl shadow-md ps-6 mb-3"
+                                    className="lg:w-3/4  mt-1 p-1 w-full border rounded-3xl shadow-md ps-10 mb-3"
                                 /></div>
                             <div className="mb-4 flex items-center justify-between">
                                 <label htmlFor="innings" className="block text-sm font-bold text-ts_blue mt-4">
@@ -82,7 +83,7 @@ function AddNewPlayersStats() {
                                     value={innings}
                                     onChange={(e) => setInnings(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
 
                             <div className="mb-4 flex items-center justify-between">
@@ -95,7 +96,7 @@ function AddNewPlayersStats() {
                                     value={highestScore}
                                     onChange={(e) => setHighestScore(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
                             <div className="mb-4 flex items-center justify-between">
                                 <label htmlFor="ballsFaced" className="block text-sm font-bold text-ts_blue mt-4">
@@ -107,7 +108,7 @@ function AddNewPlayersStats() {
                                     value={ballsFaced}
                                     onChange={(e) => setBallsFaced(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
                             <div className="mb-4 flex items-center justify-between">
                                 <label htmlFor="hundreds" className="block text-sm font-bold text-ts_blue mt-4">
@@ -119,7 +120,7 @@ function AddNewPlayersStats() {
                                     value={hundreds}
                                     onChange={(e) => setHundreds(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
                             <div className="mb-4 flex items-center justify-between">
                                 <label htmlFor="sixes" className="block text-sm font-bold text-ts_blue mt-4">
@@ -131,7 +132,7 @@ function AddNewPlayersStats() {
                                     value={sixes}
                                     onChange={(e) => setSixes(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
 
                         </div>
@@ -149,7 +150,7 @@ function AddNewPlayersStats() {
                                     value={runs}
                                     onChange={(e) => setRuns(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
                             <div className="mb-4 flex items-center justify-between">
                                 <label htmlFor="notOuts" className="block text-sm font-bold text-ts_blue mt-4">
@@ -161,7 +162,7 @@ function AddNewPlayersStats() {
                                     value={notOuts}
                                     onChange={(e) => setNotOuts(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
                             <div className="mb-4 flex items-center justify-between">
                                 <label htmlFor="average" className="block text-sm font-bold text-ts_blue mt-4">
@@ -173,7 +174,7 @@ function AddNewPlayersStats() {
                                     value={average}
                                     onChange={(e) => setAverage(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
                             <div className="mb-4 flex items-center justify-between">
                                 <label htmlFor="strikeRate" className="block text-sm font-bold text-ts_blue mt-4">
@@ -185,7 +186,7 @@ function AddNewPlayersStats() {
                                     value={strikeRate}
                                     onChange={(e) => setStrikeRate(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
                             <div className="mb-4 flex items-center justify-between">
                                 <label htmlFor="fifties" className="block text-sm font-bold text-ts_blue mt-4">
@@ -197,7 +198,7 @@ function AddNewPlayersStats() {
                                     value={fifties}
                                     onChange={(e) => setFifties(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
                             <div className="mb-4 flex items-center justify-between">
                                 <label htmlFor="fours" className="block text-sm font-bold text-ts_blue mt-4">
@@ -209,7 +210,7 @@ function AddNewPlayersStats() {
                                     value={fours}
                                     onChange={(e) => setFours(e.target.value)}
                                     required
-                                    className="lg:w-1/2 md:w-96 mt-1 p-2 w-full border rounded-3xl shadow-md"
+                                    className="lg:w-3/4 md:w-96 mt-1 p-1 w-full border rounded-3xl shadow-md"
                                 /></div>
                         </div>
 
