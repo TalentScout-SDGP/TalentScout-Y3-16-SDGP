@@ -25,7 +25,7 @@ const HomeExplorePlayers = () => {
         },
         {
             title: "Smart Performance Insights",
-            description: "Identify strengths and areas to improve",
+            description: "Identify player strengths and areas to improve",
             icon: import.meta.env.BASE_URL + 'Smart Performance Insights.png'
         },
         {
@@ -51,17 +51,18 @@ const HomeExplorePlayers = () => {
                         {boxes.map((box, index) => (
                             <div
                                 key={index}
-                                className="bg-white shadow-outer rounded-lg p-4 flex items-start"
+                                className="bg-white shadow-outer rounded-lg p-4 flex items-start transition duration-300 ease-in-out transform hover:scale-105"
                             >
-                                <img
-                                    src={box.icon}
-                                    alt={`Icon ${index + 1}`}
-                                    className="h-8 w-8 mb-2 mr-2"
-                                />
+                                ><img
+                                src={box.icon}
+                                alt={`Icon ${index + 1}`}
+                                className="h-8 w-8 mb-2 mr-2"
+                            />
                                 <div className="flex flex-col">
                                     <p className="text-black font-bold text-left mb-1">{box.title}</p>
                                     <p className="text-black text-left mb-2">{box.description}</p>
                                 </div>
+
                             </div>
                         ))}
                     </div>
