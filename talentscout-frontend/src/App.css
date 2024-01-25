@@ -32,35 +32,3 @@
 }
 
 
-/* COMPARE PLAYERS PAGE - FORMATS TAB */
-.compare-tabs button {
-    background-color: transparent;
-    padding: 10px 30px;
-    border-radius: 60px;
-    color: #000000;
-    font-weight: bold;
-}
-
-.compare-tabs button:hover {
-    background-color: #070032;
-    color: #ffffff;
-}
-
-.compare-tabs button[aria-selected="true"] {
-    background-color: #070032;
-    color: #ffffff;
-    outline: none !important;
-}
-
-.compare-tabs div[aria-label="Pills"] {
-    background: #CCCCFE;
-    border-radius: 20px;
-    padding: 3px;
-}
-
-.compare-tabs .focus\:ring-4:focus {
-    --tw-ring-offset-shadow: none;
-    --tw-ring-shadow: none;
-    box-shadow: none;
-}
-

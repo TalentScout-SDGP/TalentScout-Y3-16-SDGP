@@ -5,12 +5,12 @@ function HomeComparePlayers() {
         <div className="font-poppins">
             <div className="md:container px-8">
                 <div
-                    className="bg-primary-ts_purple flex flex-col gap-y-6 justify-center items-center rounded-lg p-8 lg:p-16">
+                    className="bg-primary-ts_purple flex flex-col gap-y-6 justify-center items-center p-8 lg:p-16 shadow-outer rounded-3xl">
                     <div className="flex flex-col justify-center gap-y-4">
                         <p className="text-black text-base lg:text-2xl font-bold text-center leading-relaxed">
                             Discover Cricket Excellence
                         </p>
-                        <p className="hidden lg:block text-black text-sm lg:text-lg font-semibold text-center lg:w-4/5 mx-auto">
+                        <p className="hidden lg:block text-black text-sm lg:text-lg text-center lg:w-4/5 mx-auto">
                             Elevate your cricket experience! Our platform empowers
                             you to delve into the depths of
                             player prowess, comparing vital stats and insights effortlessly. Uncover the secrets behind

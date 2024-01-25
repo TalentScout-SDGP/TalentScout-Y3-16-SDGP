@@ -1,7 +1,8 @@
+import HomePlayerProfile from "../components/HomePlayerProfile.jsx";
 const FrontendAgrani = () => {
     return (
         <div className="">
-            <h1>Agrani</h1>
+            <HomePlayerProfile/>
         </div>
     );
 }
