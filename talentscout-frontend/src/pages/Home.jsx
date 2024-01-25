@@ -9,6 +9,7 @@ const Home = () => {
         <div className="">
             <HomeHero/>
             <HomeExplorePlayers/>
+            <HomePlayerProfile/>
             <HomeComparePlayers/>
             <HomeManagePlayers/>
         </div>
