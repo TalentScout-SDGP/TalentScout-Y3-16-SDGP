@@ -1,9 +1,8 @@
-import HomeExplorePlayers from "../components/HomeExplorePlayers.jsx";
-
+import HomePlayerProfile from "../components/HomePlayerProfile.jsx";
 const FrontendAgrani = () => {
     return (
         <div className="">
-            <HomeExplorePlayers/>
+            <HomePlayerProfile/>
         </div>
     );
 }
