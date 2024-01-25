@@ -9,7 +9,7 @@ const OurTeam = () => {
             <h1 className="font-bold text-2xl lg:text-3xl text-center lg:text-left mb-4 lg:mb-0">
               Meet Our Team
             </h1>
-            <div className="text-justify py-6 text-center lg:text-left">
+            <div className="lg:text-justify py-6 text-center">
               Meet the dedicated individuals who make up our dynamic team. From creative minds shaping our
               innovative projects to meticulous professionals ensuring smooth operations, our
               collaborative spirit drives us forward. We believe in the power of teamwork, diversity, and
