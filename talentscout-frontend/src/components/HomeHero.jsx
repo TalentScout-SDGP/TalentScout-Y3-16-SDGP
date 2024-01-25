@@ -5,7 +5,7 @@ function HomeHero() {
         <div className="font-poppins">
             <div className="md:container px-2 sm:px-8">
                 <div
-                    className="bg-cover bg-center h-[350px] md:h-[450px] lg:h-[600px] flex items-center justify-center rounded-3xl my-6 md:my-12"
+                    className="bg-cover bg-center h-[350px] md:h-[450px] lg:h-[550px] flex items-center justify-center rounded-3xl my-6 md:my-12"
                     style={{backgroundImage: `url(${import.meta.env.BASE_URL}hero-bg.png)`}}>
                     <div
                         className="flex flex-col items-center gap-y-8 mx-auto px-4 sm:px-8 md:px-16 lg:px-32 text-center">
@@ -20,7 +20,7 @@ function HomeHero() {
                             data with
                             TalentScout! Analyze player statistics, compare profiles, and discover the stars of
                             tomorrow.</p>
-                        <Link to="/explore_players" className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-4 py-1 lg:py-3 shadow-lg border-primary-ts_blue border-2
+                        <Link to="/explore_players" className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-4 py-1 lg:py-2 shadow-lg border-primary-ts_blue border-2
                             hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                             Get Started
                         </Link>
