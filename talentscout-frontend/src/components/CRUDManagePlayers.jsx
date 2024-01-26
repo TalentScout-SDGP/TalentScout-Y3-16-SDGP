@@ -26,8 +26,20 @@ const CRUDManagePlayers = () => {
     ];
 
     const handleDelete = () => {
-        // Placeholder for delete functionality
-        console.log('Deleting players...');
+        // Check if any player is selected for bulk deletion or individually
+        if (selectedPlayers.length > 0) {
+            // Implement logic to delete players based on selectedPlayers array
+            console.log('Deleting selected players:', selectedPlayers);
+            // Update playersArray or make an API call for deletion
+        } else {
+            console.log('No players selected for deletion');
+        }
+    };
+
+    const handleDeletePlayer = (playerId) => {
+        // Implement logic to delete the specific player with playerId
+        console.log('Deleting player with ID:', playerId);
+        // Update playersArray or make an API call for deletion
     };
 
     const handleAddNewPlayer = () => {
@@ -109,7 +121,9 @@ const CRUDManagePlayers = () => {
                                 <div className="flex-1">{player.playingRole}</div>
                                 <div className="flex-1 flex items-center justify-center">
                                     <FaEdit className="text-2xl cursor-pointer mr-5 hover:scale-105" />
-                                    <FaTrash className=" text-2xl cursor-pointer hover:scale-105" />
+                                    <FaTrash className=" text-2xl cursor-pointer hover:scale-105"
+                                             onClick={() => handleDeletePlayer(player.id)}
+                                    />
                                 </div>
                             </div>
                         ))
