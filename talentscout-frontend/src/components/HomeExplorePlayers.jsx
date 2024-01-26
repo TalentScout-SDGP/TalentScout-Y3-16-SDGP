@@ -25,7 +25,7 @@ const HomeExplorePlayers = () => {
         },
         {
             title: "Smart Performance Insights",
-            description: "Identify strengths and areas to improve",
+            description: "Identify players' strengths and areas to improve",
             icon: import.meta.env.BASE_URL + 'Smart Performance Insights.png'
         },
         {
@@ -39,7 +39,7 @@ const HomeExplorePlayers = () => {
         <div className="font-poppins mb-12">
             <div className="md:container px-8">
                 <div
-                    className="bg-primary-ts_purple flex flex-col gap-y-8 justify-center items-center rounded-3xl p-8 lg:p-12 shadow-outer mt-12"
+                    className="bg-primary-ts_purple flex flex-col gap-y-8 justify-center items-center rounded-3xl p-8 lg:p-12 shadow-outer mt-12 "
                 >
                     <p className="text-black text-base lg:text-3xl font-bold text-center">
                         Unleash the power of TalentScout!<br/>
@@ -47,11 +47,11 @@ const HomeExplorePlayers = () => {
               Revolutionizing cricket insights far beyond conventional boundaries.
             </span>
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-12 ">
                         {boxes.map((box, index) => (
                             <div
                                 key={index}
-                                className="bg-white shadow-outer rounded-lg p-4 flex items-start"
+                                className="bg-white shadow-outer rounded-lg p-4 flex items-start  hover:scale-105"
                             >
                                 <img
                                     src={box.icon}

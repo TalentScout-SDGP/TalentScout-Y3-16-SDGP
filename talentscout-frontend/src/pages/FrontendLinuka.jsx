@@ -1,7 +1,9 @@
+import ManagePlayers_LP from "../components/ManagePlayers_LP.jsx";
+
 const FrontendLinuka = () => {
     return (
         <div className="">
-            <h1>Linuka</h1>
+            <ManagePlayers_LP/>z
         </div>
     );
 }
