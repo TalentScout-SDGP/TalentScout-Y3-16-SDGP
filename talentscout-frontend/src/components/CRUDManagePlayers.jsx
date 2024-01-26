@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
-import {FaTrash, FaEdit, FaPlus, FaMinus} from 'react-icons/fa';
-import {Link} from "react-router-dom";
+import React, { useState } from 'react';
+import { FaTrash, FaEdit, FaPlus, FaMinus } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const CRUDManagePlayers = () => {
+    const [selectAll, setSelectAll] = useState(false);
+    const [selectedPlayers, setSelectedPlayers] = useState([]);
+
     const playersArray = [
         {id: 1, name: 'Player 1', fullName: 'Full Name 1', playingRole: 'Role 1'},
         {id: 2, name: 'Player 2', fullName: 'Full Name 2', playingRole: 'Role 2'},
@@ -32,11 +35,27 @@ const CRUDManagePlayers = () => {
         console.log('Redirecting to AddPlayer page...');
     };
 
+    const handleSelectAll = () => {
+        setSelectAll(!selectAll);
+        setSelectedPlayers(selectAll ? [] : playersArray.map(player => player.id));
+    };
+
+    const handleSelectPlayer = (playerId) => {
+        setSelectedPlayers((prevSelected) => {
+            if (prevSelected.includes(playerId)) {
+                return prevSelected.filter(id => id !== playerId);
+            } else {
+                return [...prevSelected, playerId];
+            }
+        });
+    };
+
     return (
         <div className="font-poppins py-12">
             <div className="md:container px-8">
                 <div
-                    className="tab-header p-4 bg-primary-ts_blue text-white flex justify-between items-center rounded-t-2xl">
+                    className="tab-header p-4 bg-primary-ts_blue text-white flex justify-between items-center rounded-t-2xl"
+                >
                     <div className="ml-4">
                         <strong>Manage Players</strong>
                     </div>
@@ -45,24 +64,31 @@ const CRUDManagePlayers = () => {
                             className="bg-primary-red text-white p-2 mr-2 font-semibold border-none rounded-2xl flex items-center hover:scale-105"
                             onClick={handleDelete}
                         >
-                            <FaMinus className="mr-2"/>
+                            <FaMinus className="mr-2" />
                             Delete
                         </button>
                         <Link
                             to="/add_players"
                             className="bg-primary-green text-white p-2 mr-2 font-semibold border-none rounded-2xl flex items-center  hover:scale-105"
                         >
-                            <FaPlus className="mr-2"/>
+                            <FaPlus className="mr-2" />
                             Add New Player
                         </Link>
-
                     </div>
                 </div>
 
-                <div className="tab-content bg-primary-ts_purple rounded-b-2xl"
-                     style={{paddingBottom: '150px', justifyContent: 'center', textAlign: 'center'}}>
-                    <div className="flex  border-b-2 border-gray-300 pt-5 py-4">
-                        <div className="ml-20 w-20 mt-8"><input type="checkbox"/></div>
+                <div
+                    className="tab-content bg-primary-ts_purple rounded-b-2xl"
+                    style={{ paddingBottom: '150px', justifyContent: 'center', textAlign: 'center' }}
+                >
+                    <div className="flex  border-b-2 border-gray-400 pt-5 py-4">
+                        <div className="ml-20 w-20 mt-8">
+                            <input
+                                type="checkbox"
+                                checked={selectAll}
+                                onChange={handleSelectAll}
+                            />
+                        </div>
                         <div className="font-bold flex-1 mt-8">Name</div>
                         <div className="font-bold flex-1 mt-8">Full Name</div>
                         <div className="font-bold flex-1 mt-8">Playing Role</div>
@@ -70,17 +96,20 @@ const CRUDManagePlayers = () => {
                     </div>
                     {playersArray && playersArray.length > 0 ? (
                         playersArray.map((player) => (
-                            <div key={player.id}
-                                 className="flex py-5 border-b-2 border-gray-300  ">
+                            <div key={player.id} className="flex py-5 border-b-2 border-gray-300  ">
                                 <div className="ml-20 w-20">
-                                    <input type="checkbox"/>
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedPlayers.includes(player.id)}
+                                        onChange={() => handleSelectPlayer(player.id)}
+                                    />
                                 </div>
                                 <div className="flex-1 ">{player.name}</div>
                                 <div className="flex-1">{player.fullName}</div>
                                 <div className="flex-1">{player.playingRole}</div>
                                 <div className="flex-1 flex items-center justify-center">
-                                    <FaEdit className="text-2xl cursor-pointer mr-5"/>
-                                    <FaTrash className=" text-2xl cursor-pointer "/>
+                                    <FaEdit className="text-2xl cursor-pointer mr-5" />
+                                    <FaTrash className=" text-2xl cursor-pointer " />
                                 </div>
                             </div>
                         ))
