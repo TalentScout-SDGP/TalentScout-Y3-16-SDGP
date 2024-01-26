@@ -108,8 +108,8 @@ const CRUDManagePlayers = () => {
                                 <div className="flex-1">{player.fullName}</div>
                                 <div className="flex-1">{player.playingRole}</div>
                                 <div className="flex-1 flex items-center justify-center">
-                                    <FaEdit className="text-2xl cursor-pointer mr-5" />
-                                    <FaTrash className=" text-2xl cursor-pointer " />
+                                    <FaEdit className="text-2xl cursor-pointer mr-5 hover:scale-105" />
+                                    <FaTrash className=" text-2xl cursor-pointer hover:scale-105" />
                                 </div>
                             </div>
                         ))
