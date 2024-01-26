@@ -42,10 +42,6 @@ const CRUDManagePlayers = () => {
         // Update playersArray or make an API call for deletion
     };
 
-    const handleAddNewPlayer = () => {
-        // Placeholder for redirecting to AddPlayer page
-        console.log('Redirecting to AddPlayer page...');
-    };
 
     const handleSelectAll = () => {
         setSelectAll(!selectAll);
