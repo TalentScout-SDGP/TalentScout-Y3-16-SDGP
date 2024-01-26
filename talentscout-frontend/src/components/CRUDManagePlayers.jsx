@@ -101,10 +101,10 @@ const CRUDManagePlayers = () => {
                                 onChange={handleSelectAll}
                             />
                         </div>
-                        <div className="font-bold flex-1 mt-8">Name</div>
-                        <div className="font-bold flex-1 mt-8">Full Name</div>
-                        <div className="font-bold flex-1 mt-8">Playing Role</div>
-                        <div className="font-bold flex-1 mt-8">Actions</div>
+                        <div className="font-bold flex-1 mt-8 text-left ml-20">Name</div>
+                        <div className="font-bold flex-1 mt-8 text-left">Full Name</div>
+                        <div className="font-bold flex-1 mt-8 text-left ml-5">Playing Role</div>
+                        <div className="font-bold flex-1 mt-8 text-center mr-5">Actions</div>
                     </div>
                     {playersArray && playersArray.length > 0 ? (
                         playersArray.map((player) => (
@@ -116,10 +116,10 @@ const CRUDManagePlayers = () => {
                                         onChange={() => handleSelectPlayer(player.id)}
                                     />
                                 </div>
-                                <div className="flex-1 ">{player.name}</div>
-                                <div className="flex-1">{player.fullName}</div>
-                                <div className="flex-1">{player.playingRole}</div>
-                                <div className="flex-1 flex items-center justify-center">
+                                <div className="flex-1 text-left ml-20">{player.name}</div>
+                                <div className="flex-1 text-left">{player.fullName}</div>
+                                <div className="flex-1 text-left ml-5">{player.playingRole}</div>
+                                <div className="flex-1 flex items-center justify-center mr-5">
                                     <FaEdit className="text-2xl cursor-pointer mr-5 hover:scale-105" />
                                     <FaTrash className=" text-2xl cursor-pointer hover:scale-105"
                                              onClick={() => handleDeletePlayer(player.id)}
