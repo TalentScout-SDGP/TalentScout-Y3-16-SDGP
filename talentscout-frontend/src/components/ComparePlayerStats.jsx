@@ -39,7 +39,7 @@ const ComparePlayerStats = () => {
                                         ) :
                                         (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red')
                                 ) : 'bg-primary-light_gray'
-                            } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
+                            } text-white w-14 sm:w-20 mx-auto font-semibold px-1 sm:px-2 py-1 sm:py-2 rounded-lg`}>
                             {stat.statPlayer1}
                         </div>
                         <div className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
@@ -53,7 +53,7 @@ const ComparePlayerStats = () => {
                                         ) :
                                         (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red')
                                 ) : 'bg-primary-light_gray'
-                            } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
+                            } text-white w-14 sm:w-20 mx-auto font-semibold px-1 sm:px-2 py-1 sm:py-2 rounded-lg`}>
                             {stat.statPlayer2}
                         </div>
                     </div>
