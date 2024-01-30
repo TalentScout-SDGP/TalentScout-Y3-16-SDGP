@@ -1,9 +1,9 @@
-import ManagePlayers_LP from "../components/CRUD_ManagePlayers_Search.jsx";
+import CRUDManagePlayersSearch from "../components/CRUDManagePlayersSearch.jsx";
 
 const ManagePlayers = () => {
     return (
         <div>
-            <ManagePlayers_LP/>
+            <CRUDManagePlayersSearch/>
         </div>
     )
 }
