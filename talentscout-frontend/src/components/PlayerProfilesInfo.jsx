@@ -62,53 +62,158 @@ function PlayerProfilesInfo() {
                     <div
                         className="bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden">
                         <h1 className="text-white font-bold text-center">Batting Statistics</h1>
-                        <p className="text-white font-semibold pt-4">Matches: 5</p>
-                        <p className="text-white font-semibold pt-4">Runs: 427</p>
-                        <p className="text-white font-semibold pt-4">Innings: 7</p>
-                        <p className="text-white font-semibold pt-4">Not Outs: 2</p>
-                        <p className="text-white font-semibold pt-4">Highest Score: 159</p>
-                        <p className="text-white font-semibold pt-4">Average: 85.4</p>
-                        <p className="text-white font-semibold pt-4">Balls Faced: 585</p>
-                        <p className="text-white font-semibold pt-4">Strike Rate: 72.99</p>
-                        <p className="text-white font-semibold pt-4">100s: 1</p>
-                        <p className="text-white font-semibold pt-4">50s: 3</p>
-                        <p className="text-white font-semibold pt-4">4s: 38</p>
-                        <p className="text-white font-semibold pt-4">6s: 4</p>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Matches:</div>
+                            <div className="text-white font-semibold pt-4  text-left">5</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Runs:</div>
+                            <div className="text-white font-semibold pt-4  text-left">427</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Innings:</div>
+                            <div className="text-white font-semibold pt-4  text-left">7</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">Not Outs:</div>
+                            <div className="text-white font-semibold pt-4 text-left">2</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">Highest Score:</div>
+                            <div className="text-white font-semibold pt-4 text-left">159</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">Average:</div>
+                            <div className="text-white font-semibold pt-4 text-left">85.4</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">Balls Faced:</div>
+                            <div className="text-white font-semibold pt-4 text-left">585</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">Strike Rate:</div>
+                            <div className="text-white font-semibold pt-4 text-left">72.99</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">100s:</div>
+                            <div className="text-white font-semibold pt-4 text-left">1</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">50s:</div>
+                            <div className="text-white font-semibold pt-4 text-left">3</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">4s:</div>
+                            <div className="text-white font-semibold pt-4 text-left">38</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">6s:</div>
+                            <div className="text-white font-semibold pt-4 text-left">4</div>
+                        </div>
                     </div>
 
                     {/*Bowling Stats*/}
                     <div
                         className="bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden">
                         <h1 className="text-white font-bold text-center">Bowling Statistics</h1>
-                        <p className="text-white font-semibold pt-4">Matches: 5</p>
-                        <p className="text-white font-semibold pt-4">Wickets: 29</p>
-                        <p className="text-white font-semibold pt-4">Innings: 7</p>
-                        <p className="text-white font-semibold pt-4">Overs: 117.5</p>
-                        <p className="text-white font-semibold pt-4">Runs: 338</p>
-                        <p className="text-white font-semibold pt-4">BBI: 27/7</p>
-                        <p className="text-white font-semibold pt-4">Average: 11.65</p>
-                        <p className="text-white font-semibold pt-4">Econ: 2.86</p>
-                        <p className="text-white font-semibold pt-4">Strike Rate: 24.37</p>
-                        <p className="text-white font-semibold pt-4">4Ws: 2</p>
-                        <p className="text-white font-semibold pt-4">5Ws: 2</p>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Matches:</div>
+                            <div className="text-white font-semibold pt-4 text-left">5</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Wickets:</div>
+                            <div className="text-white font-semibold pt-4 text-left">29</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Innings:</div>
+                            <div className="text-white font-semibold pt-4 text-left">7</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Overs:</div>
+                            <div className="text-white font-semibold pt-4 text-left">117.5</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Runs:</div>
+                            <div className="text-white font-semibold pt-4 text-left">338</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">BBI:</div>
+                            <div className="text-white font-semibold pt-4 text-left">27/7</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Average:</div>
+                            <div className="text-white font-semibold pt-4 text-left">11.65</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Econ:</div>
+                            <div className="text-white font-semibold pt-4 text-left">2.86</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Strike Rate:</div>
+                            <div className="text-white font-semibold pt-4 text-left">24.37</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">4Ws:</div>
+                            <div className="text-white font-semibold pt-4 text-left">2</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">5Ws:</div>
+                            <div className="text-white font-semibold pt-4 text-left">2</div>
+                        </div>
                     </div>
 
                     {/*Wicket Keeping Stats*/}
                     <div
                         className="bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden">
                         <h1 className="text-white font-bold text-center">Wicketkeeping Statistics</h1>
-                        <p className="text-white font-semibold pt-4">Matches: 0</p>
-                        <p className="text-white font-semibold pt-4">Runs: 0</p>
-                        <p className="text-white font-semibold pt-4">Innings: 0</p>
-                        <p className="text-white font-semibold pt-4">Not Outs: 0</p>
-                        <p className="text-white font-semibold pt-4">Highest Score: 0</p>
-                        <p className="text-white font-semibold pt-4">Average: 0.0</p>
-                        <p className="text-white font-semibold pt-4">Balls Faced: 0</p>
-                        <p className="text-white font-semibold pt-4">Strike Rate: 0.0</p>
-                        <p className="text-white font-semibold pt-4">100s: 0</p>
-                        <p className="text-white font-semibold pt-4">50s: 0</p>
-                        <p className="text-white font-semibold pt-4">4s: 0</p>
-                        <p className="text-white font-semibold pt-4">6s: 0</p>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Matches:</div>
+                            <div className="text-white font-semibold pt-4  text-left">5</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Runs:</div>
+                            <div className="text-white font-semibold pt-4  text-left">427</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4">Innings:</div>
+                            <div className="text-white font-semibold pt-4  text-left">7</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">Not Outs:</div>
+                            <div className="text-white font-semibold pt-4 text-left">2</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">Highest Score:</div>
+                            <div className="text-white font-semibold pt-4 text-left">159</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">Average:</div>
+                            <div className="text-white font-semibold pt-4 text-left">85.4</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">Balls Faced:</div>
+                            <div className="text-white font-semibold pt-4 text-left">585</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">Strike Rate:</div>
+                            <div className="text-white font-semibold pt-4 text-left">72.99</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">100s:</div>
+                            <div className="text-white font-semibold pt-4 text-left">1</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">50s:</div>
+                            <div className="text-white font-semibold pt-4 text-left">3</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">4s:</div>
+                            <div className="text-white font-semibold pt-4 text-left">38</div>
+                        </div>
+                        <div className="grid md:grid-cols-2">
+                            <div className="text-white font-semibold pt-4 ">6s:</div>
+                            <div className="text-white font-semibold pt-4 text-left">4</div>
+                        </div>
                     </div>
                 </div>
             </div>
