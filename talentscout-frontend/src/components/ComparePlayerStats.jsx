@@ -12,6 +12,17 @@ const ComparePlayerStats = () => {
         setNestedTab(tabNumber);
     };
 
+    const compareBBI = (bbi1, bbi2) => {
+        const [runs1, wickets1] = bbi1.split('/').map(Number);
+        const [runs2, wickets2] = bbi2.split('/').map(Number);
+
+        if (runs1 !== runs2) {
+            return runs1 < runs2 ? 'player1' : 'player2';
+        }
+
+        return wickets1 > wickets2 ? 'player1' : 'player2';
+    };
+
     const renderStatsList = (statsData) => {
         return (
             <div className="stats-list">
@@ -22,7 +33,10 @@ const ComparePlayerStats = () => {
                             className={`col-span-4 text-lg text-center ${
                                 stat.statPlayer1 !== '-' ? (
                                     ['Runs', 'Avg', 'Econ', 'SR'].includes(stat.description) ?
-                                        (stat.statPlayer1 < stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') :
+                                        (stat.description === 'BBI' ?
+                                                (compareBBI(stat.statPlayer1, stat.statPlayer2) === 'player1' ? 'bg-primary-green' : 'bg-primary-red') :
+                                                (stat.statPlayer1 < stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red')
+                                        ) :
                                         (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red')
                                 ) : 'bg-primary-light_gray'
                             } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
@@ -33,7 +47,10 @@ const ComparePlayerStats = () => {
                             className={`col-span-4 text-lg text-center ${
                                 stat.statPlayer2 !== '-' ? (
                                     ['Runs', 'Avg', 'Econ', 'SR'].includes(stat.description) ?
-                                        (stat.statPlayer2 < stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') :
+                                        (stat.description === 'BBI' ?
+                                                (compareBBI(stat.statPlayer2, stat.statPlayer1) === 'player1' ? 'bg-primary-green' : 'bg-primary-red') :
+                                                (stat.statPlayer2 < stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red')
+                                        ) :
                                         (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red')
                                 ) : 'bg-primary-light_gray'
                             } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
@@ -98,7 +115,7 @@ const ComparePlayerStats = () => {
                 {id: 3, statPlayer1: 50, statPlayer2: 35, description: 'Innings'},
                 {id: 4, statPlayer1: 2.5, statPlayer2: 7.3, description: 'Overs'},
                 {id: 5, statPlayer1: 130, statPlayer2: 120, description: 'Runs'},
-                {id: 6, statPlayer1: 48.5, statPlayer2: 45.6, description: 'BBI'},
+                {id: 6, statPlayer1: '86/5', statPlayer2: '79/8', description: 'BBI'},
                 {id: 7, statPlayer1: 120, statPlayer2: 110, description: 'Avg'},
                 {id: 8, statPlayer1: 85.0, statPlayer2: 72.6, description: 'Econ'},
                 {id: 9, statPlayer1: 30, statPlayer2: 35, description: 'SR'},
@@ -111,7 +128,7 @@ const ComparePlayerStats = () => {
                 {id: 3, statPlayer1: 45, statPlayer2: 30, description: 'Innings'},
                 {id: 4, statPlayer1: 3.5, statPlayer2: 8, description: 'Overs'},
                 {id: 5, statPlayer1: 110, statPlayer2: 100, description: 'Runs'},
-                {id: 6, statPlayer1: 42.5, statPlayer2: 38.6, description: 'BBI'},
+                {id: 6, statPlayer1: '33/5', statPlayer2: '33/6', description: 'BBI'},
                 {id: 7, statPlayer1: 105, statPlayer2: 95, description: 'Avg'},
                 {id: 8, statPlayer1: 80.0, statPlayer2: 76.3, description: 'Econ'},
                 {id: 9, statPlayer1: 25, statPlayer2: 30, description: 'SR'},
@@ -124,7 +141,7 @@ const ComparePlayerStats = () => {
                 {id: 3, statPlayer1: 30, statPlayer2: 25, description: 'Innings'},
                 {id: 4, statPlayer1: 4, statPlayer2: 10, description: 'Overs'},
                 {id: 5, statPlayer1: 120, statPlayer2: 110, description: 'Runs'},
-                {id: 6, statPlayer1: 35.5, statPlayer2: 32.6, description: 'BBI'},
+                {id: 6, statPlayer1: '4/7', statPlayer2: '10/8', description: 'BBI'},
                 {id: 7, statPlayer1: 110, statPlayer2: 100, description: 'Avg'},
                 {id: 8, statPlayer1: 85.0, statPlayer2: 78.6, description: 'Econ'},
                 {id: 9, statPlayer1: 18, statPlayer2: 22, description: 'SR'},
