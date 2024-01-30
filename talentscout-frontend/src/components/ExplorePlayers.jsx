@@ -15,11 +15,11 @@ function ExplorePlayers() {
                             <div className="w-full md:mb-0 relative">
                                 <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
                                     border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
-                                    <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">T20
+                                    <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Test
                                     </option>
                                     <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">ODI
                                     </option>
-                                    <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Test
+                                    <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">T20
                                     </option>
                                 </select>
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
