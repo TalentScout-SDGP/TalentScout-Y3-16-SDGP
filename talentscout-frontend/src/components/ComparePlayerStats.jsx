@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 const ComparePlayerStats = () => {
     const [mainTab, setMainTab] = useState(1);
@@ -20,14 +20,22 @@ const ComparePlayerStats = () => {
                          className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== statsData.length - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                         <div
                             className={`col-span-4 text-lg text-center ${
-                                stat.statPlayer1 !== '-' ? (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                stat.statPlayer1 !== '-' ? (
+                                    ['Runs', 'Avg', 'Econ', 'SR'].includes(stat.description) ?
+                                        (stat.statPlayer1 < stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red') :
+                                        (stat.statPlayer1 > stat.statPlayer2 ? 'bg-primary-green' : 'bg-primary-red')
+                                ) : 'bg-primary-light_gray'
                             } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                             {stat.statPlayer1}
                         </div>
                         <div className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                         <div
                             className={`col-span-4 text-lg text-center ${
-                                stat.statPlayer2 !== '-' ? (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') : 'bg-primary-light_gray'
+                                stat.statPlayer2 !== '-' ? (
+                                    ['Runs', 'Avg', 'Econ', 'SR'].includes(stat.description) ?
+                                        (stat.statPlayer2 < stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red') :
+                                        (stat.statPlayer2 > stat.statPlayer1 ? 'bg-primary-green' : 'bg-primary-red')
+                                ) : 'bg-primary-light_gray'
                             } text-white w-20 mx-auto font-semibold px-2 py-2 rounded-lg`}>
                             {stat.statPlayer2}
                         </div>
@@ -149,7 +157,7 @@ const ComparePlayerStats = () => {
                         <button
                             key={index}
                             onClick={() => handleMainTabChange(index + 1)}
-                            className={mainTab === index + 1 ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-lg py-1 px-8'}>
+                            className={mainTab === index + 1 ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-md py-1 px-8'}>
                             {tab}
                         </button>
                     ))}
@@ -160,7 +168,7 @@ const ComparePlayerStats = () => {
                         <button
                             key={index}
                             onClick={() => handleNestedTabChange(index + 4)}
-                            className={nestedTab === index + 4 ? 'active text-lg font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-lg py-1 px-8'}>
+                            className={nestedTab === index + 4 ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-md py-1 px-8'}>
                             {tab}
                         </button>
                     ))}
