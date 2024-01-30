@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 
-// Add Tailwind CSS classes
 const rangeInputFieldStyle = 'absolute w-full h-2 top-0 bg-transparent pointer-events-none appearance-none';
 const rangeThumbStyle = 'h-7 w-7 rounded-full bg-teal-500 pointer-events-auto appearance-none shadow-md';
 
-// Define the component
 const RangeSlider = () => {
   useEffect(() => {
     const rangeInputs = document.querySelectorAll('.range-input input');
@@ -47,7 +45,7 @@ const RangeSlider = () => {
         }
       });
     });
-  }, []); // Empty dependency array ensures useEffect runs only once after the initial render
+  }, []);
 
   return (
     <div>
