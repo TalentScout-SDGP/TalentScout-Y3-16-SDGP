@@ -28,9 +28,9 @@ const ComparePlayerStats = () => {
             <div className="stats-list">
                 {statsData.map((stat, index) => (
                     <div key={stat.id}
-                         className={`stats-row grid grid-cols-12 items-center justify-center mx-6 ${index !== statsData.length - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
+                         className={`stats-row  grid grid-cols-12 items-center justify-center mx-6 ${index !== statsData.length - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                         <div
-                            className={`col-span-4 text-lg text-center ${
+                            className={`col-span-4 text-center lg:text-base sm:text-sm text-xs  ${
                                 stat.statPlayer1 !== '-' ? (
                                     ['Runs', 'Avg', 'Econ', 'SR'].includes(stat.description) ?
                                         (stat.description === 'BBI' ?
@@ -44,7 +44,7 @@ const ComparePlayerStats = () => {
                         </div>
                         <div className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                         <div
-                            className={`col-span-4 text-lg text-center ${
+                            className={`col-span-4 text-center lg:text-base sm:text-sm text-xs ${
                                 stat.statPlayer2 !== '-' ? (
                                     ['Runs', 'Avg', 'Econ', 'SR'].includes(stat.description) ?
                                         (stat.description === 'BBI' ?
@@ -115,6 +115,7 @@ const ComparePlayerStats = () => {
                 {id: 3, statPlayer1: 50, statPlayer2: 35, description: 'Innings'},
                 {id: 4, statPlayer1: 2.5, statPlayer2: 7.3, description: 'Overs'},
                 {id: 5, statPlayer1: 130, statPlayer2: 120, description: 'Runs'},
+                //TODO We will have to parse BBI stat as a string and compare the runs and wickets separately
                 {id: 6, statPlayer1: '86/5', statPlayer2: '79/8', description: 'BBI'},
                 {id: 7, statPlayer1: 120, statPlayer2: 110, description: 'Avg'},
                 {id: 8, statPlayer1: 85.0, statPlayer2: 72.6, description: 'Econ'},
@@ -167,30 +168,30 @@ const ComparePlayerStats = () => {
 
     return (
         <div className="font-poppins">
-            <div className="container my-16">
+            <div className="md:container my-16 px-3 sm:px-4 md:px-8 lg:px-0">
                 <div
-                    className="tab-header flex justify-center gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl">
+                    className="tab-header flex justify-center gap-x-2 sm:gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
                     {Object.keys(playerStats).map((tab, index) => (
                         <button
                             key={index}
                             onClick={() => handleMainTabChange(index + 1)}
-                            className={mainTab === index + 1 ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-md py-1 px-8'}>
+                            className={mainTab === index + 1 ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
                             {tab}
                         </button>
                     ))}
                 </div>
                 <div
-                    className="tab-header flex justify-center gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl my-8">
+                    className="tab-header flex justify-center gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl my-8 lg:text-base sm:text-sm text-xs">
                     {Object.keys(playerStats[Object.keys(playerStats)[mainTab - 1]]).map((tab, index) => (
                         <button
                             key={index}
                             onClick={() => handleNestedTabChange(index + 4)}
-                            className={nestedTab === index + 4 ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-8 rounded-2xl' : 'font-semibold text-md py-1 px-8'}>
+                            className={nestedTab === index + 4 ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
                             {tab}
                         </button>
                     ))}
                 </div>
-                <div className="tab-content my-8 bg-primary-ts_purple rounded-lg">
+                <div className="tab-content my-8 bg-primary-ts_purple rounded-lg lg:text-base text-sm ">
                     {mainTab && nestedTab && renderStatsList(playerStats[Object.keys(playerStats)[mainTab - 1]][Object.keys(playerStats[Object.keys(playerStats)[mainTab - 1]])[nestedTab - 4]])}
                 </div>
             </div>
