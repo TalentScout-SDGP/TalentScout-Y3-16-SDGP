@@ -2,7 +2,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import './App.css'
 import Navbar from "./components/shared/Navbar.jsx";
 import Home from "./pages/Home.jsx";
-import ExplorePlayers from "./pages/ExplorePlayers.jsx";
+import ExplorePlayersPage from "./pages/ExplorePlayersPage.jsx";
 import ComparePlayers from "./pages/ComparePlayers.jsx";
 import PlayerProfiles from "./pages/PlayerProfiles.jsx";
 import ManagePlayers from "./pages/ManagePlayers.jsx";
@@ -36,7 +36,7 @@ function App() {
                 <Navbar/>
                 <Routes>
                     <Route exact path='/' element={<Home/>}/>
-                    <Route exact path='/explore_players' element={<ExplorePlayers/>}/>
+                    <Route exact path='/explore_players' element={<ExplorePlayersPage/>}/>
                     <Route exact path='/compare_players' element={<ComparePlayers/>}/>
                     <Route exact path='/player_profiles' element={<PlayerProfiles/>}/>
                     <Route exact path='/manage_players' element={<ManagePlayers/>}/>
