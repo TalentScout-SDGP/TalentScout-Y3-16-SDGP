@@ -1,4 +1,4 @@
-function ManagePlayersLp() {
+function CRUDManagePlayersSearch() {
     return (
         <div className="font-poppins">
             <div className="md:container mt-20 mb-20">
@@ -22,4 +22,4 @@ function ManagePlayersLp() {
     );
 }
 
-export default ManagePlayersLp;
+export default CRUDManagePlayersSearch;
