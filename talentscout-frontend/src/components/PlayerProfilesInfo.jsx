@@ -11,8 +11,7 @@ function PlayerProfilesInfo() {
                     <div className="flex items-center text-center flex-col col-span-4 xl:py-18 md:py-8 sm:py-2">
                         <img src={import.meta.env.BASE_URL + 'Player-dummy-image.png'} alt="search-icon"
                              className="min-[600px]:w-3/5 w-3/5 md:w-4/5 mx-auto 2xl:px-8 xl:px-4 block"></img>
-                        <p className="text-white font-bold text-xs sm:text-sm xl:text-lg md:text-base pt-7 ">Name
-                            : Dhananjaya De Silva</p>
+                        <p className="text-white font-bold text-xs sm:text-sm xl:text-lg md:text-base pt-7 ">Dhananjaya De Silva</p>
                     </div>
                     <div className="mt-0 2xl:py-20 xl:py-20 md:mt-0 md:mx-6 col-span-8 py-12 text-white ps-2 sm:ps-16 md:ps-0">
                         <div className="text-xs sm:text-sm xl:text-lg md:text-base flex flex-col gap-y-4">
