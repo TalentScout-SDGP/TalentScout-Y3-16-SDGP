@@ -18,7 +18,6 @@ function AboutUs() {
                             our commitment is to redefine and elevate the
                             cricket experience for enthusiasts through a professionally curated platform.</p>
                     </div>
-                    TODO: Image should be changed
                     <img className="sm:w-64 md:w-3/6 lg:h-80 md:h-72 sm:h-64 mx-auto 2xl:mx-2 rounded-3xl"
                          src={import.meta.env.BASE_URL + 'about_us.png'} alt=""/>
                 </div>
