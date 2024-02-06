@@ -18,31 +18,31 @@ function CRUDAddNewPlayer() {
                                 <label htmlFor="large-input"
                                        className="block mb-2 text-base font-semibold">Full Name : </label>
                                 <input type="text" id="large-input"
-                                       className="bg-gray-50 border border-black text-black text-base rounded-lg block w-full p-2.5"/>
+                                       className="bg-gray-50 border border-black text-black text-sm rounded-lg block w-full p-1.5"/>
                             </div>
                             <div className="mb-5">
                                 <label htmlFor="large-input"
                                        className="block mb-2 text-base font-semibold">Also Known As : </label>
                                 <input type="text" id="large-input"
-                                       className="bg-gray-50 border border-black text-black text-base rounded-lg block w-full p-2.5"/>
+                                       className="bg-gray-50 border border-black text-black text-sm rounded-lg block w-full p-1.5"/>
                             </div>
-                            <div className="mb-5">
-                                <div>
+                            <div className="flex flex-col-2">
+                                <div className="pt-1.5">
                                     <label htmlFor="large-input"
                                            className="block mb-2 text-base font-semibold">Date of Birth : </label>
                                 </div>
-                                <div>
+                                <div className="ml-4 pb-3">
                                     <input type="date" id="large-input"
-                                           className="bg-gray-50 border border-black text-black text-base rounded-lg block w-full p-2.5"/>
+                                           className="bg-gray-50 border border-black text-black text-sm rounded-lg block w-full p-1.5"/>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-3 gap-6">
+                            <div className="lg:grid lg:grid-cols-3 gap-6">
                                 <div>
                                     <div className="mb-5">
                                         <label htmlFor="large-input"
                                                className="block mb-2 text-base font-semibold">Bowling Style : </label>
                                         <input type="text" id="large-input"
-                                               className="bg-gray-50 border border-black text-black text-base rounded-lg block w-full p-2.5 "/>
+                                               className="bg-gray-50 border border-black text-black text-sm rounded-lg block w-full p-1.5 "/>
                                     </div>
                                 </div>
                                 <div>
@@ -50,7 +50,7 @@ function CRUDAddNewPlayer() {
                                         <label htmlFor="large-input"
                                                className="block mb-2 text-base font-semibold">Batting Style : </label>
                                         <input type="text" id="large-input"
-                                               className="bg-gray-50 border border-black text-black text-base rounded-lg block w-full p-2.5 "/>
+                                               className="bg-gray-50 border border-black text-black text-sm rounded-lg block w-full p-1.5 "/>
                                     </div>
                                 </div>
                                 <div>
@@ -58,7 +58,7 @@ function CRUDAddNewPlayer() {
                                         <label htmlFor="large-input"
                                                className="block mb-2 text-base font-semibold">Playing Role : </label>
                                         <input type="text" id="large-input"
-                                               className="bg-gray-50 border border-black text-black text-base rounded-lg block w-full p-2.5 "/>
+                                               className="bg-gray-50 border border-black text-black text-sm rounded-lg block w-full p-1.5 "/>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@ function CRUDAddNewPlayer() {
                                 to=""
                                 className="text-xs lg:text-sm font-semibold bg-primary-yellow text-black rounded-button px-4 py-1 lg:py-2 shadow-lg
                                     duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
-                                Continue
+                            Continue
                             </Link>
                         </div>
 
