@@ -1,7 +1,7 @@
 function CRUDManagePlayersSearch() {
     return (
         <div className="font-poppins">
-            <div className="md:container mt-20 mb-20 px-4 lg:px-0">
+            <div className="md:container mt-12 mb-12 px-4 lg:px-0">
                 <div className="bg-primary-ts_blue grid grid-cols-1 my-8 shadow-outer rounded-3xl px-10 sm:px-10 py-8">
                     <div className="flex flex-col items-center justify-center">
                         <p className="text-white text-base text-center lg:p-8 lg:text-lg pb-4">
