@@ -55,7 +55,7 @@ const CRUDManagePlayers = () => {
                     <strong>Manage Players</strong>
                     <div className="flex items-center space-x-2">
                         <button
-                            className="bg-primary-red text-white px-3 py-1 font-semibold rounded-xl flex items-center hover:scale-105"
+                            className="bg-primary-red text-white px-3 py-1 font-semibold text-sm rounded-xl flex items-center hover:scale-105"
                             onClick={handleDelete}
                         >
                             <FaMinus className="mr-1" />
