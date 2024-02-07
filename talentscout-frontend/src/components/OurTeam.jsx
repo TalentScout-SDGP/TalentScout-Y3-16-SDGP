@@ -6,10 +6,10 @@ const OurTeam = () => {
       <div className="container mx-auto">
         <div className="lg:h-96 my-16 grid lg:grid-cols-2 rounded-lg bg-primary-ts_purple shadow-xl">
           <div className="flex flex-col justify-center px-6 lg:ps-16">
-            <h1 className="font-bold text-2xl lg:text-3xl text-center lg:text-left mb-4 lg:mb-0">
+            <h1 className="font-bold text-2xl lg:text-3xl text-center lg:text-left mb-4 lg:mb-0 pt-4">
               Meet Our Team
             </h1>
-            <div className="lg:text-justify py-6 text-center">
+            <div className="py-4 lg:text-left sm:text-center text-center">
               Meet the dedicated individuals who make up our dynamic team. From creative minds shaping our
               innovative projects to meticulous professionals ensuring smooth operations, our
               collaborative spirit drives us forward. We believe in the power of teamwork, diversity, and
@@ -19,7 +19,7 @@ const OurTeam = () => {
             </div>
           </div>
           <div className="flex justify-center items-center px-8">
-            <img src={import.meta.env.BASE_URL + 'ourTeamIntro.jpg'} alt="team" className="rounded-lg lg:w-full h-auto" />
+            <img src={import.meta.env.BASE_URL + 'ourTeamIntro.jpg'} alt="team" className="rounded-lg lg:w-full h-auto pb-6" />
           </div>
         </div>
 
