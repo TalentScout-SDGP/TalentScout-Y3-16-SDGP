@@ -49,7 +49,7 @@ const CRUDManagePlayers = () => {
     };
 
     return (
-        <div className="font-poppins py-0">
+        <div className="font-poppins mb-12">
             <div className="md:container mx-auto px-4 lg:px-0">
                 <div className="flex justify-between items-center bg-primary-ts_blue text-white  p-4  rounded-t-3xl ">
                     <strong>Manage Players</strong>
