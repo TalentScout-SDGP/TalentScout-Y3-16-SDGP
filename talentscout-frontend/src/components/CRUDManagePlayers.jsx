@@ -63,7 +63,7 @@ const CRUDManagePlayers = () => {
                         </button>
                         <Link
                             to="/add_players"
-                            className="bg-primary-green text-white px-3 py-1 font-semibold rounded-xl flex items-center hover:scale-105"
+                            className="bg-primary-green text-white px-3 py-1 font-semibold rounded-xl flex items-center hover:scale-105 whitespace-nowrap"
                         >
                             <FaPlus className="mr-1" />
                             Add New Player
