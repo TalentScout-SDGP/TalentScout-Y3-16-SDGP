@@ -7,13 +7,13 @@ function CRUDAddNewPlayer() {
             <div className="md:container mt-16 mb-16">
                 <div className="lg:flex lg:flex-col bg-primary-ts_purple mx-4 rounded-lg">
                     <div
-                        className="flex justify-between bg-primary-ts_blue text-white text-xl lg:p-4 font-semibold rounded-lg p-4">
+                        className="flex justify-between bg-primary-ts_blue text-white lg:text-xl md:text-base sm:text-sm lg:p-4 font-semibold rounded-lg p-4">
                         <p className="p-1.5">Add New Player</p>
                         <img src={import.meta.env.BASE_URL + 'plus.png'} alt="plus"
                              className=""/>
                     </div>
                     <div className="lg:pt-8 lg:px-8 text-xl">
-                        <form className="mx-auto text-left">
+                        <form className="mx-auto text-left p-6">
                             <div className="mb-5">
                                 <label htmlFor="large-input"
                                        className="block mb-2 text-base font-semibold">Full Name : </label>
@@ -64,7 +64,7 @@ function CRUDAddNewPlayer() {
                             </div>
                         </form>
 
-                        <div className="flex justify-left mt-4 pb-8">
+                        <div className="flex justify-left mt-4 pb-8 px-6">
                             <Link
                                 to=""
                                 className="text-xs lg:text-sm font-semibold bg-primary-yellow text-black rounded-button px-4 py-1 lg:py-2 shadow-lg
@@ -77,7 +77,6 @@ function CRUDAddNewPlayer() {
                     </div>
                 </div>
             </div>
-            <h1>Hello</h1>
         </div>
     )
 }

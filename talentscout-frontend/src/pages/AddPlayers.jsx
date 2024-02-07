@@ -1,7 +1,9 @@
+import CRUDAddNewPlayer from "../components/CRUDAddNewPlayer.jsx";
+
 const AddPlayers = () => {
     return (
         <div>
-            <h1>Add Players Page</h1>
+            <CRUDAddNewPlayer/>
         </div>
     )
 }
