@@ -1,7 +1,7 @@
 function ComparePlayerInfo() {
     return (
         <div className="font-poppins">
-            <div className="md:container my-12 px-3 sm:px-4 md:px-8 lg:px-0">
+            <div className="md:container my-8 md:my-12 px-2">
                 <div
                     className="bg-primary-ts_purple flex flex-col gap-y-6 justify-center items-center rounded-lg py-8">
                     <div className="grid grid-cols-2 md:grid-cols-12 justify-center items-center md:gap-x-4">
