@@ -58,7 +58,26 @@ function ExplorePlayerRanking() {
                         </div>
                     </div>
                 </div>
-
+                <div className="tab-content  rounded-b-2xl"
+                     style={{paddingBottom: '100px', justifyContent: 'center', textAlign: 'center'}}>
+                    <div className="flex mb-10 border-b-2 border-gray-500 py-4 ">
+                        <div className="font-bold text-3xl flex-1 mt-8">POS</div>
+                        <div className="font-bold text-3xl flex-1 mt-8">Player</div>
+                        <div className="font-bold text-3xl flex-1 mt-8">Rating</div>
+                    </div>
+                    {playersArray && playersArray.length > 0 ? (
+                        playersArray.map((player) => (
+                            <div key={player.id}
+                                 className="flex font-bold mb-10 border-b-2 border-gray-500 py-2 ">
+                                <div className="flex-1 ">{player.name}</div>
+                                <div className="flex-1">{player.fullName}</div>
+                                <div className="flex-1">{player.playingRole}</div>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No players available.</p>
+                    )}
+                </div>
             </div>
         </div>
     )
