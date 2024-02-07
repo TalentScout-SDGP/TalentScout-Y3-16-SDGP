@@ -32,3 +32,57 @@
 }
 
 
+.multi-range-slider {
+    display: flex;
+    position: relative;
+    border: none !important;
+    border-radius: 10px;
+    padding: 15px 0 0 0 !important;
+    box-shadow: none !important;
+    flex-direction: column;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+/*CORE FEATURE - RANGE SLIDER CSS */
+
+.multi-range-slider .thumb::before {
+    content: '';
+    background-color: #070032 !important;
+    box-shadow: none !important;
+}
+
+.multi-range-slider .ruler,
+.multi-range-slider .label {
+    display: none !important;
+}
+
+.multi-range-slider .bar {
+    height: 5px !important;
+}
+
+.multi-range-slider .bar-left {
+    padding: 0 !important;
+}
+
+.multi-range-slider .thumb .caption {
+    display: flex !important;
+
+}
+
+.multi-range-slider .thumb .caption * {
+    position: absolute;
+    min-width: 30px;
+    height: 30px;
+    font-size: 75%;
+    text-align: center;
+    line-height: 30px;
+    background-color: #070032 !important;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 0 5px black;
+    padding: 0 5px;
+    white-space: nowrap;
+}
