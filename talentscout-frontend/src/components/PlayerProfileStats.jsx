@@ -27,7 +27,7 @@ function SizeChart() {
                     {/* Content for option 1 */}
                     <div className="grid sm:grid-cols-3">
                         <div
-                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                             <h1 className="text-white font-bold text-center">T20 - Batting Statistics</h1>
                             <div className="grid md:grid-cols-2">
                                 <div className="">Matches:</div>
@@ -81,7 +81,7 @@ function SizeChart() {
 
                         {/*Bowling Stats*/}
                         <div
-                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                             <h1 className="text-white font-bold text-center">T20 - Bowling Statistics</h1>
                             <div className="grid md:grid-cols-2">
                                 <div className="">Matches:</div>
@@ -131,7 +131,7 @@ function SizeChart() {
 
                         {/*Wicket Keeping Stats*/}
                         <div
-                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue py-4 px-2 rounded-2xl mx-2 my-2 overflow-hidden ">
                             <h1 className="text-white font-bold text-center">T20 - Wicketkeeping Statistics</h1>
                             <div className="grid md:grid-cols-2">
                                 <div className="">Matches:</div>
@@ -187,9 +187,9 @@ function SizeChart() {
                 <div id="option2" className="size_chart"
                      style={{display: selectedOption === 'option2' ? 'block' : 'none'}}>
                     {/* Content for option 2 */}
-                    <div className="grid lg:grid-cols-3">
+                    <div className="grid sm:grid-cols-3">
                         <div
-                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                             <h1 className="text-white font-bold text-center">ODI - Batting Statistics</h1>
                             <div className="grid md:grid-cols-2">
                                 <div className="">Matches:</div>
@@ -243,7 +243,7 @@ function SizeChart() {
 
                         {/*Bowling Stats*/}
                         <div
-                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                             <h1 className="text-white font-bold text-center">ODI - Bowling Statistics</h1>
                             <div className="grid md:grid-cols-2">
                                 <div className="">Matches:</div>
@@ -293,7 +293,7 @@ function SizeChart() {
 
                         {/*Wicket Keeping Stats*/}
                         <div
-                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                             <h1 className="text-white font-bold text-center">ODI - Wicketkeeping Statistics</h1>
                             <div className="grid md:grid-cols-2">
                                 <div className="">Matches:</div>
@@ -349,9 +349,9 @@ function SizeChart() {
                 <div id="option3" className="size_chart"
                      style={{display: selectedOption === 'option3' ? 'block' : 'none'}}>
                     {/* Content for option 3 */}
-                    <div className="grid lg:grid-cols-3">
+                    <div className="grid sm:grid-cols-3">
                         <div
-                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                             <h1 className="text-white font-bold text-center">Test - Batting Statistics</h1>
                             <div className="grid md:grid-cols-2">
                                 <div className="">Matches:</div>
@@ -405,7 +405,7 @@ function SizeChart() {
 
                         {/*Bowling Stats*/}
                         <div
-                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                             <h1 className="text-white font-bold text-center">Test - Bowling Statistics</h1>
                             <div className="grid md:grid-cols-2">
                                 <div className="">Matches:</div>
@@ -455,7 +455,7 @@ function SizeChart() {
 
                         {/*Wicket Keeping Stats*/}
                         <div
-                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue p-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                            className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                             <h1 className="text-white font-bold text-center">Test - Wicketkeeping Statistics</h1>
                             <div className="grid md:grid-cols-2">
                                 <div className="">Matches:</div>
