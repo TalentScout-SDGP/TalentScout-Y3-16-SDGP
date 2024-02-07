@@ -49,6 +49,13 @@ function ExplorePlayerRanking() {
                                 Name</p>
                             <p className="text-base sm:text-2xl font-bold text-primary-ts_blue ml-8 mb-1 sm:mb-2">Ranking</p>
                         </div>
+                        <div
+                            className="sm:flex items-center ml-auto text-center col-span-4 sm:flex-col sm:items-start sm:mt-4 sm:order-2 mt-4">
+                            <img
+                                src={import.meta.env.BASE_URL + 'Player-dummy-image.png'}
+                                alt="search-icon"
+                                className="w-full max-w-[600px] mx-auto sm:w-4/5"/>
+                        </div>
                     </div>
                 </div>
 
