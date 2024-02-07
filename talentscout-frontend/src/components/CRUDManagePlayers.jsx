@@ -72,7 +72,7 @@ const CRUDManagePlayers = () => {
                 </div>
 
                 <div className="bg-primary-ts_purple mx-auto rounded-b-3xl" style={{ paddingBottom: '150px' }}>
-                    <div className="flex border-b border-gray-400 pt-4 pb-2">
+                    <div className="flex border-b border-gray-400 text-sm pt-4 pb-2">
                         <div className="w-8 ml-4 sm:ml-10 mt-3">
                             <input
                                 type="checkbox"
