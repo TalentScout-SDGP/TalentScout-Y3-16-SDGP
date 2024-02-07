@@ -40,7 +40,15 @@ function ExplorePlayerRanking() {
                 <div
                     className="bg-primary-ts_purple grid grid-cols-1 shadow-outer rounded-tl-none rounded-tr-none rounded-3xl px-4 sm:px-6 lg:px-10 py-6 sm:py-10">
                     <div className="flex flex-col items-center sm:flex-row">
-
+                        <div
+                            className="bg-primary-ts_blue text-white lg:mb-auto lg:ml-10 sm:mb-0 w-16 h-16 sm:w-20 sm:h-20 rounded-md flex items-center justify-center sm:ml-0 ml-4 mt-4">
+                            <span className="text-xl sm:text-3xl">1</span>
+                        </div>
+                        <div className="text-center lg:mr-16 sm:text-left lg:ml-10 lg:mb-auto sm:ml-4 mt-4">
+                            <p className="text-base sm:text-2xl font-bold text-primary-ts_blue ml-8 mb-1 sm:mb-2">Player
+                                Name</p>
+                            <p className="text-base sm:text-2xl font-bold text-primary-ts_blue ml-8 mb-1 sm:mb-2">Ranking</p>
+                        </div>
                     </div>
                 </div>
 
