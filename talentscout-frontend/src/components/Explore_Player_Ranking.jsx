@@ -37,7 +37,12 @@ function ExplorePlayerRanking() {
                         {/* Add any responsive content for the center if needed */}
                     </div>
                 </div>
+                <div
+                    className="bg-primary-ts_purple grid grid-cols-1 shadow-outer rounded-tl-none rounded-tr-none rounded-3xl px-4 sm:px-6 lg:px-10 py-6 sm:py-10">
+                    <div className="flex flex-col items-center sm:flex-row">
 
+                    </div>
+                </div>
 
             </div>
         </div>
