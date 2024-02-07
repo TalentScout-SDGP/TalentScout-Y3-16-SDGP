@@ -1,10 +1,10 @@
 import OurTeam from "../components/OurTeam.jsx";
-import CRUDAddNewPlayer from "../components/CRUDAddNewPlayer.jsx";
+import PlayerProfileStats from "../components/PlayerProfileStats.jsx";
 
 const FrontendDulhan = () => {
     return (
         <div className="">
-            <CRUDAddNewPlayer/>
+            <PlayerProfileStats/>
         </div>
     );
 }
