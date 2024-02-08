@@ -38,14 +38,14 @@ function ExplorePlayerRanking() {
                     </div>
                 </div>
                 <div
-                    className="bg-primary-ts_purple grid grid-cols-1 shadow-outer rounded-tl-none rounded-tr-none rounded-3xl lg:px-8 sm:px-5 py-1 sm:py-1">
+                    className="bg-primary-ts_purple grid grid-cols-1 shadow-outer rounded-tl-none rounded-tr-none rounded-3xl lg:px-8 sm:px-5 py-5 sm:py-1">
                     <div className="flex flex-col items-center sm:flex-row">
                         <div
-                            className="bg-primary-ts_blue  text-white lg:mb-auto lg:ml-20 sm:mb-0  w-16 h-16 sm:w-20 sm:h-20 rounded-md flex items-center justify-center sm:ml-0  lg:mt-10">
+                            className="bg-primary-ts_blue  text-white lg:mb-auto lg:ml-20 sm:mb-5  w-16 h-16 sm:w-20 sm:h-20 rounded-md flex items-center justify-center sm:ml-0  lg:mt-10">
                             <span className="text-xl sm:text-3xl">1</span>
                         </div>
                         <div
-                            className="text-center lg:mr-16 sm:text-left lg:ml-10 lg:mb-auto sm:ml-4  sm:mt-5 lg:mt-10">
+                            className="text-center lg:mr-16 sm:text-left lg:ml-10 lg:mb-auto sm:ml-4  sm:mt-10 lg:mt-10">
                             <p className="text-base sm:text-2xl font-bold text-primary-ts_blue mb-1 sm:mb-2">Player
                                 Name</p>
                             <p className="text-base sm:text-2xl font-bold text-primary-ts_blue  mb-1 sm:mb-2">Ranking</p>
