@@ -185,18 +185,21 @@ function SignUp() {
                          }}>
                         <div className="flex flex-col justify-center items-center pt-36">
                             <div className="text-white font-semibold text-3xl">Welcome to TalentScout</div>
-                            <div className="text-white text-lg font-semibold">Lorem ipsum dolor sit amet</div>
+                            <div className="text-white text-lg font-semibold mt-4">Discover Sri Lankan Cricket Stars!
+                            </div>
                         </div>
                         <div className="px-16 mt-60">
                             <Swiper pagination={true} autoplay={true} modules={[Pagination, Autoplay]}
                                     className="mySwiper">
-                                <SwiperSlide className="text-white">Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                                    sit amet. Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet.</SwiperSlide>
-                                <SwiperSlide className="text-white">Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                                    sit amet,ipsum dolor sit
-                                    amet. Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet.</SwiperSlide>
-                                <SwiperSlide className="text-white">Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                                    sit amet, Lorem ipsum dolor sit amet.</SwiperSlide>
+                                <SwiperSlide className="text-white">Unearth Hidden Gems: Dive into the world of Sri
+                                    Lankan domestic cricket talent. From rising stars to seasoned players, explore their
+                                    journey to greatness.</SwiperSlide>
+                                <SwiperSlide className="text-white">Compare Players: Evaluate players side-by-side with
+                                    our intuitive comparison tool. Analyze their stats, strengths, and weaknesses to
+                                    make informed decisions.</SwiperSlide>
+                                <SwiperSlide className="text-white">Comprehensive Player Profiles: Gain insights into
+                                    player profiles with in-depth analysis. From batting averages to bowling figures,
+                                    unlock a treasure trove of data.</SwiperSlide>
                             </Swiper>
                         </div>
                     </div>
@@ -209,13 +212,12 @@ function SignUp() {
                 <div className="px-12">
                     <Swiper pagination={true} autoplay={true} modules={[Pagination, Autoplay]}
                             className="mySwiper">
-                        <SwiperSlide className="text-white text-sm">Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                            sit amet. Lorem ipsum dolor sit amet.</SwiperSlide>
-                        <SwiperSlide className="text-white text-sm">Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                            sit amet,ipsum dolor sit
-                            amet.</SwiperSlide>
-                        <SwiperSlide className="text-white text-sm">Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                            sit amet</SwiperSlide>
+                        <SwiperSlide className="text-white text-sm">Unearth Hidden Gems: Dive into the world of Sri
+                            Lankan domestic cricket talent.</SwiperSlide>
+                        <SwiperSlide className="text-white text-sm">Compare Players: Evaluate players side-by-side with
+                            our intuitive comparison tool.</SwiperSlide>
+                        <SwiperSlide className="text-white text-sm">Comprehensive Player Profiles: Gain insights into
+                            player profiles with in-depth analysis.</SwiperSlide>
                     </Swiper>
                 </div>
             </div>

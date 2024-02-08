@@ -1,9 +1,9 @@
-import ManagePlayers_LP from "../components/ManagePlayers_LP.jsx";
+import CRUDManagePlayersSearch from "../components/CRUDManagePlayersSearch.jsx";
 
 const FrontendLinuka = () => {
     return (
         <div className="">
-            <ManagePlayers_LP/>
+            <CRUDManagePlayersSearch/>
         </div>
     );
 }
