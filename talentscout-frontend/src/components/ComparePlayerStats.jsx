@@ -168,7 +168,7 @@ const ComparePlayerStats = () => {
 
     return (
         <div className="font-poppins">
-            <div className="md:container my-16 px-3 sm:px-4 md:px-8 lg:px-0">
+            <div className="md:container my-4 md:my-16 px-2">
                 <div
                     className="tab-header flex justify-center gap-x-2 sm:gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
                     {Object.keys(playerStats).map((tab, index) => (
