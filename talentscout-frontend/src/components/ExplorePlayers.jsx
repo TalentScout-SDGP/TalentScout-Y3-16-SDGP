@@ -4,7 +4,7 @@ function ExplorePlayers() {
     return (
         <div className="font-poppins">
             <div className="md:container mt-16 mb-16">
-                <div className="lg:flex lg:flex-col bg-primary-ts_purple mx-4 rounded-lg">
+                <div className="lg:flex lg:flex-col bg-primary-ts_purple mx-2 rounded-lg">
                     <div
                         className="bg-primary-ts_blue text-center text-white text-base lg:p-4 font-semibold rounded-lg p-4">Explore
                         Players

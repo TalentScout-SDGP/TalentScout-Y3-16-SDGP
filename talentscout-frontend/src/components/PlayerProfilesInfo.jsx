@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 function PlayerProfilesInfo() {
 
     return (
-        <div className="md:container px-8 my-2">
+        <div className="md:container px-2 my-2">
             <div
                 className="bg-primary-ts_purple mlg:grid-cols-1 my-10 shadow-outer rounded-lg px-2 py-2">
                 <div
