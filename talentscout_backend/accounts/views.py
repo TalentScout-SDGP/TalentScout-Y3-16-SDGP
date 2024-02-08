@@ -1,5 +1,5 @@
 from rest_framework.generics import GenericAPIView
-from .serializers import UserRegisterSerializer, LoginSerializer
+from .serializers import UserRegisterSerializer, LoginSerializer, PasswordResetRequestSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from .utils import sendOtp
@@ -66,3 +66,12 @@ class TestAuthenticationView(GenericAPIView):
             'msg': 'It works'
         }
         return Response(data, status=status.HTTP_200_OK)
+
+
+class PasswordResetRequestView(GenericAPIView):
+    serializer_class = PasswordResetRequestSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data, context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        return Response({'message': 'Password reset link has been sent to your email'}, status=status.HTTP_200_OK)
