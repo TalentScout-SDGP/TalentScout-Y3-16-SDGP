@@ -41,20 +41,21 @@ function ExplorePlayerRanking() {
                     className="bg-primary-ts_purple grid grid-cols-1 shadow-outer rounded-tl-none rounded-tr-none rounded-3xl lg:px-8 sm:px-5 py-1 sm:py-1">
                     <div className="flex flex-col items-center sm:flex-row">
                         <div
-                            className="bg-primary-ts_blue text-white lg:mb-auto lg:ml-20 sm:mb-0  w-16 h-16 sm:w-20 sm:h-20 rounded-md flex items-center justify-center sm:ml-0 mt-4">
+                            className="bg-primary-ts_blue  text-white lg:mb-auto lg:ml-20 sm:mb-0  w-16 h-16 sm:w-20 sm:h-20 rounded-md flex items-center justify-center sm:ml-0  lg:mt-10">
                             <span className="text-xl sm:text-3xl">1</span>
                         </div>
-                        <div className="text-center lg:mr-16 sm:text-left lg:ml-10 lg:mb-auto sm:ml-4 mt-4">
+                        <div
+                            className="text-center lg:mr-16 sm:text-left lg:ml-10 lg:mb-auto sm:ml-4  sm:mt-5 lg:mt-10">
                             <p className="text-base sm:text-2xl font-bold text-primary-ts_blue mb-1 sm:mb-2">Player
                                 Name</p>
                             <p className="text-base sm:text-2xl font-bold text-primary-ts_blue  mb-1 sm:mb-2">Ranking</p>
                         </div>
                         <div
-                            className="sm:flex items-center lg:ml-auto m-5 sm:ml-20  text-center sm:flex-col lg:mb-3 sm:items-start  sm:order-2 ">
+                            className="sm:flex items-center lg:ml-auto m-10 sm:ml-20  text-center sm:flex-col lg:mb-3 sm:items-start  sm:order-2 ">
                             <img
                                 src={import.meta.env.BASE_URL + 'Player-dummy-image.png'}
                                 alt="search-icon"
-                                className="lg:pr-20 lg:max-w-[350px] ms:pr-20  ms:max-w-[200px] sm:max-w-[200px] sm:mx-auto sm:w-4/5"/>
+                                className="lg:pr-20 lg:max-w-[350px] ms:pr-20  ms:max-w-[200px] sm:max-w-[200px]  sm:w-4/5"/>
                         </div>
                     </div>
                 </div>
