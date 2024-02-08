@@ -1,14 +1,47 @@
 import {useState} from 'react';
+import {Link, useNavigate} from "react-router-dom";
+import axios from 'axios'
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Link} from "react-router-dom";
 
 function Login() {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [loginData, setLoginData] = useState({email: '', password: ''});
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
+
+    const {email, password} = loginData;
 
     function togglePasswordVisibility(e) {
         e.preventDefault();
         setIsPasswordVisible((prevState) => !prevState);
+    }
+
+    const handleChange = (e) => {
+        setLoginData({...loginData, [e.target.name]: e.target.value});
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!email || !password) {
+            setError('All fields are required!');
+        } else {
+            setIsLoading(true);
+            const res = await axios.post("http://localhost:8000/api/auth/login/", loginData)
+            const response = res.data;
+            setIsLoading(false)
+            const user = {"email": response.email, "names": response.names}
+            if (res.status === 200) {
+                localStorage.setItem('user', JSON.stringify(user))
+                localStorage.setItem('access', JSON.stringify(response.access_token))
+                localStorage.setItem('refresh', JSON.stringify(response.refresh_token))
+                navigate('/')
+                toast.success("Login Successful!")
+            }
+        }
     }
 
     return (
@@ -33,11 +66,12 @@ function Login() {
                             Create an account
                         </Link>
                     </div>
-                    <form className="w-full py-4 lg:py-8">
+                    <form onSubmit={handleSubmit} className="w-full py-4 lg:py-8">
                         <div className="w-full flex flex-wrap my-2">
                             <div className="w-full md:mb-0 relative">
                                 <label
-                                    className="text-primary-ts_blue text-sm lg:text-lg font-semibold">Username</label>
+                                    className="text-primary-ts_blue text-sm lg:text-lg font-semibold">Email
+                                    Address</label>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="0 0 17 20"
                                      fill="none" className="absolute left-6 top-11">
                                     <path
@@ -46,7 +80,8 @@ function Login() {
                                 </svg>
                                 <input
                                     className="appearance-none block w-full bg-white text-black placeholder:text-sm placeholder:lg:text-md placeholder-primary-light_gray border border-black rounded-lg py-3 ps-12 pe-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none"
-                                    id="sign-up-username" type="text" placeholder="Your username"/>
+                                    id="login-email" type="email" name='email' value={email} onChange={handleChange}
+                                    placeholder="Your Email"/>
                             </div>
                             <div className="w-full md:mb-0 relative mt-3">
                                 <label
@@ -67,17 +102,19 @@ function Login() {
                                 </svg>
                                 <input
                                     className="appearance-none block w-full bg-white text-black placeholder:text-sm placeholder:lg:text-md placeholder-primary-light_gray border border-black rounded-lg py-3 ps-12 pe-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none"
-                                    id="sign-up-password" type={isPasswordVisible ? "text" : "password"}
+                                    id="login-password" type={isPasswordVisible ? "text" : "password"}
+                                    name='password' value={password} onChange={handleChange}
                                     placeholder="Password"/>
                                 <button className="absolute right-6 top-10 lg:top-11"
                                         onClick={(e) => togglePasswordVisibility(e)}>
                                     <FontAwesomeIcon icon={isPasswordVisible ? faEyeSlash : faEye}/>
                                 </button>
                             </div>
+                            <p className='font-semibold text-red-500 mt-4'>{error ? error : ''} </p>
                             <div className="grid grid-cols 1 sm:grid-cols-2 gap-y-4 sm:gap-y-0 gap-x-2 w-full mt-6">
                                 {/*Login BUTTON*/}
                                 <button
-                                    className="bg-primary-ts_blue text-white text-sm lg:text-base py-3 font-semibold rounded-lg">LOGIN
+                                    className="bg-primary-ts_blue text-white text-sm lg:text-base py-3 font-semibold rounded-lg">Login
                                 </button>
                                 <button
                                     className="bg-primary-white text-primary-ts_blue text-sm lg:text-base py-3 font-semibold rounded-lg border border-solid border-primary-ts_blue">Forgot

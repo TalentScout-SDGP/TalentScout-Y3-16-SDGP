@@ -60,7 +60,8 @@ function SignUp() {
                     <form className="w-full py-4 lg:py-8" onSubmit={handleSubmit}>
                         <div className="flex flex-wrap -mx-3 my-2">
                             <div className="w-full px-3 md:mb-0 relative">
-                                <label className="text-primary-ts_blue text-sm lg:text-lg font-semibold">Email</label>
+                                <label className="text-primary-ts_blue text-sm lg:text-lg font-semibold">Email
+                                    Address</label>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                      fill="none" className="absolute left-6 top-11">
                                     <path fillRule="evenodd" clipRule="evenodd"
