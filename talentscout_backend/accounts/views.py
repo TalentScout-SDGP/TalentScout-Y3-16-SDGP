@@ -5,6 +5,9 @@ from rest_framework import status
 from .utils import sendOtp
 from .models import User, OneTimePassword
 from rest_framework.permissions import IsAuthenticated
+from django.utils.http import urlsafe_base64_decode
+from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 
 class RegisterUserView(GenericAPIView):
@@ -75,3 +78,16 @@ class PasswordResetRequestView(GenericAPIView):
         serializer = self.serializer_class(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
         return Response({'message': 'Password reset link has been sent to your email'}, status=status.HTTP_200_OK)
+
+
+class PasswordResetConfirmView(GenericAPIView):
+    def get(self, request, uidb64, token):
+        try:
+            user_id = smart_str(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(id=user_id)
+            if not PasswordResetTokenGenerator().check_token(user, token):
+                return Response({'message': 'token is invalid or has expired'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({'success': 'true', 'message': 'Credentials valid', 'uidb64': uidb64, 'token': token},
+                            status=status.HTTP_200_OK)
+        except DjangoUnicodeDecodeError:
+            return Response({'message': 'token is invalid or has expired'}, status=status.HTTP_401_UNAUTHORIZED)
