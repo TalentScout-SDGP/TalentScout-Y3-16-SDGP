@@ -9,9 +9,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# TODO encrypt these data
 SECRET_KEY = 'django-insecure-7az+h-g&j%*bdl-20f4d@ptxc)cljqcom4v7rva5+-ubt5kso+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# TODO encrypt these data
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -141,13 +143,16 @@ CSRF_TRUSTED_ORIGINS = [
     "https://development-talentscout-sdgp.vercel.app",
 ]
 
+# TODO encrypt these data
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
 EMAIL_HOST_USER = '09e53970250446'
 EMAIL_HOST_PASSWORD = 'b3a2e418a343ac'
+# TODO replace with talentscout email
 DEFAULT_FROM_EMAIL = 'dinukahamarasinghe@gmail.com'
 EMAIL_PORT = '2525'
 EMAIL_USE_TLS = True
 
+# TODO encrypt these data
 GOOGLE_CLIENT_ID = "266127850805-ae29j50o0l2f6ubf8s9k162g63l9ltgm.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET = "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"
 SOCIAL_AUTH_PASSWORD = "sdsdasdca1ds5dsdas"
