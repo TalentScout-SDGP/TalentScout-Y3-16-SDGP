@@ -9,6 +9,8 @@ from rest_framework.permissions import IsAuthenticated
 from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.contrib.auth.views import LogoutView
+from django.urls import reverse_lazy
 
 
 class RegisterUserView(GenericAPIView):
