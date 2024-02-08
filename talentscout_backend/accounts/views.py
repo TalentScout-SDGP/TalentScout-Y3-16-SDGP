@@ -1,5 +1,6 @@
 from rest_framework.generics import GenericAPIView
-from .serializers import UserRegisterSerializer, LoginSerializer, PasswordResetRequestSerializer
+from .serializers import UserRegisterSerializer, LoginSerializer, PasswordResetRequestSerializer, \
+    SetNewPasswordSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from .utils import sendOtp
@@ -91,3 +92,12 @@ class PasswordResetConfirmView(GenericAPIView):
                             status=status.HTTP_200_OK)
         except DjangoUnicodeDecodeError:
             return Response({'message': 'token is invalid or has expired'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class SetNewPassword(GenericAPIView):
+    serializer_class = SetNewPasswordSerializer
+
+    def patch(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response({'message': 'Password reset successfully'}, status=status.HTTP_200_OK)
