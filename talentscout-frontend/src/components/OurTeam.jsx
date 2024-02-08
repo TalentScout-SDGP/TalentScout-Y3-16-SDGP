@@ -13,7 +13,7 @@ const OurTeam = () => {
               Meet the dedicated individuals who make up our dynamic team. From creative minds shaping our
               innovative projects to meticulous professionals ensuring smooth operations, our
               collaborative spirit drives us forward. We believe in the power of teamwork, diversity, and
-              a shared commitment to excellence. Together, we are more than a team; we are a family
+              a shared commitment to excellence. Together, we are more than a team; We are a family
               working towards a common goal. Get to know the faces behind our success and discover the
               talents that propel us to new heights.
             </div>
