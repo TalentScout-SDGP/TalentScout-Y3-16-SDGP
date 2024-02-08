@@ -11,7 +11,7 @@ function MultiRange() {
 
     return (
         <div>
-            <div className="range py-8 lg:py-0">
+            <div className="range pt-8 lg:py-0">
                 <MultiRangeSlider
                     min={12}
                     max={100}
