@@ -27,6 +27,8 @@ function SignUp() {
         e.preventDefault();
         if (!email || !first_name || !last_name || !password || !password2) {
             setError('All fields are required!');
+        } else if (password !== password2) {
+            setError('Passwords do not match!');
         } else {
             const res = await axios.post("http://localhost:8000/api/auth/register/", formData)
             const response = res.data
@@ -198,8 +200,7 @@ function SignUp() {
                         {/*    </svg>*/}
                         {/*</div>*/}
                         <div className="flex flex-wrap mt-8 mb-6">
-                            <p style={{color: 'red', padding: '1px'}}>{error ? error : ''} </p>
-                            {/*SUBMIT BUTTON*/}
+                            <p className='font-semibold text-red-500 my-4'>{error ? error : ''} </p>
                             <button
                                 className="w-full bg-primary-ts_blue text-white text-sm lg:text-base py-3 px-6 font-semibold rounded-lg">
                                 Create account

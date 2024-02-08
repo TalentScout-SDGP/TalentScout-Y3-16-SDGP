@@ -20,7 +20,8 @@ import {fas} from '@fortawesome/free-solid-svg-icons';
 import {far} from '@fortawesome/free-regular-svg-icons';
 // Add the icons to the library
 library.add(fab, fas, far);
-
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 //TODO End:Delete Following Imports
 import FrontendAgrani from "./pages/FrontendAgrani.jsx";
 import FrontendChamath from "./pages/FrontendChamath.jsx";
@@ -35,6 +36,7 @@ function App() {
         <div className='bg-white'>
             <Router>
                 <Navbar/>
+                <ToastContainer autoClose={20000}/>
                 <Routes>
                     <Route exact path='/' element={<Home/>}/>
                     <Route exact path='/explore_players' element={<ExplorePlayersPage/>}/>
