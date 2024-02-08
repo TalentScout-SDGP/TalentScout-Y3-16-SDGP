@@ -3,14 +3,12 @@ from .serializers import UserRegisterSerializer, LoginSerializer, PasswordResetR
     SetNewPasswordSerializer, LogoutUserSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from .utils import sendOtp
 from .models import User, OneTimePassword
-from rest_framework.permissions import IsAuthenticated
 from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from django.contrib.auth.views import LogoutView
-from django.urls import reverse_lazy
 
 
 class RegisterUserView(GenericAPIView):
@@ -27,9 +25,9 @@ class RegisterUserView(GenericAPIView):
             print(user)
             return Response({
                 'data': user,
-                'message': f'Hi'
-                           f'thanks for signing up! Passcode has been sent to your email. Please '
-                           f'verify your email to complete the registration.'
+                'message': f'Thank you for signing up!\n'
+                           f'Your passcode has been successfully sent to your email.\n'
+                           f'Please check your inbox to verify and complete the registration process.'
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -44,7 +42,7 @@ class VerifyUserEmail(GenericAPIView):
                 user.is_verified = True
                 user.save()
                 return Response({
-                    'message': 'Email verified successfully'
+                    'message': 'Account successfully verified!'
                 }, status=status.HTTP_200_OK)
             return Response({
                 'message': 'Email already verified'
