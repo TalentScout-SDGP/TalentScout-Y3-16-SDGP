@@ -5,7 +5,6 @@ const FrontendChamath = () => {
     return (
         <div className="">
             <AddNewPlayersStats/>
-
         </div>
     );
 }
