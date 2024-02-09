@@ -17,7 +17,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'first_name', 'last_name', 'password', 'password2']
+        fields = ['email', 'first_name', 'last_name', 'password', 'password2', 'is_superuser']
 
     def validate(self, attrs):
         password = attrs.get('password', '')
@@ -27,11 +27,15 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
+        if validated_data['is_superuser']:
+            is_staff = validated_data['is_superuser']
         user = User.objects.create_user(
             email=validated_data['email'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
             password=validated_data['password'],
+            is_superuser=validated_data['is_superuser'],
+            is_staff=is_staff
         )
         return user
 

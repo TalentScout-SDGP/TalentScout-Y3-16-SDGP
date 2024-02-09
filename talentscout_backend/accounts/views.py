@@ -21,8 +21,6 @@ class RegisterUserView(GenericAPIView):
             serializer.save()
             user = serializer.data
             sendOtp(user['email'])
-            # send email function user['email']
-            print(user)
             return Response({
                 'data': user,
                 'message': f'Thank you for signing up!\n'
