@@ -39,11 +39,12 @@ const HomeExplorePlayers = () => {
         <div className="font-poppins mb-12">
             <div className="md:container px-8">
                 <div
-                    className="bg-primary-ts_purple flex flex-col gap-y-8 justify-center items-center rounded-3xl p-8 lg:p-12 shadow-outer mt-12"
+                    className="bg-primary-ts_purple flex flex-col gap-y-8 justify-center items-center rounded-lg md:rounded-3xl p-8 lg:p-12 shadow-outer mt-12"
                 >
-                    <p className="text-black text-base lg:text-3xl font-bold text-center">
+                    <p className="text-black text-base lg:text-3xl font-bold text-center select-none">
                         Unleash the power of TalentScout!<br/>
-                        <span className="text-base lg:text-lg font-normal">
+                        <span
+                            className="text-xs sm:text-sm md:text-base lg:text-lg mt-4 md:mt-2 inline-block font-normal select-none">
               Revolutionizing cricket insights far beyond conventional boundaries.
             </span>
                     </p>
@@ -51,16 +52,16 @@ const HomeExplorePlayers = () => {
                         {boxes.map((box, index) => (
                             <div
                                 key={index}
-                                className="bg-white shadow-outer rounded-lg p-4 flex items-start transition duration-300 ease-in-out transform hover:scale-105"
+                                className="bg-white shadow-xl rounded-lg p-4 flex items-start transition duration-300 ease-in-out transform hover:scale-105"
                             >
-                                ><img
-                                src={box.icon}
-                                alt={`Icon ${index + 1}`}
-                                className="h-8 w-8 mb-2 mr-2"
-                            />
+                                <img
+                                    src={box.icon}
+                                    alt={`Icon ${index + 1}`}
+                                    className="h-8 w-8 mb-2 mr-2"
+                                />
                                 <div className="flex flex-col">
-                                    <p className="text-black font-bold text-left mb-1">{box.title}</p>
-                                    <p className="text-black text-left mb-2">{box.description}</p>
+                                    <p className="text-black font-bold text-sm md:text-md lg:text-base text-left mb-2 md:mb-1 select-none">{box.title}</p>
+                                    <p className="text-black text-left text-xs md:text-sm lg:text-md mb-2 select-none">{box.description}</p>
                                 </div>
 
                             </div>
