@@ -49,13 +49,13 @@ const CRUDManagePlayers = () => {
     };
 
     return (
-        <div className="font-poppins py-12">
+        <div className="font-poppins mb-12">
             <div className="md:container mx-auto px-4 lg:px-0">
-                <div className="flex justify-between items-center bg-primary-ts_blue text-white text-sm p-4 rounded-t-3xl">
+                <div className="flex justify-between items-center bg-primary-ts_blue text-white  p-4  rounded-t-3xl ">
                     <strong>Manage Players</strong>
                     <div className="flex items-center space-x-2">
                         <button
-                            className="bg-primary-red text-white px-3 py-1 font-semibold rounded-xl flex items-center hover:scale-105"
+                            className="bg-primary-red text-white px-3 py-1 font-semibold text-sm rounded-xl flex items-center hover:scale-105"
                             onClick={handleDelete}
                         >
                             <FaMinus className="mr-1" />
@@ -63,7 +63,7 @@ const CRUDManagePlayers = () => {
                         </button>
                         <Link
                             to="/add_players"
-                            className="bg-primary-green text-white px-3 py-1 font-semibold rounded-xl flex items-center hover:scale-105 whitespace-nowrap"
+                            className="bg-primary-green text-white px-3 py-1 font-semibold rounded-xl flex items-center text-sm hover:scale-105 whitespace-nowrap"
                         >
                             <FaPlus className="mr-1" />
                             Add New Player
@@ -71,8 +71,8 @@ const CRUDManagePlayers = () => {
                     </div>
                 </div>
 
-                <div className="bg-primary-ts_purple mx-auto rounded-b-3xl text-xs" style={{ paddingBottom: '150px' }}>
-                    <div className="flex border-b border-gray-400 pt-4 pb-2">
+                <div className="bg-primary-ts_purple mx-auto rounded-b-3xl" style={{ paddingBottom: '75px' }}>
+                    <div className="flex border-b border-gray-400 text-sm pt-4 pb-2">
                         <div className="w-8 ml-4 sm:ml-10 mt-3">
                             <input
                                 type="checkbox"
@@ -87,7 +87,7 @@ const CRUDManagePlayers = () => {
                     </div>
                     {playersArray && playersArray.length > 0 ? (
                         playersArray.map((player) => (
-                            <div key={player.id} className="flex py-2 border-b border-gray-300">
+                            <div key={player.id} className="flex py-2 border-b text-xs border-gray-300">
                                 <div className="w-8 ml-4 sm:ml-10 mt-1">
                                     <input
                                         type="checkbox"
