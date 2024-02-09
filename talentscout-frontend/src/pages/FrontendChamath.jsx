@@ -1,9 +1,10 @@
-import ExplorePlayerRanking from "../components/Explore_Player_Ranking.jsx";
+import React from 'react';
+import AddNewPlayersStats from "../components/AddNewPlayersStats.jsx";
 
 const FrontendChamath = () => {
     return (
         <div className="">
-
+            <AddNewPlayersStats/>
         </div>
     );
 }

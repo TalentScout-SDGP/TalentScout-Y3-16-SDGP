@@ -35,6 +35,8 @@ module.exports = {
                     footer_gray: '#FFFFFF33',
                     //Footer button color
                     footer_button: '#D9D9D9',
+                    //Option tab
+                    Tab_color: '#CCCCFE',
                 },
                 black: '#000000',
                 white: '#ffffff',
