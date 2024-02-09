@@ -3,16 +3,16 @@ import RangeSlider from "./RangeSlider.jsx";
 function ExplorePlayers() {
     return (
         <div className="font-poppins">
-            <div className="md:container mt-16 mb-16">
-                <div className="lg:flex lg:flex-col bg-primary-ts_purple mx-4 rounded-lg">
+            <div className="md:container my-8">
+                <div className="lg:flex lg:flex-col bg-primary-ts_purple mx-4 md:mx-0 rounded-xl">
                     <div
-                        className="bg-primary-ts_blue text-center text-white text-base lg:p-4 font-semibold rounded-lg p-4">Explore
+                        className="bg-primary-ts_blue text-center text-white text-base lg:p-4 font-semibold rounded-xl p-4">Explore
                         Players
                     </div>
                     <form className="w-full py-4 lg:py-8">
                         <div className="lg:grid lg:grid-cols-2 lg:pt-8 lg:px-8">
                             {/*Format*/}
-                            <div className="lg:grid lg:grid-cols-2 py-4 px-8 font-semibold">
+                            <div className="lg:grid lg:grid-cols-2 py-4 px-6 font-semibold">
                                 <div className="py-2 text-base">
                                     Format :
                                 </div>
@@ -44,7 +44,7 @@ function ExplorePlayers() {
                             </div>
 
                             {/*Age*/}
-                            <div className="lg:grid lg:grid-cols-2 py-4 px-8 text-xs font-semibold">
+                            <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
                                 <div className="py-2 text-base">
                                     Age :
                                 </div>
@@ -54,7 +54,7 @@ function ExplorePlayers() {
                             </div>
 
                             {/*Playing Role*/}
-                            <div className="lg:grid lg:grid-cols-2 py-4 px-8 text-xs font-semibold">
+                            <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
                                 <div className="py-2 text-base">
                                     Playing Role :
                                 </div>
@@ -89,9 +89,9 @@ function ExplorePlayers() {
                             </div>
                         </div>
 
-                        {/*Batting Style*/}
                         <div className="lg:grid lg:grid-cols-2 lg:pb-8 lg:px-8 text-xs">
-                            <div className="lg:grid lg:grid-cols-2 py-4 px-8 text-xs font-semibold">
+                            {/*Batting Style*/}
+                            <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
                                 <div className="py-2 text-base">
                                     Batting Style :
                                 </div>
@@ -121,7 +121,7 @@ function ExplorePlayers() {
                             </div>
 
                             {/*Bowling Style*/}
-                            <div className="lg:grid lg:grid-cols-2 py-4 px-8 text-xs font-semibold">
+                            <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
                                 <div className="py-2 text-base">
                                     Bowling Style :
                                 </div>
@@ -155,7 +155,7 @@ function ExplorePlayers() {
                             </div>
 
                             {/*Fast Bowling Type*/}
-                            <div className="lg:grid lg:grid-cols-2 py-4 px-8 text-xs font-semibold">
+                            <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
                                 <div className="py-2 text-base">
                                     Fast Bowling Type :
                                 </div>
@@ -187,7 +187,7 @@ function ExplorePlayers() {
                             </div>
 
                             {/*Spin Bowling Type*/}
-                            <div className="lg:grid lg:grid-cols-2 py-4 px-8 text-xs font-semibold">
+                            <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
                                 <div className="py-2 text-base">
                                     Spin Bowling Type :
                                 </div>
