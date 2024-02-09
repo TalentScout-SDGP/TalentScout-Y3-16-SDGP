@@ -49,7 +49,8 @@ function Login() {
             <div className="container pt-16 grid grid-cols-1 lg:grid-cols-2">
                 <div className="hidden lg:block pb-16 lg:pe-16">
                     <div className="">
-                        <img className="w-fit" src={import.meta.env.BASE_URL + 'Login.png'} alt="Login"></img>
+                        <img className="w-fit select-none" src={import.meta.env.BASE_URL + 'Login.png'}
+                             alt="Login"></img>
                     </div>
                 </div>
                 <div className="relative">
