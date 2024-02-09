@@ -1,7 +1,10 @@
+import React from 'react';
+import AddNewPlayersStats from "../components/AddNewPlayersStats.jsx";
+
 const FrontendChamath = () => {
     return (
         <div className="">
-            <h1>Chamath</h1>
+            <AddNewPlayersStats/>
         </div>
     );
 }

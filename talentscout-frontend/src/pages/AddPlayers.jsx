@@ -1,7 +1,12 @@
+import CRUDAddNewPlayer from "../components/CRUDAddNewPlayer.jsx";
+import AddNewPlayersStats from "../components/AddNewPlayersStats.jsx";
+import React from "react";
+
 const AddPlayers = () => {
     return (
         <div>
-            <h1>Add Players Page</h1>
+            <CRUDAddNewPlayer/>
+            <AddNewPlayersStats/>
         </div>
     )
 }

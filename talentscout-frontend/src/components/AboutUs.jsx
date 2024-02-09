@@ -1,18 +1,18 @@
 function AboutUs() {
     return (
         <div className="font-poppins">
-            <div className="md:container grid sm:grid-cols-1 px-8">
-                <div className="lg:flex sm:grid sm:grid-cols-1 md:items-center md:justify-center mx-auto mt-16 px-12 py-10 bg-primary-ts_purple rounded-2xl shadow-xl">
+            <div className="md:container grid sm:grid-cols-1 px-8 my-2">
+                <div className="lg:flex sm:grid sm:grid-cols-1 md:items-center md:justify-center mx-auto my-8 px-12 py-10 bg-primary-ts_purple rounded-2xl shadow-xl">
                     <div className="lg:flex lg:flex-col md:grid md:grid-cols-1 text-center md:text-center lg:text-left">
                         <div className="text-3xl font-bold pt-8">ABOUT US</div>
-                        <p className="hidden lg:block lg:mr-40 sm:text-xs md:text-base lg:text-left pt-12 pb-10">Welcome to
+                        <p className="hidden lg:block lg:mr-40 sm:text-xs md:text-base lg:text-left py-4">Welcome to
                             TalentScout, an advanced platform tailored exclusively
                             for cricket enthusiasts seeking a comprehensive and refined experience. At TalentScout,
                             our commitment is to redefine and elevate the
                             cricket experience for enthusiasts through a professionally curated platform. Join us on
                             this remarkable journey where the sophistication
                             of the game meets intuitive tools for a refined cricket experience.</p>
-                        <p className="lg:hidden sm:text-xs md:text-base lg:text-left pt-12 pb-10">Welcome to
+                        <p className="lg:hidden sm:text-xs md:text-base lg:text-left py-4">Welcome to
                             TalentScout, an advanced platform tailored exclusively
                             for cricket enthusiasts seeking a comprehensive and refined experience. At TalentScout,
                             our commitment is to redefine and elevate the
