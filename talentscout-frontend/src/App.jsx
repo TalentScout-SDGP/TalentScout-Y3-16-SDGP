@@ -2,13 +2,12 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import './App.css'
 import Navbar from "./components/shared/Navbar.jsx";
 import Home from "./pages/Home.jsx";
-import ExplorePlayers from "./pages/ExplorePlayers.jsx";
+import ExplorePlayersPage from "./pages/ExplorePlayersPage.jsx";
 import ComparePlayers from "./pages/ComparePlayers.jsx";
 import PlayerProfiles from "./pages/PlayerProfiles.jsx";
 import ManagePlayers from "./pages/ManagePlayers.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
-// eslint-disable-next-line no-unused-vars
 import AddPlayers from "./pages/AddPlayers.jsx";
 import Footer from "./components/shared/Footer.jsx";
 import AboutUsPage from "./pages/AboutUsPage.jsx";
@@ -37,12 +36,11 @@ function App() {
                 <Navbar/>
                 <Routes>
                     <Route exact path='/' element={<Home/>}/>
-                    <Route exact path='/explore_players' element={<ExplorePlayers/>}/>
+                    <Route exact path='/explore_players' element={<ExplorePlayersPage/>}/>
                     <Route exact path='/compare_players' element={<ComparePlayers/>}/>
                     <Route exact path='/player_profiles' element={<PlayerProfiles/>}/>
                     <Route exact path='/manage_players' element={<ManagePlayers/>}/>
-                    {/*TODO Have to check if we need a separate page for add players (with a route)*/}
-                    {/*<Route exact path='/add_players' element={<AddPlayers/>}/>*/}
+                    <Route exact path='/add_players' element={<AddPlayers/>}/>
                     <Route exact path='/login' element={<LoginPage/>}/>
                     <Route exact path='/sign_up' element={<SignUpPage/>}/>
                     <Route exact path='/about_us' element={<AboutUsPage/>}/>

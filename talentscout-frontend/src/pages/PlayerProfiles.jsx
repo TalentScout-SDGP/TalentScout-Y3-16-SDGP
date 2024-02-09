@@ -1,5 +1,6 @@
 import PlayerProfilesSearch from "../components/PlayerProfilesSearch.jsx";
 import PlayerProfilesInfo from "../components/PlayerProfilesInfo.jsx";
+import PlayerProfileStats from "../components/PlayerProfileStats.jsx";
 
 const PlayerProfiles = () => {
     return (
@@ -7,6 +8,7 @@ const PlayerProfiles = () => {
             <div>
                 <PlayerProfilesSearch/>
                 <PlayerProfilesInfo/>
+                <PlayerProfileStats/>
             </div>
         </div>
     )
