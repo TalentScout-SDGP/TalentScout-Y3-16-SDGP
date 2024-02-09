@@ -6,18 +6,32 @@ import 'react-toastify/dist/ReactToastify.css'
 
 function VerifyOtp() {
     const [otp, setOtp] = useState('')
+    const [error, setError] = useState('');
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (otp) {
-            const response = await axios.post('http://localhost:8000/api/auth/verify-email/', {'otp': otp})
-            if (response.status === 200) {
-                navigate('/login')
-                toast.success(response.data.message)
+        if (!otp.trim()) {
+            setError('OTP is required.')
+        } else {
+            try {
+                const response = await axios.post('http://localhost:8000/api/auth/verify-email/', {'otp': otp})
+                if (response.status === 200) {
+                    navigate('/login')
+                    toast.success(response.data.message)
+                }
+            } catch (error) {
+                if (error.response.status === 404) {
+                    setError('Invalid OTP, Please try again.')
+                } else if (error.response.status === 204) {
+                    setError('Email already verified. Please login to continue.')
+                } else {
+                    setError('Something went wrong. Please try again later.')
+                }
             }
         }
     }
+
 
     return (
         <div className='font-poppins'>
@@ -31,6 +45,7 @@ function VerifyOtp() {
                             id="verify_otp" type="text" name='otp' value={otp} onChange={(e) => setOtp(e.target.value)}
                             placeholder="Enter OTP"
                         />
+                        <p className='font-semibold text-red-500 my-4'>{error ? error : ''} </p>
                         <button type='submit' value='send'
                                 className='w-full mt-4 bg-primary-ts_blue text-lg py-2 text-white bold rounded-lg p-12 shadow-lg'>Submit
                         </button>

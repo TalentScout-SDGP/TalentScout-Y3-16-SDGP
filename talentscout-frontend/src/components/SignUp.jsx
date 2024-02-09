@@ -29,6 +29,8 @@ function SignUp() {
             setError('All fields are required!');
         } else if (password !== password2) {
             setError('Passwords do not match!');
+        } else if (password.length < 8 || password2.length < 8) {
+            setError('Password should be minimum 8 characters!');
         } else {
             const res = await axios.post("http://localhost:8000/api/auth/register/", formData)
             const response = res.data
