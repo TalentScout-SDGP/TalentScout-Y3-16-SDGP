@@ -8,7 +8,7 @@ function HomeComparePlayers() {
                     className="bg-primary-ts_purple flex flex-col gap-y-6 justify-center items-center py-8 px-4 lg:px-8 lg:pt-8 lg:pb-12 shadow-outer rounded-lg md:rounded-3xl">
                     <div className="flex flex-col justify-center gap-y-4">
                         <p className="text-black text-base lg:text-2xl font-bold text-center leading-relaxed">
-                            Discover Cricket Excellence
+                            Discover Cricket Excellence!
                         </p>
                         <p className="hidden lg:block text-black text-sm lg:text-lg text-center lg:w-4/5 mx-auto">
                             Elevate your cricket experience! Our platform empowers
