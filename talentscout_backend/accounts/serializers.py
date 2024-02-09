@@ -27,6 +27,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
+        is_staff = False
         if validated_data['is_superuser']:
             is_staff = validated_data['is_superuser']
         user = User.objects.create_user(
