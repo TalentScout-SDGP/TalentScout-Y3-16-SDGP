@@ -29,17 +29,23 @@ function Login() {
         if (!email || !password) {
             setError('All fields are required!');
         } else {
-            setIsLoading(true);
-            const res = await axios.post("http://localhost:8000/api/auth/login/", loginData)
-            const response = res.data;
-            setIsLoading(false)
-            const user = {"email": response.email, "names": response.names}
-            if (res.status === 200) {
-                localStorage.setItem('user', JSON.stringify(user))
-                localStorage.setItem('access', JSON.stringify(response.access_token))
-                localStorage.setItem('refresh', JSON.stringify(response.refresh_token))
-                navigate('/')
-                toast.success("Login Successful!")
+            try {
+                setIsLoading(true);
+                const res = await axios.post("http://localhost:8000/api/auth/login/", loginData)
+                const response = res.data;
+                setIsLoading(false)
+                const user = {"email": response.email, "names": response.names}
+                if (res.status === 200) {
+                    localStorage.setItem('user', JSON.stringify(user))
+                    localStorage.setItem('access', JSON.stringify(response.access_token))
+                    localStorage.setItem('refresh', JSON.stringify(response.refresh_token))
+                    navigate('/')
+                    toast.success("Login Successful!")
+                }
+            } catch (error) {
+                if (error.response.status === 401) {
+                    setError('Invalid credentials, Please try again.')
+                }
             }
         }
     }
@@ -61,7 +67,7 @@ function Login() {
                         account
                     </div>
                     <div className="text-sm lg:text-md mt-4">
-                        Don't have and account?&nbsp;
+                        Don't have an account?&nbsp;
                         <Link to="/sign_up"
                               className="underline cursor-pointer text-sm lg:text-md font-semibold text-primary-ts_blue">
                             Create an account
