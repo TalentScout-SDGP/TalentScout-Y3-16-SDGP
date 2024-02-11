@@ -496,10 +496,12 @@ function AddNewPlayersStats() {
                                             </div>
                                         </div>
 
-                                        <button type="submit"
-                                                className="bg-primary-yellow lg:w-44 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md mx-auto sm:mx-0 sm:justify-center">
-                                            Submit
-                                        </button>
+                                        <div className="flex justify-center sm:md:justify-start  ">
+                                            <button type="submit"
+                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                Submit
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             }
@@ -732,10 +734,12 @@ function AddNewPlayersStats() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit"
-                                                className="bg-primary-yellow lg:w-44 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md mx-auto sm:mx-0 sm:justify-center">
-                                            Submit
-                                        </button>
+                                        <div className="flex justify-center sm:md:justify-start  ">
+                                            <button type="submit"
+                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                Submit
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             }
@@ -933,10 +937,12 @@ function AddNewPlayersStats() {
                                                     /></div>
                                             </div>
                                         </div>
-                                        <button type="submit"
-                                                className="bg-primary-yellow lg:w-44 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md mx-auto sm:mx-0 sm:justify-center">
-                                            Submit
-                                        </button>
+                                        <div className="flex justify-center sm:md:justify-start  ">
+                                            <button type="submit"
+                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                Submit
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>}
                             {activeSubTab === 'Bowler' &&
@@ -1117,10 +1123,12 @@ function AddNewPlayersStats() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit"
-                                                className="bg-primary-yellow lg:w-44 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md mx-auto sm:mx-0 sm:justify-center">
-                                            Submit
-                                        </button>
+                                        <div className="flex justify-center sm:md:justify-start  ">
+                                            <button type="submit"
+                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                Submit
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>}
                             {activeSubTab === 'WicketKeeper' &&
@@ -1345,10 +1353,12 @@ function AddNewPlayersStats() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit"
-                                                className="bg-primary-yellow lg:w-44 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md mx-auto sm:mx-0 sm:justify-center">
-                                            Submit
-                                        </button>
+                                        <div className="flex justify-center sm:md:justify-start  ">
+                                            <button type="submit"
+                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                Submit
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>}
                         </div>
@@ -1546,10 +1556,12 @@ function AddNewPlayersStats() {
                                                     /></div>
                                             </div>
                                         </div>
-                                        <button type="submit"
-                                                className="bg-primary-yellow lg:w-44 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md mx-auto sm:mx-0 sm:justify-center">
-                                            Submit
-                                        </button>
+                                        <div className="flex justify-center sm:md:justify-start  ">
+                                            <button type="submit"
+                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                Submit
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>}
                             {activeSubTab === 'Bowler' &&
@@ -1730,10 +1742,12 @@ function AddNewPlayersStats() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit"
-                                                className="bg-primary-yellow lg:w-44 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md mx-auto sm:mx-0 sm:justify-center">
-                                            Submit
-                                        </button>
+                                        <div className="flex justify-center sm:md:justify-start  ">
+                                            <button type="submit"
+                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                Submit
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>}
                             {activeSubTab === 'WicketKeeper' &&
