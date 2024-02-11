@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import './App.css'
 import Navbar from "./components/shared/Navbar.jsx";
 import Home from "./pages/Home.jsx";
@@ -32,6 +32,8 @@ import FrontendLinuka from "./pages/FrontendLinuka.jsx";
 
 
 function App() {
+    const user = JSON.parse(localStorage.getItem('user'));
+
     return (
         <div className='bg-white'>
             <Router>
@@ -44,8 +46,8 @@ function App() {
                     <Route exact path='/player_profiles' element={<PlayerProfiles/>}/>
                     <Route exact path='/manage_players' element={<ManagePlayers/>}/>
                     <Route exact path='/add_players' element={<AddPlayers/>}/>
-                    <Route exact path='/login' element={<LoginPage/>}/>
-                    <Route exact path='/sign_up' element={<SignUpPage/>}/>
+                    <Route exact path='/login' element={user ? <Navigate to="/"/> : <LoginPage/>}/>
+                    <Route exact path='/sign_up' element={user ? <Navigate to="/"/> : <SignUpPage/>}/>
                     <Route exact path='/about_us' element={<AboutUsPage/>}/>
                     <Route exact path='/our_team' element={<OurTeamPage/>}/>
                     <Route exact path='/verify_otp' element={<VerifyOTP/>}/>
