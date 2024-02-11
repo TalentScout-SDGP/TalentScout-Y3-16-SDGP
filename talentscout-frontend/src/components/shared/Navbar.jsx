@@ -1,9 +1,44 @@
-import {useState} from 'react';
-import {NavLink, Link} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {NavLink, Link, useNavigate} from 'react-router-dom';
 import {faBars, faX} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import axiosInstance from "../../utils/axiosInstance.js";
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Navbar = () => {
+    const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem('user'));
+    const jwt_access = localStorage.getItem('access')
+
+    useEffect(() => {
+        if (jwt_access === null && !user) {
+            navigate('/login')
+        } else {
+            getSomeData()
+        }
+    }, [jwt_access, user])
+
+    const refresh = JSON.parse(localStorage.getItem('refresh'))
+
+    const getSomeData = async () => {
+        const res = await axiosInstance.get('/auth/profile/')
+        if (res.status === 200) {
+            console.log(res.data)
+        }
+    }
+
+    const handleLogout = async () => {
+        const res = await axiosInstance.post('/auth/logout/', {'refresh_token': refresh})
+        if (res.status === 204) {
+            localStorage.removeItem('access')
+            localStorage.removeItem('refresh')
+            localStorage.removeItem('user')
+            navigate('/login')
+            toast.success('Successfully Logged Out')
+        }
+    }
+
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleNavbar = () => {
@@ -53,13 +88,21 @@ const Navbar = () => {
                 </div>
                 <div
                     className={`${isOpen ? 'flex' : 'hidden'} user-buttons lg:flex flex-col lg:flex-row font-bold mt-3 justify-between lg:items-center ms-2 lg:ms-0 gap-y-2 lg:gap-y-0 lg:gap-x-4 lg:mt-0`}>
-                    <Link to="/login" className="text-sm ms-2 lg:ms-0">
-                        Login
-                    </Link>
-                    <Link to="/sign_up" className="text-sm bg-primary-ts_blue text-white rounded-button px-4 py-1 lg:py-3 shadow-lg border-primary-ts_blue border-2
-             hover:bg-white hover:text-primary-ts_blue hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform md:hover:scale-105">
-                        Sign Up
-                    </Link>
+                    {user ? (
+                        <button onClick={handleLogout} className="text-sm bg-primary-ts_blue text-white rounded-button px-4 py-1 lg:py-3 shadow-lg border-primary-ts_blue border-2
+                            hover:bg-white hover:text-primary-ts_blue hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform md:hover:scale-105">Logout
+                        </button>
+                    ) : (
+                        <>
+                            <Link to="/login" className="text-sm ms-2 lg:ms-0">
+                                Login
+                            </Link>
+                            <Link to="/sign_up" className="text-sm bg-primary-ts_blue text-white rounded-button px-4 py-1 lg:py-3 shadow-lg border-primary-ts_blue border-2
+                                hover:bg-white hover:text-primary-ts_blue hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform md:hover:scale-105">
+                                Sign Up
+                            </Link>
+                        </>
+                    )}
                 </div>
                 <div className="lg:hidden absolute top-4 right-5 md:right-10">
                     <button onClick={toggleNavbar}>

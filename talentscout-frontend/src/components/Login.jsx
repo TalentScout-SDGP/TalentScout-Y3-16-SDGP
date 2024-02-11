@@ -39,7 +39,7 @@ function Login() {
                     localStorage.setItem('user', JSON.stringify(user))
                     localStorage.setItem('access', JSON.stringify(response.access_token))
                     localStorage.setItem('refresh', JSON.stringify(response.refresh_token))
-                    navigate('/')
+                    window.location.href = '/';
                     toast.success("Login Successful!")
                 }
             } catch (error) {
