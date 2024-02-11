@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import axios from 'axios'
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -11,7 +11,6 @@ function Login() {
     const [loginData, setLoginData] = useState({email: '', password: ''});
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
 
     const {email, password} = loginData;
 
@@ -112,21 +111,21 @@ function Login() {
                                     id="login-password" type={isPasswordVisible ? "text" : "password"}
                                     name='password' value={password} onChange={handleChange}
                                     placeholder="Password"/>
-                                <button className="absolute right-6 top-10 lg:top-11"
-                                        onClick={(e) => togglePasswordVisibility(e)}>
+                                <div className="cursor-pointer absolute right-6 top-10 lg:top-11"
+                                     onClick={(e) => togglePasswordVisibility(e)}>
                                     <FontAwesomeIcon icon={isPasswordVisible ? faEyeSlash : faEye}/>
-                                </button>
+                                </div>
                             </div>
                             <p className='font-semibold text-red-500 mt-4'>{error ? error : ''} </p>
                             <div className="grid grid-cols 1 sm:grid-cols-2 gap-y-4 sm:gap-y-0 gap-x-2 w-full mt-6">
-                                {/*Login BUTTON*/}
-                                <button
-                                    className="bg-primary-ts_blue text-white text-sm lg:text-base py-3 font-semibold rounded-lg">Login
+                                <button type='submit'
+                                        className="bg-primary-ts_blue text-white text-sm lg:text-base py-3 font-semibold rounded-lg">Login
                                 </button>
-                                <button
-                                    className="bg-primary-white text-primary-ts_blue text-sm lg:text-base py-3 font-semibold rounded-lg border border-solid border-primary-ts_blue">Forgot
+                                {/*Add Functionality*/}
+                                <div
+                                    className="cursor-pointer text-center bg-primary-white text-primary-ts_blue text-sm lg:text-base py-3 font-semibold rounded-lg border border-solid border-primary-ts_blue">Forgot
                                     Password
-                                </button>
+                                </div>
                             </div>
                         </div>
                     </form>

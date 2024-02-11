@@ -149,10 +149,10 @@ function SignUp() {
                                     value={password}
                                     onChange={handleChange}
                                 />
-                                <button className="absolute right-6 top-11"
-                                        onClick={(e) => togglePasswordVisibility(e, "password")}>
+                                <div className="cursor-pointer absolute right-6 top-11"
+                                     onClick={(e) => togglePasswordVisibility(e, "password")}>
                                     <FontAwesomeIcon icon={isPasswordVisible ? faEyeSlash : faEye}/>
-                                </button>
+                                </div>
                             </div>
                         </div>
                         <div className="flex flex-wrap -mx-3 my-2">
@@ -182,10 +182,10 @@ function SignUp() {
                                     value={password2}
                                     onChange={handleChange}
                                 />
-                                <button className="absolute right-6 top-11"
-                                        onClick={(e) => togglePasswordVisibility(e, "password2")}>
+                                <div className="cursor-pointer absolute right-6 top-11"
+                                     onClick={(e) => togglePasswordVisibility(e, "password2")}>
                                     <FontAwesomeIcon icon={isConfirmPasswordVisible ? faEyeSlash : faEye}/>
-                                </button>
+                                </div>
                             </div>
                         </div>
                         <div className="w-full md:mb-0 relative">
