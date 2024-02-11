@@ -3,8 +3,6 @@ import {NavLink, Link} from 'react-router-dom';
 import {faBars, faX} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axiosInstance from "../../utils/axiosInstance.js";
-import {toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 const Navbar = () => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -36,8 +34,7 @@ const Navbar = () => {
             localStorage.removeItem('access')
             localStorage.removeItem('refresh')
             localStorage.removeItem('user')
-            window.location.href = '/';
-            toast.success('Successfully Logged Out!')
+            window.location.reload();
         }
     }
 
