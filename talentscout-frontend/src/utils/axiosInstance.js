@@ -40,6 +40,4 @@ axiosInstance.interceptors.request.use(async req => {
     }
 })
 
-console.log('axiosInstance: ')
-
 export default axiosInstance

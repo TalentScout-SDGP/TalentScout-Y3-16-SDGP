@@ -9,24 +9,27 @@ import 'react-toastify/dist/ReactToastify.css'
 const Navbar = () => {
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem('user'));
-    const jwt_access = localStorage.getItem('access')
-
-    useEffect(() => {
-        if (jwt_access === null && !user) {
-            navigate('/login')
-        } else {
-            getSomeData()
-        }
-    }, [jwt_access, user])
-
     const refresh = JSON.parse(localStorage.getItem('refresh'))
 
-    const getSomeData = async () => {
-        const res = await axiosInstance.get('/auth/profile/')
-        if (res.status === 200) {
-            console.log(res.data)
-        }
-    }
+    //TODO Remove commented code
+
+    // const jwt_access = localStorage.getItem('access')
+
+    // useEffect(() => {
+    //     if (jwt_access === null && !user) {
+    //         navigate('/login')
+    //     } else {
+    //         getSomeData()
+    //     }
+    // }, [jwt_access, user])
+
+
+    // const getSomeData = async () => {
+    //     const res = await axiosInstance.get('/auth/profile/')
+    //     if (res.status === 200) {
+    //         console.log(res.data)
+    //     }
+    // }
 
     const handleLogout = async () => {
         const res = await axiosInstance.post('/auth/logout/', {'refresh_token': refresh})
