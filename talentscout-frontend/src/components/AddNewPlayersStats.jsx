@@ -63,10 +63,10 @@ function AddNewPlayersStats() {
         <div className="font-poppins">
             <div className="md:container px-8 ">
 
-                <div className="bg-primary-ts_purple my-12 lg:w-full rounded-lg px-16 py-24">
+                <div className="bg-primary-ts_purple my-12 lg:w-full rounded-lg px-7 lg:px-16 py-24">
                     {/* Main Tabs */}
                     <div
-                        className="section-header flex justify-center gap-x-2 sm:gap-x-4 bg-primary-Tab_color w-fit mx-auto mb-5 py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
+                        className="section-header flex justify-center gap-x-2 sm:gap-x-0 bg-primary-Tab_color w-fit mx-auto mb-5 py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
                         <button onClick={() => handleMainTabChange('ODI')}
                                 className={activeMainTab === 'ODI' ? 'active text-sm sm:text-lg font-semibold bg-primary-ts_blue text-white py-1 px-4 sm:px-8 rounded-2xl' : 'font-semibold text-sm sm:text-lg py-1 px-4 sm:px-8'}>
                             ODI
@@ -83,7 +83,7 @@ function AddNewPlayersStats() {
 
                     {/* Sub Tabs */}
                     <div
-                        className="tab-header flex justify-center gap-x-2 sm:gap-x-4 bg-primary-Tab_color w-fit mx-auto py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
+                        className="tab-header flex justify-center gap-x-2 sm:gap-x- bg-primary-Tab_color w-fit mx-auto py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
                         <button onClick={() => handleSubTabChange('Batsmen')}
                                 className={activeSubTab === 'Batsmen' ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
                             Batsmen
