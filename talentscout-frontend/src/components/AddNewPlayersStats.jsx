@@ -745,8 +745,202 @@ function AddNewPlayersStats() {
                     )}
                     {activeMainTab === 'Test' && (
                         <div>
-                            {activeSubTab === 'Batsmen' && <p>Test Bowler Content</p>
-                            }
+                            {activeSubTab === 'Batsmen' &&
+                                <div className="tab-content my-8 bg-primary-ts_purple rounded-lg lg:text-base text-sm">
+                                    <form onSubmit={handleSubmit} className="w-full py-4 lg:py-8">
+                                        <div className="lg:grid lg:grid-cols-2 lg:pt-8 lg:py-4 font-semibold lg:px-8">
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="matches"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Matches:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="matches"
+                                                        value={matches}
+                                                        onChange={(e) => setMatches(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="innings"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Innings:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="innings"
+                                                        value={innings}
+                                                        onChange={(e) => setInnings(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="highestScore"
+                                                           className="block text-md font-bold text-ts_blue mb-5 mt-4">
+                                                        Highest Score:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="highestScore"
+                                                        value={highestScore}
+                                                        onChange={(e) => setHighestScore(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full  p-1 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="ballsFaced"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Balls Faced:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="ballsFaced"
+                                                        value={ballsFaced}
+                                                        onChange={(e) => setBallsFaced(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="hundreds"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        100s:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="hundreds"
+                                                        value={hundreds}
+                                                        onChange={(e) => setHundreds(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="sixes"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        6s:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="sixes"
+                                                        value={sixes}
+                                                        onChange={(e) => setSixes(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            {/* Right Column */}
+
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="runs"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Runs:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="runs"
+                                                        value={runs}
+                                                        onChange={(e) => setRuns(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="notOuts"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Not Outs:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="notOuts"
+                                                        value={notOuts}
+                                                        onChange={(e) => setNotOuts(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="average"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Average:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="average"
+                                                        value={average}
+                                                        onChange={(e) => setAverage(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="strikeRate"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        StrikeRate:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="strikeRate"
+                                                        value={strikeRate}
+                                                        onChange={(e) => setStrikeRate(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="fifties"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        50s:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="fifties"
+                                                        value={fifties}
+                                                        onChange={(e) => setFifties(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="fours"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        4s:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="fours"
+                                                        value={fours}
+                                                        onChange={(e) => setFours(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                        </div>
+                                        <button type="submit"
+                                                className="bg-primary-yellow lg:w-44 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md mx-auto sm:mx-0 sm:justify-center">
+                                            Submit
+                                        </button>
+                                    </form>
+                                </div>}
                             {activeSubTab === 'Bowler' && <p>Test Bowler Content</p>}
                             {activeSubTab === 'WicketKeeper' && <p>Test Wicket Keeper Content</p>}
                         </div>
@@ -1134,7 +1328,235 @@ function AddNewPlayersStats() {
                                         </button>
                                     </form>
                                 </div>}
-                            {activeSubTab === 'WicketKeeper' && <p>T20 Wicket Keeper Content</p>}
+                            {activeSubTab === 'WicketKeeper' &&
+                                <div className="tab-content my-8 bg-primary-ts_purple rounded-lg lg:text-base text-sm">
+                                    <form onSubmit={handleSubmit} className="w-full py-4 lg:py-8">
+                                        <div className="lg:grid lg:grid-cols-2 lg:pt-8 lg:py-4 font-semibold lg:px-8">
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="matches"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Matches:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="matches"
+                                                        value={matches}
+                                                        onChange={(e) => setMatches(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="innings"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Innings:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="innings"
+                                                        value={innings}
+                                                        onChange={(e) => setInnings(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="highestScore"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Highest Score:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="highestScore"
+                                                        value={highestScore}
+                                                        onChange={(e) => setHighestScore(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="ballsFaced"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Balls Faced:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="ballsFaced"
+                                                        value={ballsFaced}
+                                                        onChange={(e) => setBallsFaced(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="hundreds"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        100s:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="hundreds"
+                                                        value={hundreds}
+                                                        onChange={(e) => setHundreds(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="sixes"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        6s:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="sixes"
+                                                        value={sixes}
+                                                        onChange={(e) => setSixes(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="Catches"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Catches :
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="Catches"
+                                                        value={Catches}
+                                                        onChange={(e) => setCatches(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            {/* Right Column */}
+
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="runs"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Runs:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="runs"
+                                                        value={runs}
+                                                        onChange={(e) => setRuns(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="notOuts"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Not Outs:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="notOuts"
+                                                        value={notOuts}
+                                                        onChange={(e) => setNotOuts(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="average"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Average:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="average"
+                                                        value={average}
+                                                        onChange={(e) => setAverage(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="strikeRate"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        StrikeRate:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="strikeRate"
+                                                        value={strikeRate}
+                                                        onChange={(e) => setStrikeRate(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="fifties"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        50s:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="fifties"
+                                                        value={fifties}
+                                                        onChange={(e) => setFifties(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    /></div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="fours"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        4s:
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="fours"
+                                                        value={fours}
+                                                        onChange={(e) => setFours(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="mb-4 lg:pr-5 lg:mr-4">
+                                                <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
+                                                    <label htmlFor="Stumps"
+                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                        Stumps :
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="Stumps"
+                                                        value={Stumps}
+                                                        onChange={(e) => setStumps(e.target.value)}
+                                                        required
+                                                        className="w-full lg:w-3/5 sm:w-full md:w-full p-1 text-2 border-2 border-primary-ts_blue rounded-3xl mb-5 shadow-md"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit"
+                                                className="bg-primary-yellow lg:w-44 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md mx-auto sm:mx-0 sm:justify-center">
+                                            Submit
+                                        </button>
+                                    </form>
+                                </div>
+                            }
                         </div>
                     )}
                 </div>
