@@ -16,6 +16,10 @@ function SignUp() {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [isValidPassword, setIsValidPassword] = useState(false);
+    const [isValidPassword2, setIsValidPassword2] = useState(false);
+    const [errorPassword, setErrorPassword] = useState(false);
+    const [errorPassword2, setErrorPassword2] = useState(false);
     const [error, setError] = useState('');
     const [formData, setFormData] = useState({
         email: '',
@@ -30,6 +34,24 @@ function SignUp() {
     const {email, first_name, last_name, password, password2, is_superuser} = formData;
 
     const handleChange = (e) => {
+        if (e.target.name === 'password' || e.target.name === 'password2') {
+            if (e.target.name === 'password') {
+                const newPassword = e.target.value;
+                const isValidPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(newPassword);
+                setErrorPassword(!isValidPassword);
+                setIsValidPassword(isValidPassword)
+            } else if (e.target.name === 'password2') {
+                const newPassword = e.target.value;
+                const isValidPassword2 = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(newPassword);
+                setErrorPassword2(!isValidPassword2);
+                setIsValidPassword2(isValidPassword2)
+            }
+            if (!isValidPassword || !isValidPassword2) {
+                setError('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.');
+            } else {
+                setError('');
+            }
+        }
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
@@ -154,10 +176,12 @@ function SignUp() {
                                         </defs>
                                     </svg>
                                     <input
-                                        className="appearance-none block w-full bg-white text-black placeholder:text-sm placeholder:lg:text-md placeholder-primary-light_gray border border-black rounded-lg py-3 ps-10 pe-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none"
-                                        id="sign-up-password" type={isPasswordVisible ? "text" : "password"}
+                                        className={`appearance-none block w-full bg-white text-black placeholder:text-sm placeholder:lg:text-md placeholder-primary-light_gray border rounded-lg py-3 ps-10 pe-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none 
+                                        ${isValidPassword ? 'border-green-500' : errorPassword && !isValidPassword ? 'border-red-500' : 'border-black'}`}
+                                        id="sign-up-password"
+                                        type={isPasswordVisible ? 'text' : 'password'}
                                         placeholder="must be 8 characters"
-                                        name='password'
+                                        name="password"
                                         value={password}
                                         onChange={handleChange}
                                     />
@@ -186,7 +210,8 @@ function SignUp() {
                                         </defs>
                                     </svg>
                                     <input
-                                        className="appearance-none block w-full bg-white text-black placeholder:text-sm placeholder:lg:text-md placeholder-primary-light_gray border border-black rounded-lg py-3 ps-10 pe-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none"
+                                        className={`appearance-none block w-full bg-white text-black placeholder:text-sm placeholder:lg:text-md placeholder-primary-light_gray border border-black rounded-lg py-3 ps-10 pe-4 mt-1 mb-3 shadow-signup leading-tight focus:outline-none 
+                                        ${isValidPassword2 ? 'border-green-500' : errorPassword2 && !isValidPassword2 ? 'border-red-500' : 'border-black'}`}
                                         id="sign-up-password-repeat"
                                         type={isConfirmPasswordVisible ? "text" : "password"}
                                         placeholder="repeat password"
