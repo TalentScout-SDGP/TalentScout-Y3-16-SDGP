@@ -19,7 +19,7 @@ const OurTeam = () => {
             </div>
           </div>
           <div className="flex justify-center items-center px-8">
-            <img src={import.meta.env.BASE_URL + 'OurTeam(Up).png'} alt="team" className="rounded-lg lg:w-full pb-6 object-contain h-96 w-96"/>
+            <img src={import.meta.env.BASE_URL + 'All.png'} alt="team" className="rounded-lg lg:w-full pb-6 object-contain h-80 w-96"/>
           </div>
         </div>
 
@@ -27,42 +27,42 @@ const OurTeam = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 lg:gap-x-9 gap-y-6 lg:gap-y-11 pb-11 place-items-center">
           {/* Member 1 */}
           <div className="transition duration-300 ease-in-out hover:scale-105">
-            <img src={import.meta.env.BASE_URL + 'Dulhan.jpg'} alt="teamleader" className="rounded-lg" />
+            <img src={import.meta.env.BASE_URL + 'Dulhan.png'} alt="teamleader" className="rounded-lg object-contain h-96 w-96" />
             <div className="pt-2 font-bold text-center">Dulhan Perera</div>
             <div className="text-center">Team Leader</div>
           </div>
 
           {/* Member 2 */}
           <div className="transition duration-300 ease-in-out hover:scale-105">
-            <img src={import.meta.env.BASE_URL + 'Dinuka.jpg'} alt="Dinuka" className="rounded-lg" />
+            <img src={import.meta.env.BASE_URL + 'Dinuka.png'} alt="Dinuka" className="rounded-lg object-contain h-96 w-96" />
             <div className="pt-2 font-bold text-center">Dinuka Amarasinghe</div>
             <div className="text-center">Team Member</div>
           </div>
 
           {/* Member 3 */}
           <div className="transition duration-300 ease-in-out hover:scale-105">
-            <img src={import.meta.env.BASE_URL + 'Sulan.jpg'} alt="team" className="rounded-lg" />
+            <img src={import.meta.env.BASE_URL + 'Sulan.png'} alt="team" className="rounded-lg object-contain h-96 w-96" />
             <div className="pt-2 font-bold text-center">Sulan Kumarapperuma</div>
             <div className="text-center">Team Member</div>
           </div>
 
           {/* Member 4 */}
           <div className="transition duration-300 ease-in-out hover:scale-105">
-            <img src={import.meta.env.BASE_URL + 'Linuka.jpg'} alt="team" className="rounded-lg" />
+            <img src={import.meta.env.BASE_URL + 'Linuka.png'} alt="team" className="rounded-lg object-contain h-96 w-96" />
             <div className="pt-2 font-bold text-center">Linuka Rivi Rihan</div>
             <div className="text-center">Team Member</div>
           </div>
 
           {/* Member 5 */}
           <div className="transition duration-300 ease-in-out hover:scale-105">
-            <img src={import.meta.env.BASE_URL + 'Chamath.jpg'} alt="team" className="rounded-lg" />
+            <img src={import.meta.env.BASE_URL + 'Chamath.png'} alt="team" className="rounded-lg object-contain h-96 w-96" />
             <div className="pt-2 font-bold text-center">Chamath Mahapatuna</div>
             <div className="text-center">Team Member</div>
           </div>
 
           {/* Member 6 */}
           <div className=" transition duration-300 ease-in-out hover:scale-105">
-            <img src={import.meta.env.BASE_URL + 'Agrani.jpg'} alt="team" className="rounded-lg" />
+            <img src={import.meta.env.BASE_URL + 'Agrani.png'} alt="team" className="rounded-lg object-contain h-96 w-96" />
             <div className="pt-2 font-bold text-center">Agrani Ranathunga</div>
             <div className="text-center">Team Member</div>
           </div>
