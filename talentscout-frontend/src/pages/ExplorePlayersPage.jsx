@@ -1,11 +1,11 @@
 import ExplorePlayers from "../components/ExplorePlayers.jsx";
-import ExplorePlayerRanking from "../components/Explore_Player_Ranking.jsx";
+import ExplorePlayersRanking from "../components/ExplorePlayersRanking.jsx";
 
 const ExplorePlayersPage = () => {
     return (
         <div>
             <ExplorePlayers/>
-            <ExplorePlayerRanking/>
+            <ExplorePlayersRanking/>
         </div>
     )
 }
