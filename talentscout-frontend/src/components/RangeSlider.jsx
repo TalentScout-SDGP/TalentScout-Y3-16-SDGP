@@ -3,7 +3,7 @@ import MultiRangeSlider from "multi-range-slider-react";
 
 function MultiRange() {
     const [minValue, set_minValue] = useState(18);
-    const [maxValue, set_maxValue] = useState(40);
+    const [maxValue, set_maxValue] = useState(32);
     const handleInput = (e) => {
         set_minValue(e.minValue);
         set_maxValue(e.maxValue);
@@ -14,7 +14,7 @@ function MultiRange() {
             <div className="range pt-8 lg:py-0">
                 <MultiRangeSlider
                     min={12}
-                    max={100}
+                    max={50}
                     step={5}
                     minValue={minValue}
                     maxValue={maxValue}
