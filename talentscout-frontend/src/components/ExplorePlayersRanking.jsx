@@ -47,7 +47,7 @@ function ExplorePlayerRanking() {
                         </div>
                     </div>
                     <div className='shadow-outer pb-4 rounded-2xl'>
-                        <div className="grid grid-cols-12 my-10 border-b-2 border-gray-500 py-6 font-bold">
+                        <div className="grid grid-cols-12 my-10 border-b-2 border-gray-500 py-6 font-bold mx-0 md:mx-4">
                             <div className="text-md md:text-base lg:text-lg col-span-3">POS</div>
                             <div className="text-md md:text-base lg:text-lg col-span-6">Player Name</div>
                             <div className="text-md md:text-base lg:text-lg col-span-3">Rating</div>
@@ -55,7 +55,7 @@ function ExplorePlayerRanking() {
                         {playersArray && playersArray.length > 0 ? (
                             playersArray.slice(1).map((player) => (
                                 <div key={player.id}
-                                     className="grid grid-cols-12 font-semibold mb-10 border-b-2 border-gray-500 py-2 items-center">
+                                     className="grid grid-cols-12 font-semibold mb-10 border-b-2 border-gray-500 py-2 items-center mx-0 md:mx-4">
                                     <div className="text-sm md:text-md lg:text-base col-span-3">{player.ranking}</div>
                                     <div className="text-sm md:text-md lg:text-base col-span-6">{player.fullName}</div>
                                     <div className="text-sm md:text-md lg:text-base col-span-3">{player.rating}</div>
