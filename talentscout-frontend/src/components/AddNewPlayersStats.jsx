@@ -48,12 +48,12 @@ function AddNewPlayersStats() {
     };
 
     const [activeMainTab, setActiveMainTab] = useState('ODI');
-    const [activeSubTab, setActiveSubTab] = useState('Batsmen');
+    const [activeSubTab, setActiveSubTab] = useState('Batsman');
 
     const handleMainTabChange = (mainTab) => {
         setActiveMainTab(mainTab);
         // Set the default subtab when the main tab changes
-        setActiveSubTab('Batsmen');
+        setActiveSubTab('Batsman');
     };
 
     const handleSubTabChange = (subTab) => {
@@ -61,7 +61,7 @@ function AddNewPlayersStats() {
     };
     return (
         <div className="font-poppins">
-            <div className="md:container px-8 ">
+            <div className="md:container px-2">
 
                 <div className="bg-primary-ts_purple my-12 lg:w-full rounded-lg px-7 lg:px-16 py-24">
                     {/* Main Tabs */}
@@ -84,9 +84,9 @@ function AddNewPlayersStats() {
                     {/* Sub Tabs */}
                     <div
                         className="tab-header flex justify-center gap-x-2 sm:gap-x- bg-primary-Tab_color w-fit mx-auto py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
-                        <button onClick={() => handleSubTabChange('Batsmen')}
-                                className={activeSubTab === 'Batsmen' ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
-                            Batsmen
+                        <button onClick={() => handleSubTabChange('Batsman')}
+                                className={activeSubTab === 'Batsman' ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
+                            Batsman
                         </button>
                         <button onClick={() => handleSubTabChange('Bowler')}
                                 className={activeSubTab === 'Bowler' ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
@@ -102,7 +102,7 @@ function AddNewPlayersStats() {
 
                     {activeMainTab === 'ODI' && (
                         <div>
-                            {activeSubTab === 'Batsmen' &&
+                            {activeSubTab === 'Batsman' &&
                                 <div className="tab-content my-8 bg-primary-ts_purple rounded-lg lg:text-base text-sm">
                                     <form onSubmit={handleSubmit} className="w-full py-4 lg:py-8">
                                         <div className="lg:grid lg:grid-cols-2 lg:pt-8 lg:py-4 font-semibold lg:px-8">
@@ -305,7 +305,8 @@ function AddNewPlayersStats() {
                                         </div>
                                         <div className="flex justify-center sm:md:justify-start  ">
                                             <button type="submit"
-                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                    className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-8 py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                                                 Submit
                                             </button>
                                         </div>
@@ -498,7 +499,8 @@ function AddNewPlayersStats() {
 
                                         <div className="flex justify-center sm:md:justify-start  ">
                                             <button type="submit"
-                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                    className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-8 py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                                                 Submit
                                             </button>
                                         </div>
@@ -736,7 +738,8 @@ function AddNewPlayersStats() {
                                         </div>
                                         <div className="flex justify-center sm:md:justify-start  ">
                                             <button type="submit"
-                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                    className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-8 py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                                                 Submit
                                             </button>
                                         </div>
@@ -747,7 +750,7 @@ function AddNewPlayersStats() {
                     )}
                     {activeMainTab === 'Test' && (
                         <div>
-                            {activeSubTab === 'Batsmen' &&
+                            {activeSubTab === 'Batsman' &&
                                 <div className="tab-content my-8 bg-primary-ts_purple rounded-lg lg:text-base text-sm">
                                     <form onSubmit={handleSubmit} className="w-full py-4 lg:py-8">
                                         <div className="lg:grid lg:grid-cols-2 lg:pt-8 lg:py-4 font-semibold lg:px-8">
@@ -939,7 +942,8 @@ function AddNewPlayersStats() {
                                         </div>
                                         <div className="flex justify-center sm:md:justify-start  ">
                                             <button type="submit"
-                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                    className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-8 py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                                                 Submit
                                             </button>
                                         </div>
@@ -1125,7 +1129,8 @@ function AddNewPlayersStats() {
                                         </div>
                                         <div className="flex justify-center sm:md:justify-start  ">
                                             <button type="submit"
-                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                    className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-8 py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                                                 Submit
                                             </button>
                                         </div>
@@ -1171,7 +1176,7 @@ function AddNewPlayersStats() {
                                             <div className="mb-4 lg:pr-5 lg:mr-4">
                                                 <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
                                                     <label htmlFor="highestScore"
-                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                           className="block text-md font-bold sm:mr-2 mb-5 text-ts_blue  mt-4">
                                                         Highest Score:
                                                     </label>
                                                     <input
@@ -1355,7 +1360,8 @@ function AddNewPlayersStats() {
                                         </div>
                                         <div className="flex justify-center sm:md:justify-start  ">
                                             <button type="submit"
-                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                    className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-8 py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                                                 Submit
                                             </button>
                                         </div>
@@ -1366,7 +1372,7 @@ function AddNewPlayersStats() {
                     )}
                     {activeMainTab === 'T20' && (
                         <div>
-                            {activeSubTab === 'Batsmen' &&
+                            {activeSubTab === 'Batsman' &&
                                 <div className="tab-content my-8 bg-primary-ts_purple rounded-lg lg:text-base text-sm">
                                     <form onSubmit={handleSubmit} className="w-full py-4 lg:py-8">
                                         <div className="lg:grid lg:grid-cols-2 lg:pt-8 lg:py-4 font-semibold lg:px-8">
@@ -1558,7 +1564,8 @@ function AddNewPlayersStats() {
                                         </div>
                                         <div className="flex justify-center sm:md:justify-start  ">
                                             <button type="submit"
-                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                    className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-8 py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                                                 Submit
                                             </button>
                                         </div>
@@ -1742,9 +1749,10 @@ function AddNewPlayersStats() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="flex justify-center sm:md:justify-start  ">
+                                        <div className="flex justify-center sm:md:justify-start">
                                             <button type="submit"
-                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                    className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-8 py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                                                 Submit
                                             </button>
                                         </div>
@@ -1790,7 +1798,7 @@ function AddNewPlayersStats() {
                                             <div className="mb-4 lg:pr-5 lg:mr-4">
                                                 <div className="mb-4 sm:flex-wrap lg:flex items-center justify-between">
                                                     <label htmlFor="highestScore"
-                                                           className="block text-md font-bold sm:mr-5 mb-5 text-ts_blue  mt-4">
+                                                           className="block text-md font-bold sm:mr-2 mb-5 text-ts_blue  mt-4">
                                                         Highest Score:
                                                     </label>
                                                     <input
@@ -1972,9 +1980,10 @@ function AddNewPlayersStats() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="flex justify-center sm:md:justify-start  ">
+                                        <div className="flex justify-center sm:md:justify-start">
                                             <button type="submit"
-                                                    className="bg-primary-yellow lg:w-44 w-40 sm:w-44 text-primary-ts_blue p-2 font-medium border-2 border-primary-ts_blue rounded-3xl mt-10 shadow-md">
+                                                    className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-8 py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                                                 Submit
                                             </button>
                                         </div>
