@@ -170,7 +170,7 @@ const ComparePlayerStats = () => {
         <div className="font-poppins">
             <div className="md:container my-4 md:my-16 px-2">
                 <div
-                    className="tab-header flex justify-center gap-x-2 sm:gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
+                    className=" shadow-outer tab-header flex justify-center gap-x-2 sm:gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
                     {Object.keys(playerStats).map((tab, index) => (
                         <button
                             key={index}
@@ -181,7 +181,7 @@ const ComparePlayerStats = () => {
                     ))}
                 </div>
                 <div
-                    className="tab-header flex justify-center gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl my-8 lg:text-base sm:text-sm text-xs">
+                    className="tab-header shadow-outer flex justify-center gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl my-8 lg:text-base sm:text-sm text-xs">
                     {Object.keys(playerStats[Object.keys(playerStats)[mainTab - 1]]).map((tab, index) => (
                         <button
                             key={index}
@@ -191,7 +191,7 @@ const ComparePlayerStats = () => {
                         </button>
                     ))}
                 </div>
-                <div className="tab-content my-8 bg-primary-ts_purple rounded-lg lg:text-base text-sm ">
+                <div className="tab-content my-8 bg-primary-ts_purple rounded-lg lg:text-base text-sm shadow-outer">
                     {mainTab && nestedTab && renderStatsList(playerStats[Object.keys(playerStats)[mainTab - 1]][Object.keys(playerStats[Object.keys(playerStats)[mainTab - 1]])[nestedTab - 4]])}
                 </div>
             </div>

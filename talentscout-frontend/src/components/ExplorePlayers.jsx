@@ -3,27 +3,27 @@ import RangeSlider from "./RangeSlider.jsx";
 function ExplorePlayers() {
     return (
         <div className="font-poppins">
-            <div className="md:container my-8">
-                <div className="lg:flex lg:flex-col bg-primary-ts_purple mx-4 md:mx-0 rounded-xl">
+            <div className="md:container px-2 my-8">
+                <div className="lg:flex lg:flex-col bg-primary-ts_purple md:mx-0 rounded-xl shadow-outer">
                     <div
-                        className="bg-primary-ts_blue text-center text-white text-base lg:p-4 font-semibold rounded-xl p-4">Explore
+                        className="bg-primary-ts_blue text-center text-white text-sm md:text-base lg:text-lg lg:p-4 font-semibold rounded-t-xl p-4">Explore
                         Players
                     </div>
                     <form className="w-full py-4 lg:py-8">
                         <div className="lg:grid lg:grid-cols-2 lg:pt-8 lg:px-8">
                             {/*Format*/}
-                            <div className="lg:grid lg:grid-cols-2 py-4 px-6 font-semibold">
-                                <div className="py-2 text-base">
+                            <div className="lg:grid lg:grid-cols-2 py-4 px-6">
+                                <div className="py-2 text-sm md:text-base font-semibold">
                                     Format :
                                 </div>
                                 <div className="w-full md:mb-0 relative">
                                     <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
                                     border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Test
+                                        <option className="text-primary-ts_blue text-sm md:text-base font-semibold">Test
                                         </option>
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">ODI
+                                        <option className="text-primary-ts_blue text-sm md:text-base font-semibold">ODI
                                         </option>
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">T20
+                                        <option className="text-primary-ts_blue text-sm md:text-base font-semibold">T20
                                         </option>
                                     </select>
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -45,7 +45,7 @@ function ExplorePlayers() {
 
                             {/*Age*/}
                             <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
-                                <div className="py-2 text-base">
+                                <div className="py-2 text-sm md:text-base">
                                     Age :
                                 </div>
                                 <div>
@@ -55,21 +55,23 @@ function ExplorePlayers() {
 
                             {/*Playing Role*/}
                             <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
-                                <div className="py-2 text-base">
+                                <div className="py-2 text-sm md:text-base">
                                     Playing Role :
                                 </div>
                                 <div className="w-full md:mb-0 relative">
                                     <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
                                     border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
                                         <option
-                                            className="text-primary-ts_blue text-sm lg:text-md font-semibold">Batsman
+                                            className="text-primary-ts_blue text-sm md:text-base font-semibold">Batsman
                                         </option>
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Bowler
+                                        <option
+                                            className="text-primary-ts_blue text-sm md:text-base font-semibold">Bowler
                                         </option>
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Wicket
+                                        <option
+                                            className="text-primary-ts_blue text-sm md:text-base font-semibold">Wicket
                                             Keeper
                                         </option>
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">All
+                                        <option className="text-primary-ts_blue text-sm md:text-base font-semibold">All
                                             Rounder
                                         </option>
                                     </select>
@@ -92,16 +94,17 @@ function ExplorePlayers() {
                         <div className="lg:grid lg:grid-cols-2 lg:pb-8 lg:px-8 text-xs">
                             {/*Batting Style*/}
                             <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
-                                <div className="py-2 text-base">
+                                <div className="py-2 text-sm md:text-base">
                                     Batting Style :
                                 </div>
                                 <div className="w-full md:mb-0 relative">
                                     <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
                                     border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Right
+                                        <option
+                                            className="text-primary-ts_blue text-sm md:text-base font-semibold">Right
                                             Hand
                                         </option>
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Left
+                                        <option className="text-primary-ts_blue text-sm md:text-base font-semibold">Left
                                             Hand
                                         </option>
                                     </select>
@@ -122,20 +125,20 @@ function ExplorePlayers() {
 
                             {/*Bowling Style*/}
                             <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
-                                <div className="py-2 text-base">
+                                <div className="py-2 text-sm md:text-base">
                                     Bowling Style :
                                 </div>
                                 <div className="w-full md:mb-0 relative">
                                     <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
                                     border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Fast
+                                        <option className="text-primary-ts_blue text-sm md:text-base font-semibold">Fast
                                             Bowler
                                         </option>
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Spin
+                                        <option className="text-primary-ts_blue text-sm md:text-base font-semibold">Spin
                                             Bowler
                                         </option>
                                         <option
-                                            className="text-primary-ts_blue text-sm lg:text-md font-semibold">Medium-Pace
+                                            className="text-primary-ts_blue text-sm md:text-base font-semibold">Medium-Pace
                                             Bowler
                                         </option>
                                     </select>
@@ -156,7 +159,7 @@ function ExplorePlayers() {
 
                             {/*Fast Bowling Type*/}
                             <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
-                                <div className="py-2 text-base">
+                                <div className="py-2 text-sm md:text-base">
                                     Fast Bowling Type :
                                 </div>
                                 <div className="w-full md:mb-0 relative">
@@ -188,16 +191,16 @@ function ExplorePlayers() {
 
                             {/*Spin Bowling Type*/}
                             <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
-                                <div className="py-2 text-base">
+                                <div className="py-2 text-sm md:text-base">
                                     Spin Bowling Type :
                                 </div>
                                 <div className="w-full md:mb-0 relative">
                                     <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
                                     border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Leg
+                                        <option className="text-primary-ts_blue text-sm md:text-base font-semibold">Leg
                                             Spin
                                         </option>
-                                        <option className="text-primary-ts_blue text-sm lg:text-md font-semibold">Off
+                                        <option className="text-primary-ts_blue text-sm md:text-base font-semibold">Off
                                             Spin
                                         </option>
                                     </select>
@@ -211,15 +214,14 @@ function ExplorePlayers() {
                                                 <use xlinkHref="#image0_2840_144"
                                                      transform="matrix(0.00416667 0 0 0.00480769 0 -0.0769231)"/>
                                             </pattern>
-
                                         </defs>
                                     </svg>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex flex-col items-center">
+                        <div className="flex flex-col items-center mt-4">
                             <button
-                                className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-4 py-1 shadow-lg border-primary-ts_blue border-2
+                                className="text-sm md:text-base bg-primary-yellow text-black font-semibold rounded-button px-4 py-1 lg:py-2 shadow-lg border-primary-ts_blue border-2
                             hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                                 Submit
                             </button>
