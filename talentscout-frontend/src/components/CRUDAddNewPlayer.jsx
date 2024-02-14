@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 function CRUDAddNewPlayer() {
     return(
         <div className="font-poppins">
-            <div className="md:container mt-16 mb-16">
-                <div className="lg:flex lg:flex-col bg-primary-ts_purple mx-4 rounded-lg">
+            <div className="md:container mt-9 mb-16 px-2">
+                <div className="lg:flex lg:flex-col bg-primary-ts_purple rounded-lg">
                     <div
                         className="flex justify-between bg-primary-ts_blue text-white lg:text-xl md:text-base sm:text-sm lg:p-4 font-semibold rounded-lg p-4">
                         <p className="p-1.5">Add New Player</p>
@@ -67,8 +67,8 @@ function CRUDAddNewPlayer() {
                         <div className="flex justify-left mt-4 pb-8 px-6">
                             <Link
                                 to=""
-                                className="text-xs lg:text-sm font-semibold bg-primary-yellow text-black rounded-button px-4 py-1 lg:py-2 shadow-lg
-                                    duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
+                                className="text-sm bg-primary-yellow text-black font-semibold rounded-button px-4 py-1 shadow-lg border-primary-ts_blue border-2
+                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                             Continue
                             </Link>
                         </div>
