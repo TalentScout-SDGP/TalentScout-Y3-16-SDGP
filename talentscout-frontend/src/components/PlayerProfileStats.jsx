@@ -149,15 +149,15 @@ function SizeChart() {
 
                     <div className="size_chart"
                          style={{display: selectedTab === 'testStats' ? 'block' : 'none'}}>
-                        <div className="grid sm:grid-cols-3">
+                        <div className="grid grid-cols-1 min-[500px]:grid-cols-2 lg:grid-cols-3">
                             <div
-                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
-                                <h1 className="text-white font-bold text-center">Batting Statistics</h1>
+                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden">
+                                <h1 className="text-white font-bold text-center mb-4">Batting Statistics</h1>
                                 {selectedTab === 'testStats' &&
                                     playerStats.Batting &&
                                     playerStats.Batting.Test &&
                                     playerStats.Batting.Test.map((stat) => (
-                                        <div className="grid md:grid-cols-2" key={stat.id}>
+                                        <div className="grid grid-cols-2" key={stat.id}>
                                             <div className="">{stat.description}:</div>
                                             <div className="text-left">{stat.statValue}</div>
                                         </div>
@@ -167,10 +167,10 @@ function SizeChart() {
                                 )}
                             </div>
                             <div
-                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
-                                <h1 className="text-white font-bold text-center">Bowling Statistics</h1>
+                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden">
+                                <h1 className="text-white font-bold text-center mb-4">Bowling Statistics</h1>
                                 {selectedTab === 'testStats' && playerStats.Bowling && playerStats.Bowling.Test && playerStats.Bowling.Test.map((stat) => (
-                                    <div className="grid md:grid-cols-2" key={stat.id}>
+                                    <div className="grid grid-cols-2" key={stat.id}>
                                         <div className="">{stat.description}:</div>
                                         <div className="text-left">{stat.statValue}</div>
                                     </div>
@@ -180,10 +180,10 @@ function SizeChart() {
                                 )}
                             </div>
                             <div
-                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
-                                <h1 className="text-white font-bold text-center">WicketKeeping Statistics</h1>
+                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                                <h1 className="text-white font-bold text-center mb-4">WicketKeeping Statistics</h1>
                                 {selectedTab === 'testStats' && playerStats.WicketKeeping && playerStats.WicketKeeping.Test && playerStats.WicketKeeping.Test.map((stat) => (
-                                    <div className="grid md:grid-cols-2" key={stat.id}>
+                                    <div className="grid grid-cols-2" key={stat.id}>
                                         <div className="">{stat.description}:</div>
                                         <div className="text-left">{stat.statValue}</div>
                                     </div>
@@ -196,12 +196,12 @@ function SizeChart() {
                     </div>
                     <div className="size_chart"
                          style={{display: selectedTab === 'oDIStats' ? 'block' : 'none'}}>
-                        <div className="grid sm:grid-cols-3">
+                        <div className="grid grid-cols-1 min-[500px]:grid-cols-2 lg:grid-cols-3">
                             <div
-                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
-                                <h1 className="text-white font-bold text-center">Batting Statistics</h1>
+                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                                <h1 className="text-white font-bold text-center mb-4">Batting Statistics</h1>
                                 {selectedTab === 'oDIStats' && playerStats.Batting && playerStats.Batting.ODI && playerStats.Batting.ODI.map((stat) => (
-                                    <div className="grid md:grid-cols-2" key={stat.id}>
+                                    <div className="grid grid-cols-2" key={stat.id}>
                                         <div className="">{stat.description}:</div>
                                         <div className="text-left">{stat.statValue}</div>
                                     </div>
@@ -211,10 +211,10 @@ function SizeChart() {
                                 )}
                             </div>
                             <div
-                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
-                                <h1 className="text-white font-bold text-center">Bowling Statistics</h1>
+                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                                <h1 className="text-white font-bold text-center mb-4">Bowling Statistics</h1>
                                 {selectedTab === 'oDIStats' && playerStats.Bowling && playerStats.Bowling.ODI && playerStats.Bowling.ODI.map((stat) => (
-                                    <div className="grid md:grid-cols-2" key={stat.id}>
+                                    <div className="grid grid-cols-2" key={stat.id}>
                                         <div className="">{stat.description}:</div>
                                         <div className="text-left">{stat.statValue}</div>
                                     </div>
@@ -224,10 +224,10 @@ function SizeChart() {
                                 )}
                             </div>
                             <div
-                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
-                                <h1 className="text-white font-bold text-center">WicketKeeping Statistics</h1>
+                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                                <h1 className="text-white font-bold text-center mb-4">WicketKeeping Statistics</h1>
                                 {selectedTab === 'oDIStats' && playerStats.WicketKeeping && playerStats.WicketKeeping.ODI && playerStats.WicketKeeping.ODI.map((stat) => (
-                                    <div className="grid md:grid-cols-2" key={stat.id}>
+                                    <div className="grid grid-cols-2" key={stat.id}>
                                         <div className="">{stat.description}:</div>
                                         <div className="text-left">{stat.statValue}</div>
                                     </div>
@@ -240,12 +240,12 @@ function SizeChart() {
                     </div>
                     <div className="size_chart"
                          style={{display: selectedTab === 't20Stats' ? 'block' : 'none'}}>
-                        <div className="grid sm:grid-cols-3">
+                        <div className="grid grid-cols-1 min-[500px]:grid-cols-2 lg:grid-cols-3">
                             <div
-                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
-                                <h1 className="text-white font-bold text-center">Batting Statistics</h1>
+                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                                <h1 className="text-white font-bold text-center mb-4">Batting Statistics</h1>
                                 {selectedTab === 't20Stats' && playerStats.Batting && playerStats.Batting.T20 && playerStats.Batting.T20.map((stat) => (
-                                    <div className="grid md:grid-cols-2" key={stat.id}>
+                                    <div className="grid grid-cols-2" key={stat.id}>
                                         <div className="">{stat.description}:</div>
                                         <div className="text-left">{stat.statValue}</div>
                                     </div>
@@ -255,10 +255,10 @@ function SizeChart() {
                                 )}
                             </div>
                             <div
-                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
-                                <h1 className="text-white font-bold text-center">Bowling Statistics</h1>
+                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                                <h1 className="text-white font-bold text-center mb-4">Bowling Statistics</h1>
                                 {selectedTab === 't20Stats' && playerStats.Bowling && playerStats.Bowling.T20 && playerStats.Bowling.T20.map((stat) => (
-                                    <div className="grid md:grid-cols-2" key={stat.id}>
+                                    <div className="grid grid-cols-2" key={stat.id}>
                                         <div className="">{stat.description}:</div>
                                         <div className="text-left">{stat.statValue}</div>
                                     </div>
@@ -268,10 +268,10 @@ function SizeChart() {
                                 )}
                             </div>
                             <div
-                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
-                                <h1 className="text-white font-bold text-center">WicketKeeping Statistics</h1>
+                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                                <h1 className="text-white font-bold text-center mb-4">WicketKeeping Statistics</h1>
                                 {selectedTab === 't20Stats' && playerStats.WicketKeeping && playerStats.WicketKeeping.T20 && playerStats.WicketKeeping.T20.map((stat) => (
-                                    <div className="grid md:grid-cols-2" key={stat.id}>
+                                    <div className="grid grid-cols-2" key={stat.id}>
                                         <div className="">{stat.description}:</div>
                                         <div className="text-left">{stat.statValue}</div>
                                     </div>
