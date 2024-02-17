@@ -50,7 +50,7 @@ const CRUDManagePlayers = () => {
 
     return (
         <div className="font-poppins mb-12">
-            <div className="md:container mx-auto px-4 lg:px-0">
+            <div className="md:container px-2">
                 <div className="flex justify-between items-center bg-primary-ts_blue text-white  p-4  rounded-t-3xl ">
                     <strong>Manage Players</strong>
                     <div className="flex items-center space-x-2">
@@ -87,7 +87,7 @@ const CRUDManagePlayers = () => {
                     </div>
                     {playersArray && playersArray.length > 0 ? (
                         playersArray.map((player) => (
-                            <div key={player.id} className="flex py-2 border-b text-xs border-gray-300">
+                            <div key={player.id} className="flex py-2 border-b lg:text-base sm:text-sm text-xs border-gray-300">
                                 <div className="w-8 ml-4 sm:ml-10 mt-1">
                                     <input
                                         type="checkbox"
