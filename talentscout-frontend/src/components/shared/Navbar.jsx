@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {NavLink, Link} from 'react-router-dom';
 import {faBars, faX} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import axiosInstance from "../../utils/axiosInstance.js";
+import axiosInstance from "../../utils/AxiosInstance.js";
 
 const Navbar = () => {
     const user = JSON.parse(localStorage.getItem('user'));

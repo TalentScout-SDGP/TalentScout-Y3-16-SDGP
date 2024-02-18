@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios"
 import {toast} from 'react-toastify';
@@ -32,6 +32,50 @@ function SignUp() {
     const navigate = useNavigate();
 
     const {email, first_name, last_name, password, password2, is_superuser} = formData;
+
+    const handleSignUpWithGoogle = async (response) => {
+        const payload = response.credential
+        const server_res = await axios.post("http://localhost:8000/api/auth/google/", {'access_token': payload})
+        const user = {
+            "email": server_res.data.email,
+            "names": server_res.data.full_name
+        }
+        if (server_res.status === 200) {
+            localStorage.setItem('user', JSON.stringify(user))
+            localStorage.setItem('access', JSON.stringify(server_res.data.access_token))
+            localStorage.setItem('refresh', JSON.stringify(server_res.data.refresh_token))
+            window.location.href = '/';
+            toast.success("Login Successful!")
+        }
+    }
+
+    useEffect(() => {
+        const initializeGoogleSignIn = () => {
+            /* global google */
+            if (typeof google !== 'undefined') {
+                google.accounts.id.initialize({
+                    client_id: import.meta.env.VITE_CLIENT_ID,
+                    callback: handleSignUpWithGoogle
+                });
+
+                google.accounts.id.renderButton(
+                    document.getElementById("signInDiv"),
+                    {
+                        theme: "outline",
+                        size: "large",
+                        text: "continue_with",
+                        shape: "circle",
+                        width: "280",
+                        locale: "en"
+                    }
+                );
+            } else {
+                console.error("Google API is not yet loaded.");
+            }
+        };
+        const timeoutId = setTimeout(initializeGoogleSignIn, 500);
+        return () => clearTimeout(timeoutId);
+    }, []);
 
     const handleChange = (e) => {
         if (e.target.name === 'password' || e.target.name === 'password2') {
@@ -263,20 +307,23 @@ function SignUp() {
                             <p className="w-1/3 text-center text-xs sm:text-base">Or Sign up with</p>
                             <div className="border-t border-black h-0 w-1/3"></div>
                         </div>
+                        {/*<div className="flex flex-wrap mt-8 mb-2">*/}
+                        {/*    <button*/}
+                        {/*        className="block w-full bg-white text-primary-ts_blue text-sm lg:text-md font-semibold border border-black rounded-lg py-3 px-4 mt-1 mb-3 shadow-signup leading-tight">*/}
+                        {/*        <img src={import.meta.env.BASE_URL + 'user-google.png'} alt="google-logo"*/}
+                        {/*             className="inline me-2"></img> Sign up*/}
+                        {/*        with Google*/}
+                        {/*    </button>*/}
+                        {/*</div>*/}
                         <div className="flex flex-wrap mt-8 mb-2">
-                            <button
-                                className="block w-full bg-white text-primary-ts_blue text-sm lg:text-md font-semibold border border-black rounded-lg py-3 px-4 mt-1 mb-3 shadow-signup leading-tight">
-                                <img src={import.meta.env.BASE_URL + 'user-google.png'} alt="google-logo"
-                                     className="inline me-2"></img> Sign up
-                                with Google
-                            </button>
+                            <div id="signInDiv" className="w-full"></div>
                         </div>
                         <div className="flex flex-wrap mb-6">
                             <button
                                 className="block w-full bg-white text-primary-ts_blue text-sm lg:text-md font-semibold border border-black rounded-lg py-3 px-4 mt-1 mb-3 shadow-signup leading-tight">
                                 <img src={import.meta.env.BASE_URL + 'user-facebook.png'} alt="google-logo"
                                      className="inline me-2"></img>Sign up with
-                                Facebook
+                                Github
                             </button>
                         </div>
                         <div className="text-sm lg:text-md">
