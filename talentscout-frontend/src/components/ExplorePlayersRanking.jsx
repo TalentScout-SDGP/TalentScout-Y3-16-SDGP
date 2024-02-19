@@ -28,7 +28,7 @@ function ExplorePlayerRanking() {
                 </div>
                 <div className="rounded-lg md:mb-12 text-center pb-12">
                     <div
-                        className="grid grid-cols-1 md:grid-cols-12 bg-primary-ts_purple rounded-b-2xl border-gray-500 pt-8 pb-4 shadow-outer">
+                        className="grid grid-cols-1 md:grid-cols-12 bg-primary-ts_purple rounded-b-2xl border-gray-500 py-4 shadow-outer">
                         <div
                             className="md:col-span-3 order-2 md:order-1 mt-6 md:mt-0">
                             <div
@@ -36,14 +36,14 @@ function ExplorePlayerRanking() {
                             </div>
                         </div>
                         <div
-                            className="flex flex-col md:-ms-8 lg:-ms-16 gap-y-8 mt-6 md:mt-0 md:text-start font-bold text-base md:text-lg lg:text-xl md:col-span-3 order-3 md:order-2 px-8 md:px-0">
+                            className="flex flex-col md:-ms-8 lg:-ms-16 gap-y-8 mt-6 md:mt-0 md:text-start font-bold text-base md:text-lg lg:text-2xl md:col-span-3 order-3 md:order-2 px-8 md:px-0">
                             <div className="-mt-1">{firstPlayer.fullName}</div>
                             <div>{firstPlayer.rating}</div>
                         </div>
                         <div
-                            className="flex justify-end right-0 md:right-8 lg:right-24 relative font-bold text-md md:text-base lg:text-lg md:col-span-6 order-1 md:order-3">
+                            className="flex justify-center right-0 md:right-8 lg:right-24 relative font-bold text-md md:text-base lg:text-lg md:col-span-6 order-1 md:order-3">
                             <img src={import.meta.env.BASE_URL + 'Player-dummy-image.png'} alt="player-dummy-image"
-                                 className="mx-auto md:mx-0 w-2/5"/>
+                                 className="mx-auto md:mx-0 w-2/5 lg:w-2/5 xl:w-2/6"/>
                         </div>
                     </div>
                     <div className='shadow-outer pb-4 rounded-2xl'>
