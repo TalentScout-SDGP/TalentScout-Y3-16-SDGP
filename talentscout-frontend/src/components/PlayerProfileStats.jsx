@@ -103,10 +103,6 @@ function SizeChart() {
                 {id: 1, statValue: 25, description: 'Catches'},
                 {id: 2, statValue: 20, description: 'Stumping'},
             ],
-            T20: [
-                {id: 1, statValue: 45, description: 'Catches'},
-                {id: 2, statValue: 38, description: 'Stumping'},
-            ],
         },
     };
 
@@ -163,7 +159,7 @@ function SizeChart() {
                                         </div>
                                     ))}
                                 {!playerStats.Batting.Test && (
-                                    <div className="text-white">Stats Not Available</div>
+                                    <div className="text-white text-center">Stats Not Available</div>
                                 )}
                             </div>
                             <div
@@ -176,7 +172,7 @@ function SizeChart() {
                                     </div>
                                 ))}
                                 {!playerStats.Bowling.Test && (
-                                    <div className="text-white">Stats Not Available</div>
+                                    <div className="text-white text-center">Stats Not Available</div>
                                 )}
                             </div>
                             <div
@@ -189,7 +185,7 @@ function SizeChart() {
                                     </div>
                                 ))}
                                 {!playerStats.WicketKeeping.Test && (
-                                    <div className="text-white">Stats Not Available</div>
+                                    <div className="text-white text-center">Stats Not Available</div>
                                 )}
                             </div>
                         </div>
@@ -207,7 +203,7 @@ function SizeChart() {
                                     </div>
                                 ))}
                                 {!playerStats.Batting.ODI && (
-                                    <div className="text-white">Stats Not Available</div>
+                                    <div className="text-white text-center">Stats Not Available</div>
                                 )}
                             </div>
                             <div
@@ -220,7 +216,7 @@ function SizeChart() {
                                     </div>
                                 ))}
                                 {!playerStats.Bowling.ODI && (
-                                    <div className="text-white">Stats Not Available</div>
+                                    <div className="text-white text-center">Stats Not Available</div>
                                 )}
                             </div>
                             <div
@@ -233,7 +229,7 @@ function SizeChart() {
                                     </div>
                                 ))}
                                 {!playerStats.WicketKeeping.ODI && (
-                                    <div className="text-white">Stats Not Available</div>
+                                    <div className="text-white text-center">Stats Not Available</div>
                                 )}
                             </div>
                         </div>
@@ -251,7 +247,7 @@ function SizeChart() {
                                     </div>
                                 ))}
                                 {!playerStats.Batting.T20 && (
-                                    <div className="text-white">Stats Not Available</div>
+                                    <div className="text-white text-center">Stats Not Available</div>
                                 )}
                             </div>
                             <div
@@ -264,7 +260,7 @@ function SizeChart() {
                                     </div>
                                 ))}
                                 {!playerStats.Bowling.T20 && (
-                                    <div className="text-white">Stats Not Available</div>
+                                    <div className="text-white text-center">Stats Not Available</div>
                                 )}
                             </div>
                             <div
@@ -277,7 +273,7 @@ function SizeChart() {
                                     </div>
                                 ))}
                                 {!playerStats.WicketKeeping.T20 && (
-                                    <div className="text-white">Stats Not Available</div>
+                                    <div className="text-white text-center">Stats Not Available</div>
                                 )}
                             </div>
                         </div>
