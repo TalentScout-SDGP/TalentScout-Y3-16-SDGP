@@ -101,7 +101,7 @@ function Login() {
                 <div className="container pt-16 grid grid-cols-1 lg:grid-cols-2">
                     <div className="select-none hidden lg:block pb-16 lg:pe-16">
                         <div className="select-none">
-                            <img className="w-fit select-none" src={import.meta.env.BASE_URL + 'Login.png'}
+                            <img className="w-4/5 select-none" src={import.meta.env.BASE_URL + 'Login.jpg'}
                                  alt="Login"></img>
                         </div>
                     </div>
