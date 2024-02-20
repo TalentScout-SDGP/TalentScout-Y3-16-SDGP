@@ -5,7 +5,7 @@ function CRUDAddNewPlayer() {
     return(
         <div className="font-poppins">
             <div className="md:container mt-9 mb-16 px-2">
-                <div className="lg:flex lg:flex-col bg-primary-ts_purple rounded-lg">
+                <div className="shadow-outer lg:flex lg:flex-col bg-primary-ts_purple rounded-lg">
                     <div
                         className="flex justify-between bg-primary-ts_blue text-white lg:text-xl md:text-base sm:text-sm lg:p-4 font-semibold rounded-lg p-4">
                         <p className="p-1.5">Add New Player</p>
