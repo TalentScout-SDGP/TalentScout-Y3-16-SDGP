@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Link} from "react-router-dom";
 
 function PlayerProfilesInfo() {
+    const [Name, setName] = useState("Dhananjaya    De Silva");
     const [fullName, setFullName] = useState("Dhananjaya Maduranga De Silva");
     const [born, setBorn] = useState("January 1, 1990");
     const [playingRole, setPlayingRole] = useState("Batsman");
@@ -20,8 +21,8 @@ function PlayerProfilesInfo() {
                                     alt="player-dummy"
                                     className="w-4/5 sm:w-2/5 md:w-2/5 lg:w-3/5"
                                 ></img>
-                                <div className="font-semibold text-lg text-white mt-6 hidden lg:block">
-                                    {fullName}
+                                <div className="font-semibold text-lg text-white mt-6 lg:block">
+                                    {Name}
                                 </div>
                             </div>
                             <div
