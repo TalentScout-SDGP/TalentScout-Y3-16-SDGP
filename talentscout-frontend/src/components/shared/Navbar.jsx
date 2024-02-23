@@ -1,5 +1,5 @@
 import {useEffect, useState, useContext} from 'react';
-import AuthContext from "../../context/AuthContext.jsx";
+import UserAuthContext from "../../context/UserAuthContext.jsx";
 import {NavLink, Link} from 'react-router-dom';
 import {faBars, faX} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -8,7 +8,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [user, setUser] = useState(null);
     const refresh = JSON.parse(localStorage.getItem('refresh'))
-    const {logout} = useContext(AuthContext);
+    const {logout} = useContext(UserAuthContext);
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);

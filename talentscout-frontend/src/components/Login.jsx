@@ -1,12 +1,12 @@
 import {useEffect, useState, useContext} from 'react';
 import {Link} from "react-router-dom";
-import AuthContext from "../context/AuthContext.jsx";
+import UserAuthContext from "../context/UserAuthContext.jsx";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Spinner from "./shared/Spinner.jsx";
 
 function Login() {
-    const {isLoading, renderGoogleButton, login} = useContext(AuthContext);
+    const {isLoading, renderGoogleButton, login} = useContext(UserAuthContext);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [loginData, setLoginData] = useState({email: '', password: ''});
     const [error, setError] = useState('');

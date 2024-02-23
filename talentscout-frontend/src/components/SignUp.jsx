@@ -1,6 +1,6 @@
 import {useState, useContext, useEffect} from 'react';
 import {Link} from "react-router-dom";
-import AuthContext from "../context/AuthContext.jsx";
+import UserAuthContext from "../context/UserAuthContext.jsx";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Swiper, SwiperSlide} from 'swiper/react';
@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import Spinner from "./shared/Spinner.jsx";
 
 function SignUp() {
-    const {isLoading, responseError, signUp, renderGoogleButton} = useContext(AuthContext);
+    const {isLoading, responseError, signUp, renderGoogleButton} = useContext(UserAuthContext);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
     const [isValidPassword, setIsValidPassword] = useState(false);

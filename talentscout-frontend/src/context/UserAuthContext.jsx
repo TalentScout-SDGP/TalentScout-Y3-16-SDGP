@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import PropTypes from 'prop-types';
 import AxiosInstance from "../utils/AxiosInstance.jsx";
 
-const AuthContext = createContext()
+const UserAuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false)
@@ -129,9 +129,9 @@ export const AuthProvider = ({children}) => {
     }
 
     return (
-        <AuthContext.Provider value={contextData}>
+        <UserAuthContext.Provider value={contextData}>
             {children}
-        </AuthContext.Provider>
+        </UserAuthContext.Provider>
     )
 }
 
@@ -142,4 +142,4 @@ AuthProvider.propTypes = {
     ]).isRequired
 };
 
-export default AuthContext;
+export default UserAuthContext;

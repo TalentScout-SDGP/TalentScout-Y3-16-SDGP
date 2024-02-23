@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+module.exports = withMT({
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
@@ -66,9 +68,9 @@ module.exports = {
             boxShadow: {
                 'outer': '0px 4px 20px 0px rgba(0, 0, 0, 0.40)',
                 'signup': '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
-                'explore_players': '0px 5px 5px 0px rgba(0, 0, 0, 0.25)'
+                'explore_players': '0px 5px 5px 0px rgba(0, 0, 0, 0.25)',
             },
         },
     },
-    plugins: []
-}
+    plugins: [],
+});

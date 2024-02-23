@@ -1,9 +1,9 @@
 import {useState, useContext} from 'react'
-import AuthContext from "../context/AuthContext.jsx";
+import UserAuthContext from "../context/UserAuthContext.jsx";
 import Spinner from '../components/shared/Spinner.jsx'
 
 function VerifyOtp() {
-    const {isLoading, verifyOTP, responseError} = useContext(AuthContext);
+    const {isLoading, verifyOTP, responseError} = useContext(UserAuthContext);
     const [otp, setOtp] = useState('')
     const [error, setError] = useState('');
 
