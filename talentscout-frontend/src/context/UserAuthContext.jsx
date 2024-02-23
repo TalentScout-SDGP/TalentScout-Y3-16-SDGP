@@ -86,7 +86,7 @@ export const AuthProvider = ({children}) => {
         const server_res = await axios.post("http://localhost:8000/api/auth/google/", {'access_token': payload})
         const user = {
             "email": server_res.data.email,
-            "names": server_res.data.full_name
+            "full name": server_res.data.full_name
         }
         if (server_res.status === 200) {
             localStorage.setItem('user', JSON.stringify(user))

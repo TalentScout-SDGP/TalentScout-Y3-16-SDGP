@@ -34,6 +34,7 @@ import FrontendLinuka from "./pages/FrontendLinuka.jsx";
 
 function App() {
     const user = JSON.parse(localStorage.getItem('user'));
+    const isAdmin = JSON.parse(localStorage.getItem('isSuperuser'));
 
     return (
         <div className='bg-white'>
@@ -47,7 +48,8 @@ function App() {
                         <Route exact path='/compare_players' element={<ComparePlayers/>}/>
                         <Route exact path='/player_profiles' element={<PlayerProfiles/>}/>
                         <Route exact path='/manage_players' element={<ManagePlayers/>}/>
-                        <Route exact path='/add_players' element={<AddPlayers/>}/>
+                        <Route exact path='/add_players'
+                               element={!user && !isAdmin ? <Navigate to="/"/> : <AddPlayers/>}/>
                         <Route exact path='/login' element={user ? <Navigate to="/"/> : <LoginPage/>}/>
                         <Route exact path='/sign_up' element={user ? <Navigate to="/"/> : <SignUpPage/>}/>
                         <Route exact path='/about_us' element={<AboutUsPage/>}/>

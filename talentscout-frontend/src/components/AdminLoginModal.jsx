@@ -4,7 +4,7 @@ import {Dialog, Card, CardBody} from "@material-tailwind/react";
 export function AdminLoginModal() {
     return (
         <div>
-            <Dialog open="open" className="bg-transparent shadow-none">
+            <Dialog open={true} className="bg-transparent shadow-none">
                 <Card className="mx-auto w-full max-w-[26rem]">
                     <CardBody className="flex flex-col">
                         <p className="text-xl text-black text-center font-semibold border-b-2 border-gray-400 pb-2">
