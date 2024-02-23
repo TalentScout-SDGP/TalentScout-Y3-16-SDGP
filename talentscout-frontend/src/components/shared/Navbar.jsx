@@ -1,48 +1,29 @@
-import React, {useState} from 'react';
+import {useEffect, useState, useContext} from 'react';
+import AuthContext from "../../context/AuthContext.jsx";
 import {NavLink, Link} from 'react-router-dom';
 import {faBars, faX} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import axiosInstance from "../../utils/AxiosInstance.js";
 
 const Navbar = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const refresh = JSON.parse(localStorage.getItem('refresh'))
-
-    //TODO Remove commented code
-
-    // const jwt_access = localStorage.getItem('access')
-
-    // useEffect(() => {
-    //     if (jwt_access === null && !user) {
-    //         navigate('/login')
-    //     } else {
-    //         getSomeData()
-    //     }
-    // }, [jwt_access, user])
-
-
-    // const getSomeData = async () => {
-    //     const res = await axiosInstance.get('/auth/profile/')
-    //     if (res.status === 200) {
-    //         console.log(res.data)
-    //     }
-    // }
-
-    const handleLogout = async () => {
-        const res = await axiosInstance.post('/auth/logout/', {'refresh_token': refresh})
-        if (res.status === 204) {
-            localStorage.removeItem('access')
-            localStorage.removeItem('refresh')
-            localStorage.removeItem('user')
-            window.location.reload();
-        }
-    }
-
     const [isOpen, setIsOpen] = useState(false);
+    const [user, setUser] = useState(null);
+    const refresh = JSON.parse(localStorage.getItem('refresh'))
+    const {logout} = useContext(AuthContext);
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            setUser(user)
+        }
+    }, []);
+
+    const handleLogout = async () => {
+        logout(refresh);
+    }
 
     const NavLinkStyles = ({isActive}) => {
         return {

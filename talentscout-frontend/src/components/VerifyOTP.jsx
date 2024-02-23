@@ -1,38 +1,20 @@
-import {useState} from 'react'
-import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
-import {toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import {useState, useContext} from 'react'
+import AuthContext from "../context/AuthContext.jsx";
 import Spinner from '../components/shared/Spinner.jsx'
 
 function VerifyOtp() {
+    const {isLoading, verifyOTP, responseError} = useContext(AuthContext);
     const [otp, setOtp] = useState('')
     const [error, setError] = useState('');
-    const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (!otp.trim()) {
             setError('OTP is required.')
         } else {
-            try {
-                setIsLoading(true)
-                const response = await axios.post('http://localhost:8000/api/auth/verify-email/', {'otp': otp})
-                if (response.status === 200) {
-                    setIsLoading(false)
-                    navigate('/login')
-                    toast.success(response.data.message)
-                }
-            } catch (error) {
-                setIsLoading(false)
-                if (error.response.status === 404) {
-                    setError('Invalid OTP, Please try again.')
-                } else if (error.response.status === 204) {
-                    setError('Email already verified. Please login to continue.')
-                } else {
-                    setError('Something went wrong. Please try again later.')
-                }
+            verifyOTP(otp)
+            if (responseError) {
+                setError(responseError)
             }
         }
     }

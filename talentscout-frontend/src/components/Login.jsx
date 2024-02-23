@@ -1,69 +1,17 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useContext} from 'react';
 import {Link} from "react-router-dom";
-import axios from 'axios'
-import {toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import AuthContext from "../context/AuthContext.jsx";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Spinner from "./shared/Spinner.jsx";
 
 function Login() {
+    const {isLoading, renderGoogleButton, login} = useContext(AuthContext);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [loginData, setLoginData] = useState({email: '', password: ''});
     const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
 
     const {email, password} = loginData;
-
-    function togglePasswordVisibility(e) {
-        e.preventDefault();
-        setIsPasswordVisible((prevState) => !prevState);
-    }
-
-    const handleSignInWithGoogle = async (response) => {
-        const payload = response.credential
-        const server_res = await axios.post("http://localhost:8000/api/auth/google/", {'access_token': payload})
-        const user = {
-            "email": server_res.data.email,
-            "names": server_res.data.full_name
-        }
-        if (server_res.status === 200) {
-            localStorage.setItem('user', JSON.stringify(user))
-            localStorage.setItem('access', JSON.stringify(server_res.data.access_token))
-            localStorage.setItem('refresh', JSON.stringify(server_res.data.refresh_token))
-            window.location.href = '/';
-            toast.success("Login Successful!")
-        }
-    }
-
-    useEffect(() => {
-        const initializeGoogleSignIn = () => {
-            /* global google */
-            if (typeof google !== 'undefined') {
-                google.accounts.id.initialize({
-                    client_id: import.meta.env.VITE_CLIENT_ID,
-                    callback: handleSignInWithGoogle
-                });
-
-                google.accounts.id.renderButton(
-                    document.getElementById("signInDiv"),
-                    {
-                        theme: "outline",
-                        size: "large",
-                        text: "continue_with",
-                        shape: "circle",
-                        width: "280",
-                        locale: "en"
-                    }
-                );
-            } else {
-                console.error("Google API is not yet loaded.");
-            }
-        };
-        const timeoutId = setTimeout(initializeGoogleSignIn, 500);
-        return () => clearTimeout(timeoutId);
-    }, []);
-
     const handleChange = (e) => {
         setLoginData({...loginData, [e.target.name]: e.target.value});
     }
@@ -73,26 +21,23 @@ function Login() {
         if (!email || !password) {
             setError('All fields are required!');
         } else {
-            try {
-                setIsLoading(true);
-                const res = await axios.post("http://localhost:8000/api/auth/login/", loginData)
-                setIsLoading(false)
-                const response = res.data;
-                const user = {"email": response.email, "names": response.names}
-                if (res.status === 200) {
-                    localStorage.setItem('user', JSON.stringify(user))
-                    localStorage.setItem('access', JSON.stringify(response.access_token))
-                    localStorage.setItem('refresh', JSON.stringify(response.refresh_token))
-                    window.location.href = '/';
-                    toast.success("Login Successful!")
-                }
-            } catch (error) {
-                if (error.response.status === 401) {
-                    setIsLoading(false)
-                    setError('Invalid credentials, Please try again.')
-                }
+            login(loginData);
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) {
+                setError('Invalid credentials, Please try again.');
             }
         }
+    }
+
+    useEffect(() => {
+        renderGoogleButton();
+        const timeoutId = setTimeout(renderGoogleButton, 500);
+        return () => clearTimeout(timeoutId);
+    }, [renderGoogleButton]);
+
+    function togglePasswordVisibility(e) {
+        e.preventDefault();
+        setIsPasswordVisible((prevState) => !prevState);
     }
 
     if (!isLoading) {
@@ -194,9 +139,9 @@ function Login() {
                         <div className="flex flex-wrap mb-6">
                             <button
                                 className="block w-full bg-white text-primary-ts_blue text-sm lg:text-md font-semibold border border-black rounded-lg py-3 px-4 mt-1 mb-20 shadow-signup leading-tight">
-                                <img src={import.meta.env.BASE_URL + 'user-facebook.png'} alt="google-logo"
+                                <img src={import.meta.env.BASE_URL + 'user-github.png'} alt="google-logo"
                                      className="inline me-2"></img>Sign in with
-                                Facebook
+                                Github
                             </button>
                         </div>
                     </div>
@@ -208,7 +153,6 @@ function Login() {
             <Spinner/>
         );
     }
-
 }
 
 export default Login;

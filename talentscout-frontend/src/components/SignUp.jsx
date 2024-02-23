@@ -1,8 +1,6 @@
-import {useState, useEffect} from 'react';
-import {Link, useNavigate} from "react-router-dom";
-import axios from "axios"
-import {toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {useState, useContext, useEffect} from 'react';
+import {Link} from "react-router-dom";
+import AuthContext from "../context/AuthContext.jsx";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Swiper, SwiperSlide} from 'swiper/react';
@@ -11,11 +9,10 @@ import 'swiper/css/bundle';
 import 'swiper/css/pagination';
 import Spinner from "./shared/Spinner.jsx";
 
-
 function SignUp() {
+    const {isLoading, responseError, signUp, renderGoogleButton} = useContext(AuthContext);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
     const [isValidPassword, setIsValidPassword] = useState(false);
     const [isValidPassword2, setIsValidPassword2] = useState(false);
     const [errorPassword, setErrorPassword] = useState(false);
@@ -29,64 +26,19 @@ function SignUp() {
         password2: '',
         is_superuser: false
     });
-    const navigate = useNavigate();
-
     const {email, first_name, last_name, password, password2, is_superuser} = formData;
 
-    const handleSignUpWithGoogle = async (response) => {
-        const payload = response.credential
-        const server_res = await axios.post("http://localhost:8000/api/auth/google/", {'access_token': payload})
-        const user = {
-            "email": server_res.data.email,
-            "names": server_res.data.full_name
-        }
-        if (server_res.status === 200) {
-            localStorage.setItem('user', JSON.stringify(user))
-            localStorage.setItem('access', JSON.stringify(server_res.data.access_token))
-            localStorage.setItem('refresh', JSON.stringify(server_res.data.refresh_token))
-            window.location.href = '/';
-            toast.success("Login Successful!")
-        }
-    }
-
-    useEffect(() => {
-        const initializeGoogleSignIn = () => {
-            /* global google */
-            if (typeof google !== 'undefined') {
-                google.accounts.id.initialize({
-                    client_id: import.meta.env.VITE_CLIENT_ID,
-                    callback: handleSignUpWithGoogle
-                });
-
-                google.accounts.id.renderButton(
-                    document.getElementById("signInDiv"),
-                    {
-                        theme: "outline",
-                        size: "large",
-                        text: "continue_with",
-                        shape: "circle",
-                        width: "280",
-                        locale: "en"
-                    }
-                );
-            } else {
-                console.error("Google API is not yet loaded.");
-            }
-        };
-        const timeoutId = setTimeout(initializeGoogleSignIn, 500);
-        return () => clearTimeout(timeoutId);
-    }, []);
-
     const handleChange = (e) => {
+        const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
         if (e.target.name === 'password' || e.target.name === 'password2') {
             if (e.target.name === 'password') {
                 const newPassword = e.target.value;
-                const isValidPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(newPassword);
+                const isValidPassword = regex.test(newPassword);
                 setErrorPassword(!isValidPassword);
                 setIsValidPassword(isValidPassword)
             } else if (e.target.name === 'password2') {
                 const newPassword = e.target.value;
-                const isValidPassword2 = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(newPassword);
+                const isValidPassword2 = regex.test(newPassword);
                 setErrorPassword2(!isValidPassword2);
                 setIsValidPassword2(isValidPassword2)
             }
@@ -101,31 +53,26 @@ function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (is_superuser === "Admin") {
-            console.log(is_superuser)
-            formData.is_superuser = true
-        }
         if (!email || !first_name || !last_name || !password || !password2) {
             setError('All fields are required!');
         } else if (password !== password2) {
             setError('Passwords do not match!');
-        } else if (password.length < 8 || password2.length < 8) {
-            setError('Password should be minimum 8 characters!');
         } else {
-            setIsLoading(true);
-            const res = await axios.post("http://localhost:8000/api/auth/register/", formData)
-            const response = res.data
-            console.log(response)
-            if (res.status === 201) {
-                setIsLoading(false)
-                navigate('/verify_otp')
-                toast.success(response.message)
-            } else {
-                setIsLoading(false)
-                setError('Something went wrong, Please try again.');
+            if (is_superuser === "Admin") {
+                formData.is_superuser = true
+            }
+            signUp(formData);
+            if (responseError) {
+                setError(responseError);
             }
         }
     }
+
+    useEffect(() => {
+        renderGoogleButton();
+        const timeoutId = setTimeout(renderGoogleButton, 500);
+        return () => clearTimeout(timeoutId);
+    }, [renderGoogleButton]);
 
     function togglePasswordVisibility(e, field) {
         e.preventDefault();
@@ -321,7 +268,7 @@ function SignUp() {
                         <div className="flex flex-wrap mb-6">
                             <button
                                 className="block w-full bg-white text-primary-ts_blue text-sm lg:text-md font-semibold border border-black rounded-lg py-3 px-4 mt-1 mb-3 shadow-signup leading-tight">
-                                <img src={import.meta.env.BASE_URL + 'user-facebook.png'} alt="google-logo"
+                                <img src={import.meta.env.BASE_URL + 'user-github.png'} alt="google-logo"
                                      className="inline me-2"></img>Sign up with
                                 Github
                             </button>
@@ -392,7 +339,6 @@ function SignUp() {
             <Spinner/>
         );
     }
-
 }
 
 export default SignUp;
