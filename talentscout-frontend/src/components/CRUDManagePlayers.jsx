@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
-import { FaTrash, FaEdit, FaPlus, FaMinus } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {FaTrash, FaEdit, FaPlus, FaMinus} from 'react-icons/fa';
+import {Link} from 'react-router-dom';
+import AdminLoginModal from "./AdminLoginModal.jsx";
 
 const CRUDManagePlayers = () => {
     const [selectAll, setSelectAll] = useState(false);
     const [selectedPlayers, setSelectedPlayers] = useState([]);
 
     const playersArray = [
-        { id: 1, name: 'Player 1', fullName: 'Full Name 1', playingRole: 'Role 1' },
-        { id: 2, name: 'Player 2', fullName: 'Full Name 2', playingRole: 'Role 2' },
-        { id: 3, name: 'Player 3', fullName: 'Full Name 3', playingRole: 'Role 3' },
-        { id: 4, name: 'Player 4', fullName: 'Full Name 4', playingRole: 'Role 4' },
-        { id: 5, name: 'Player 5', fullName: 'Full Name 5', playingRole: 'Role 5' },
-        { id: 6, name: 'Player 6', fullName: 'Full Name 6', playingRole: 'Role 6' },
-        { id: 7, name: 'Player 7', fullName: 'Full Name 7', playingRole: 'Role 7' },
-        { id: 8, name: 'Player 8', fullName: 'Full Name 8', playingRole: 'Role 8' },
-        { id: 9, name: 'Player 9', fullName: 'Full Name 9', playingRole: 'Role 9' },
-        { id: 10, name: 'Player 10', fullName: 'Full Name 10', playingRole: 'Role 10' },
-        { id: 11, name: 'Player 11', fullName: 'Full Name 11', playingRole: 'Role 11' },
-        { id: 12, name: 'Player 12', fullName: 'Full Name 12', playingRole: 'Role 12' },
-        { id: 13, name: 'Player 13', fullName: 'Full Name 13', playingRole: 'Role 13' },
-        { id: 14, name: 'Player 14', fullName: 'Full Name 14', playingRole: 'Role 14' },
-        { id: 15, name: 'Player 15', fullName: 'Full Name 15', playingRole: 'Role 15' },
+        {id: 1, name: 'Player 1', fullName: 'Full Name 1', playingRole: 'Role 1'},
+        {id: 2, name: 'Player 2', fullName: 'Full Name 2', playingRole: 'Role 2'},
+        {id: 3, name: 'Player 3', fullName: 'Full Name 3', playingRole: 'Role 3'},
+        {id: 4, name: 'Player 4', fullName: 'Full Name 4', playingRole: 'Role 4'},
+        {id: 5, name: 'Player 5', fullName: 'Full Name 5', playingRole: 'Role 5'},
+        {id: 6, name: 'Player 6', fullName: 'Full Name 6', playingRole: 'Role 6'},
+        {id: 7, name: 'Player 7', fullName: 'Full Name 7', playingRole: 'Role 7'},
+        {id: 8, name: 'Player 8', fullName: 'Full Name 8', playingRole: 'Role 8'},
+        {id: 9, name: 'Player 9', fullName: 'Full Name 9', playingRole: 'Role 9'},
+        {id: 10, name: 'Player 10', fullName: 'Full Name 10', playingRole: 'Role 10'},
+        {id: 11, name: 'Player 11', fullName: 'Full Name 11', playingRole: 'Role 11'},
+        {id: 12, name: 'Player 12', fullName: 'Full Name 12', playingRole: 'Role 12'},
+        {id: 13, name: 'Player 13', fullName: 'Full Name 13', playingRole: 'Role 13'},
+        {id: 14, name: 'Player 14', fullName: 'Full Name 14', playingRole: 'Role 14'},
+        {id: 15, name: 'Player 15', fullName: 'Full Name 15', playingRole: 'Role 15'},
         // ... other players
     ];
 
@@ -58,20 +59,20 @@ const CRUDManagePlayers = () => {
                             className="bg-primary-red text-white px-3 py-1 font-semibold text-sm rounded-xl flex items-center hover:scale-105"
                             onClick={handleDelete}
                         >
-                            <FaMinus className="mr-1" />
+                            <FaMinus className="mr-1"/>
                             Delete
                         </button>
                         <Link
                             to="/add_players"
                             className="bg-primary-green text-white px-3 py-1 font-semibold rounded-xl flex items-center text-sm hover:scale-105 whitespace-nowrap"
                         >
-                            <FaPlus className="mr-1" />
+                            <FaPlus className="mr-1"/>
                             Add New Player
                         </Link>
                     </div>
                 </div>
 
-                <div className="bg-primary-ts_purple mx-auto rounded-b-3xl" style={{ paddingBottom: '75px' }}>
+                <div className="bg-primary-ts_purple mx-auto rounded-b-3xl" style={{paddingBottom: '75px'}}>
                     <div className="flex border-b border-gray-400 text-sm pt-4 pb-2">
                         <div className="w-8 ml-4 sm:ml-10 mt-3">
                             <input
@@ -87,7 +88,8 @@ const CRUDManagePlayers = () => {
                     </div>
                     {playersArray && playersArray.length > 0 ? (
                         playersArray.map((player) => (
-                            <div key={player.id} className="flex py-2 border-b lg:text-base sm:text-sm text-xs border-gray-300">
+                            <div key={player.id}
+                                 className="flex py-2 border-b lg:text-base sm:text-sm text-xs border-gray-300">
                                 <div className="w-8 ml-4 sm:ml-10 mt-1">
                                     <input
                                         type="checkbox"
@@ -99,8 +101,9 @@ const CRUDManagePlayers = () => {
                                 <div className="flex-1 mt-1 mr-2">{player.fullName}</div>
                                 <div className="flex-1 mt-1 ml-6">{player.playingRole}</div>
                                 <div className="flex-1 flex items-center justify-center mt-1">
-                                    <FaEdit className="text-xl cursor-pointer mr-2 hover:scale-105" />
-                                    <FaTrash className="text-xl cursor-pointer hover:scale-105" onClick={() => handleDeletePlayer(player.id)} />
+                                    <FaEdit className="text-xl cursor-pointer mr-2 hover:scale-105"/>
+                                    <FaTrash className="text-xl cursor-pointer hover:scale-105"
+                                             onClick={() => handleDeletePlayer(player.id)}/>
                                 </div>
                             </div>
                         ))

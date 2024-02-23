@@ -53,12 +53,13 @@ export const AuthProvider = ({children}) => {
             const res = await axios.post("http://localhost:8000/api/auth/login/", loginData)
             setIsLoading(false)
             const response = res.data;
-            const user = {"email": response.email, "names": response.names}
+            const user = {"email": response.email, "full_name": response.full_name}
             if (res.status === 200) {
                 setIsLoading(false);
                 localStorage.setItem('user', JSON.stringify(user))
                 localStorage.setItem('access', JSON.stringify(response.access_token))
                 localStorage.setItem('refresh', JSON.stringify(response.refresh_token))
+                localStorage.setItem('isSuperuser', JSON.stringify(response.is_superuser))
                 window.location.href = '/';
                 toast.success('Login Successful!')
             }
@@ -75,6 +76,7 @@ export const AuthProvider = ({children}) => {
             localStorage.removeItem('access')
             localStorage.removeItem('refresh')
             localStorage.removeItem('user')
+            localStorage.removeItem('isSuperuser')
             window.location.reload();
         }
     }
