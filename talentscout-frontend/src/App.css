@@ -31,7 +31,7 @@
     position: relative;
 }
 
-
+/*CORE FEATURE - RANGE SLIDER CSS */
 .multi-range-slider {
     display: flex;
     position: relative;
@@ -45,8 +45,6 @@
     -moz-user-select: none;
     user-select: none;
 }
-
-/*CORE FEATURE - RANGE SLIDER CSS */
 
 .multi-range-slider .thumb::before {
     content: '';
