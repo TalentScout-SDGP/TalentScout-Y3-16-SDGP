@@ -114,11 +114,10 @@ function Login() {
                                     <button type='submit'
                                             className="bg-primary-ts_blue text-white text-sm lg:text-base py-3 font-semibold rounded-lg">Login
                                     </button>
-                                    {/*Add Functionality*/}
-                                    <div
-                                        className="cursor-pointer text-center bg-primary-white text-primary-ts_blue text-sm lg:text-base py-3 font-semibold rounded-lg border border-solid border-primary-ts_blue">Forgot
+                                    <Link to='/forget_password'
+                                          className="cursor-pointer text-center bg-primary-white text-primary-ts_blue text-sm lg:text-base py-3 font-semibold rounded-lg border border-solid border-primary-ts_blue">Forgot
                                         Password
-                                    </div>
+                                    </Link>
                                 </div>
                             </div>
                         </form>
