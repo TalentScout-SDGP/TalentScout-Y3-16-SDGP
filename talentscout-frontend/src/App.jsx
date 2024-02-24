@@ -14,6 +14,8 @@ import Footer from "./components/shared/Footer.jsx";
 import AboutUsPage from "./pages/AboutUsPage.jsx";
 import OurTeamPage from "./pages/OurTeamPage.jsx";
 import VerifyOTPPage from "./pages/VerifyOTPPage.jsx";
+import ForgetPassword from "./components/ForgetPassword.jsx";
+import ResetPassword from "./components/ResetPassword.jsx";
 // FontAwesome Packages
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fab} from '@fortawesome/free-brands-svg-icons';
@@ -55,6 +57,8 @@ function App() {
                         <Route exact path='/about_us' element={<AboutUsPage/>}/>
                         <Route exact path='/our_team' element={<OurTeamPage/>}/>
                         <Route exact path='/verify_otp' element={<VerifyOTPPage/>}/>
+                        <Route path="/forget_password" element={<ForgetPassword/>}/>
+                        <Route path="/password-reset-confirm/:uid/:token" element={<ResetPassword/>}/>
                         {/*TODO End:Delete Following Routes & Page Files*/}
                         <Route exact path='/sulan' element={<FrontendSulan/>}/>
                         <Route exact path='/agrani' element={<FrontendAgrani/>}/>
