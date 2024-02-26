@@ -96,6 +96,27 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    const forgetPassword = async (email) => {
+        setIsLoading(true)
+        const res = await AxiosInstance.post('/auth/password-reset/', {"email": email})
+        if (res.status === 200) {
+            navigate('/')
+            toast.success("A link to reset your password has been sent to your email")
+        }
+        setIsLoading(false)
+    }
+
+    const resetPassword = async (data) => {
+        setIsLoading(true)
+        const res = await AxiosInstance.patch('auth/set-new-password/', data)
+        const response = res.data
+        if (res.status === 200) {
+            navigate('/login')
+            toast.success(response.message)
+        }
+        setIsLoading(false)
+    }
+
     const renderGoogleButton = () => {
         /* global google */
         if (typeof google !== 'undefined') {
@@ -126,6 +147,8 @@ export const AuthProvider = ({children}) => {
         signUp: signUp,
         verifyOTP: verifyOTP,
         login: login,
+        forgetPassword: forgetPassword,
+        resetPassword: resetPassword,
         logout: logout,
         renderGoogleButton: renderGoogleButton
     }
