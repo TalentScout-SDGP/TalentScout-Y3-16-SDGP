@@ -30,6 +30,33 @@ def getAllPlayers(request):
         return Response(player_data, status=status.HTTP_200_OK)
 
 
+@api_view(['GET'])
+def getPlayerById(request, player_id):
+    if request.method == 'GET':
+        try:
+            player = Player.objects.get(player_id=player_id)
+        except Player.DoesNotExist:
+            return Response({"error": "Player not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        player_serializer = PlayerSerializer(player).data
+        batting_stats = PlayerBatting.objects.filter(player=player)
+        bowling_stats = PlayerBowling.objects.filter(player=player)
+        wicketkeeping_stats = PlayerWicketKeeping.objects.filter(player=player)
+
+        batting_serializer = PlayerBattingSerializer(batting_stats, many=True).data
+        bowling_serializer = PlayerBowlingSerializer(bowling_stats, many=True).data
+        wicketkeeping_serializer = PlayerWicketKeepingSerializer(wicketkeeping_stats, many=True).data
+
+        player_data = {
+            'player': player_serializer,
+            'batting_stats': batting_serializer,
+            'bowling_stats': bowling_serializer,
+            'wicketkeeping_stats': wicketkeeping_serializer
+        }
+
+        return Response(player_data, status=status.HTTP_200_OK)
+
+
 @api_view(['POST'])
 def createPlayer(request):
     if request.method == 'POST':
