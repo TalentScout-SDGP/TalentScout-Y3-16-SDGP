@@ -4,9 +4,10 @@ function PlayerProfilesSearch() {
         <div className="font-poppins">
             <div className="md:container px-2">
                 <div
-                    className="bg-primary-ts_blue grid grid-cols-1 my-8 shadow-outer rounded-lg md:rounded-3xl px-10 sm:px-10 py-14">
-                    <div className="flex flex-col items-center justify-center">
-                        <p className="text-white text-base text-center lg:p-8 lg:text-lg pb-4">
+                    className="bg-primary-ts_blue grid grid-cols-1 my-8 shadow-outer rounded-lg md:rounded-3xl px-10 sm:px-10 py-8">
+                    <div className="flex flex-col items-center text-center justify-center">
+                        <p className="text-white text-lg lg:text-xl font-bold mb-2">View Player Profiles</p>
+                        <p className="text-gray-300 text-md lg:text-lg mb-10">
                             Delve into the world of cricket excellence. Explore in-depth player profiles and detailed statistics, uncovering the stories behind the stars of the game. Whether you're a seasoned fan or a curious newcomer, discover the insights and achievements that define cricket's finest players.
                         </p>
                         <input type="text"
@@ -20,11 +21,9 @@ function PlayerProfilesSearch() {
                             Search
                         </button>
                     </div>
-
                 </div>
             </div>
         </div>
-
     )
 
 }

@@ -62,7 +62,8 @@ function CRUDAddNewPlayer() {
                                             </select>
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                                                 width="22" height="26" viewBox="0 0 30 26" fill="none"
+                                                 width="22" height="26" viewBox="0 0 30 26"
+                                                 fill="Black" // Change fill value here
                                                  className="absolute top-2 right-2 cursor-pointer">
                                                 <rect width="30" height="26" fill="url(#pattern0)"/>
                                                 <defs>
@@ -159,7 +160,6 @@ function CRUDAddNewPlayer() {
                                 </div>
                             </div>
                         </form>
-
                         <div className="flex justify-left mt-4 pb-8 px-6">
                             <Link
                                 to=""
@@ -168,8 +168,6 @@ function CRUDAddNewPlayer() {
                                 Continue
                             </Link>
                         </div>
-
-
                     </div>
                 </div>
             </div>

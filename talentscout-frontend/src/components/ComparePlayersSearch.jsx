@@ -4,8 +4,19 @@ function ComparePlayersSearch() {
             <div className="md:container px-2 my-2">
                 <div
                     className="grid grid-cols-1 md:grid-cols-3 shadow-outer rounded-lg md:rounded-3xl bg-primary-ts_blue my-8 px-2 lg:px-10 py-8">
+                    <div className="md:block sm:hidden hidden col-span-3 text-center md:mb-6 mb-20">
+                        <p className="text-white text-lg lg:text-xl font-bold mb-2">Search and Compare Cricket
+                            Players</p>
+                        <p className="text-gray-300 text-md lg:text-lg">Explore more about your favourite players. Compare the talented players up against each other with an In depth analysis of profile details and statistics of all types across all types of formats.</p>
+                    </div>
                     <div
-                        className="bg-primary-ts_blue grid grid-cols-1 mt-2 mb-6 sm:mt-4 my-12 px-12 sm:px-10 order-1 md:order-1">
+                        className="bg-primary-ts_blue grid grid-cols-1 mt-2 mb-6 sm:mt-4 px-12 sm:px-10 order-1 md:order-1">
+                        <div className="2xl:hidden xl:hidden md:hidden sm:block col-span-3 text-center mb-6">
+                            <p className="text-white text-lg lg:text-xl font-bold mb-2">Search and Compare Cricket
+                                Players</p>
+                            <p className="text-gray-300 text-md lg:text-lg">Explore player profiles and compare their
+                                statistics to make informed decisions.</p>
+                        </div>
                         <div className="flex flex-col items-center justify-center">
                             <input type="text"
                                    className="w-48 xl:w-80 lg:w-64 md:w-48 bg-primary-ts_purple sm:w-80 py-1 md:py-2 rounded-2xl my-3 text-left ps-6 placeholder-text lg:text-md text-sm"
