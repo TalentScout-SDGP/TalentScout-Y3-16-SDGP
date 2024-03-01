@@ -1,12 +1,10 @@
-import {useState} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
-import AxiosInstance from "../utils/AxiosInstance.jsx";
-import {toast} from "react-toastify";
+import {useContext, useState} from 'react';
+import {useParams} from 'react-router-dom';
 import Spinner from "./shared/Spinner.jsx";
+import UserAuthContext from "../context/UserAuthContext.jsx";
 
 function ResetPassword() {
-    const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false)
+    const {isLoading, resetPassword} = useContext(UserAuthContext);
     const {uid, token} = useParams();
     const [newPasswords, setNewPasswords] = useState({
         password: '',
@@ -28,14 +26,7 @@ function ResetPassword() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (data) {
-            setIsLoading(true)
-            const res = await AxiosInstance.patch('auth/set-new-password/', data)
-            const response = res.data
-            if (res.status === 200) {
-                navigate('/login')
-                toast.success(response.message)
-                setIsLoading(false)
-            }
+            resetPassword(data)
         }
     }
 

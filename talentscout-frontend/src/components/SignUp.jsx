@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import Spinner from "./shared/Spinner.jsx";
 
 function SignUp() {
-    const {isLoading, responseError, signUp, renderGoogleButton} = useContext(UserAuthContext);
+    const {isLoading, responseError, signUp, renderGoogleButton, signInWithGithub} = useContext(UserAuthContext);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
     const [isValidPassword, setIsValidPassword] = useState(false);
@@ -254,24 +254,19 @@ function SignUp() {
                             <p className="w-1/3 text-center text-xs sm:text-base">Or Sign up with</p>
                             <div className="border-t border-black h-0 w-1/3"></div>
                         </div>
-                        {/*<div className="flex flex-wrap mt-8 mb-2">*/}
-                        {/*    <button*/}
-                        {/*        className="block w-full bg-white text-primary-ts_blue text-sm lg:text-md font-semibold border border-black rounded-lg py-3 px-4 mt-1 mb-3 shadow-signup leading-tight">*/}
-                        {/*        <img src={import.meta.env.BASE_URL + 'user-google.png'} alt="google-logo"*/}
-                        {/*             className="inline me-2"></img> Sign up*/}
-                        {/*        with Google*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        <div className="flex flex-wrap mt-8 mb-2">
-                            <div id="signInDiv" className="w-full"></div>
-                        </div>
-                        <div className="flex flex-wrap mb-6">
-                            <button
-                                className="block w-full bg-white text-primary-ts_blue text-sm lg:text-md font-semibold border border-black rounded-lg py-3 px-4 mt-1 mb-3 shadow-signup leading-tight">
-                                <img src={import.meta.env.BASE_URL + 'user-github.png'} alt="google-logo"
-                                     className="inline me-2"></img>Sign up with
-                                Github
-                            </button>
+                        <div
+                            className="grid grid-cols-1 2xl:grid-cols-2 gap-y-4 2xl:gap-y-0 items-center justify-center my-6">
+                            <div className="flex w-full">
+                                <div id="signInDiv" className="w-[280px]"></div>
+                            </div>
+                            <div className="flex w-full">
+                                <button onClick={signInWithGithub}
+                                        className="relative w-[280px] border border-gray-300 rounded-3xl py-2.5 bg-white text-sm font-weight-normal flex items-center justify-center">
+                                    <img src={import.meta.env.BASE_URL + 'user-github.png'} alt="github-logo"
+                                         className="align-center absolute left-3"></img>
+                                    <span>Sign In with Github</span>
+                                </button>
+                            </div>
                         </div>
                         <div className="text-sm lg:text-md">
                             Already have an account?&nbsp;

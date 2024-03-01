@@ -1,5 +1,5 @@
-import {createContext, useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {createContext, useState, useEffect} from 'react'
+import {useNavigate, useSearchParams} from 'react-router-dom'
 import axios from "axios";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
@@ -12,6 +12,7 @@ export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false)
     const [responseError, setResponseError] = useState('')
     const navigate = useNavigate()
+    const [searchParams] = useSearchParams()
 
     const signUp = async (formData) => {
         setIsLoading(true);
@@ -81,6 +82,27 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    const forgetPassword = async (email) => {
+        setIsLoading(true)
+        const res = await AxiosInstance.post('/auth/password-reset/', {"email": email})
+        if (res.status === 200) {
+            navigate('/')
+            toast.success("A link to reset your password has been sent to your email")
+        }
+        setIsLoading(false)
+    }
+
+    const resetPassword = async (data) => {
+        setIsLoading(true)
+        const res = await AxiosInstance.patch('auth/set-new-password/', data)
+        const response = res.data
+        if (res.status === 200) {
+            navigate('/login')
+            toast.success(response.message)
+        }
+        setIsLoading(false)
+    }
+
     const googleAuth = async (response) => {
         const payload = response.credential
         const server_res = await axios.post("http://localhost:8000/api/auth/google/", {'access_token': payload})
@@ -109,10 +131,10 @@ export const AuthProvider = ({children}) => {
                 {
                     theme: "outline",
                     size: "large",
-                    text: "continue_with",
+                    text: "signin_with",
                     shape: "circle",
                     width: "280",
-                    locale: "en"
+                    locale: "en",
                 }
             );
         } else {
@@ -120,14 +142,52 @@ export const AuthProvider = ({children}) => {
         }
     };
 
+    const signInWithGithub = () => {
+        window.location.assign(`https://github.com/login/oauth/authorize/?client_id=${import.meta.env.VITE_GITHUB_ID}`)
+    }
+
+    const sendGithubCode = async () => {
+        if (searchParams) {
+            try {
+                const qcode = searchParams.get('code')
+                const response = await AxiosInstance.post('/auth/github/', {'code': qcode})
+                const result = response.data
+                if (response.status === 200) {
+                    const user = {
+                        'email': result.email,
+                        'names': result.full_name
+                    }
+                    localStorage.setItem('access', JSON.stringify(result.access_token))
+                    localStorage.setItem('refresh', JSON.stringify(result.refresh_token))
+                    localStorage.setItem('user', JSON.stringify(user))
+                    navigate('/')
+                    toast.success("Login Successful!")
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
+
+    let code = searchParams.get('code')
+    useEffect(() => {
+        if (code) {
+            sendGithubCode()
+        }
+    }, [code])
+
+
     const contextData = {
         isLoading: isLoading,
         responseError: responseError,
         signUp: signUp,
         verifyOTP: verifyOTP,
         login: login,
+        forgetPassword: forgetPassword,
+        resetPassword: resetPassword,
         logout: logout,
-        renderGoogleButton: renderGoogleButton
+        renderGoogleButton: renderGoogleButton,
+        signInWithGithub: signInWithGithub
     }
 
     return (

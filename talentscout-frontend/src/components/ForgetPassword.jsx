@@ -1,22 +1,16 @@
-import {useState} from 'react'
-import AxiosInstance from "../utils/AxiosInstance.jsx";
-import {toast} from "react-toastify";
+import {useContext, useState} from 'react'
 import Spinner from "./shared/Spinner.jsx";
+import UserAuthContext from "../context/UserAuthContext.jsx";
 
 const ForgetPassword = () => {
+    const {isLoading, forgetPassword} = useContext(UserAuthContext);
     const [email, setEmail] = useState("")
-    const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (email) {
-            setIsLoading(true)
-            const res = await AxiosInstance.post('/auth/password-reset/', {"email": email})
-            if (res.status === 200) {
-                toast.success("A link to reset your password has been sent to your email")
-            }
+            forgetPassword(email)
             setEmail("")
-            setIsLoading(false)
         }
     }
 
