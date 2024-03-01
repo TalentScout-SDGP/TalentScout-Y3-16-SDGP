@@ -1,5 +1,5 @@
-import {createContext, useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {createContext, useState, useEffect} from 'react'
+import {useNavigate, useSearchParams} from 'react-router-dom'
 import axios from "axios";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
@@ -12,6 +12,7 @@ export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false)
     const [responseError, setResponseError] = useState('')
     const navigate = useNavigate()
+    const [searchParams] = useSearchParams()
 
     const signUp = async (formData) => {
         setIsLoading(true);
@@ -81,21 +82,6 @@ export const AuthProvider = ({children}) => {
         }
     }
 
-    const googleAuth = async (response) => {
-        const payload = response.credential
-        const server_res = await axios.post("http://localhost:8000/api/auth/google/", {'access_token': payload})
-        const user = {
-            "email": server_res.data.email,
-            "full name": server_res.data.full_name
-        }
-        if (server_res.status === 200) {
-            localStorage.setItem('user', JSON.stringify(user))
-            localStorage.setItem('access', JSON.stringify(server_res.data.access_token))
-            localStorage.setItem('refresh', JSON.stringify(server_res.data.refresh_token))
-            window.location.href = '/';
-        }
-    }
-
     const forgetPassword = async (email) => {
         setIsLoading(true)
         const res = await AxiosInstance.post('/auth/password-reset/', {"email": email})
@@ -117,6 +103,21 @@ export const AuthProvider = ({children}) => {
         setIsLoading(false)
     }
 
+    const googleAuth = async (response) => {
+        const payload = response.credential
+        const server_res = await axios.post("http://localhost:8000/api/auth/google/", {'access_token': payload})
+        const user = {
+            "email": server_res.data.email,
+            "full name": server_res.data.full_name
+        }
+        if (server_res.status === 200) {
+            localStorage.setItem('user', JSON.stringify(user))
+            localStorage.setItem('access', JSON.stringify(server_res.data.access_token))
+            localStorage.setItem('refresh', JSON.stringify(server_res.data.refresh_token))
+            window.location.href = '/';
+        }
+    }
+
     const renderGoogleButton = () => {
         /* global google */
         if (typeof google !== 'undefined') {
@@ -130,16 +131,51 @@ export const AuthProvider = ({children}) => {
                 {
                     theme: "outline",
                     size: "large",
-                    text: "continue_with",
+                    text: "signin_with",
                     shape: "circle",
                     width: "280",
-                    locale: "en"
+                    locale: "en",
                 }
             );
         } else {
             console.error("Google API is not yet loaded.");
         }
     };
+
+    const signInWithGithub = () => {
+        window.location.assign(`https://github.com/login/oauth/authorize/?client_id=${import.meta.env.VITE_GITHUB_ID}`)
+    }
+
+    const sendGithubCode = async () => {
+        if (searchParams) {
+            try {
+                const qcode = searchParams.get('code')
+                const response = await AxiosInstance.post('/auth/github/', {'code': qcode})
+                const result = response.data
+                if (response.status === 200) {
+                    const user = {
+                        'email': result.email,
+                        'names': result.full_name
+                    }
+                    localStorage.setItem('access', JSON.stringify(result.access_token))
+                    localStorage.setItem('refresh', JSON.stringify(result.refresh_token))
+                    localStorage.setItem('user', JSON.stringify(user))
+                    navigate('/')
+                    toast.success("Login Successful!")
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
+
+    let code = searchParams.get('code')
+    useEffect(() => {
+        if (code) {
+            sendGithubCode()
+        }
+    }, [code])
+
 
     const contextData = {
         isLoading: isLoading,
@@ -150,7 +186,8 @@ export const AuthProvider = ({children}) => {
         forgetPassword: forgetPassword,
         resetPassword: resetPassword,
         logout: logout,
-        renderGoogleButton: renderGoogleButton
+        renderGoogleButton: renderGoogleButton,
+        signInWithGithub: signInWithGithub
     }
 
     return (
