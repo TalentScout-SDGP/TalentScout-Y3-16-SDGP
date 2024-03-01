@@ -6,6 +6,22 @@ from .serializers import (PlayerSerializer, PlayerBattingSerializer, PlayerBowli
 from .models import Player, PlayerBatting, PlayerBowling, PlayerWicketKeeping
 
 
+def getPlayerStats(player):
+    batting_stats = PlayerBatting.objects.filter(player=player)
+    bowling_stats = PlayerBowling.objects.filter(player=player)
+    wicketkeeping_stats = PlayerWicketKeeping.objects.filter(player=player)
+
+    batting_serializer = PlayerBattingSerializer(batting_stats, many=True).data
+    bowling_serializer = PlayerBowlingSerializer(bowling_stats, many=True).data
+    wicketkeeping_serializer = PlayerWicketKeepingSerializer(wicketkeeping_stats, many=True).data
+
+    return {
+        'batting_stats': batting_serializer,
+        'bowling_stats': bowling_serializer,
+        'wicketkeeping_stats': wicketkeeping_serializer
+    }
+
+
 @api_view(['GET'])
 def getAllPlayers(request):
     if request.method == 'GET':
@@ -14,19 +30,9 @@ def getAllPlayers(request):
 
         for player in players:
             player_serializer = PlayerSerializer(player).data
-            batting_stats = PlayerBatting.objects.filter(player=player)
-            bowling_stats = PlayerBowling.objects.filter(player=player)
-            wicketkeeping_stats = PlayerWicketKeeping.objects.filter(player=player)
-
-            batting_serializer = PlayerBattingSerializer(batting_stats, many=True).data
-            bowling_serializer = PlayerBowlingSerializer(bowling_stats, many=True).data
-            wicketkeeping_serializer = PlayerWicketKeepingSerializer(wicketkeeping_stats, many=True).data
-
-            player_serializer['batting_stats'] = batting_serializer
-            player_serializer['bowling_stats'] = bowling_serializer
-            player_serializer['wicketkeeping_stats'] = wicketkeeping_serializer
-
+            player_serializer.update(getPlayerStats(player))
             player_data.append(player_serializer)
+
         return Response(player_data, status=status.HTTP_200_OK)
 
 
@@ -39,20 +45,8 @@ def getPlayerById(request, player_id):
             return Response({"error": "Player not found"}, status=status.HTTP_404_NOT_FOUND)
 
         player_serializer = PlayerSerializer(player).data
-        batting_stats = PlayerBatting.objects.filter(player=player)
-        bowling_stats = PlayerBowling.objects.filter(player=player)
-        wicketkeeping_stats = PlayerWicketKeeping.objects.filter(player=player)
-
-        batting_serializer = PlayerBattingSerializer(batting_stats, many=True).data
-        bowling_serializer = PlayerBowlingSerializer(bowling_stats, many=True).data
-        wicketkeeping_serializer = PlayerWicketKeepingSerializer(wicketkeeping_stats, many=True).data
-
-        player_data = {
-            'player': player_serializer,
-            'batting_stats': batting_serializer,
-            'bowling_stats': bowling_serializer,
-            'wicketkeeping_stats': wicketkeeping_serializer
-        }
+        player_data = {'player': player_serializer}
+        player_data.update(getPlayerStats(player))
 
         return Response(player_data, status=status.HTTP_200_OK)
 
