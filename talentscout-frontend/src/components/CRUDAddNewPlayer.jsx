@@ -15,7 +15,7 @@ function CRUDAddNewPlayer() {
                     </div>
                     <div className="lg:pt-8 lg:px-8 text-xl">
                         <form className="w-full py-4 lg:py-8">
-                            <div className="lg:grid lg:grid-cols-2 lg:pt-8 px-6 lg:px-8">
+                            <div className="lg:grid lg:grid-cols-2 lg:pt-0 px-6 lg:px-8">
                                 {/*Format*/}
                                 <div className="col-span-2 mb-5">
                                     <label htmlFor="large-input"
@@ -27,7 +27,7 @@ function CRUDAddNewPlayer() {
                                     <label htmlFor="large-input"
                                            className="block mb-2 text-base font-semibold">Also Known As : </label>
                                     <input type="text" id="large-input"
-                                           className="bg-gray-50 border border-black text-black text-sm rounded-lg block w-full p-1.5"/>
+                                           className="bg-gray-50 border border-black text-black text-sm rounded-lg block mb-6 w-full p-1.5"/>
                                 </div>
                                 {/*Playing Role*/}
                                 <div className="lg:grid lg:grid-cols-2 py-4 text-xs font-semibold">
