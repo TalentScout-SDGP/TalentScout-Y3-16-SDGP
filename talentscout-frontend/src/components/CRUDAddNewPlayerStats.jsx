@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 
-function AddNewPlayersStats() {
+function CRUDAddNewPlayerStats() {
     const [matches, setMatches] = useState('');
     const [innings, setInnings] = useState('');
     const [highestScore, setHighestScore] = useState('');
@@ -1999,5 +1999,5 @@ function AddNewPlayersStats() {
 }
 
 
-export default AddNewPlayersStats
+export default CRUDAddNewPlayerStats
 
