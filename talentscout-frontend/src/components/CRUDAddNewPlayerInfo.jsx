@@ -4,35 +4,35 @@ function CRUDAddNewPlayerInfo() {
             <div className="md:container mt-9 mb-16 px-2">
                 <div className="shadow-outer bg-primary-ts_purple rounded-b-lg">
                     <div
-                        className="flex items-center justify-between px-4 py-2 bg-primary-ts_blue text-white text-lg font-semibold rounded-t-lg">
-                        <p>Add New Player</p>
+                        className="flex items-center justify-between px-4 py-2 bg-primary-ts_blue text-white font-semibold rounded-t-lg">
+                        <p className="text-md lg:text-lg">Add New Player</p>
                         <img src={import.meta.env.BASE_URL + 'plus.png'} alt="plus"/>
                     </div>
                     <div
                         className="bg-primary-ts_purple rounded-b-lg font-semibold py-8 px-2 sm:px-4 md:px-6 lg:px-10 xl:px-12">
                         <form>
                             <div className="flex flex-col gap-y-2">
-                                <label>Full Name: </label>
+                                <label className="text-sm md:text-md lg:text-base">Full Name: </label>
                                 <input type="text"
-                                       className="w-full p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
+                                       className="w-full p-0.5 md:p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
                             </div>
                             <div className="flex flex-col gap-y-2">
-                                <label>Also Known As: </label>
+                                <label className="text-sm md:text-md lg:text-base">Also Known As: </label>
                                 <input type="text"
-                                       className="w-full p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
+                                       className="w-full p-0.5 md:p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
                             </div>
                             <div
                                 className="grid grid-cols-1 xl:grid-cols-2 gap-x-12 gap-y-6 lg:gap-y-10 justify-center items-center mb-3 lg:mt-4">
                                 <div className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center">
-                                    <label className="w-full">Birth Date: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Birth Date: </label>
                                     <input type="date"
-                                           className="w-full p-1 text-2 border-2 border-black rounded-lg shadow-md"/>
+                                           className="w-full text-sm md:text-md lg:text-base p-1 border-2 border-black rounded-lg shadow-md"/>
                                 </div>
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
-                                    <label className="w-full">Playing Role: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Playing Role: </label>
                                     <select name="playing_role"
-                                            className="w-full p-1 text-2 border-2 border-black rounded-lg shadow-md"
+                                            className="w-full p-1 text-sm md:text-md lg:text-base border-2 border-black rounded-lg shadow-md focus:outline-none"
                                             defaultValue="">
                                         <option value="" disabled>Select Playing Role</option>
                                         <option>Batsman</option>
@@ -43,7 +43,7 @@ function CRUDAddNewPlayerInfo() {
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                          xmlnsXlink="http://www.w3.org/1999/xlink"
                                          width="22" height="26" viewBox="0 0 30 26" fill="none"
-                                         className="absolute top-9 xl:top-1 right-1 cursor-pointer">
+                                         className="absolute top-8 md:top-9 xl:top-1 right-1 cursor-pointer">
                                         <rect width="30" height="26" fill="url(#pattern0)"/>
                                         <defs>
                                             <pattern id="pattern0" patternContentUnits="objectBoundingBox"
@@ -59,9 +59,9 @@ function CRUDAddNewPlayerInfo() {
                                 </div>
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
-                                    <label className="w-full">Batting Style: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Batting Style: </label>
                                     <select name="playing_role"
-                                            className="w-full p-1 text-2 border-2 border-black rounded-lg shadow-md"
+                                            className="w-full text-sm md:text-md lg:text-base p-1 text-2 border-2 border-black rounded-lg shadow-md focus:outline-none"
                                             defaultValue="">
                                         <option value="" disabled>Select Batting Style</option>
                                         <option>Left Hand</option>
@@ -70,7 +70,7 @@ function CRUDAddNewPlayerInfo() {
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                          xmlnsXlink="http://www.w3.org/1999/xlink"
                                          width="22" height="26" viewBox="0 0 30 26" fill="none"
-                                         className="absolute top-9 xl:top-1 right-1 cursor-pointer">
+                                         className="absolute top-8 md:top-9 xl:top-1 right-1 cursor-pointer">
                                         <rect width="30" height="26" fill="url(#pattern0)"/>
                                         <defs>
                                             <pattern id="pattern0" patternContentUnits="objectBoundingBox"
@@ -86,9 +86,9 @@ function CRUDAddNewPlayerInfo() {
                                 </div>
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
-                                    <label className="w-full">Bowling Style: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Bowling Style: </label>
                                     <select name="playing_role"
-                                            className="w-full p-1 text-2 border-2 border-black rounded-lg shadow-md"
+                                            className="w-full text-sm md:text-md lg:text-base p-1 text-2 border-2 border-black rounded-lg shadow-md focus:outline-none"
                                             defaultValue="">
                                         <option value="" disabled>Select Bowling Style</option>
                                         <option>Left arm Fast</option>
@@ -104,7 +104,7 @@ function CRUDAddNewPlayerInfo() {
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                          xmlnsXlink="http://www.w3.org/1999/xlink"
                                          width="22" height="26" viewBox="0 0 30 26" fill="none"
-                                         className="absolute top-9 xl:top-1 right-1 cursor-pointer">
+                                         className="absolute top-8 md:top-9 xl:top-1 right-1 cursor-pointer">
                                         <rect width="30" height="26" fill="url(#pattern0)"/>
                                         <defs>
                                             <pattern id="pattern0" patternContentUnits="objectBoundingBox"
