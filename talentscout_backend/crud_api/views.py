@@ -102,3 +102,67 @@ def createPlayer(request):
 def setUniqueID(player_id, playing_format):
     formats = {'Test': 100, 'ODI': 200, 'T20': 300}
     return int(str(player_id) + str(formats[playing_format]))
+
+
+@api_view(['PUT'])
+def updatePlayer(request, player_id):
+    try:
+        player_instance = Player.objects.get(player_id=player_id)
+    except Player.DoesNotExist:
+        return Response({"error": "Player not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        player_serializer = PlayerSerializer(player_instance, data=request.data)
+        if player_serializer.is_valid():
+            player_serializer.save()
+
+            batting_data_list = request.data.get('batting_data', [])
+            bowling_data_list = request.data.get('bowling_data', [])
+            wicketkeeping_data_list = request.data.get('wicketkeeping_data', [])
+
+            for batting_data in batting_data_list:
+                try:
+                    batting_instance = PlayerBatting.objects.get(
+                        batting_id=setUniqueID(player_id, batting_data['format']))
+                    batting_data['player'] = player_id
+                    batting_serializer = PlayerBattingSerializer(batting_instance, data=batting_data)
+                except PlayerBatting.DoesNotExist:
+                    batting_serializer = PlayerBattingSerializer(data=batting_data)
+
+                if batting_serializer.is_valid():
+                    batting_serializer.save()
+                else:
+                    print(batting_serializer.errors)
+
+            for bowling_data in bowling_data_list:
+                try:
+                    bowling_instance = PlayerBowling.objects.get(
+                        bowling_id=setUniqueID(player_id, bowling_data['format']))
+                    bowling_data['player'] = player_id
+                    bowling_serializer = PlayerBowlingSerializer(bowling_instance, data=bowling_data)
+                except PlayerBowling.DoesNotExist:
+                    bowling_serializer = PlayerBowlingSerializer(data=bowling_data)
+
+                if bowling_serializer.is_valid():
+                    bowling_serializer.save()
+                else:
+                    print(bowling_serializer.errors)
+
+            for wicketkeeping_data in wicketkeeping_data_list:
+                try:
+                    wicketkeeping_instance = PlayerWicketKeeping.objects.get(
+                        wicketkeeping_id=setUniqueID(player_id, wicketkeeping_data['format']))
+                    wicketkeeping_data['player'] = player_id
+                    wicketkeeping_serializer = PlayerWicketKeepingSerializer(wicketkeeping_instance,
+                                                                             data=wicketkeeping_data)
+                except PlayerWicketKeeping.DoesNotExist:
+                    wicketkeeping_serializer = PlayerWicketKeepingSerializer(data=wicketkeeping_data)
+
+                if wicketkeeping_serializer.is_valid():
+                    wicketkeeping_serializer.save()
+                else:
+                    print(wicketkeeping_serializer.errors)
+
+            return Response(player_serializer.data, status=status.HTTP_200_OK)
+
+        return Response(player_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
