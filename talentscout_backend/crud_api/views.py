@@ -133,3 +133,19 @@ def updatePlayer(request, player_id):
                     batting_serializer.save()
                 else:
                     print(batting_serializer.errors)
+
+            for bowling_data in bowling_data_list:
+                try:
+                    bowling_instance = PlayerBowling.objects.get(
+                        bowling_id=setUniqueID(player_id, bowling_data['format']))
+                    bowling_data['player'] = player_id
+                    bowling_serializer = PlayerBowlingSerializer(bowling_instance, data=bowling_data)
+                except PlayerBowling.DoesNotExist:
+                    bowling_serializer = PlayerBowlingSerializer(data=bowling_data)
+
+                if bowling_serializer.is_valid():
+                    bowling_serializer.save()
+                else:
+                    print(bowling_serializer.errors)
+
+        return Response(player_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
