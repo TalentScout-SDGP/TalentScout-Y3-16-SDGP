@@ -102,3 +102,11 @@ def createPlayer(request):
 def setUniqueID(player_id, playing_format):
     formats = {'Test': 100, 'ODI': 200, 'T20': 300}
     return int(str(player_id) + str(formats[playing_format]))
+
+
+@api_view(['PUT'])
+def updatePlayer(request, player_id):
+    try:
+        player_instance = Player.objects.get(player_id=player_id)
+    except Player.DoesNotExist:
+        return Response({"error": "Player not found"}, status=status.HTTP_404_NOT_FOUND)
