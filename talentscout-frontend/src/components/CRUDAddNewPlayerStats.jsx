@@ -118,33 +118,33 @@ function CRUDAddNewPlayerStats() {
 
                 <div className="shadow-xl bg-primary-ts_purple my-12 lg:w-full rounded-lg px-7 lg:px-16 pt-12 py-2">
                     <div
-                        className="shadow-outer section-header flex justify-center gap-x-2 sm:gap-x-0 bg-primary-Tab_color w-fit mx-auto mb-5 py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
+                        className="shadow-outer section-header flex justify-center gap-x-2 sm:gap-x-0 bg-primary-Tab_color w-fit mx-auto mb-5 py-1 px-2 rounded-3xl font-semibold text-sm md:text-md lg:text-base">
                         <button onClick={() => handleMainTabChange('Test')}
-                                className={activeMainTab === 'Test' ? 'active text-sm sm:text-lg font-semibold bg-primary-ts_blue text-white py-1 px-4 sm:px-8 rounded-2xl' : 'font-semibold text-sm sm:text-lg py-1 px-4 sm:px-8'}>
+                                className={activeMainTab === 'Test' ? 'active font-semibold bg-primary-ts_blue text-white py-1 px-4 sm:px-8 rounded-2xl' : 'font-semibold py-1 px-4 sm:px-8'}>
                             Test
                         </button>
                         <button onClick={() => handleMainTabChange('ODI')}
-                                className={activeMainTab === 'ODI' ? 'active text-sm sm:text-lg font-semibold bg-primary-ts_blue text-white py-1 px-4 sm:px-8 rounded-2xl' : 'font-semibold text-sm sm:text-lg py-1 px-4 sm:px-8'}>
+                                className={activeMainTab === 'ODI' ? 'active font-semibold bg-primary-ts_blue text-white py-1 px-4 sm:px-8 rounded-2xl' : 'font-semibold py-1 px-4 sm:px-8'}>
                             ODI
                         </button>
                         <button onClick={() => handleMainTabChange('T20')}
-                                className={activeMainTab === 'T20' ? 'active text-sm sm:text-lg font-semibold bg-primary-ts_blue text-white py-1 px-4 sm:px-8 rounded-2xl' : 'font-semibold text-sm sm:text-lg py-1 px-4 sm:px-8'}>
+                                className={activeMainTab === 'T20' ? 'active font-semibold bg-primary-ts_blue text-white py-1 px-4 sm:px-8 rounded-2xl' : 'font-semibold py-1 px-4 sm:px-8'}>
                             T20
                         </button>
                     </div>
 
                     <div
-                        className="shadow-lg tab-header flex justify-center gap-x-2 sm:gap-x- bg-primary-Tab_color w-fit mx-auto py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
+                        className="shadow-lg tab-header flex justify-center gap-x-2 bg-primary-Tab_color w-fit mx-auto py-1 px-2 rounded-3xl font-semibold text-sm md:text-md lg:text-base">
                         <button onClick={() => handleSubTabChange('Batting')}
-                                className={activeSubTab === 'Batting' ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
+                                className={activeSubTab === 'Batting' ? 'active bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'py-1 px-2 sm:px-4 md:px-8'}>
                             Batting
                         </button>
                         <button onClick={() => handleSubTabChange('Bowling')}
-                                className={activeSubTab === 'Bowling' ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
+                                className={activeSubTab === 'Bowling' ? 'active bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'py-1 px-2 sm:px-4 md:px-8'}>
                             Bowling
                         </button>
                         <button onClick={() => handleSubTabChange('WicketKeeping')}
-                                className={activeSubTab === 'WicketKeeping' ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
+                                className={activeSubTab === 'WicketKeeping' ? 'active bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'py-1 px-2 sm:px-4 md:px-8'}>
                             WicketKeeping
                         </button>
                     </div>
@@ -155,205 +155,239 @@ function CRUDAddNewPlayerStats() {
                                 <div>
                                     {activeSubTab === 'Batting' &&
                                         <div
-                                            className="grid grid-cols-2 gap-x-8 gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Matches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Matches:</label>
                                                 <input type="text" name="test_batting_matches"
                                                        value={formValues.test_batting_matches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Runs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Runs:</label>
                                                 <input type="text" name="test_batting_runs"
                                                        value={formValues.test_batting_runs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Innings:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Innings:</label>
                                                 <input type="text" name="test_batting_innings"
                                                        value={formValues.test_batting_innings}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Not Outs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Not
+                                                    Outs:</label>
                                                 <input type="text" name="test_batting_not_outs"
                                                        value={formValues.test_batting_not_outs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Highest Score:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Highest
+                                                    Score:</label>
                                                 <input type="text" name="test_batting_highest_score"
                                                        value={formValues.test_batting_highest_score}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Average:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Average:</label>
                                                 <input type="text" name="test_batting_average"
                                                        value={formValues.test_batting_average}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Balls Faced:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Balls
+                                                    Faced:</label>
                                                 <input type="text" name="test_batting_balls_faced"
                                                        value={formValues.test_batting_balls_faced}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Strike Rate:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Strike
+                                                    Rate:</label>
                                                 <input type="text" name="test_batting_strike_rate"
                                                        value={formValues.test_batting_strike_rate}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Centuries:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Centuries:</label>
                                                 <input type="text" name="test_batting_centuries"
                                                        value={formValues.test_batting_centuries}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Fifties:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Fifties:</label>
                                                 <input type="text" name="test_batting_fities"
                                                        value={formValues.test_batting_fifties}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Fours:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Fours:</label>
                                                 <input type="text" name="test_batting_fours"
                                                        value={formValues.test_batting_fours}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Sixes:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Sixes:</label>
                                                 <input type="text" name="test_batting_sixes"
                                                        value={formValues.test_batting_sixes}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                         </div>
                                     }
                                     {activeSubTab === 'Bowling' &&
                                         <div
-                                            className="grid grid-cols-2 gap-x-8 gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Matches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Matches:</label>
                                                 <input type="text" name="test_bowling_matches"
                                                        value={formValues.test_bowling_matches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Wickets:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Wickets:</label>
                                                 <input type="text" name="test_bowling_wickets"
                                                        value={formValues.test_bowling_wickets}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Innings:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Innings:</label>
                                                 <input type="text" name="test_bowling_innings"
                                                        value={formValues.test_bowling_innings}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Overs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Overs:</label>
                                                 <input type="text" name="test_bowling_overs"
                                                        value={formValues.test_bowling_overs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Runs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Runs:</label>
                                                 <input type="text" name="test_bowling_runs"
                                                        value={formValues.test_bowling_runs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">BBI:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">BBI:</label>
                                                 <input type="text" name="test_bowling_bbi"
                                                        value={formValues.test_bowling_bbi}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Average:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Average:</label>
                                                 <input type="text" name="test_bowling_average"
                                                        value={formValues.test_bowling_average}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Econ:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Econ:</label>
                                                 <input type="text" name="test_bowling_econ"
                                                        value={formValues.test_bowling_econ}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Strike Rate:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Strike
+                                                    Rate:</label>
                                                 <input type="text" name="test_bowling_strike_rate"
                                                        value={formValues.test_bowling_strike_rate}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Four Wickets:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Four
+                                                    Wickets:</label>
                                                 <input type="text" name="test_bowling_four_wickets"
                                                        value={formValues.test_bowling_four_wickets}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Five Wickets:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Five
+                                                    Wickets:</label>
                                                 <input type="text" name="test_bowling_five_wickets"
                                                        value={formValues.test_bowling_five_wickets}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                         </div>
                                     }
-                                    {activeSubTab === 'WicketKeeper' &&
+                                    {activeSubTab === 'WicketKeeping' &&
                                         <div
-                                            className="grid grid-cols-2 gap-x-8 gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Matches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Matches:</label>
                                                 <input type="text" name="test_wicketkeeping_matches"
                                                        value={formValues.test_wicketkeeping_matches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Innings:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Innings:</label>
                                                 <input type="text" name="test_wicketkeeping_innings"
                                                        value={formValues.test_wicketkeeping_innings}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Catches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Catches:</label>
                                                 <input type="text" name="test_wicketkeeping_catches"
                                                        value={formValues.test_wicketkeeping_catches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Stumping:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Stumping:</label>
                                                 <input type="text" name="test_wicketkeeping_stumping"
                                                        value={formValues.test_wicketkeeping_stumping}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                         </div>
                                     }
@@ -363,205 +397,239 @@ function CRUDAddNewPlayerStats() {
                                 <div>
                                     {activeSubTab === 'Batting' &&
                                         <div
-                                            className="grid grid-cols-2 gap-x-8 gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Matches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Matches:</label>
                                                 <input type="text" name="odi_batting_matches"
                                                        value={formValues.odi_batting_matches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Runs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Runs:</label>
                                                 <input type="text" name="odi_batting_runs"
                                                        value={formValues.odi_batting_runs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Innings:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Innings:</label>
                                                 <input type="text" name="odi_batting_innings"
                                                        value={formValues.odi_batting_innings}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Not Outs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Not
+                                                    Outs:</label>
                                                 <input type="text" name="odi_batting_not_outs"
                                                        value={formValues.odi_batting_not_outs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Highest Score:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Highest
+                                                    Score:</label>
                                                 <input type="text" name="odi_batting_highest_score"
                                                        value={formValues.odi_batting_highest_score}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Average:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Average:</label>
                                                 <input type="text" name="odi_batting_average"
                                                        value={formValues.odi_batting_average}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Balls Faced:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Balls
+                                                    Faced:</label>
                                                 <input type="text" name="odi_batting_balls_faced"
                                                        value={formValues.odi_batting_balls_faced}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Strike Rate:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Strike
+                                                    Rate:</label>
                                                 <input type="text" name="odi_batting_strike_rate"
                                                        value={formValues.odi_batting_strike_rate}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Centuries:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Centuries:</label>
                                                 <input type="text" name="odi_batting_centuries"
                                                        value={formValues.odi_batting_centuries}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Fifties:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Fifties:</label>
                                                 <input type="text" name="odi_batting_fities"
                                                        value={formValues.odi_batting_fifties}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Fours:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Fours:</label>
                                                 <input type="text" name="odi_batting_fours"
                                                        value={formValues.odi_batting_fours}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Sixes:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Sixes:</label>
                                                 <input type="text" name="odi_batting_sixes"
                                                        value={formValues.odi_batting_sixes}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                         </div>
                                     }
                                     {activeSubTab === 'Bowling' &&
                                         <div
-                                            className="grid grid-cols-2 gap-x-8 gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Matches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Matches:</label>
                                                 <input type="text" name="odi_bowling_matches"
                                                        value={formValues.odi_bowling_matches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Wickets:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Wickets:</label>
                                                 <input type="text" name="odi_bowling_wickets"
                                                        value={formValues.odi_bowling_wickets}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Innings:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Innings:</label>
                                                 <input type="text" name="odi_bowling_innings"
                                                        value={formValues.odi_bowling_innings}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Overs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Overs:</label>
                                                 <input type="text" name="odi_bowling_overs"
                                                        value={formValues.odi_bowling_overs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Runs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Runs:</label>
                                                 <input type="text" name="odi_bowling_runs"
                                                        value={formValues.odi_bowling_runs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">BBI:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">BBI:</label>
                                                 <input type="text" name="odi_bowling_bbi"
                                                        value={formValues.odi_bowling_bbi}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Average:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Average:</label>
                                                 <input type="text" name="odi_bowling_average"
                                                        value={formValues.odi_bowling_average}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Econ:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Econ:</label>
                                                 <input type="text" name="odi_bowling_econ"
                                                        value={formValues.odi_bowling_econ}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Strike Rate:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Strike
+                                                    Rate:</label>
                                                 <input type="text" name="odi_bowling_strike_rate"
                                                        value={formValues.odi_bowling_strike_rate}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Four Wickets:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Four
+                                                    Wickets:</label>
                                                 <input type="text" name="odi_bowling_four_wickets"
                                                        value={formValues.odi_bowling_four_wickets}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Five Wickets:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Five
+                                                    Wickets:</label>
                                                 <input type="text" name="odi_bowling_five_wickets"
                                                        value={formValues.odi_bowling_five_wickets}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                         </div>
                                     }
                                     {activeSubTab === 'WicketKeeping' &&
                                         <div
-                                            className="grid grid-cols-2 gap-x-8 gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Matches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Matches:</label>
                                                 <input type="text" name="odi_wicketkeeping_matches"
                                                        value={formValues.odi_wicketkeeping_matches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Innings:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Innings:</label>
                                                 <input type="text" name="odi_wicketkeeping_innings"
                                                        value={formValues.odi_wicketkeeping_innings}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Catches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Catches:</label>
                                                 <input type="text" name="odi_wicketkeeping_catches"
                                                        value={formValues.odi_wicketkeeping_catches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Stumping:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Stumping:</label>
                                                 <input type="text" name="odi_wicketkeeping_stumping"
                                                        value={formValues.odi_wicketkeeping_stumping}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                         </div>
                                     }
@@ -571,205 +639,239 @@ function CRUDAddNewPlayerStats() {
                                 <div>
                                     {activeSubTab === 'Batting' &&
                                         <div
-                                            className="grid grid-cols-2 gap-x-8 gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Matches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Matches:</label>
                                                 <input type="text" name="t20_batting_matches"
                                                        value={formValues.t20_batting_matches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Runs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Runs:</label>
                                                 <input type="text" name="t20_batting_runs"
                                                        value={formValues.t20_batting_runs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Innings:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Innings:</label>
                                                 <input type="text" name="t20_batting_innings"
                                                        value={formValues.t20_batting_innings}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Not Outs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Not
+                                                    Outs:</label>
                                                 <input type="text" name="t20_batting_not_outs"
                                                        value={formValues.t20_batting_not_outs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Highest Score:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Highest
+                                                    Score:</label>
                                                 <input type="text" name="t20_batting_highest_score"
                                                        value={formValues.t20_batting_highest_score}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Average:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Average:</label>
                                                 <input type="text" name="t20_batting_average"
                                                        value={formValues.t20_batting_average}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Balls Faced:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Balls
+                                                    Faced:</label>
                                                 <input type="text" name="t20_batting_balls_faced"
                                                        value={formValues.t20_batting_balls_faced}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Strike Rate:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Strike
+                                                    Rate:</label>
                                                 <input type="text" name="t20_batting_strike_rate"
                                                        value={formValues.t20_batting_strike_rate}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Centuries:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Centuries:</label>
                                                 <input type="text" name="t20_batting_centuries"
                                                        value={formValues.t20_batting_centuries}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Fifties:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Fifties:</label>
                                                 <input type="text" name="t20_batting_fities"
                                                        value={formValues.t20_batting_fifties}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Fours:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Fours:</label>
                                                 <input type="text" name="t20_batting_fours"
                                                        value={formValues.t20_batting_fours}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Sixes:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Sixes:</label>
                                                 <input type="text" name="t20_batting_sixes"
                                                        value={formValues.t20_batting_sixes}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                         </div>
                                     }
                                     {activeSubTab === 'Bowling' &&
                                         <div
-                                            className="grid grid-cols-2 gap-x-8 gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Matches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Matches:</label>
                                                 <input type="text" name="t20_bowling_matches"
                                                        value={formValues.t20_bowling_matches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Wickets:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Wickets:</label>
                                                 <input type="text" name="t20_bowling_wickets"
                                                        value={formValues.t20_bowling_wickets}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Innings:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Innings:</label>
                                                 <input type="text" name="t20_bowling_innings"
                                                        value={formValues.t20_bowling_innings}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Overs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Overs:</label>
                                                 <input type="text" name="t20_bowling_overs"
                                                        value={formValues.t20_bowling_overs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Runs:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Runs:</label>
                                                 <input type="text" name="t20_bowling_runs"
                                                        value={formValues.t20_bowling_runs}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">BBI:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">BBI:</label>
                                                 <input type="text" name="t20_bowling_bbi"
                                                        value={formValues.t20_bowling_bbi}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Average:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Average:</label>
                                                 <input type="text" name="t20_bowling_average"
                                                        value={formValues.t20_bowling_average}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Econ:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Econ:</label>
                                                 <input type="text" name="t20_bowling_econ"
                                                        value={formValues.t20_bowling_econ}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Strike Rate:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Strike
+                                                    Rate:</label>
                                                 <input type="text" name="t20_bowling_strike_rate"
                                                        value={formValues.t20_bowling_strike_rate}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Four Wickets:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Four
+                                                    Wickets:</label>
                                                 <input type="text" name="t20_bowling_four_wickets"
                                                        value={formValues.t20_bowling_four_wickets}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Five Wickets:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Five
+                                                    Wickets:</label>
                                                 <input type="text" name="t20_bowling_five_wickets"
                                                        value={formValues.t20_bowling_five_wickets}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                         </div>
                                     }
                                     {activeSubTab === 'WicketKeeping' &&
                                         <div
-                                            className="grid grid-cols-2 gap-x-8 gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-10 my-4 bg-primary-ts_purple rounded-lg mt-12">
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Matches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Matches:</label>
                                                 <input type="text" name="t20_wicketkeeping_matches"
                                                        value={formValues.t20_wicketkeeping_matches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Innings:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Innings:</label>
                                                 <input type="text" name="t20_wicketkeeping_innings"
                                                        value={formValues.t20_wicketkeeping_innings}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Catches:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Catches:</label>
                                                 <input type="text" name="t20_wicketkeeping_catches"
                                                        value={formValues.t20_wicketkeeping_catches}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                             <div className="grid grid-cols-12 items-center gap-x-6">
-                                                <label className="font-semibold col-span-3">Stumping:</label>
+                                                <label
+                                                    className="font-semibold col-span-3 text-sm md:text-md lg:text-base">Stumping:</label>
                                                 <input type="text" name="t20_wicketkeeping_stumping"
                                                        value={formValues.t20_wicketkeeping_stumping}
                                                        onChange={handleInputChange}
-                                                       className="col-span-9 w-full p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                       className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
                                             </div>
                                         </div>
                                     }
