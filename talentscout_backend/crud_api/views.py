@@ -148,4 +148,21 @@ def updatePlayer(request, player_id):
                 else:
                     print(bowling_serializer.errors)
 
+            for wicketkeeping_data in wicketkeeping_data_list:
+                try:
+                    wicketkeeping_instance = PlayerWicketKeeping.objects.get(
+                        wicketkeeping_id=setUniqueID(player_id, wicketkeeping_data['format']))
+                    wicketkeeping_data['player'] = player_id
+                    wicketkeeping_serializer = PlayerWicketKeepingSerializer(wicketkeeping_instance,
+                                                                             data=wicketkeeping_data)
+                except PlayerWicketKeeping.DoesNotExist:
+                    wicketkeeping_serializer = PlayerWicketKeepingSerializer(data=wicketkeeping_data)
+
+                if wicketkeeping_serializer.is_valid():
+                    wicketkeeping_serializer.save()
+                else:
+                    print(wicketkeeping_serializer.errors)
+
+            return Response(player_serializer.data, status=status.HTTP_200_OK)
+
         return Response(player_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
