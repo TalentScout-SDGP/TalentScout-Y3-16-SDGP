@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import createPlayer, getAllPlayers, getPlayerById, updatePlayer
+from .views import createPlayer, getAllPlayers, getPlayerById, updatePlayer, filterPlayersByName
 
 urlpatterns = [
     path('', getAllPlayers, name='get_all_players'),
