@@ -21,6 +21,7 @@ import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom
 // Context Providers
 import {AuthProvider} from "./context/UserAuthContext.jsx";
 import {PlayerDataProvider} from "./context/ManagePlayersContext.jsx";
+import {PlayerRankingProvider} from "./context/PlayerRankingContext.jsx";
 
 // Global CSS
 import './App.css'
@@ -55,31 +56,33 @@ function App() {
                 <ToastContainer autoClose={20000}/>
                 <AuthProvider>
                     <PlayerDataProvider>
-                        <Navbar/>
-                        <Routes>
-                            <Route exact path='/' element={<Home/>}/>
-                            <Route exact path='/explore_players' element={<ExplorePlayersPage/>}/>
-                            <Route exact path='/compare_players' element={<ComparePlayers/>}/>
-                            <Route exact path='/player_profiles' element={<PlayerProfiles/>}/>
-                            <Route exact path='/manage_players' element={<ManagePlayers/>}/>
-                            <Route exact path='/add_players'
-                                   element={!user && !isAdmin ? <Navigate to="/"/> : <AddPlayers/>}/>
-                            <Route exact path='/login' element={user ? <Navigate to="/"/> : <LoginPage/>}/>
-                            <Route exact path='/sign_up' element={user ? <Navigate to="/"/> : <SignUpPage/>}/>
-                            <Route exact path='/about_us' element={<AboutUsPage/>}/>
-                            <Route exact path='/our_team' element={<OurTeamPage/>}/>
-                            <Route exact path='/verify_otp' element={<VerifyOTPPage/>}/>
-                            <Route path="/forget_password" element={<ForgetPassword/>}/>
-                            <Route path="/password-reset-confirm/:uid/:token" element={<ResetPassword/>}/>
-                            {/*TODO End:Delete Following Routes & Page Files*/}
-                            <Route exact path='/sulan' element={<FrontendSulan/>}/>
-                            <Route exact path='/agrani' element={<FrontendAgrani/>}/>
-                            <Route exact path='/chamath' element={<FrontendChamath/>}/>
-                            <Route exact path='/dinuka' element={<FrontendDinuka/>}/>
-                            <Route exact path='/dulhan' element={<FrontendDulhan/>}/>
-                            <Route exact path='/linuka' element={<FrontendLinuka/>}/>
-                        </Routes>
-                        <Footer/>
+                        <PlayerRankingProvider>
+                            <Navbar/>
+                            <Routes>
+                                <Route exact path='/' element={<Home/>}/>
+                                <Route exact path='/explore_players' element={<ExplorePlayersPage/>}/>
+                                <Route exact path='/compare_players' element={<ComparePlayers/>}/>
+                                <Route exact path='/player_profiles' element={<PlayerProfiles/>}/>
+                                <Route exact path='/manage_players' element={<ManagePlayers/>}/>
+                                <Route exact path='/add_players'
+                                       element={!user && !isAdmin ? <Navigate to="/"/> : <AddPlayers/>}/>
+                                <Route exact path='/login' element={user ? <Navigate to="/"/> : <LoginPage/>}/>
+                                <Route exact path='/sign_up' element={user ? <Navigate to="/"/> : <SignUpPage/>}/>
+                                <Route exact path='/about_us' element={<AboutUsPage/>}/>
+                                <Route exact path='/our_team' element={<OurTeamPage/>}/>
+                                <Route exact path='/verify_otp' element={<VerifyOTPPage/>}/>
+                                <Route path="/forget_password" element={<ForgetPassword/>}/>
+                                <Route path="/password-reset-confirm/:uid/:token" element={<ResetPassword/>}/>
+                                {/*TODO End:Delete Following Routes & Page Files*/}
+                                <Route exact path='/sulan' element={<FrontendSulan/>}/>
+                                <Route exact path='/agrani' element={<FrontendAgrani/>}/>
+                                <Route exact path='/chamath' element={<FrontendChamath/>}/>
+                                <Route exact path='/dinuka' element={<FrontendDinuka/>}/>
+                                <Route exact path='/dulhan' element={<FrontendDulhan/>}/>
+                                <Route exact path='/linuka' element={<FrontendLinuka/>}/>
+                            </Routes>
+                            <Footer/>
+                        </PlayerRankingProvider>
                     </PlayerDataProvider>
                 </AuthProvider>
             </Router>
