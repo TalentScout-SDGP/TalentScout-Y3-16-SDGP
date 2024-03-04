@@ -87,7 +87,17 @@ function ExplorePlayers() {
                                     </div>
                                     <div>
                                         <div className="range pt-8 lg:py-0">
-
+                                            <MultiRangeSlider
+                                                min={12}
+                                                max={50}
+                                                step={5}
+                                                minValue={min_value}
+                                                maxValue={max_value}
+                                                barInnerColor="#070032"
+                                                onInput={(e) => {
+                                                    handleInput(e);
+                                                }}
+                                            />
                                         </div>
                                     </div>
                                 </div>
