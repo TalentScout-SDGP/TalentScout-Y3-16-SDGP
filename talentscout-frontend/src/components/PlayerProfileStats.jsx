@@ -1,107 +1,130 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
+import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 
-function SizeChart() {
+function PlayerProfileStats() {
+    const {selectedPlayerData} = useContext(ManagePlayersContext);
     const [selectedTab, setSelectedTab] = useState('testStats');
 
     const handleTabChange = (option) => {
         setSelectedTab(option);
     };
 
+    const getBattingStats = (format) => {
+        return selectedPlayerData.batting_stats.find(stats => stats.format === format) || {};
+    };
+
+    const getBowlingStats = (format) => {
+        return selectedPlayerData.bowling_stats.find(stats => stats.format === format) || {};
+    };
+
+    const getWicketKeepingStats = (format) => {
+        return selectedPlayerData.wicketkeeping_stats.find(stats => stats.format === format) || {};
+    };
+
     const playerStats = {
         Batting: {
             Test: [
-                {id: 1, statValue: 75, description: 'Matches'},
-                {id: 2, statValue: 150, description: 'Runs'},
-                {id: 3, statValue: 65, description: 'Innings'},
-                {id: 4, statValue: 3, description: 'Not Outs'},
-                {id: 5, statValue: 130, description: 'HS'},
-                {id: 6, statValue: 42.5, description: 'Avg'},
-                {id: 7, statValue: 110, description: 'BF'},
-                {id: 8, statValue: 80.3, description: 'SR'},
-                {id: 9, statValue: 2, description: '100s'},
-                {id: 10, statValue: 20, description: '50s'},
-                {id: 11, statValue: 45, description: '4s'},
-                {id: 12, statValue: 30, description: '6s'},
+                {id: 1, statValue: getBattingStats('Test').matches, description: 'Matches'},
+                {id: 2, statValue: getBattingStats('Test').runs, description: 'Runs'},
+                {id: 3, statValue: getBattingStats('Test').innings, description: 'Innings'},
+                {id: 4, statValue: getBattingStats('Test').no, description: 'Not Outs'},
+                {id: 5, statValue: getBattingStats('Test').hs, description: 'HS'},
+                {id: 6, statValue: getBattingStats('Test').avg, description: 'Avg'},
+                {id: 7, statValue: getBattingStats('Test').bf, description: 'BF'},
+                {id: 8, statValue: getBattingStats('Test').sr, description: 'SR'},
+                {id: 9, statValue: getBattingStats('Test').centuries, description: '100s'},
+                {id: 10, statValue: getBattingStats('Test').fifties, description: '50s'},
+                {id: 11, statValue: getBattingStats('Test').fours, description: '4s'},
+                {id: 12, statValue: getBattingStats('Test').sixes, description: '6s'},
             ],
             ODI: [
-                {id: 1, statValue: 90, description: 'Matches'},
-                {id: 2, statValue: 180, description: 'Runs'},
-                {id: 3, statValue: 75, description: 'Innings'},
-                {id: 4, statValue: 5, description: 'Not Outs'},
-                {id: 5, statValue: 140, description: 'HS'},
-                {id: 6, statValue: 38.2, description: 'Avg'},
-                {id: 7, statValue: 100, description: 'BF'},
-                {id: 8, statValue: 78.5, description: 'SR'},
-                {id: 9, statValue: 1, description: '100s'},
-                {id: 10, statValue: 15, description: '50s'},
-                {id: 11, statValue: 30, description: '4s'},
-                {id: 12, statValue: 25, description: '6s'},
+                {id: 1, statValue: getBattingStats('ODI').matches, description: 'Matches'},
+                {id: 2, statValue: getBattingStats('ODI').runs, description: 'Runs'},
+                {id: 3, statValue: getBattingStats('ODI').innings, description: 'Innings'},
+                {id: 4, statValue: getBattingStats('ODI').no, description: 'Not Outs'},
+                {id: 5, statValue: getBattingStats('ODI').hs, description: 'HS'},
+                {id: 6, statValue: getBattingStats('ODI').avg, description: 'Avg'},
+                {id: 7, statValue: getBattingStats('ODI').bf, description: 'BF'},
+                {id: 8, statValue: getBattingStats('ODI').sr, description: 'SR'},
+                {id: 9, statValue: getBattingStats('ODI').centuries, description: '100s'},
+                {id: 10, statValue: getBattingStats('ODI').fifties, description: '50s'},
+                {id: 11, statValue: getBattingStats('ODI').fours, description: '4s'},
+                {id: 12, statValue: getBattingStats('ODI').sixes, description: '6s'},
             ],
             T20: [
-                {id: 1, statValue: 40, description: 'Matches'},
-                {id: 2, statValue: 80, description: 'Runs'},
-                {id: 3, statValue: 40, description: 'Innings'},
-                {id: 4, statValue: 1, description: 'Not Outs'},
-                {id: 5, statValue: 110, description: 'HS'},
-                {id: 6, statValue: 35.5, description: 'Avg'},
-                {id: 7, statValue: 90, description: 'BF'},
-                {id: 8, statValue: 85.0, description: 'SR'},
-                {id: 9, statValue: 0, description: '100s'},
-                {id: 10, statValue: 10, description: '50s'},
-                {id: 11, statValue: 25, description: '4s'},
-                {id: 12, statValue: 20, description: '6s'},
+                {id: 1, statValue: getBattingStats('T20').matches, description: 'Matches'},
+                {id: 2, statValue: getBattingStats('T20').runs, description: 'Runs'},
+                {id: 3, statValue: getBattingStats('T20').innings, description: 'Innings'},
+                {id: 4, statValue: getBattingStats('T20').no, description: 'Not Outs'},
+                {id: 5, statValue: getBattingStats('T20').hs, description: 'HS'},
+                {id: 6, statValue: getBattingStats('T20').avg, description: 'Avg'},
+                {id: 7, statValue: getBattingStats('T20').bf, description: 'BF'},
+                {id: 8, statValue: getBattingStats('T20').sr, description: 'SR'},
+                {id: 9, statValue: getBattingStats('T20').centuries, description: '100s'},
+                {id: 10, statValue: getBattingStats('T20').fifties, description: '50s'},
+                {id: 11, statValue: getBattingStats('T20').fours, description: '4s'},
+                {id: 12, statValue: getBattingStats('T20').sixes, description: '6s'},
             ],
         },
         Bowling: {
             Test: [
-                {id: 1, statValue: 65, description: 'Matches'},
-                {id: 2, statValue: 110, description: 'Wickets'},
-                {id: 3, statValue: 50, description: 'Innings'},
-                {id: 4, statValue: 2.5, description: 'Overs'},
-                {id: 5, statValue: 130, description: 'Runs'},
-                //TODO We will have to parse BBI stat as a string and compare the runs and wickets separately
-                {id: 6, statValue: '86/5', description: 'BBI'},
-                {id: 7, statValue: 120, description: 'Avg'},
-                {id: 8, statValue: 85.0, description: 'Econ'},
-                {id: 9, statValue: 30, description: 'SR'},
-                {id: 10, statValue: 10, description: '4Ws'},
-                {id: 11, statValue: 50, description: '5Ws'},
+                {id: 1, statValue: getBowlingStats('Test').matches, description: 'Matches'},
+                {id: 2, statValue: getBowlingStats('Test').wickets, description: 'Wickets'},
+                {id: 3, statValue: getBowlingStats('Test').innings, description: 'Innings'},
+                {id: 4, statValue: getBowlingStats('Test').overs, description: 'Overs'},
+                {id: 5, statValue: getBowlingStats('Test').runs, description: 'Runs'},
+                {id: 6, statValue: getBowlingStats('Test').bbi, description: 'BBI'},
+                {id: 7, statValue: getBowlingStats('Test').avg, description: 'Avg'},
+                {id: 8, statValue: getBowlingStats('Test').econ, description: 'Econ'},
+                {id: 9, statValue: getBowlingStats('Test').sr, description: 'SR'},
+                {id: 10, statValue: getBowlingStats('Test').four_ws, description: '4Ws'},
+                {id: 11, statValue: getBowlingStats('Test').five_ws, description: '5Ws'},
             ],
             ODI: [
-                {id: 1, statValue: 80, description: 'Matches'},
-                {id: 2, statValue: 120, description: 'Wickets'},
-                {id: 3, statValue: 45, description: 'Innings'},
-                {id: 4, statValue: 3.5, description: 'Overs'},
-                {id: 5, statValue: 110, description: 'Runs'},
-                {id: 6, statValue: '33/5', description: 'BBI'},
-                {id: 7, statValue: 105, description: 'Avg'},
-                {id: 8, statValue: 80.0, description: 'Econ'},
-                {id: 9, statValue: 25, description: 'SR'},
-                {id: 10, statValue: 8, description: '4Ws'},
-                {id: 11, statValue: 40, description: '5Ws'},
+                {id: 1, statValue: getBowlingStats('ODI').matches, description: 'Matches'},
+                {id: 2, statValue: getBowlingStats('ODI').wickets, description: 'Wickets'},
+                {id: 3, statValue: getBowlingStats('ODI').innings, description: 'Innings'},
+                {id: 4, statValue: getBowlingStats('ODI').overs, description: 'Overs'},
+                {id: 5, statValue: getBowlingStats('ODI').runs, description: 'Runs'},
+                {id: 6, statValue: getBowlingStats('ODI').bbi, description: 'BBI'},
+                {id: 7, statValue: getBowlingStats('ODI').avg, description: 'Avg'},
+                {id: 8, statValue: getBowlingStats('ODI').econ, description: 'Econ'},
+                {id: 9, statValue: getBowlingStats('ODI').sr, description: 'SR'},
+                {id: 10, statValue: getBowlingStats('ODI').four_ws, description: '4Ws'},
+                {id: 11, statValue: getBowlingStats('ODI').five_ws, description: '5Ws'},
             ],
             T20: [
-                {id: 1, statValue: 60, description: 'Matches'},
-                {id: 2, statValue: 80, description: 'Wickets'},
-                {id: 3, statValue: 30, description: 'Innings'},
-                {id: 4, statValue: 4, description: 'Overs'},
-                {id: 5, statValue: 120, description: 'Runs'},
-                {id: 6, statValue: '4/7', description: 'BBI'},
-                {id: 7, statValue: 110, description: 'Avg'},
-                {id: 8, statValue: 85.0, description: 'Econ'},
-                {id: 9, statValue: 18, description: 'SR'},
-                {id: 10, statValue: 6, description: '4Ws'},
-                {id: 11, statValue: 30, description: '5Ws'},
+                {id: 1, statValue: getBowlingStats('T20').matches, description: 'Matches'},
+                {id: 2, statValue: getBowlingStats('T20').wickets, description: 'Wickets'},
+                {id: 3, statValue: getBowlingStats('T20').innings, description: 'Innings'},
+                {id: 4, statValue: getBowlingStats('T20').overs, description: 'Overs'},
+                {id: 5, statValue: getBowlingStats('T20').runs, description: 'Runs'},
+                {id: 6, statValue: getBowlingStats('T20').bbi, description: 'BBI'},
+                {id: 7, statValue: getBowlingStats('T20').avg, description: 'Avg'},
+                {id: 8, statValue: getBowlingStats('T20').econ, description: 'Econ'},
+                {id: 9, statValue: getBowlingStats('T20').sr, description: 'SR'},
+                {id: 10, statValue: getBowlingStats('T20').four_ws, description: '4Ws'},
+                {id: 11, statValue: getBowlingStats('T20').five_ws, description: '5Ws'},
             ],
         },
         WicketKeeping: {
             Test: [
-                {id: 1, statValue: 35, description: 'Catches'},
-                {id: 2, statValue: 70, description: 'Stumping'},
+                {id: 1, statValue: getWicketKeepingStats('Test').matches, description: 'Matches'},
+                {id: 2, statValue: getWicketKeepingStats('Test').innings, description: 'Innings'},
+                {id: 3, statValue: getWicketKeepingStats('Test').catches, description: 'Catches'},
+                {id: 4, statValue: getWicketKeepingStats('Test').stumping, description: 'Stumping'},
             ],
             ODI: [
-                {id: 1, statValue: 25, description: 'Catches'},
-                {id: 2, statValue: 20, description: 'Stumping'},
+                {id: 1, statValue: getWicketKeepingStats('ODI').matches, description: 'Matches'},
+                {id: 2, statValue: getWicketKeepingStats('ODI').innings, description: 'Innings'},
+                {id: 3, statValue: getWicketKeepingStats('ODI').catches, description: 'Catches'},
+                {id: 4, statValue: getWicketKeepingStats('ODI').stumping, description: 'Stumping'},
+            ],
+            T20: [
+                {id: 1, statValue: getWicketKeepingStats('T20').matches, description: 'Matches'},
+                {id: 2, statValue: getWicketKeepingStats('T20').innings, description: 'Innings'},
+                {id: 3, statValue: getWicketKeepingStats('T20').catches, description: 'Catches'},
+                {id: 4, statValue: getWicketKeepingStats('T20').stumping, description: 'Stumping'},
             ],
         },
     };
@@ -149,44 +172,50 @@ function SizeChart() {
                             <div
                                 className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden">
                                 <h1 className="text-white font-bold text-center mb-4">Batting Statistics</h1>
-                                {selectedTab === 'testStats' &&
-                                    playerStats.Batting &&
-                                    playerStats.Batting.Test &&
-                                    playerStats.Batting.Test.map((stat) => (
-                                        <div className="grid grid-cols-2" key={stat.id}>
-                                            <div className="">{stat.description}:</div>
-                                            <div className="text-left">{stat.statValue}</div>
-                                        </div>
-                                    ))}
-                                {!playerStats.Batting.Test && (
-                                    <div className="text-white text-center">Stats Not Available</div>
-                                )}
+                                {playerStats.Batting && playerStats.Batting.Test &&
+                                    (playerStats.Batting.Test.every(stat => stat.statValue === undefined) ? (
+                                        <div className="text-white text-center">Stats Not Available</div>
+                                    ) : (
+                                        playerStats.Batting.Test.map((stat) => (
+                                            <div className="grid grid-cols-2" key={stat.id}>
+                                                <div className="">{stat.description}:</div>
+                                                <div className="text-left">{stat.statValue}</div>
+                                            </div>
+                                        ))
+                                    ))
+                                }
                             </div>
                             <div
                                 className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden">
                                 <h1 className="text-white font-bold text-center mb-4">Bowling Statistics</h1>
-                                {selectedTab === 'testStats' && playerStats.Bowling && playerStats.Bowling.Test && playerStats.Bowling.Test.map((stat) => (
-                                    <div className="grid grid-cols-2" key={stat.id}>
-                                        <div className="">{stat.description}:</div>
-                                        <div className="text-left">{stat.statValue}</div>
-                                    </div>
-                                ))}
-                                {!playerStats.Bowling.Test && (
-                                    <div className="text-white text-center">Stats Not Available</div>
-                                )}
+                                {playerStats.Bowling && playerStats.Bowling.Test &&
+                                    (playerStats.Bowling.Test.every(stat => stat.statValue === undefined) ? (
+                                        <div className="text-white text-center">Stats Not Available</div>
+                                    ) : (
+                                        playerStats.Bowling.Test.map((stat) => (
+                                            <div className="grid grid-cols-2" key={stat.id}>
+                                                <div className="">{stat.description}:</div>
+                                                <div className="text-left">{stat.statValue}</div>
+                                            </div>
+                                        ))
+                                    ))
+                                }
                             </div>
                             <div
                                 className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                                 <h1 className="text-white font-bold text-center mb-4">WicketKeeping Statistics</h1>
-                                {selectedTab === 'testStats' && playerStats.WicketKeeping && playerStats.WicketKeeping.Test && playerStats.WicketKeeping.Test.map((stat) => (
-                                    <div className="grid grid-cols-2" key={stat.id}>
-                                        <div className="">{stat.description}:</div>
-                                        <div className="text-left">{stat.statValue}</div>
-                                    </div>
-                                ))}
-                                {!playerStats.WicketKeeping.Test && (
-                                    <div className="text-white text-center">Stats Not Available</div>
-                                )}
+                                {playerStats.WicketKeeping && playerStats.WicketKeeping.Test &&
+                                    (playerStats.WicketKeeping.Test.every(stat => stat.statValue === undefined) ? (
+                                        <div className="text-white text-center">Stats Not Available</div>
+                                    ) : (
+                                        playerStats.WicketKeeping.Test.map((stat) => (
+                                            <div className="grid grid-cols-2" key={stat.id}>
+                                                <div className="">{stat.description}:</div>
+                                                <div className="text-left">{stat.statValue}</div>
+                                            </div>
+                                        ))
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
@@ -196,41 +225,50 @@ function SizeChart() {
                             <div
                                 className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                                 <h1 className="text-white font-bold text-center mb-4">Batting Statistics</h1>
-                                {selectedTab === 'oDIStats' && playerStats.Batting && playerStats.Batting.ODI && playerStats.Batting.ODI.map((stat) => (
-                                    <div className="grid grid-cols-2" key={stat.id}>
-                                        <div className="">{stat.description}:</div>
-                                        <div className="text-left">{stat.statValue}</div>
-                                    </div>
-                                ))}
-                                {!playerStats.Batting.ODI && (
-                                    <div className="text-white text-center">Stats Not Available</div>
-                                )}
+                                {playerStats.Batting && playerStats.Batting.ODI &&
+                                    (playerStats.Batting.ODI.every(stat => stat.statValue === undefined) ? (
+                                        <div className="text-white text-center">Stats Not Available</div>
+                                    ) : (
+                                        playerStats.Batting.ODI.map((stat) => (
+                                            <div className="grid grid-cols-2" key={stat.id}>
+                                                <div className="">{stat.description}:</div>
+                                                <div className="text-left">{stat.statValue}</div>
+                                            </div>
+                                        ))
+                                    ))
+                                }
                             </div>
                             <div
                                 className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                                 <h1 className="text-white font-bold text-center mb-4">Bowling Statistics</h1>
-                                {selectedTab === 'oDIStats' && playerStats.Bowling && playerStats.Bowling.ODI && playerStats.Bowling.ODI.map((stat) => (
-                                    <div className="grid grid-cols-2" key={stat.id}>
-                                        <div className="">{stat.description}:</div>
-                                        <div className="text-left">{stat.statValue}</div>
-                                    </div>
-                                ))}
-                                {!playerStats.Bowling.ODI && (
-                                    <div className="text-white text-center">Stats Not Available</div>
-                                )}
+                                {playerStats.Bowling && playerStats.Bowling.ODI &&
+                                    (playerStats.Bowling.ODI.every(stat => stat.statValue === undefined) ? (
+                                        <div className="text-white text-center">Stats Not Available</div>
+                                    ) : (
+                                        playerStats.Bowling.ODI.map((stat) => (
+                                            <div className="grid grid-cols-2" key={stat.id}>
+                                                <div className="">{stat.description}:</div>
+                                                <div className="text-left">{stat.statValue}</div>
+                                            </div>
+                                        ))
+                                    ))
+                                }
                             </div>
                             <div
                                 className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                                 <h1 className="text-white font-bold text-center mb-4">WicketKeeping Statistics</h1>
-                                {selectedTab === 'oDIStats' && playerStats.WicketKeeping && playerStats.WicketKeeping.ODI && playerStats.WicketKeeping.ODI.map((stat) => (
-                                    <div className="grid grid-cols-2" key={stat.id}>
-                                        <div className="">{stat.description}:</div>
-                                        <div className="text-left">{stat.statValue}</div>
-                                    </div>
-                                ))}
-                                {!playerStats.WicketKeeping.ODI && (
-                                    <div className="text-white text-center">Stats Not Available</div>
-                                )}
+                                {playerStats.WicketKeeping && playerStats.WicketKeeping.ODI &&
+                                    (playerStats.WicketKeeping.ODI.every(stat => stat.statValue === undefined) ? (
+                                        <div className="text-white text-center">Stats Not Available</div>
+                                    ) : (
+                                        playerStats.WicketKeeping.ODI.map((stat) => (
+                                            <div className="grid grid-cols-2" key={stat.id}>
+                                                <div className="">{stat.description}:</div>
+                                                <div className="text-left">{stat.statValue}</div>
+                                            </div>
+                                        ))
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
@@ -240,41 +278,50 @@ function SizeChart() {
                             <div
                                 className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                                 <h1 className="text-white font-bold text-center mb-4">Batting Statistics</h1>
-                                {selectedTab === 't20Stats' && playerStats.Batting && playerStats.Batting.T20 && playerStats.Batting.T20.map((stat) => (
-                                    <div className="grid grid-cols-2" key={stat.id}>
-                                        <div className="">{stat.description}:</div>
-                                        <div className="text-left">{stat.statValue}</div>
-                                    </div>
-                                ))}
-                                {!playerStats.Batting.T20 && (
-                                    <div className="text-white text-center">Stats Not Available</div>
-                                )}
+                                {playerStats.Batting && playerStats.Batting.T20 &&
+                                    (playerStats.Batting.T20.every(stat => stat.statValue === undefined) ? (
+                                        <div className="text-white text-center">Stats Not Available</div>
+                                    ) : (
+                                        playerStats.Batting.T20.map((stat) => (
+                                            <div className="grid grid-cols-2" key={stat.id}>
+                                                <div className="">{stat.description}:</div>
+                                                <div className="text-left">{stat.statValue}</div>
+                                            </div>
+                                        ))
+                                    ))
+                                }
                             </div>
                             <div
-                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
+                                className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden">
                                 <h1 className="text-white font-bold text-center mb-4">Bowling Statistics</h1>
-                                {selectedTab === 't20Stats' && playerStats.Bowling && playerStats.Bowling.T20 && playerStats.Bowling.T20.map((stat) => (
-                                    <div className="grid grid-cols-2" key={stat.id}>
-                                        <div className="">{stat.description}:</div>
-                                        <div className="text-left">{stat.statValue}</div>
-                                    </div>
-                                ))}
-                                {!playerStats.Bowling.T20 && (
-                                    <div className="text-white text-center">Stats Not Available</div>
-                                )}
+                                {playerStats.Bowling && playerStats.Bowling.T20 &&
+                                    (playerStats.Bowling.T20.every(stat => stat.statValue === undefined) ? (
+                                        <div className="text-white text-center">Stats Not Available</div>
+                                    ) : (
+                                        playerStats.Bowling.T20.map((stat) => (
+                                            <div className="grid grid-cols-2" key={stat.id}>
+                                                <div className="">{stat.description}:</div>
+                                                <div className="text-left">{stat.statValue}</div>
+                                            </div>
+                                        ))
+                                    ))
+                                }
                             </div>
                             <div
                                 className="flex flex-col gap-y-4 text-white text-xs sm:text-sm xl:text-lg md:text-base bg-primary-ts_blue px-2 ps-6 py-4 rounded-2xl mx-2 my-2 overflow-hidden ">
                                 <h1 className="text-white font-bold text-center mb-4">WicketKeeping Statistics</h1>
-                                {selectedTab === 't20Stats' && playerStats.WicketKeeping && playerStats.WicketKeeping.T20 && playerStats.WicketKeeping.T20.map((stat) => (
-                                    <div className="grid grid-cols-2" key={stat.id}>
-                                        <div className="">{stat.description}:</div>
-                                        <div className="text-left">{stat.statValue}</div>
-                                    </div>
-                                ))}
-                                {!playerStats.WicketKeeping.T20 && (
-                                    <div className="text-white text-center">Stats Not Available</div>
-                                )}
+                                {playerStats.WicketKeeping && playerStats.WicketKeeping.T20 &&
+                                    (playerStats.WicketKeeping.T20.every(stat => stat.statValue === undefined) ? (
+                                        <div className="text-white text-center">Stats Not Available</div>
+                                    ) : (
+                                        playerStats.WicketKeeping.T20.map((stat) => (
+                                            <div className="grid grid-cols-2" key={stat.id}>
+                                                <div className="">{stat.description}:</div>
+                                                <div className="text-left">{stat.statValue}</div>
+                                            </div>
+                                        ))
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
@@ -284,5 +331,5 @@ function SizeChart() {
     );
 }
 
-export default SizeChart;
+export default PlayerProfileStats;
 
