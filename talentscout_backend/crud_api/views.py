@@ -47,23 +47,7 @@ def filterPlayersByName(request):
             players = Player.objects.all()
 
         player_data_list = []
-        for player in players:
-            player_serializer = PlayerSerializer(player).data
-            batting_stats = PlayerBatting.objects.filter(player=player)
-            bowling_stats = PlayerBowling.objects.filter(player=player)
-            wicketkeeping_stats = PlayerWicketKeeping.objects.filter(player=player)
-
-            batting_serializer = PlayerBattingSerializer(batting_stats, many=True).data
-            bowling_serializer = PlayerBowlingSerializer(bowling_stats, many=True).data
-            wicketkeeping_serializer = PlayerWicketKeepingSerializer(wicketkeeping_stats, many=True).data
-
-            player_data = {
-                'player': player_serializer,
-                'batting_stats': batting_serializer,
-                'bowling_stats': bowling_serializer,
-                'wicketkeeping_stats': wicketkeeping_serializer
-            }
-            player_data_list.append(player_data)
+        # Add other part
 
         return Response(player_data_list, status=status.HTTP_200_OK)
 
