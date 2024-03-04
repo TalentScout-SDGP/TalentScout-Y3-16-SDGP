@@ -22,7 +22,10 @@ function ExplorePlayers() {
         setFormData({...formData, [e.target.name]: e.target.value});
     }
 
-
+    const handleInput = (e) => {
+        set_min_value(e.minValue);
+        set_max_value(e.maxValue);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
