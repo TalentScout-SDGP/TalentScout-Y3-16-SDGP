@@ -1,6 +1,5 @@
 import {createContext, useEffect, useState} from 'react';
 import axios from 'axios';
-import {toast} from 'react-toastify';
 import Spinner from "../components/shared/Spinner.jsx";
 import PropTypes from 'prop-types';
 
@@ -26,10 +25,8 @@ export const PlayerDataProvider = ({children}) => {
                 });
                 setPlayerDict(playerDict);
                 setIsLoading(false)
-                toast.success('Successfully fetched player data.');
             } catch (error) {
                 setIsLoading(false);
-                toast.error('Error fetching player data, Try Again.');
             }
         };
         fetchData();
@@ -46,7 +43,6 @@ export const PlayerDataProvider = ({children}) => {
             setSelectedPlayerData(data);
         } catch (error) {
             setIsLoading(false);
-            toast.error('Error fetching player data, Try Again.');
         }
     };
 
