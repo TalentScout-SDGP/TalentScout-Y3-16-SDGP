@@ -1,4 +1,8 @@
+import {useContext} from "react";
+import PlayerRankingContext from "../context/PlayerRankingContext.jsx";
+
 function ExplorePlayerRanking() {
+    const {rankedPlayers} = useContext(PlayerRankingContext);
     const playersArray = [
         {id: 1, ranking: '1', fullName: 'Balapuwaduge Kusal Gimhan Mendis', rating: '75.5'},
         {id: 2, ranking: '2', fullName: 'Pathum Nissanka Silva', rating: '72.8'},
@@ -20,7 +24,7 @@ function ExplorePlayerRanking() {
                 <div
                     className="flex flex-row text-md md:text-base lg:text-lg p-2 sm:p-4 mt-6 sm:mt-8 bg-primary-ts_blue text-white gap-x-4 items-center rounded-t-2xl">
                     <div className="font-semibold border-r-2 px-2 md:px-8">
-                        ODI
+                        {rankedPlayers.format}
                     </div>
                     <div className="font-semibold">
                         ODI Batting Ranking

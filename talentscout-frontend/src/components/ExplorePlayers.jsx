@@ -1,9 +1,36 @@
-import RangeSlider from "./RangeSlider.jsx";
+import React, {useContext, useState} from "react";
+import PlayerRankingContext from "../context/PlayerRankingContext.jsx";
 import ExplorePlayersRanking from "./ExplorePlayersRanking.jsx";
 import UserLoginModal from "./UserLoginModal.jsx";
+import MultiRangeSlider from "multi-range-slider-react";
+
 
 function ExplorePlayers() {
     const user = JSON.parse(localStorage.getItem('user'));
+    const {rankPlayers} = useContext(PlayerRankingContext);
+    const [formData, setFormData] = useState({
+        format: 'Test',
+        playing_role: 'Batsman',
+        batting_style: 'Right Hand',
+        bowling_style: 'Fast Bowler',
+    })
+    const {format, playing_role, batting_style, bowling_style} = formData;
+    const [min_value, set_min_value] = useState(18);
+    const [max_value, set_max_value] = useState(32);
+
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.name]: e.target.value});
+    }
+
+    const handleInput = (e) => {
+        set_min_value(e.minValue);
+        set_max_value(e.maxValue);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        rankPlayers(formData, min_value, max_value);
+    }
 
     return (
         <div>
@@ -15,7 +42,7 @@ function ExplorePlayers() {
                             className="bg-primary-ts_blue text-center text-white text-sm md:text-base lg:text-lg lg:p-4 font-semibold rounded-t-xl p-4">Explore
                             Players
                         </div>
-                        <form className="w-full py-4 lg:py-8">
+                        <form className="w-full py-4 lg:py-8" onSubmit={handleSubmit}>
                             <div className="lg:grid lg:grid-cols-2 lg:pt-8 lg:px-8">
                                 {/*Format*/}
                                 <div className="lg:grid lg:grid-cols-2 py-4 px-6">
@@ -23,7 +50,8 @@ function ExplorePlayers() {
                                         Format :
                                     </div>
                                     <div className="w-full md:mb-0 relative">
-                                        <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
+                                        <select value={format} onChange={handleChange} name='format'
+                                                className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
                                     border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
                                             <option
                                                 className="text-primary-ts_blue text-sm md:text-base font-semibold">Test
@@ -54,13 +82,26 @@ function ExplorePlayers() {
                                     </div>
                                 </div>
 
+
                                 {/*Age*/}
                                 <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
                                     <div className="py-2 text-sm md:text-base">
                                         Age :
                                     </div>
                                     <div>
-                                        <RangeSlider/>
+                                        <div className="range pt-8 lg:py-0">
+                                            <MultiRangeSlider
+                                                min={12}
+                                                max={50}
+                                                step={5}
+                                                minValue={min_value}
+                                                maxValue={max_value}
+                                                barInnerColor="#070032"
+                                                onInput={(e) => {
+                                                    handleInput(e);
+                                                }}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -70,7 +111,8 @@ function ExplorePlayers() {
                                         Playing Role :
                                     </div>
                                     <div className="w-full md:mb-0 relative">
-                                        <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
+                                        <select value={playing_role} onChange={handleChange} name='playing_role'
+                                                className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
                                     border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
                                             <option
                                                 className="text-primary-ts_blue text-sm md:text-base font-semibold">Batsman
@@ -112,7 +154,8 @@ function ExplorePlayers() {
                                         Batting Style :
                                     </div>
                                     <div className="w-full md:mb-0 relative">
-                                        <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
+                                        <select value={batting_style} onChange={handleChange} name='batting_style'
+                                                className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
                                     border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
                                             <option
                                                 className="text-primary-ts_blue text-sm md:text-base font-semibold">Right
@@ -146,7 +189,8 @@ function ExplorePlayers() {
                                         Bowling Style :
                                     </div>
                                     <div className="w-full md:mb-0 relative">
-                                        <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
+                                        <select value={bowling_style} onChange={handleChange} name='bowling_style'
+                                                className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
                                     border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
                                             <option
                                                 className="text-primary-ts_blue text-sm md:text-base font-semibold">Fast
@@ -159,75 +203,6 @@ function ExplorePlayers() {
                                             <option
                                                 className="text-primary-ts_blue text-sm md:text-base font-semibold">Medium-Pace
                                                 Bowler
-                                            </option>
-                                        </select>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                             xmlnsXlink="http://www.w3.org/1999/xlink"
-                                             width="22" height="26" viewBox="0 0 30 26" fill="none"
-                                             className="absolute top-2 right-2 cursor-pointer">
-                                            <rect width="30" height="26" fill="url(#pattern0)"/>
-                                            <defs>
-                                                <pattern id="pattern0" patternContentUnits="objectBoundingBox"
-                                                         width="1"
-                                                         height="1">
-                                                    <use xlinkHref="#image0_2840_144"
-                                                         transform="matrix(0.00416667 0 0 0.00480769 0 -0.0769231)"/>
-                                                </pattern>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                {/*Fast Bowling Type*/}
-                                <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
-                                    <div className="py-2 text-sm md:text-base">
-                                        Fast Bowling Type :
-                                    </div>
-                                    <div className="w-full md:mb-0 relative">
-                                        <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
-                                    border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
-                                            <option
-                                                className="text-primary-ts_blue text-sm lg:text-md font-semibold">Fast
-                                            </option>
-                                            <option
-                                                className="text-primary-ts_blue text-sm lg:text-md font-semibold">Medium-Fast
-                                            </option>
-                                            <option
-                                                className="text-primary-ts_blue text-sm lg:text-md font-semibold">Fast-Medium
-                                            </option>
-                                        </select>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                             xmlnsXlink="http://www.w3.org/1999/xlink"
-                                             width="22" height="26" viewBox="0 0 30 26" fill="none"
-                                             className="absolute top-2 right-2 cursor-pointer">
-                                            <rect width="30" height="26" fill="url(#pattern0)"/>
-                                            <defs>
-                                                <pattern id="pattern0" patternContentUnits="objectBoundingBox"
-                                                         width="1"
-                                                         height="1">
-                                                    <use xlinkHref="#image0_2840_144"
-                                                         transform="matrix(0.00416667 0 0 0.00480769 0 -0.0769231)"/>
-                                                </pattern>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                {/*Spin Bowling Type*/}
-                                <div className="lg:grid lg:grid-cols-2 py-4 px-6 text-xs font-semibold">
-                                    <div className="py-2 text-sm md:text-base">
-                                        Spin Bowling Type :
-                                    </div>
-                                    <div className="w-full md:mb-0 relative">
-                                        <select className="appearance-none cursor-pointer text-sm lg:text-md block w-full bg-white text-black placeholder-primary-light_gray border
-                                    border-black focus:outline-none rounded-lg shadow-explore_players text-md font-semibold px-2 py-2">
-                                            <option
-                                                className="text-primary-ts_blue text-sm md:text-base font-semibold">Leg
-                                                Spin
-                                            </option>
-                                            <option
-                                                className="text-primary-ts_blue text-sm md:text-base font-semibold">Off
-                                                Spin
                                             </option>
                                         </select>
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -260,7 +235,7 @@ function ExplorePlayers() {
             </div>
 
             {/*TODO DISPLAY THIS IF RESPONSE IS OK*/}
-            {/*<ExplorePlayersRanking/>*/}
+            <ExplorePlayersRanking/>
         </div>
     );
 }
