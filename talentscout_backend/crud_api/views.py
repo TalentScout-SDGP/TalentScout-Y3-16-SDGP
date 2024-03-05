@@ -57,7 +57,10 @@ def filterPlayersByFullName(request):
         players = Player.objects.filter(full_name__icontains=player_name)
         player_data = []
 
-
+        for player in players:
+            player_serializer = PlayerSerializer(player).data
+            player_serializer.update(getPlayerStats(player))
+            player_data.append(player_serializer)
 
         return Response(player_data, status=status.HTTP_200_OK)
 
