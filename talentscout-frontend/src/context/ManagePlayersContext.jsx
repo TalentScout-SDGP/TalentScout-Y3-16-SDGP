@@ -61,6 +61,18 @@ export const PlayerDataProvider = ({children}) => {
         }
     };
 
+    // Function to delete player by id
+    const deletePlayerById = async (playerId) => {
+        try {
+            setIsLoading(true);
+            const response = await axios.get(`http://localhost:8000/api/crud/delete/${playerId}/`);
+            const data = response.data;
+            setIsLoading(false);
+        } catch (error) {
+            setIsLoading(false);
+        }
+    };
+
     const contextData = {
         playerData,
         playerDict,
