@@ -101,7 +101,7 @@ const CRUDManagePlayers = () => {
                             playersArray.slice(0, 30).map((player) => (
                                 <div key={player.id}
                                      className="flex py-2 border-b lg:text-base sm:text-sm text-xs border-gray-300">
-                                    <div className="w-8 ml-4 sm:ml-10 mt-1">
+                                    <div className="disabled-icon w-8 ml-4 sm:ml-10 mt-1">
                                         <input
                                             type="checkbox"
                                             checked={selectedPlayers.includes(player.id)}
@@ -113,7 +113,7 @@ const CRUDManagePlayers = () => {
                                     <div className="flex-1 mt-1 ml-6">{player.playingRole}</div>
                                     <div className="flex-1 flex items-center justify-center mt-1">
                                         <FaEdit className="disabled-icon text-xl cursor-pointer mr-2 hover:scale-105"/>
-                                        <FaTrash className="text-xl cursor-pointer hover:scale-105"
+                                        <FaTrash className="disabled-icon text-xl cursor-pointer hover:scale-105"
                                                  onClick={() => handleDeletePlayer(player.id)}/>
                                     </div>
                                 </div>
