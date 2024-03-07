@@ -26,6 +26,11 @@ const CRUDManagePlayers = () => {
         return playersArray;
     };
 
+    if (selectedPlayersByName.length > 0) {
+        playersArray = generatePlayersArray();
+        isAvailable = true;
+    }
+
     const handleDelete = () => {
         // Handle delete logic
     };
