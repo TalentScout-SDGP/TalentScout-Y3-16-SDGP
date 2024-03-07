@@ -186,3 +186,7 @@ def deletePlayer(request, player_id):
         player_instance = Player.objects.get(player_id=player_id)
     except Player.DoesNotExist:
         return Response({"error": "Player not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'DELETE':
+        player_instance.delete()
+        return Response({"message": "Player deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
