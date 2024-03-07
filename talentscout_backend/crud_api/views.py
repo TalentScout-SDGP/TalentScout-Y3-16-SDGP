@@ -180,3 +180,9 @@ def updatePlayer(request, player_id):
 
         return Response(player_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['DELETE'])
+def deletePlayer(request, player_id):
+    try:
+        player_instance = Player.objects.get(player_id=player_id)
+    except Player.DoesNotExist:
+        return Response({"error": "Player not found"}, status=status.HTTP_404_NOT_FOUND)
