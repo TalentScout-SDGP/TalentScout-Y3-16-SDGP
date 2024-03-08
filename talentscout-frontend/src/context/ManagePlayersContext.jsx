@@ -8,6 +8,7 @@ const ManagePlayersContext = createContext();
 export const PlayerDataProvider = ({children}) => {
     const [playerData, setPlayerData] = useState([]);
     const [selectedPlayerData, setSelectedPlayerData] = useState({});
+    const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
     const [playerDict, setPlayerDict] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [playerInfo, setPlayerInfo] = useState({});
@@ -47,6 +48,32 @@ export const PlayerDataProvider = ({children}) => {
         }
     };
 
+
+    // Function to get player data by player_name
+    const filterPlayersByName = async (playerName) => {
+        try {
+            setIsLoading(true);
+            const response = await axios.get(`http://localhost:8000/api/crud/filter?full_name=${playerName}`);
+            const data = response.data;
+            setIsLoading(false);
+            setSelectedPlayersByName(data);
+        } catch (error) {
+            setIsLoading(false);
+        }
+    };
+
+    // Function to delete player by id
+    const deletePlayerById = async (playerId) => {
+        try {
+            setIsLoading(true);
+            const response = await axios.get(`http://localhost:8000/api/crud/delete/${playerId}/`);
+            const data = response.data;
+            setIsLoading(false);
+        } catch (error) {
+            setIsLoading(false);
+        }
+    };
+
     // Function to set player info data
     const setPlayerInfoData = (data) => {
         setPlayerInfo(data);
@@ -67,11 +94,12 @@ export const PlayerDataProvider = ({children}) => {
         playerData,
         playerDict,
         selectedPlayerData: selectedPlayerData,
+        selectedPlayersByName: selectedPlayersByName,
         getPlayerDataById: getPlayerDataById,
+        filterPlayersByName: filterPlayersByName,
         setPlayerInfoData: setPlayerInfoData,
         createPlayers: createPlayers,
     };
-
 
     if (!isLoading) {
         return (

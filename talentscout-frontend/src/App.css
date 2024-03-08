@@ -94,3 +94,9 @@ select::-ms-expand {
     padding: 0 5px;
     white-space: nowrap;
 }
+
+
+.disabled-icon {
+    pointer-events: none;
+    opacity: 0.5;
+}
