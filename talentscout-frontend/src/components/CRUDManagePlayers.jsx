@@ -70,14 +70,14 @@ const CRUDManagePlayers = () => {
                                 className="bg-primary-red text-white px-3 py-1 font-semibold text-sm rounded-xl flex items-center hover:scale-105"
                                 onClick={handleDelete}
                             >
-                                <FaMinus className="mr-1"/>
+                                <FaMinus className="mr-2"/>
                                 Delete
                             </button>
                             <Link
                                 to="/add_players"
                                 className="bg-primary-green text-white px-3 py-1 font-semibold rounded-xl flex items-center text-sm hover:scale-105 whitespace-nowrap"
                             >
-                                <FaPlus className="mr-1"/>
+                                <FaPlus className="mr-2"/>
                                 Add New Player
                             </Link>
                         </div>
@@ -101,7 +101,7 @@ const CRUDManagePlayers = () => {
                             playersArray.slice(0, 30).map((player) => (
                                 <div key={player.id}
                                      className="flex py-2 border-b lg:text-base sm:text-sm text-xs border-gray-300">
-                                    <div className="disabled-icon w-8 ml-4 sm:ml-10 mt-1">
+                                    <div className="w-8 ml-4 sm:ml-10 mt-1">
                                         <input
                                             type="checkbox"
                                             checked={selectedPlayers.includes(player.id)}
@@ -112,7 +112,7 @@ const CRUDManagePlayers = () => {
                                     <div className="flex-1 mt-1 mr-2">{player.fullName}</div>
                                     <div className="flex-1 mt-1 ml-6">{player.playingRole}</div>
                                     <div className="flex-1 flex items-center justify-center mt-1">
-                                        <FaEdit className="disabled-icon text-xl cursor-pointer mr-2 hover:scale-105"/>
+                                        <FaEdit className="disabled-icon text-xl cursor-pointer mr-4 hover:scale-105"/>
                                         <FaTrash className="disabled-icon text-xl cursor-pointer hover:scale-105"
                                                  onClick={() => handleDeletePlayer(player.id)}/>
                                     </div>

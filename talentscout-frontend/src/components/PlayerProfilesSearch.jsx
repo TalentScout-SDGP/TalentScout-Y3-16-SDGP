@@ -42,7 +42,7 @@ function PlayerProfilesSearch() {
                         <p className="text-white text-lg lg:text-xl font-bold mb-2">
                             View Player Profiles
                         </p>
-                        <p className="text-gray-300 text-md lg:text-lg mb-10">
+                        <p className="text-gray-300 text-md lg:text-lg mb-8">
                             Delve into the world of cricket excellence. Explore in-depth player
                             profiles and detailed statistics, uncovering the stories behind the
                             stars of the game. Whether you're a seasoned fan or a curious newcomer,
@@ -72,7 +72,7 @@ function PlayerProfilesSearch() {
                             )}
                         </div>
                         <button onClick={handleSubmit}
-                                className="mt-6 lg:mx-0 text-xs sm:text-sm md:text-md lg:text-base bg-primary-yellow text-black font-semibold rounded-button px-4 py-1 md:py-2 shadow-lg border-primary-ts_blue border-2
+                                className="mt-2 lg:mx-0 text-xs sm:text-sm md:text-md lg:text-base bg-primary-yellow text-black font-semibold rounded-button px-4 py-1 md:py-2 shadow-lg border-primary-ts_blue border-2
                             hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105">
                             <img src={import.meta.env.BASE_URL + 'search-icon.png'} alt="search-icon"
                                  className="inline me-2"></img>
