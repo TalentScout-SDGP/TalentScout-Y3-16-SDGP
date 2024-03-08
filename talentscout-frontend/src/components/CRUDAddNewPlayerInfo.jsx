@@ -1,4 +1,57 @@
+import {useContext, useState} from "react";
+import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
+
 function CRUDAddNewPlayerInfo() {
+    const {setPlayerInfoData} = useContext(ManagePlayersContext);
+    const [playerInfo, setPlayerInfo] = useState({
+        full_name: '',
+        also_known_as: '',
+        birth_date: '',
+        age: '',
+        playing_role: '',
+        batting_style: '',
+        bowling_style: "",
+    });
+
+    // Function to calculate age from birth_date
+    const calculateAge = (birthDate) => {
+        const today = new Date();
+        const birthDateObj = new Date(birthDate);
+        let age = today.getFullYear() - birthDateObj.getFullYear();
+        if (today.getMonth() < birthDateObj.getMonth() ||
+            (today.getMonth() === birthDateObj.getMonth() && today.getDate() < birthDateObj.getDate())) {
+            age--;
+        }
+        return age;
+    };
+
+    // Function to format birth_date to Ex: "Month, Date & Year - January 10, 2000"
+    const formatBirthDate = (birth_date) => {
+        const [year, month, day] = birth_date.split('-');
+        const formattedDate = new Date(year, month - 1, day);
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        return `${monthNames[formattedDate.getMonth()]} ${formattedDate.getDate()}, ${formattedDate.getFullYear()}`;
+    }
+
+    const handleChange = (e) => {
+        setPlayerInfo({
+            ...playerInfo,
+            [e.target.name]: e.target.value,
+            age: e.target.name === 'birth_date' ? calculateAge(e.target.value) : playerInfo.age,
+        });
+    };
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        playerInfo.birth_date = formatBirthDate(playerInfo.birth_date);
+        console.log(playerInfo);
+        setPlayerInfoData(playerInfo);
+    }
+
     return (
         <div className="font-poppins">
             <div className="md:container mt-9 mb-16 px-2">
@@ -10,30 +63,33 @@ function CRUDAddNewPlayerInfo() {
                     </div>
                     <div
                         className="bg-primary-ts_purple rounded-b-lg font-semibold py-8 px-2 sm:px-4 md:px-6 lg:px-10 xl:px-12">
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="flex flex-col gap-y-2">
                                 <label className="text-sm md:text-md lg:text-base">Full Name: </label>
-                                <input type="text"
+                                <input type="text" name="full_name" value={playerInfo.full_name} onChange={handleChange}
                                        className="w-full p-0.5 md:p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
                             </div>
                             <div className="flex flex-col gap-y-2">
                                 <label className="text-sm md:text-md lg:text-base">Also Known As: </label>
-                                <input type="text"
+                                <input type="text" name="also_known_as" value={playerInfo.also_known_as}
+                                       onChange={handleChange}
                                        className="w-full p-0.5 md:p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
                             </div>
                             <div
                                 className="grid grid-cols-1 xl:grid-cols-2 gap-x-12 gap-y-6 lg:gap-y-10 justify-center items-center mb-3 lg:mt-4">
                                 <div className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center">
                                     <label className="w-full text-sm md:text-md lg:text-base">Birth Date: </label>
-                                    <input type="date"
+                                    <input type="date" name="birth_date" value={playerInfo.birth_date}
+                                           onChange={handleChange}
                                            className="w-full text-sm md:text-md lg:text-base p-1 border-2 border-black rounded-lg shadow-md"/>
                                 </div>
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
                                     <label className="w-full text-sm md:text-md lg:text-base">Playing Role: </label>
-                                    <select name="playing_role"
+                                    <select name="playing_role" value={playerInfo.playing_role}
+                                            onChange={handleChange}
                                             className="w-full p-1 text-sm md:text-md lg:text-base border-2 border-black rounded-lg shadow-md focus:outline-none"
-                                            defaultValue="">
+                                    >
                                         <option value="" disabled>Select Playing Role</option>
                                         <option>Batsman</option>
                                         <option>Bowler</option>
@@ -60,9 +116,10 @@ function CRUDAddNewPlayerInfo() {
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
                                     <label className="w-full text-sm md:text-md lg:text-base">Batting Style: </label>
-                                    <select name="playing_role"
+                                    <select name="batting_style" value={playerInfo.batting_style}
+                                            onChange={handleChange}
                                             className="w-full text-sm md:text-md lg:text-base p-1 text-2 border-2 border-black rounded-lg shadow-md focus:outline-none"
-                                            defaultValue="">
+                                    >
                                         <option value="" disabled>Select Batting Style</option>
                                         <option>Left Hand</option>
                                         <option>Right Hand</option>
@@ -87,9 +144,10 @@ function CRUDAddNewPlayerInfo() {
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
                                     <label className="w-full text-sm md:text-md lg:text-base">Bowling Style: </label>
-                                    <select name="playing_role"
+                                    <select name="bowling_style" value={playerInfo.bowling_style}
+                                            onChange={handleChange}
                                             className="w-full text-sm md:text-md lg:text-base p-1 text-2 border-2 border-black rounded-lg shadow-md focus:outline-none"
-                                            defaultValue="">
+                                    >
                                         <option value="" disabled>Select Bowling Style</option>
                                         <option>Left arm Fast</option>
                                         <option>Left arm Leg Spin</option>

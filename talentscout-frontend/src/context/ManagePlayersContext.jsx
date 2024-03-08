@@ -10,6 +10,7 @@ export const PlayerDataProvider = ({children}) => {
     const [selectedPlayerData, setSelectedPlayerData] = useState({});
     const [playerDict, setPlayerDict] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [playerInfo, setPlayerInfo] = useState({});
 
     // UseEffect to fetch all player data from the backend
     useEffect(() => {
@@ -46,12 +47,31 @@ export const PlayerDataProvider = ({children}) => {
         }
     };
 
+    // Function to set player info data
+    const setPlayerInfoData = (data) => {
+        setPlayerInfo(data);
+    }
+
+    // Function to create new players
+    const createPlayers = async (formData) => {
+        try {
+            setIsLoading(true);
+            const response = await axios.post('http://localhost:8000/api/crud/create/', formData);
+            setIsLoading(false);
+        } catch (error) {
+            setIsLoading(false);
+        }
+    };
+
     const contextData = {
         playerData,
         playerDict,
         selectedPlayerData: selectedPlayerData,
         getPlayerDataById: getPlayerDataById,
+        setPlayerInfoData: setPlayerInfoData,
+        createPlayers: createPlayers,
     };
+
 
     if (!isLoading) {
         return (
