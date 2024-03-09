@@ -14,7 +14,7 @@ const Footer = () => {
                                  alt="Twitter"></img>
                         </a>
                         <a className="self-center transition-transform duration-3000 transform hover:scale-125"
-                           href="#">
+                           href="https://www.linkedin.com/in/talent-scout-9345a42b9/">
                             <img className="w-8" src={import.meta.env.BASE_URL + 'LinkedIn.png'} alt="LinkedIn">
                             </img>
                         </a>
