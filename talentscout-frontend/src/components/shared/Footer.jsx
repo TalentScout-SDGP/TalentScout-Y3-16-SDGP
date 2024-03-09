@@ -9,7 +9,7 @@ const Footer = () => {
                     <h2 className="lg:block hidden text-4xl font-semibold">TalentScout</h2>
                     <div className="flex gap-x-8 items-center md:mt-8 lg:mt-0">
                         <a className="self-center transition-transform duration-3000 transform hover:scale-125"
-                           href="#">
+                           href="https://twitter.com/talentScout111">
                             <img className="w-6 mt-[3px]" src={import.meta.env.BASE_URL + 'Twitter.png'}
                                  alt="Twitter"></img>
                         </a>
