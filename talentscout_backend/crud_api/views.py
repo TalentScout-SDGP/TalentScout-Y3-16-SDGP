@@ -66,7 +66,6 @@ def filterPlayersByFullName(request):
         return Response(player_data, status=status.HTTP_200_OK)
 
 
-
 def formatBirthDate(birth_date):
     months = [
         'January', 'February', 'March', 'April', 'May', 'June',

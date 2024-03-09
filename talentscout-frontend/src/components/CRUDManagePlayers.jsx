@@ -2,10 +2,9 @@ import {useContext} from 'react';
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 import {FaTrash, FaEdit, FaPlus} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
-import {toast} from "react-toastify";
 
 const CRUDManagePlayers = () => {
-    const { selectedPlayersByName, deletePlayerById } = useContext(ManagePlayersContext);
+    const {selectedPlayersByName, deletePlayerById} = useContext(ManagePlayersContext);
     const email = JSON.parse(localStorage.getItem('user')).email;
 
     let playersArray = [];
@@ -34,9 +33,9 @@ const CRUDManagePlayers = () => {
 
     const deletePlayer = (playerId) => {
         deletePlayerById(playerId)
-        .then(() => {
+            .then(() => {
                 window.location.reload();
-        })
+            })
     };
 
     function handleUpdatePlayer(playerId) {
@@ -54,7 +53,8 @@ const CRUDManagePlayers = () => {
                     <div
                         className="flex justify-between items-center bg-primary-ts_blue text-white  p-4  rounded-t-3xl ">
                         <strong>Manage Players</strong>
-                        <Link to="/add_players" className="bg-primary-green text-white px-3 py-1 font-semibold rounded-xl flex items-center text-sm hover:scale-105 whitespace-nowrap">
+                        <Link to="/add_players"
+                              className="bg-primary-green text-white px-3 py-1 font-semibold rounded-xl flex items-center text-sm hover:scale-105 whitespace-nowrap">
                             <FaPlus className="mr-2"/>
                             Add New Player
                         </Link>
@@ -75,10 +75,12 @@ const CRUDManagePlayers = () => {
                                     <div className="flex-1 mt-1 ml-2 text-center">{player.fullName}</div>
                                     <div className="flex-1 mt-1 ml-2 text-center">{player.playingRole}</div>
                                     <div className="flex-1 flex items-center justify-center mt-1">
-                                        <FaEdit className={`text-xl mr-4 hover:scale-105 ${player.createdBy === email ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
-                                                onClick={player.createdBy === email ? () => handleUpdatePlayer(player.id) : undefined}/>
-                                        <FaTrash className={`text-xl hover:scale-105 ${player.createdBy === email ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
-                                                 onClick={player.createdBy === email ? () => handleDeletePlayer(player.id) : undefined}/>
+                                        <FaEdit
+                                            className={`text-xl mr-4 hover:scale-105 ${player.createdBy === email ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
+                                            onClick={player.createdBy === email ? () => handleUpdatePlayer(player.id) : undefined}/>
+                                        <FaTrash
+                                            className={`text-xl hover:scale-105 ${player.createdBy === email ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
+                                            onClick={player.createdBy === email ? () => deletePlayer(player.id) : undefined}/>
                                     </div>
                                 </div>
                             ))
