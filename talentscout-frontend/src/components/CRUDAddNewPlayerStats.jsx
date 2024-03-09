@@ -5,7 +5,7 @@ import CreatePlayerModal from "./modals/CreatePlayerModal.jsx";
 // TODO - Navigate to the created players profile
 // TODO - Add validations for all fields (Regex for BBI)
 // TODO - Prevent navigation before submission (add a check)
-
+// TODO - Add created_by value
 function CRUDAddNewPlayerStats() {
     // State for Tab Change
     const [activeMainTab, setActiveMainTab] = useState('Test');
