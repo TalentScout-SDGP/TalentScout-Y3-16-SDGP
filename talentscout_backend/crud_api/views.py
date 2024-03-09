@@ -50,6 +50,7 @@ def getPlayerById(request, player_id):
 
         return Response(player_data, status=status.HTTP_200_OK)
 
+
 @api_view(['GET'])
 def filterPlayersByFullName(request):
     if request.method == 'GET':
@@ -64,12 +65,31 @@ def filterPlayersByFullName(request):
 
         return Response(player_data, status=status.HTTP_200_OK)
 
+
+def formatBirthDate(birth_date):
+    months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ]
+    birth_date = birth_date.split('-')
+    year = birth_date[0]
+    month_number = int(birth_date[1])
+    month_name = months[month_number - 1]
+    day = birth_date[2]
+
+    return f"{month_name} {day}, {year}"
+
+
 @api_view(['POST'])
 def createPlayer(request):
     if request.method == 'POST':
         latest_player_id = Player.objects.latest('player_id')
         next_player_id = latest_player_id.player_id + 1 if latest_player_id else 1
+
+        # Add player_id and birth_date to request.data
         request.data['player_id'] = next_player_id
+        request.data['birth_date'] = formatBirthDate(request.data['birth_date'])
+
         player_serializer = PlayerSerializer(data=request.data)
         if player_serializer.is_valid():
             player_instance = player_serializer.save()
@@ -179,6 +199,7 @@ def updatePlayer(request, player_id):
             return Response(player_serializer.data, status=status.HTTP_200_OK)
 
         return Response(player_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['DELETE'])
 def deletePlayer(request, player_id):

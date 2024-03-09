@@ -2,7 +2,7 @@ import {useContext, useState} from "react";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 
 function CRUDAddNewPlayerInfo() {
-    const {setPlayerInfoData} = useContext(ManagePlayersContext);
+    const {setPlayerInfoData, createPlayers} = useContext(ManagePlayersContext);
     const [playerInfo, setPlayerInfo] = useState({
         full_name: '',
         also_known_as: '',
@@ -12,6 +12,8 @@ function CRUDAddNewPlayerInfo() {
         batting_style: '',
         bowling_style: "",
     });
+
+    // console.log(new Intl.DateTimeFormat('en-GB').format(new Date()));
 
     // Function to calculate age from birth_date
     const calculateAge = (birthDate) => {
@@ -25,29 +27,18 @@ function CRUDAddNewPlayerInfo() {
         return age;
     };
 
-    // Function to format birth_date to Ex: "Month, Date & Year - January 10, 2000"
-    const formatBirthDate = (birth_date) => {
-        const [year, month, day] = birth_date.split('-');
-        const formattedDate = new Date(year, month - 1, day);
-        const monthNames = [
-            'January', 'February', 'March', 'April', 'May', 'June',
-            'July', 'August', 'September', 'October', 'November', 'December'
-        ];
-        return `${monthNames[formattedDate.getMonth()]} ${formattedDate.getDate()}, ${formattedDate.getFullYear()}`;
-    }
-
     const handleChange = (e) => {
         setPlayerInfo({
             ...playerInfo,
             [e.target.name]: e.target.value,
             age: e.target.name === 'birth_date' ? calculateAge(e.target.value) : playerInfo.age,
         });
+
     };
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        playerInfo.birth_date = formatBirthDate(playerInfo.birth_date);
-        setPlayerInfoData(playerInfo);
+        createPlayers(playerInfo);
     }
 
     return (

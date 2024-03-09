@@ -1,6 +1,7 @@
 import {useContext, useState} from "react";
 import AdminLoginModal from "./modals/AdminLoginModal.jsx";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
+import {Link} from "react-router-dom";
 
 function CRUDManagePlayersSearch() {
     const [playerName, setPlayerName] = useState('');
@@ -43,6 +44,10 @@ function CRUDManagePlayersSearch() {
                                  className="inline me-2"></img>
                             Search
                         </button>
+                        <Link to="/add_players"
+                              className="mt-10 text-3xl text-white underline cursor-pointer font-semibold">
+                            ADD
+                        </Link>
                     </div>
                 </div>
             </div>

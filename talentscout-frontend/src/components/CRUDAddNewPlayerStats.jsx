@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 
 function CRUDAddNewPlayerStats() {
@@ -195,7 +195,6 @@ function CRUDAddNewPlayerStats() {
         e.preventDefault();
 
         const checkAndPush = (stats, array) => {
-            // const isNotEmpty = Object.values(stats).some((value) => value !== '');
             const isNotEmpty = stats.matches.trim() !== '';
             if (isNotEmpty) array.push(stats);
         };
@@ -212,9 +211,9 @@ function CRUDAddNewPlayerStats() {
         bowlingStatsArray.forEach((stats) => checkAndPush(stats, bowling_stats));
         wicketkeepingStatsArray.forEach((stats) => checkAndPush(stats, wicketkeeping_stats));
 
-        console.log('batting_stats:', batting_stats);
-        console.log('bowling_stats:', bowling_stats);
-        console.log('wicketkeeping_stats:', wicketkeeping_stats);
+        // console.log('batting_stats:', batting_stats);
+        // console.log('bowling_stats:', bowling_stats);
+        // console.log('wicketkeeping_stats:', wicketkeeping_stats);
     };
 
 
@@ -257,6 +256,7 @@ function CRUDAddNewPlayerStats() {
 
                     <div>
                         <form onSubmit={handleSubmit}>
+                            <p>HELLO</p>
                             {activeMainTab === 'Test' && (
                                 <div>
                                     {activeSubTab === 'Batting' &&
