@@ -6,13 +6,14 @@ import PropTypes from 'prop-types';
 const ManagePlayersContext = createContext();
 
 export const PlayerDataProvider = ({children}) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [playerDict, setPlayerDict] = useState({});
     const [playerData, setPlayerData] = useState([]);
     const [selectedPlayerData, setSelectedPlayerData] = useState({});
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
-    const [playerDict, setPlayerDict] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
     const [playerInfo, setPlayerInfo] = useState({});
-
+    const [createdPlayer, setCreatedPlayer] = useState();
+    const [createdPlayerStatus, setCreatedPlayerStatus] = useState(0);
 
     // UseEffect to fetch all player data from the backend
     useEffect(() => {
@@ -90,7 +91,8 @@ export const PlayerDataProvider = ({children}) => {
             setIsLoading(true);
             const response = await axios.post('http://localhost:8000/api/crud/create/', formData);
             const data = response.data;
-            console.log(data);
+            setCreatedPlayer(data)
+            setCreatedPlayerStatus(response.status)
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
@@ -103,6 +105,8 @@ export const PlayerDataProvider = ({children}) => {
         selectedPlayerData: selectedPlayerData,
         selectedPlayersByName: selectedPlayersByName,
         playerInfo: playerInfo,
+        createdPlayer: createdPlayer,
+        createdPlayerStatus: createdPlayerStatus,
         getPlayerDataById: getPlayerDataById,
         filterPlayersByName: filterPlayersByName,
         setPlayerInfoData: setPlayerInfoData,

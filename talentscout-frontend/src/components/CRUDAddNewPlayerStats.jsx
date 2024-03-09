@@ -1,5 +1,6 @@
 import {useState, useContext, useEffect} from 'react'
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
+import CreatePlayerModal from "./modals/CreatePlayerModal.jsx";
 
 function CRUDAddNewPlayerStats() {
     // State for Tab Change
@@ -16,8 +17,17 @@ function CRUDAddNewPlayerStats() {
         setActiveSubTab(subTab);
     };
 
-    const {playerInfo, createPlayers} = useContext(ManagePlayersContext);
+    const {playerInfo, createdPlayer, createdPlayerStatus, createPlayers} = useContext(ManagePlayersContext);
+    const [isPlayerCreated, setIsPlayerCreated] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        if (createdPlayerStatus === 201) {
+            console.log("Player Created Successfully");
+            setIsPlayerCreated(true);
+        }
+    }, [createdPlayerStatus]);
+
 
     useEffect(() => {
         if (Object.keys(playerInfo).length !== 0) {
@@ -228,9 +238,8 @@ function CRUDAddNewPlayerStats() {
         createPlayers(player_info);
     };
 
-    if (isVisible) {
+    if (isVisible && !isPlayerCreated) {
         return (
-
             <div className="font-poppins">
                 <div className="md:container px-2">
                     <div className="shadow-xl bg-primary-ts_purple my-12 lg:w-full rounded-lg px-7 lg:px-16 pt-12 py-2">
@@ -1006,12 +1015,15 @@ function CRUDAddNewPlayerStats() {
                 </div>
             </div>
         )
+    } else if (isPlayerCreated) {
+        return (
+            <CreatePlayerModal/>
+        )
     } else {
         return (
             <div></div>
         )
     }
-
 }
 
 export default CRUDAddNewPlayerStats
