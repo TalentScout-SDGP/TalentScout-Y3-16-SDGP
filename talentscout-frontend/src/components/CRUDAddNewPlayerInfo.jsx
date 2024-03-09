@@ -44,11 +44,9 @@ function CRUDAddNewPlayerInfo() {
         });
     };
 
-
     const handleSubmit = (e) => {
         e.preventDefault()
         playerInfo.birth_date = formatBirthDate(playerInfo.birth_date);
-        console.log(playerInfo);
         setPlayerInfoData(playerInfo);
     }
 

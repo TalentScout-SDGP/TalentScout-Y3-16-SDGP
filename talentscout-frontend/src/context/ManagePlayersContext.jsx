@@ -84,6 +84,8 @@ export const PlayerDataProvider = ({children}) => {
         try {
             setIsLoading(true);
             const response = await axios.post('http://localhost:8000/api/crud/create/', formData);
+            const data = response.data;
+            console.log(data);
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
