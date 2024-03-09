@@ -80,11 +80,6 @@ export const PlayerDataProvider = ({children}) => {
         setPlayerInfo(data);
     }
 
-    useEffect(() => {
-        console.log("CONTEXT: ", playerInfo);
-    }, [playerInfo]);
-
-
     // Function to create new players
     const createPlayers = async (formData) => {
         try {

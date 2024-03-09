@@ -2,10 +2,17 @@ import {useState, useContext, useEffect} from 'react'
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 import CreatePlayerModal from "./modals/CreatePlayerModal.jsx";
 
+// TODO - Navigate to the created players profile
+// TODO - Add validations for all fields (Regex for BBI)
+// TODO - Prevent navigation before submission (add a check)
+
 function CRUDAddNewPlayerStats() {
     // State for Tab Change
     const [activeMainTab, setActiveMainTab] = useState('Test');
     const [activeSubTab, setActiveSubTab] = useState('Batting');
+    const {playerInfo, createdPlayer, createdPlayerStatus, createPlayers} = useContext(ManagePlayersContext);
+    const [isPlayerCreated, setIsPlayerCreated] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
 
     // Function to handle Tab Change
     const handleMainTabChange = (mainTab) => {
@@ -16,10 +23,6 @@ function CRUDAddNewPlayerStats() {
     const handleSubTabChange = (subTab) => {
         setActiveSubTab(subTab);
     };
-
-    const {playerInfo, createdPlayer, createdPlayerStatus, createPlayers} = useContext(ManagePlayersContext);
-    const [isPlayerCreated, setIsPlayerCreated] = useState(false);
-    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         if (createdPlayerStatus === 201) {
@@ -233,8 +236,6 @@ function CRUDAddNewPlayerStats() {
             bowling_data: bowling_data,
             wicketkeeping_data: wicketkeeping_data,
         };
-
-        console.log(player_info);
         createPlayers(player_info);
     };
 
