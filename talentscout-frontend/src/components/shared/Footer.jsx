@@ -23,7 +23,7 @@ const Footer = () => {
                             <img className="w-8" src={import.meta.env.BASE_URL + 'Facebook.png'} alt="Facebook"></img>
                         </a>
                         <a className="self-center transition-transform duration-3000 transform hover:scale-125"
-                           href="#">
+                           href="https://www.instagram.com/talentscout46/">
                             <img className="w-8 mt-[2px]" src={import.meta.env.BASE_URL + 'Instagram.png'}
                                  alt="Instagram"></img>
                         </a>
