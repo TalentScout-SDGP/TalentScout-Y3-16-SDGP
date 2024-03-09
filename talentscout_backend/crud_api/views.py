@@ -197,7 +197,6 @@ def updatePlayer(request, player_id):
                     print(wicketkeeping_serializer.errors)
 
             return Response(player_serializer.data, status=status.HTTP_200_OK)
-
         return Response(player_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

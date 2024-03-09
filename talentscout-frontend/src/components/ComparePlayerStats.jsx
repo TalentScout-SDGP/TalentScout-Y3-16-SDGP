@@ -62,7 +62,6 @@ const ComparePlayerStats = () => {
         );
     };
 
-    //TODO Dummy data used for testing the component, Will be replaced with actual data from backend once we have the API ready
     const playerStats = {
         Batting: {
             Test: [
@@ -115,7 +114,6 @@ const ComparePlayerStats = () => {
                 {id: 3, statPlayer1: 50, statPlayer2: 35, description: 'Innings'},
                 {id: 4, statPlayer1: 2.5, statPlayer2: 7.3, description: 'Overs'},
                 {id: 5, statPlayer1: 130, statPlayer2: 120, description: 'Runs'},
-                //TODO We will have to parse BBI stat as a string and compare the runs and wickets separately
                 {id: 6, statPlayer1: '86/5', statPlayer2: '79/8', description: 'BBI'},
                 {id: 7, statPlayer1: 120, statPlayer2: 110, description: 'Avg'},
                 {id: 8, statPlayer1: 85.0, statPlayer2: 72.6, description: 'Econ'},

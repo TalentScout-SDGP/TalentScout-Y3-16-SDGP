@@ -234,7 +234,6 @@ function ExplorePlayers() {
                 </div>
             </div>
 
-            {/*TODO DISPLAY THIS IF RESPONSE IS OK*/}
             <ExplorePlayersRanking/>
         </div>
     );
