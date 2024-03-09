@@ -50,6 +50,7 @@ def getPlayerById(request, player_id):
 
         return Response(player_data, status=status.HTTP_200_OK)
 
+
 @api_view(['GET'])
 def filterPlayersByFullName(request):
     if request.method == 'GET':
@@ -63,6 +64,7 @@ def filterPlayersByFullName(request):
             player_data.append(player_serializer)
 
         return Response(player_data, status=status.HTTP_200_OK)
+
 
 @api_view(['POST'])
 def createPlayer(request):
@@ -179,6 +181,7 @@ def updatePlayer(request, player_id):
             return Response(player_serializer.data, status=status.HTTP_200_OK)
 
         return Response(player_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['DELETE'])
 def deletePlayer(request, player_id):

@@ -11,6 +11,7 @@ export const PlayerDataProvider = ({children}) => {
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
     const [playerDict, setPlayerDict] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [deletePlayer, setDeletePlayer] = useState([]);
 
     // UseEffect to fetch all player data from the backend
     useEffect(() => {
@@ -65,9 +66,10 @@ export const PlayerDataProvider = ({children}) => {
     const deletePlayerById = async (playerId) => {
         try {
             setIsLoading(true);
-            const response = await axios.get(`http://localhost:8000/api/crud/delete/${playerId}/`);
+            const response = await axios.delete(`http://localhost:8000/api/crud/delete/${playerId}/`);
             const data = response.data;
             setIsLoading(false);
+            setDeletePlayer(data);
         } catch (error) {
             setIsLoading(false);
         }
@@ -78,8 +80,10 @@ export const PlayerDataProvider = ({children}) => {
         playerDict,
         selectedPlayerData: selectedPlayerData,
         selectedPlayersByName: selectedPlayersByName,
+        deletePlayer: deletePlayer,
         getPlayerDataById: getPlayerDataById,
-        filterPlayersByName: filterPlayersByName
+        filterPlayersByName: filterPlayersByName,
+        deletePlayerById: deletePlayerById
     };
 
     if (!isLoading) {
