@@ -3,6 +3,7 @@ import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 
 function CRUDAddNewPlayerStats() {
     const {createPlayers} = useContext(ManagePlayersContext);
+
     // State for Tab Change
     const [activeMainTab, setActiveMainTab] = useState('Test');
     const [activeSubTab, setActiveSubTab] = useState('Batting');
@@ -192,7 +193,7 @@ function CRUDAddNewPlayerStats() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         const checkAndPush = (stats, array) => {
             // const isNotEmpty = Object.values(stats).some((value) => value !== '');
             const isNotEmpty = stats.matches.trim() !== '';

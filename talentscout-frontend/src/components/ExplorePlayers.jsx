@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import PlayerRankingContext from "../context/PlayerRankingContext.jsx";
 import ExplorePlayersRanking from "./ExplorePlayersRanking.jsx";
-import UserLoginModal from "./UserLoginModal.jsx";
+import UserLoginModal from "./modals/UserLoginModal.jsx";
 import MultiRangeSlider from "multi-range-slider-react";
 
 

@@ -1,5 +1,5 @@
 import {useContext, useState} from "react";
-import AdminLoginModal from "./AdminLoginModal.jsx";
+import AdminLoginModal from "./modals/AdminLoginModal.jsx";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 
 function CRUDManagePlayersSearch() {
