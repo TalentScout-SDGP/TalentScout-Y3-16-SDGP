@@ -2,7 +2,7 @@ import {useContext, useState} from "react";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 
 function CRUDAddNewPlayerInfo() {
-    const {setPlayerInfoData, createPlayers} = useContext(ManagePlayersContext);
+    const {setPlayerInfoData} = useContext(ManagePlayersContext);
     const [playerInfo, setPlayerInfo] = useState({
         full_name: '',
         also_known_as: '',
@@ -12,8 +12,6 @@ function CRUDAddNewPlayerInfo() {
         batting_style: '',
         bowling_style: "",
     });
-
-    // console.log(new Intl.DateTimeFormat('en-GB').format(new Date()));
 
     // Function to calculate age from birth_date
     const calculateAge = (birthDate) => {
@@ -38,7 +36,7 @@ function CRUDAddNewPlayerInfo() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        createPlayers(playerInfo);
+        setPlayerInfoData(playerInfo);
     }
 
     return (

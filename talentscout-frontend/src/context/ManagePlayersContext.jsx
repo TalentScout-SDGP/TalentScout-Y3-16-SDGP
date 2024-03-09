@@ -12,7 +12,7 @@ export const PlayerDataProvider = ({children}) => {
     const [playerDict, setPlayerDict] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [playerInfo, setPlayerInfo] = useState({});
-    const [isPlayerCreated, setIsPlayerCreated] = useState(false);
+
 
     // UseEffect to fetch all player data from the backend
     useEffect(() => {
@@ -81,12 +81,9 @@ export const PlayerDataProvider = ({children}) => {
 
     useEffect(() => {
         console.log("CONTEXT: ", playerInfo);
-        if (Object.keys(playerInfo).length > 0) {
-            setIsPlayerCreated(true);
-        }
     }, [playerInfo]);
 
-    
+
     // Function to create new players
     const createPlayers = async (formData) => {
         try {
@@ -105,7 +102,7 @@ export const PlayerDataProvider = ({children}) => {
         playerDict,
         selectedPlayerData: selectedPlayerData,
         selectedPlayersByName: selectedPlayersByName,
-        isPlayerCreated: isPlayerCreated,
+        playerInfo: playerInfo,
         getPlayerDataById: getPlayerDataById,
         filterPlayersByName: filterPlayersByName,
         setPlayerInfoData: setPlayerInfoData,
