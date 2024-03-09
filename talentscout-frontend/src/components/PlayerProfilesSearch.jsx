@@ -42,7 +42,7 @@ function PlayerProfilesSearch() {
                         <p className="text-white text-lg lg:text-xl font-bold mb-2">
                             View Player Profiles
                         </p>
-                        <p className="text-gray-300 text-md lg:text-lg mb-8">
+                        <p className="w-full sm:w-4/5 mt-4 text-gray-300 text-md lg:text-lg mb-8">
                             Delve into the world of cricket excellence. Explore in-depth player
                             profiles and detailed statistics, uncovering the stories behind the
                             stars of the game. Whether you&apos;re a seasoned fan or a curious newcomer,
