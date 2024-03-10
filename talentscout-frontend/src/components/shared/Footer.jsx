@@ -67,21 +67,21 @@ const Footer = () => {
           <h2 className="lg:block hidden text-4xl font-semibold">TalentScout</h2>
           <div className="flex gap-x-8 items-center md:mt-8 lg:mt-0">
             <a className="self-center transition-transform duration-3000 transform hover:scale-125"
-              href="#">
+              href="https://twitter.com/talentScout111">
               <img className="w-6 mt-[3px]" src={import.meta.env.BASE_URL + 'Twitter.png'}
                 alt="Twitter"></img>
             </a>
             <a className="self-center transition-transform duration-3000 transform hover:scale-125"
-              href="#">
+              href="https://www.linkedin.com/in/talent-scout-9345a42b9/">
               <img className="w-8" src={import.meta.env.BASE_URL + 'LinkedIn.png'} alt="LinkedIn">
               </img>
             </a>
             <a className="self-center transition-transform duration-3000 transform hover:scale-125"
-              href="#">
+              href="https://www.facebook.com/people/TalentScout/61557263277778/">
               <img className="w-8" src={import.meta.env.BASE_URL + 'Facebook.png'} alt="Facebook"></img>
             </a>
             <a className="self-center transition-transform duration-3000 transform hover:scale-125"
-              href="#">
+              href="https://www.instagram.com/talentscout46/">
               <img className="w-8 mt-[2px]" src={import.meta.env.BASE_URL + 'Instagram.png'}
                 alt="Instagram"></img>
             </a>
