@@ -59,3 +59,54 @@ export const ContactUs = () => {
   );
 };
 
+const Footer = () => {
+  return (
+    <div className="bg-primary-ts_blue text-white font-poppins">
+      <div className="md:container grid grid-cols-12 py-8 gap-y-8">
+        <div className="flex flex-col col-span-12 lg:col-span-4 gap-y-8 items-center lg:items-start order-3 lg:order-1">
+          <h2 className="lg:block hidden text-4xl font-semibold">TalentScout</h2>
+          <div className="flex gap-x-8 items-center md:mt-8 lg:mt-0">
+            <a className="self-center transition-transform duration-3000 transform hover:scale-125"
+              href="#">
+              <img className="w-6 mt-[3px]" src={import.meta.env.BASE_URL + 'Twitter.png'}
+                alt="Twitter"></img>
+            </a>
+            <a className="self-center transition-transform duration-3000 transform hover:scale-125"
+              href="#">
+              <img className="w-8" src={import.meta.env.BASE_URL + 'LinkedIn.png'} alt="LinkedIn">
+              </img>
+            </a>
+            <a className="self-center transition-transform duration-3000 transform hover:scale-125"
+              href="#">
+              <img className="w-8" src={import.meta.env.BASE_URL + 'Facebook.png'} alt="Facebook"></img>
+            </a>
+            <a className="self-center transition-transform duration-3000 transform hover:scale-125"
+              href="#">
+              <img className="w-8 mt-[2px]" src={import.meta.env.BASE_URL + 'Instagram.png'}
+                alt="Instagram"></img>
+            </a>
+          </div>
+          <div className="">
+            <img className="w-60" src={import.meta.env.BASE_URL + 'qr-code.png'} alt="QR Code"></img>
+          </div>
+        </div>
+        <div className="flex lg:gap-y-6 flex-col gap-y-4 md:gap-y-8 text-white col-span-12 lg:col-span-3 md:mt-8 lg:mt-16 lg:ps-0 items-center lg:items-start order-2 lg:order-2">
+          <Link to="/about_us" className="text-sm md:text-md lg:text-base">
+            About Us
+          </Link>
+          <Link to="/our_team" className="text-sm md:text-md lg:text-base">
+            Our Team
+          </Link>
+        </div>
+        <div className="col-span-12 lg:col-span-5 pt-4 items-center lg:items-start order-1 lg:order-3 px-4 lg:px-0">
+          <h2 className="lg:hidden block mb-2 md:mb-8 text-lg lg:text-2xl xl:text-4xl font-semibold">TalentScout</h2>
+          <h2 className="font-semibold mb-2 md:mb-8 lg:mb-0 lg text-base md:text-lg lg:text-2xl">Contact
+            Us</h2>
+          <ContactUs />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;
