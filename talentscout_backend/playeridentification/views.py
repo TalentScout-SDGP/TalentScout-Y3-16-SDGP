@@ -42,37 +42,3 @@ def rankPlayers(request):
 
             if selected_format:
                 query &= Q(playerbowling__format=selected_format)
-
-            filtered_players = Player.objects.filter(query)
-
-            player_stats = []
-            print("lol1")
-            for player in filtered_players:
-                # Fetch relevant stats based on the playing role
-                print("lol")
-                if playing_role == 'Batsman':
-                    print("lol")
-                    stats = PlayerBattingSerializer(
-                        PlayerBatting.objects.filter(player=player, format=selected_format), many=True).data
-                elif playing_role == 'Bowler':
-                    print("lol")
-                    stats = PlayerBowlingSerializer(
-                        PlayerBowling.objects.filter(player=player, format=selected_format), many=True).data
-                elif playing_role == 'WicketKeeper':
-                    stats = PlayerWicketKeepingSerializer(
-                        PlayerWicketKeeping.objects.filter(player=player, format=selected_format), many=True).data
-                else:
-                    stats = []
-
-                player_serializer = PlayerSerializer(player).data
-                player_serializer.update({
-                    'stats': stats,
-                })
-
-                player_stats.append(player_serializer)
-                print(player_stats)
-
-            return Response(player_stats, status=status.HTTP_200_OK)
-
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
