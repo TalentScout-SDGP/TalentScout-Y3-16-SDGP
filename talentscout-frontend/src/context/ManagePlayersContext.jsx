@@ -11,6 +11,10 @@ export const PlayerDataProvider = ({children}) => {
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
     const [playerDict, setPlayerDict] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [deletePlayer, setDeletePlayer] = useState([]);
+    const [playerInfo, setPlayerInfo] = useState({});
+    const [createdPlayer, setCreatedPlayer] = useState();
+    const [createdPlayerStatus, setCreatedPlayerStatus] = useState(0);
 
     // UseEffect to fetch all player data from the backend
     useEffect(() => {
@@ -65,8 +69,27 @@ export const PlayerDataProvider = ({children}) => {
     const deletePlayerById = async (playerId) => {
         try {
             setIsLoading(true);
-            const response = await axios.get(`http://localhost:8000/api/crud/delete/${playerId}/`);
+            const response = await axios.delete(`http://localhost:8000/api/crud/delete/${playerId}/`);
             const data = response.data;
+            setIsLoading(false);
+            setDeletePlayer(data);
+        } catch (error) {
+            setIsLoading(false);
+        }
+    };
+
+    const setPlayerInfoData = (data) => {
+        setPlayerInfo(data);
+    }
+
+    // Function to create new players
+    const createPlayers = async (formData) => {
+        try {
+            setIsLoading(true);
+            const response = await axios.post('http://localhost:8000/api/crud/create/', formData);
+            const data = response.data;
+            setCreatedPlayer(data)
+            setCreatedPlayerStatus(response.status)
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
@@ -78,8 +101,15 @@ export const PlayerDataProvider = ({children}) => {
         playerDict,
         selectedPlayerData: selectedPlayerData,
         selectedPlayersByName: selectedPlayersByName,
+        deletePlayer: deletePlayer,
+        playerInfo: playerInfo,
+        createdPlayer: createdPlayer,
+        createdPlayerStatus: createdPlayerStatus,
         getPlayerDataById: getPlayerDataById,
-        filterPlayersByName: filterPlayersByName
+        deletePlayerById: deletePlayerById,
+        filterPlayersByName: filterPlayersByName,
+        setPlayerInfoData: setPlayerInfoData,
+        createPlayers: createPlayers,
     };
 
     if (!isLoading) {
