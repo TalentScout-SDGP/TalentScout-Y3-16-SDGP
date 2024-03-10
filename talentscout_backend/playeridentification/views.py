@@ -4,7 +4,8 @@ from rest_framework import status
 from .serializers import FormDataSerializer
 from crud_api.models import Player, PlayerBatting, PlayerBowling, PlayerWicketKeeping
 from django.db.models import Q
-from crud_api.serializers import PlayerSerializer, PlayerBowlingSerializer
+from crud_api.serializers import PlayerSerializer, PlayerBattingSerializer, PlayerBowlingSerializer, \
+    PlayerWicketKeepingSerializer
 
 
 @api_view(['POST'])
@@ -27,9 +28,11 @@ def rankPlayers(request):
             if playing_role:
                 query &= Q(playing_role=playing_role)
 
-            # if bowling_style:
-            #     query &= Q(bowling_style=bowling_style)
-            print(query)
+            if bowling_style:
+                query &= Q(bowling_style=bowling_style)
+            # if batting_style:
+            #     query &= Q(batting_style=batting_style)
+
             if age_min_value is not None and age_max_value is not None:
                 query &= Q(age__range=(age_min_value, age_max_value))
             elif age_min_value is not None:
@@ -41,28 +44,34 @@ def rankPlayers(request):
                 query &= Q(playerbowling__format=selected_format)
 
             filtered_players = Player.objects.filter(query)
-            print(query)
+
             player_stats = []
-
+            print("lol1")
             for player in filtered_players:
-
-                # Fetch only bowling stats for bowlers
-
-                if playing_role == 'Bowler':
-                    bowling_stats = PlayerBowlingSerializer(
+                # Fetch relevant stats based on the playing role
+                print("lol")
+                if playing_role == 'Batsman':
+                    print("lol")
+                    stats = PlayerBattingSerializer(
+                        PlayerBatting.objects.filter(player=player, format=selected_format), many=True).data
+                elif playing_role == 'Bowler':
+                    print("lol")
+                    stats = PlayerBowlingSerializer(
                         PlayerBowling.objects.filter(player=player, format=selected_format), many=True).data
+                elif playing_role == 'WicketKeeper':
+                    stats = PlayerWicketKeepingSerializer(
+                        PlayerWicketKeeping.objects.filter(player=player, format=selected_format), many=True).data
                 else:
-                    bowling_stats = []  # Empty list for non-bowlers
-
-                # You can fetch batting stats and wicketkeeping stats if needed
+                    stats = []
 
                 player_serializer = PlayerSerializer(player).data
                 player_serializer.update({
-                    'bowling_stats': bowling_stats,
+                    'stats': stats,
                 })
 
                 player_stats.append(player_serializer)
-           
+                print(player_stats)
+
             return Response(player_stats, status=status.HTTP_200_OK)
 
         else:
