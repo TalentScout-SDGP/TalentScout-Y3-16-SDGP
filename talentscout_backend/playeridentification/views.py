@@ -5,6 +5,21 @@ from .serializers import FormDataSerializer
 from crud_api.models import Player, PlayerBatting, PlayerBowling, PlayerWicketKeeping
 from django.db.models import Q
 from crud_api.serializers import PlayerBattingSerializer, PlayerBowlingSerializer, PlayerWicketKeepingSerializer
+import pickle
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+import numpy as np
+import csv
+
+# Global variables initialization
+format_input = "odi"
+playing_role = "bowling"
+wicketkeeping_stats_order = ['Matches', 'Innings', 'Highest Score', 'Balls Faced', '100s', '6s', 'Catches', 'Runs',
+                             'Not Outs', 'Average', 'Strike Rate', '50s', '4s', 'Stumps']
+bowling_stats_order = ['Matches', 'Wickets', 'Innings', 'Overs', 'Runs', 'BBI', 'Avg', 'Econ', 'SR', '4Ws', '5Ws']
+batting_stats_order = ['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR', '100s', '50s', '4s', '6s']
+stats = []
 
 
 @api_view(['POST'])
