@@ -1,6 +1,7 @@
 import React, {useState, useContext} from "react";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 import ComparePlayersInfo from "./ComparePlayerInfo.jsx";
+import {toast} from "react-toastify";
 
 function ComparePlayersSearch() {
     const {playerDict, getPlayerDataById} = useContext(ManagePlayersContext);
@@ -51,7 +52,7 @@ function ComparePlayersSearch() {
 
     const handleSubmit = () => {
         if (!playerId1 || !playerId2) {
-            setErrorMessage('Please Select Two Players to Compare');
+            toast.error("Please Select Two Players to Compare")
             return;
         }
         getPlayerDataById(playerId1);
@@ -129,7 +130,6 @@ function ComparePlayersSearch() {
                                  className="inline me-2"></img>
                             Compare
                         </button>
-                        {errorMessage && <p className="pt-3 text-red-500">{errorMessage}</p>}
                     </div>
                 </div>
             </div>
