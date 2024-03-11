@@ -51,6 +51,35 @@ export const PlayerDataProvider = ({ children }) => {
         }
     };
 
+    const filterPlayersByName = async (playerName) => {
+        try {
+            setIsLoading(true);
+            const response = await axios.get(`http://localhost:8000/api/crud/filter?full_name=${playerName}`);
+            const data = response.data;
+            setIsLoading(false);
+            setSelectedPlayersByName(data);
+        } catch (error) {
+            console.error('Error filtering players by name:', error);
+            setIsLoading(false);
+        }
+    };
 
+    const deletePlayerById = async (playerId) => {
+        try {
+            setIsLoading(true);
+            await axios.delete(`http://localhost:8000/api/crud/delete/${playerId}/`);
+            setIsLoading(false);
+        } catch (error) {
+            console.error('Error deleting player by ID:', error);
+            setIsLoading(false);
+        }
+    };
+
+    // New API to fetch player stats
+
+
+PlayerDataProvider.propTypes = {
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+};
 
 export default ManagePlayersContext;
