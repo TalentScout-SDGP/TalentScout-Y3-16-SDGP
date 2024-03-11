@@ -75,7 +75,7 @@ const ComparePlayerStats = () => {
                         <div
                             className={`col-span-4 text-center lg:text-base sm:text-sm text-xs ${
                                 stat.statPlayer1 !== undefined
-                                    ? ['Runs Conceded', 'Avg', 'Econ', 'SR'].includes(stat.description)
+                                    ? ['Runs Conceded', 'Bowling Avg', 'Bowling Econ', 'Bowling SR'].includes(stat.description)
                                         ? stat.description === 'BBI'
                                             ? compareBBI(stat.statPlayer1, stat.statPlayer2) === 'player1'
                                                 ? 'bg-primary-green'
@@ -96,7 +96,7 @@ const ComparePlayerStats = () => {
                         <div
                             className={`col-span-4 text-center lg:text-base sm:text-sm text-xs ${
                                 stat.statPlayer2 !== undefined // Check if statPlayer2 is not undefined
-                                    ? ['Runs Conceded', 'Avg', 'Econ', 'SR'].includes(stat.description) // Check if description is one of 'Runs', 'Avg', 'Econ', 'SR'
+                                    ? ['Runs Conceded', 'Bowling Avg', 'Bowling Econ', 'Bowling SR'].includes(stat.description) // Check if description is one of 'Runs', 'Avg', 'Econ', 'SR'
                                         ? stat.description === 'BBI' // If description is 'BBI', compare the BBI values
                                             ? compareBBI(stat.statPlayer2, stat.statPlayer1) === 'player1'
                                                 ? 'bg-primary-green'
@@ -118,6 +118,87 @@ const ComparePlayerStats = () => {
             </div>
         );
     };
+
+    const playerStats = {
+        Batting: {
+            Test: [
+                {id: 1, statPlayer1: getBattingStats('Test', 1).matches, statPlayer2: getBattingStats('Test', 2).matches, description: 'Matches'},
+                {id: 2, statPlayer1: getBattingStats('Test', 1).runs, statPlayer2: getBattingStats('Test', 2).runs, description: 'Runs'},
+                {id: 3, statPlayer1: getBattingStats('Test',1).innings, statPlayer2: getBattingStats('Test',2).innings, description: 'Innings'},
+                {id: 4, statPlayer1: getBattingStats('Test',1).no, statPlayer2: getBattingStats('Test',2).no, description: 'Not Outs'},
+                {id: 5, statPlayer1: getBattingStats('Test',1).hs, statPlayer2: getBattingStats('Test',2).hs, description: 'HS'},
+                {id: 6, statPlayer1: getBattingStats('Test',1).avg, statPlayer2: getBattingStats('Test',2).avg, description: 'Avg'},
+                {id: 7, statPlayer1: getBattingStats('Test',1).bf, statPlayer2: getBattingStats('Test',2).bf, description: 'BF'},
+                {id: 8, statPlayer1: getBattingStats('Test',1).sr, statPlayer2: getBattingStats('Test',2).sr, description: 'SR'},
+                {id: 9, statPlayer1: getBattingStats('Test',1).centuries, statPlayer2: getBattingStats('Test',2).centuries, description: '100s'},
+                {id: 10, statPlayer1: getBattingStats('Test',1).fifties, statPlayer2: getBattingStats('Test',2).fifties, description: '50s'},
+                {id: 11, statPlayer1: getBattingStats('Test',1).fours, statPlayer2: getBattingStats('Test',2).fours, description: '4s'},
+                {id: 12, statPlayer1: getBattingStats('Test',1).sixes, statPlayer2: getBattingStats('Test',2).sixes, description: '6s'},
+
+            ],
+            ODI: [
+                {id: 1, statPlayer1: getBattingStats('ODI', 1).matches, statPlayer2: getBattingStats('ODI', 2).matches, description: 'Matches'},
+                {id: 2, statPlayer1: getBattingStats('ODI', 1).runs, statPlayer2: getBattingStats('ODI', 2).runs, description: 'Runs'},
+                {id: 3, statPlayer1: getBattingStats('ODI',1).innings, statPlayer2: getBattingStats('ODI',2).innings, description: 'Innings'},
+                {id: 4, statPlayer1: getBattingStats('ODI',1).no, statPlayer2: getBattingStats('ODI',2).no, description: 'Not Outs'},
+                {id: 5, statPlayer1: getBattingStats('ODI',1).hs, statPlayer2: getBattingStats('ODI',2).hs, description: 'HS'},
+                {id: 6, statPlayer1: getBattingStats('ODI',1).avg, statPlayer2: getBattingStats('ODI',2).avg, description: 'Avg'},
+                {id: 7, statPlayer1: getBattingStats('ODI',1).bf, statPlayer2: getBattingStats('ODI',2).bf, description: 'BF'},
+                {id: 8, statPlayer1: getBattingStats('ODI',1).sr, statPlayer2: getBattingStats('ODI',2).sr, description: 'SR'},
+                {id: 9, statPlayer1: getBattingStats('ODI',1).centuries, statPlayer2: getBattingStats('ODI',2).centuries, description: '100s'},
+                {id: 10, statPlayer1: getBattingStats('ODI',1).fifties, statPlayer2: getBattingStats('ODI',2).fifties, description: '50s'},
+                {id: 11, statPlayer1: getBattingStats('ODI',1).fours, statPlayer2: getBattingStats('ODI',2).fours, description: '4s'},
+                {id: 12, statPlayer1: getBattingStats('ODI',1).sixes, statPlayer2: getBattingStats('ODI',2).sixes, description: '6s'},
+            ],
+            T20: [
+                {id: 1, statPlayer1: getBattingStats('T20', 1).matches, statPlayer2: getBattingStats('T20', 2).matches, description: 'Matches'},
+                {id: 2, statPlayer1: getBattingStats('T20', 1).runs, statPlayer2: getBattingStats('T20', 2).runs, description: 'Runs'},
+                {id: 3, statPlayer1: getBattingStats('T20',1).innings, statPlayer2: getBattingStats('T20',2).innings, description: 'Innings'},
+                {id: 4, statPlayer1: getBattingStats('T20',1).no, statPlayer2: getBattingStats('T20',2).no, description: 'Not Outs'},
+                {id: 5, statPlayer1: getBattingStats('T20',1).hs, statPlayer2: getBattingStats('T20',2).hs, description: 'HS'},
+                {id: 6, statPlayer1: getBattingStats('T20',1).avg, statPlayer2: getBattingStats('T20',2).avg, description: 'Avg'},
+                {id: 7, statPlayer1: getBattingStats('T20',1).bf, statPlayer2: getBattingStats('T20',2).bf, description: 'BF'},
+                {id: 8, statPlayer1: getBattingStats('T20',1).sr, statPlayer2: getBattingStats('T20',2).sr, description: 'SR'},
+                {id: 9, statPlayer1: getBattingStats('T20',1).centuries, statPlayer2: getBattingStats('T20',2).centuries, description: '100s'},
+                {id: 10, statPlayer1: getBattingStats('T20',1).fifties, statPlayer2: getBattingStats('T20',2).fifties, description: '50s'},
+                {id: 11, statPlayer1: getBattingStats('T20',1).fours, statPlayer2: getBattingStats('T20',2).fours, description: '4s'},
+                {id: 12, statPlayer1: getBattingStats('T20',1).sixes, statPlayer2: getBattingStats('T20',2).sixes, description: '6s'},
+            ],
+        },
+
+    };
+
+    return (
+        <div className="font-poppins">
+            <div className="md:container my-4 md:my-16 px-2">
+                <div
+                    className=" shadow-outer tab-header flex justify-center gap-x-2 sm:gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl lg:text-base sm:text-sm text-xs">
+                    {Object.keys(playerStats).map((tab, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handleMainTabChange(index + 1)}
+                            className={mainTab === index + 1 ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
+                            {tab}
+                        </button>
+                    ))}
+                </div>
+                <div
+                    className="tab-header shadow-outer flex justify-center gap-x-4 bg-primary-ts_purple w-fit mx-auto py-1 px-2 rounded-3xl my-8 lg:text-base sm:text-sm text-xs">
+                    {Object.keys(playerStats[Object.keys(playerStats)[mainTab - 1]]).map((tab, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handleNestedTabChange(index + 4)}
+                            className={nestedTab === index + 4 ? 'active text-md font-semibold bg-primary-ts_blue text-white py-1 px-2 sm:px-4 md:px-8 rounded-2xl' : 'font-semibold text-md py-1 px-2 sm:px-4 md:px-8'}>
+                            {tab}
+                        </button>
+                    ))}
+                </div>
+                <div className="tab-content my-8 bg-primary-ts_purple rounded-lg lg:text-base text-sm shadow-outer">
+                    {mainTab && nestedTab && renderStatsList(playerStats[Object.keys(playerStats)[mainTab - 1]][Object.keys(playerStats[Object.keys(playerStats)[mainTab - 1]])[nestedTab - 4]])}
+                </div>
+            </div>
+        </div>
+    );
 
 };
 
