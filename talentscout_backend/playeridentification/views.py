@@ -64,10 +64,9 @@ def rankPlayers(request):
 
             filtered_players = Player.objects.filter(query)
             print(query)
-            stats_list = []
-            stats_values = []
-
+            stats_dict = {}
             for player in filtered_players:
+                player_stats = []
 
                 # Fetch relevant stats based on the playing role
 
@@ -82,39 +81,23 @@ def rankPlayers(request):
                         PlayerWicketKeeping.objects.filter(player=player, format=selected_format), many=True).data
                 else:
                     stats = []
-
-                player_stats = {}
+                print(stats, "heeeeeeee")
                 for stat in stats:
+                    print(stat)
                     for key, value in stat.items():
-                        if key != 'batting_id' and key != 'format':
-                            player_stats[key] = value
-                            stats_values.append(value)
-                stats_list.append(player_stats)
+                        print(key, value)
+                        if key != 'batting_id' and key != 'format' and key != 'player':
+                            player_stats.append(value)
+                    print("Lol____________")
 
-            print(stats_values)
+                    # Store player_stats for the current player ID in stats_dict
+                stats_dict[player.pk] = player_stats
 
-            grouped_stats_values = [stats_values[i:i + 13] for i in range(0, len(stats_values), 13)]
-            script_directory = os.path.dirname(os.path.abspath(__file__))
-
-            # Get the absolute path of the current script
-            current_script_path = os.path.abspath(__file__)
-
-            # Get the content root directory (assuming this script is within the project)
-            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
-
-            # Construct the path to the pickle file from the content root
-            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Bowling_Test_model.pkl'
-            pickle_file_path = os.path.join(content_root, relative_pickle_path)
-
-            for i in grouped_stats_values:
-                print(i)  # Adjust the path accordingly
-                with open(pickle_file_path, 'rb') as file:
-                    loaded_model = pickle.load(file)
-                new_player_stats = pd.DataFrame([i], columns=numeric_columns)
-                predicted_ppi = loaded_model.predict(new_player_stats)
-                print(predicted_ppi)
-
-            return Response(stats_list, status=status.HTTP_200_OK)
+            for player_id, stats in stats_dict.items():
+                print(f"Player ID: {player_id}")
+                print("Stats:", stats)
+                print("---------------")
+            return Response(stats_dict, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
