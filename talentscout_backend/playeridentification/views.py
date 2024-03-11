@@ -84,6 +84,11 @@ def rankPlayers(request):
                             stats_values.append(value)
                 stats_list.append(player_stats)
 
+            print(stats_values)
+
+            grouped_stats_values = [stats_values[i:i + 13] for i in range(0, len(stats_values), 13)]
+            print(grouped_stats_values)
+
             return Response(stats_list, status=status.HTTP_200_OK)
 
         else:
