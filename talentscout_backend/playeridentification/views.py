@@ -31,8 +31,8 @@ def rankPlayers(request):
             data = serializer.validated_data
 
             playing_role = data['playing_role']
-            batting_style = data['batting_style']
-            bowling_style = data['bowling_style']
+            batting_style = data.get('batting_style')
+            bowling_style = data.get('bowling_style')
             age_min_value = data['age_min_value']
             age_max_value = data['age_max_value']
             selected_format = data['format']
@@ -43,12 +43,14 @@ def rankPlayers(request):
                 query &= Q(playing_role=playing_role)
 
             if playing_role == "Bowler":
+
                 numeric_columns = bowling_stats_order
                 if bowling_style:
                     query &= Q(bowling_style=bowling_style)
                 if selected_format:
                     query &= Q(playerbowling__format=selected_format)
             elif playing_role == "Batsman":
+
                 numeric_columns = batting_stats_order
                 if batting_style:
                     query &= Q(batting_style=batting_style)
@@ -132,6 +134,12 @@ def rankPlayers(request):
 
             sorted_player_list = sorted(player_list, key=lambda x: x['PPI'], reverse=True)
 
+            for player_info in sorted_player_list:
+                player_id = player_info['player_id']
+                player_name = player_info['player_name']
+                PPI = player_info['PPI']
+
+                print(f"Player ID: {player_id}, Player Name: {player_name} , PPI: {PPI} ")
             return Response(sorted_player_list, status=status.HTTP_200_OK)
 
         else:
