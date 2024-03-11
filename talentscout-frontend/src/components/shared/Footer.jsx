@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
-import {toast} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ContactUs = () => {
   const form = useRef();
@@ -16,13 +16,13 @@ export const ContactUs = () => {
       })
       .then(
         () => {
-          // console.log('SUCCESS!');
           toast.success('Email Successfully Sent!');
+          // Clear form fields after successful submission
+          form.current.reset();
         },
         (error) => {
-          // console.log('FAILED...', error.text);
           toast.error('Something went wrong, Try again!');
-        },
+        }
       );
   };
 
