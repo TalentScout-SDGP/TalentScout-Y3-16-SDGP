@@ -206,7 +206,20 @@ const ComparePlayerStats = () => {
                 {id: 11, statPlayer1: getBowlingStats('T20', 1).five_ws, statPlayer2: getBowlingStats('T20', 2).five_ws, description: '5Ws'},
             ],
         },
-
+        WicketKeeping: {
+            Test: [
+                {id: 1, statPlayer1: getWicketKeepingStats('Test',1).catches, statPlayer2: getWicketKeepingStats('Test',2).catches, description: 'Catches'},
+                {id: 2, statPlayer1: getWicketKeepingStats('Test',1).stumping, statPlayer2: getWicketKeepingStats('Test',2).stumping, description: 'Stumping'},
+            ],
+            ODI: [
+                {id: 1, statPlayer1: getWicketKeepingStats('ODI',1).catches, statPlayer2: getWicketKeepingStats('ODI',2).catches, description: 'Catches'},
+                {id: 2, statPlayer1: getWicketKeepingStats('ODI',1).stumping, statPlayer2: getWicketKeepingStats('ODI',2).stumping, description: 'Stumping'},
+            ],
+            T20: [
+                {id: 1, statPlayer1: getWicketKeepingStats('T20',1).catches, statPlayer2: getWicketKeepingStats('T20',2).catches, description: 'Catches'},
+                {id: 1, statPlayer1: getWicketKeepingStats('T20',1).stumping, statPlayer2: getWicketKeepingStats('T20',2).stumping, description: 'Stumping'},
+            ],
+        },
     };
 
     return (
