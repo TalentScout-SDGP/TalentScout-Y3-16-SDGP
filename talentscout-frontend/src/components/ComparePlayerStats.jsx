@@ -66,6 +66,40 @@ const ComparePlayerStats = () => {
         return wickets1 > wickets2 ? 'player1' : 'player2';
     };
 
+    const renderStatsList = (statsData) => {
+        return (
+            <div className="stats-list">
+                {statsData.map((stat, index) => (
+                    <div key={stat.id}
+                         className={`stats-row  grid grid-cols-12 items-center justify-center mx-6 ${index !== statsData.length - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
+                        <div
+                            className={`col-span-4 text-center lg:text-base sm:text-sm text-xs ${
+                                stat.statPlayer1 !== undefined
+                                    ? ['Runs Conceded', 'Avg', 'Econ', 'SR'].includes(stat.description)
+                                        ? stat.description === 'BBI'
+                                            ? compareBBI(stat.statPlayer1, stat.statPlayer2) === 'player1'
+                                                ? 'bg-primary-green'
+                                                : 'bg-primary-red'
+                                            : stat.statPlayer1 < stat.statPlayer2
+                                                ? 'bg-primary-green'
+                                                : 'bg-primary-red'
+                                        : stat.statPlayer1 > stat.statPlayer2
+                                            ? 'bg-primary-green'
+                                            : 'bg-primary-red'
+                                    : 'bg-primary-light_gray'
+                            } text-white w-14 sm:w-20 mx-auto font-semibold px-1 sm:px-2 py-1 sm:py-2 rounded-lg`}
+                        >
+                            {stat.statPlayer1 !== undefined ? stat.statPlayer1 : '-'}
+                        </div>
+
+                        <div className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
+
+
+                    </div>
+                ))}
+            </div>
+        );
+    };
 
 };
 
