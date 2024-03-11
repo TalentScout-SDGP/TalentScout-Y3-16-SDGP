@@ -102,6 +102,19 @@ export const PlayerDataProvider = ({ children }) => {
         getPlayerStats, // Add getPlayerStats to the context
     };
 
+    if (!isLoading) {
+        return (
+            <ManagePlayersContext.Provider value={contextData}>
+                {children}
+            </ManagePlayersContext.Provider>
+        );
+    } else {
+        return (
+            <div className="mt-48">
+                <Spinner />
+            </div>
+        );
+    }
 };
 
 PlayerDataProvider.propTypes = {
