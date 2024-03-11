@@ -88,13 +88,12 @@ def rankPlayers(request):
                 else:
                     stats = []
                 for stat in stats:
-                    player_stats = {}
-                    for key, value in stat.items():
-                        if key != 'batting_id' and key != 'format' and key != 'player':
-                            player_stats[key] = value
+                    # Extract only the numerical values and append them to a list
+                    player_stats_values = [value for key, value in stat.items() if
+                                           key not in ['batting_id', 'format', 'player']]
 
-                    # Append player_stats to the 'stats' key in the player_dict
-                    player_dict['stats'].append(player_stats)
+                    # Append the list of numerical values to the 'stats' key in the player_dict
+                    player_dict['stats'].append(player_stats_values)
 
                     # Append the player_dict to the player_list
                 player_list.append(player_dict)
@@ -110,19 +109,30 @@ def rankPlayers(request):
             pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
             print(numeric_columns)
-            for player_id, stats in stats_dict.items():
-                print(player_id, stats)  # Adjust the path accordingly
-                with open(pickle_file_path, 'rb') as file:
-                    loaded_model = pickle.load(file)
-                new_player_stats = pd.DataFrame([stats], columns=numeric_columns)
-                predicted_ppi = loaded_model.predict(new_player_stats)
-                stats_dict[player_id] = predicted_ppi
-                print(player_id, predicted_ppi)
+            for player_info in player_list:
+                player_id = player_info['player_id']
+                player_name = player_info['player_name']
+                player_stats_list = player_info['stats']
 
-            for player_id, stats in stats_dict.items():
-                print(player_id, stats)
+                print(f"Player ID: {player_id}, Player Name: {player_name}")
 
-            return Response(player_list, status=status.HTTP_200_OK)
+                for stats_values in player_stats_list:
+                    print("Stats Values:", stats_values)
+
+                    # Calculate PPI using the pickle model
+                    with open(pickle_file_path, 'rb') as file:
+                        loaded_model = pickle.load(file)
+
+                    new_player_stats = pd.DataFrame([stats_values], columns=numeric_columns)
+                    predicted_ppi = loaded_model.predict(new_player_stats)
+
+                    # Update the stats_dict with the calculated PPI
+                    player_info['PPI'] = player_info.pop('stats')
+                    player_info['PPI'] = predicted_ppi
+
+            sorted_player_list = sorted(player_list, key=lambda x: x['PPI'], reverse=True)
+
+            return Response(sorted_player_list, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
