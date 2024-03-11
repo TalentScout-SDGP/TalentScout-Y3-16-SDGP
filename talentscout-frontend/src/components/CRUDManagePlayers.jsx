@@ -5,7 +5,17 @@ import {Link} from 'react-router-dom';
 
 const CRUDManagePlayers = () => {
     const {selectedPlayersByName, deletePlayerById} = useContext(ManagePlayersContext);
-    const email = JSON.parse(localStorage.getItem('user')).email;
+    //const email = JSON.parse(localStorage.getItem('user')).email;
+
+    let email = "Initial";
+
+    const userString = localStorage.getItem('user');
+    if (userString) {
+        const user = JSON.parse(userString);
+        if (user.email) {
+            email = user.email;
+        }
+    }
 
     let playersArray = [];
     let isAvailable = false;
