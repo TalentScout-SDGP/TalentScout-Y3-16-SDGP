@@ -7,7 +7,6 @@ const ComparePlayers = () => {
         <div>
             <ComparePlayersSearch/>
             <ComparePlayerInfo/>
-
         </div>
     )
 }
