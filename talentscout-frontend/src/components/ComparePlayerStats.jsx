@@ -93,7 +93,25 @@ const ComparePlayerStats = () => {
                         </div>
 
                         <div className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
-
+                        <div
+                            className={`col-span-4 text-center lg:text-base sm:text-sm text-xs ${
+                                stat.statPlayer2 !== undefined // Check if statPlayer2 is not undefined
+                                    ? ['Runs Conceded', 'Avg', 'Econ', 'SR'].includes(stat.description) // Check if description is one of 'Runs', 'Avg', 'Econ', 'SR'
+                                        ? stat.description === 'BBI' // If description is 'BBI', compare the BBI values
+                                            ? compareBBI(stat.statPlayer2, stat.statPlayer1) === 'player1'
+                                                ? 'bg-primary-green'
+                                                : 'bg-primary-red'
+                                            : stat.statPlayer2 < stat.statPlayer1 // For other descriptions, compare numerical values
+                                                ? 'bg-primary-green'
+                                                : 'bg-primary-red'
+                                        : stat.statPlayer2 > stat.statPlayer1 // If description is not one of 'Runs', 'Avg', 'Econ', 'SR', compare numerical values
+                                            ? 'bg-primary-green'
+                                            : 'bg-primary-red'
+                                    : 'bg-primary-light_gray' // If statPlayer2 is undefined, apply bg-primary-light_gray background
+                            } text-white w-14 sm:w-20 mx-auto font-semibold px-1 sm:px-2 py-1 sm:py-2 rounded-lg`}
+                        >
+                            {stat.statPlayer2 !== undefined ? stat.statPlayer2 : '-'} {/* Render statPlayer2 if it's not undefined, otherwise render a hyphen */}
+                        </div>
 
                     </div>
                 ))}
