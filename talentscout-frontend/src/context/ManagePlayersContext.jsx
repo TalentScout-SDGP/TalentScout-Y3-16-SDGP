@@ -76,7 +76,33 @@ export const PlayerDataProvider = ({ children }) => {
     };
 
     // New API to fetch player stats
+    const getPlayerStats = async (playerId) => {
+        try {
+            setIsLoading(true);
+            const response = await axios.get(`http://localhost:8000/api/player/stats/${playerId}`);
+            const data = response.data;
+            setIsLoading(false);
+            return data;
+        } catch (error) {
+            console.error('Error fetching player stats:', error);
+            setIsLoading(false);
+            return null;
+        }
+    };
 
+    const contextData = {
+        playerData,
+        playerDict,
+        selectedPlayerData,
+        selectedSecondPlayerData,
+        selectedPlayersByName,
+        getPlayerDataById,
+        filterPlayersByName,
+        deletePlayerById,
+        getPlayerStats, // Add getPlayerStats to the context
+    };
+
+};
 
 PlayerDataProvider.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
