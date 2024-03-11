@@ -97,7 +97,7 @@ def rankPlayers(request):
             content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
 
             # Construct the path to the pickle file from the content root
-            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Bowling_Test_model.pkl'
+            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_Test_model.pkl'
             pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
             print(numeric_columns)
@@ -107,7 +107,11 @@ def rankPlayers(request):
                     loaded_model = pickle.load(file)
                 new_player_stats = pd.DataFrame([stats], columns=numeric_columns)
                 predicted_ppi = loaded_model.predict(new_player_stats)
+                stats_dict[player_id] = predicted_ppi
                 print(player_id, predicted_ppi)
+
+            for player_id, stats in stats_dict.items():
+                print(player_id, stats)
 
             return Response(stats_dict, status=status.HTTP_200_OK)
 
