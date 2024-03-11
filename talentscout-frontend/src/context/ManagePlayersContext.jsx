@@ -5,13 +5,17 @@ import PropTypes from 'prop-types';
 
 const ManagePlayersContext = createContext();
 
-export const PlayerDataProvider = ({ children }) => {
+export const PlayerDataProvider = ({children}) => {
     const [playerData, setPlayerData] = useState([]);
     const [selectedPlayerData, setSelectedPlayerData] = useState({});
     const [selectedSecondPlayerData, setSelectedSecondPlayerData] = useState({});
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
     const [playerDict, setPlayerDict] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [deletePlayer, setDeletePlayer] = useState([]);
+    const [playerInfo, setPlayerInfo] = useState({});
+    const [createdPlayer, setCreatedPlayer] = useState();
+    const [createdPlayerStatus, setCreatedPlayerStatus] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -81,6 +85,8 @@ export const PlayerDataProvider = ({ children }) => {
             setIsLoading(true);
             const response = await axios.get(`http://localhost:8000/api/player/stats/${playerId}`);
             const data = response.data;
+            setCreatedPlayer(data)
+            setCreatedPlayerStatus(response.status)
             setIsLoading(false);
             return data;
         } catch (error) {

@@ -42,28 +42,28 @@ function PlayerProfilesSearch() {
                         <p className="text-white text-lg lg:text-xl font-bold mb-2">
                             View Player Profiles
                         </p>
-                        <p className="text-gray-300 text-md lg:text-lg mb-8">
+                        <p className="w-full sm:w-4/5 mt-4 text-gray-300 text-md lg:text-lg mb-8">
                             Delve into the world of cricket excellence. Explore in-depth player
                             profiles and detailed statistics, uncovering the stories behind the
-                            stars of the game. Whether you're a seasoned fan or a curious newcomer,
-                            discover the insights and achievements that define cricket's finest players.
+                            stars of the game. Whether you&apos;re a seasoned fan or a curious newcomer,
+                            discover the insights and achievements that define cricket&apos;s finest players.
                         </p>
                         <div className="relative w-full flex justify-center">
                             <input
                                 type="text"
                                 value={searchTerm}
                                 onChange={handleChange}
-                                className="lg:w-1/2 md:w-96 bg-primary-ts_purple w-64 md:h-10 h-8 sm:w-80 py-2 rounded-2xl mb-3 text-left ps-6 pe- text-sm md:text-md lg:text-base"
+                                className="w-full lg:w-1/2 bg-primary-ts_purple md:h-10 h-8 py-2 rounded-2xl mb-3 text-left ps-6 text-sm md:text-md lg:text-lg"
                                 placeholder="Player Name"
                             />
                             {filteredResults.length > 0 && searchTerm !== "" && (
                                 <div
-                                    className="dropdown bg-primary-ts_purple w-1/2 absolute top-12 z-10 rounded-lg p-4 -mt-2">
-                                    {filteredResults.map((result, index) => (
+                                    className="w-full lg:w-1/2 dropdown bg-primary-ts_purple absolute top-10    md:top-12 z-10 rounded-lg p-4 -mt-2">
+                                    {filteredResults.slice(0, 12).map((result, index) => (
                                         <div
                                             key={index}
                                             onClick={() => handleSelect(result)}
-                                            className={`dropdown-item ${index === 0 ? '' : 'border-t-2'} border-black py-2 text-left text-black font-semibold text-lg cursor-pointer`}
+                                            className={`dropdown-item ${index === 0 ? '' : 'border-t-2'} border-black py-2 text-left text-black font-semibold text-sm md:text-md lg:text-lg cursor-pointer`}
                                         >
                                             {result}
                                         </div>
