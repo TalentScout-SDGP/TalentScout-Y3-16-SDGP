@@ -7,7 +7,10 @@ function ComparePlayersSearch() {
                     <div className="md:block sm:hidden hidden col-span-3 text-center md:mb-6 mb-20">
                         <p className="text-white text-lg lg:text-xl font-bold mb-2">Search and Compare Cricket
                             Players</p>
-                        <p className="text-gray-300 text-md lg:text-lg">Explore more about your favourite players. Compare the talented players up against each other with an In depth analysis of profile details and statistics of all types across all types of formats.</p>
+                        <p className="w-full sm:w-4/5 mt-6 mx-auto text-gray-300 text-md lg:text-lg">Explore more about
+                            your
+                            favourite players. Compare the talented players up against each other with an In depth
+                            analysis of profile details and statistics of all types across all types of formats.</p>
                     </div>
                     <div
                         className="bg-primary-ts_blue grid grid-cols-1 mt-2 mb-6 sm:mt-4 px-12 sm:px-10 order-1 md:order-1">
