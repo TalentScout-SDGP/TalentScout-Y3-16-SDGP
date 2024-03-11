@@ -7,6 +7,7 @@ function PlayerProfilesSearch() {
     const [filteredResults, setFilteredResults] = useState([]);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [playerId, setPlayerId] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (event) => {
         const input = event.target.value;
@@ -26,11 +27,12 @@ function PlayerProfilesSearch() {
     };
 
     const handleSubmit = () => {
-        if (playerId === []) {
-            console.log('Please select a player');
-        } else {
-            getPlayerDataById(playerId);
+        if (!playerId.length) {
+            setErrorMessage('Please Select a Player');
+            return;
         }
+        getPlayerDataById(playerId);
+        setErrorMessage(''); // Clear any previous error message
     }
 
     return (
@@ -78,6 +80,7 @@ function PlayerProfilesSearch() {
                                  className="inline me-2"></img>
                             Search
                         </button>
+                        {errorMessage && <p className="pt-3 text-red-500">{errorMessage}</p>}
                     </div>
                 </div>
             </div>
