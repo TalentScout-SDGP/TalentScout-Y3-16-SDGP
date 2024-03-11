@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 
 const CRUDManagePlayers = () => {
     const {selectedPlayersByName, deletePlayerById} = useContext(ManagePlayersContext);
-    //const email = JSON.parse(localStorage.getItem('user')).email;
 
     let email = "Initial";
 
