@@ -1,6 +1,6 @@
-import {createContext, useEffect, useState} from 'react';
+import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import Spinner from "../components/shared/Spinner.jsx";
+import Spinner from '../components/shared/Spinner.jsx';
 import PropTypes from 'prop-types';
 
 const ManagePlayersContext = createContext();
@@ -8,6 +8,7 @@ const ManagePlayersContext = createContext();
 export const PlayerDataProvider = ({children}) => {
     const [playerData, setPlayerData] = useState([]);
     const [selectedPlayerData, setSelectedPlayerData] = useState({});
+    const [selectedSecondPlayerData, setSelectedSecondPlayerData] = useState({});
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
     const [playerDict, setPlayerDict] = useState({});
     const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +17,6 @@ export const PlayerDataProvider = ({children}) => {
     const [createdPlayer, setCreatedPlayer] = useState();
     const [createdPlayerStatus, setCreatedPlayerStatus] = useState(0);
 
-    // UseEffect to fetch all player data from the backend
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -29,30 +29,32 @@ export const PlayerDataProvider = ({children}) => {
                     playerDict[player.player_id] = player.full_name;
                 });
                 setPlayerDict(playerDict);
-                setIsLoading(false)
+                setIsLoading(false);
             } catch (error) {
+                console.error('Error fetching player data:', error);
                 setIsLoading(false);
             }
         };
         fetchData();
     }, []);
 
-
-    // Function to get player data by player_id from the playerData array
-    const getPlayerDataById = async (playerId) => {
+    const getPlayerDataById = async (playerId, isSecondPlayer = false) => {
         try {
             setIsLoading(true);
             const response = await axios.get(`http://localhost:8000/api/crud/${playerId}/`);
             const data = response.data;
             setIsLoading(false);
-            setSelectedPlayerData(data);
+            if (isSecondPlayer) {
+                setSelectedSecondPlayerData(data);
+            } else {
+                setSelectedPlayerData(data);
+            }
         } catch (error) {
+            console.error('Error fetching player data by ID:', error);
             setIsLoading(false);
         }
     };
 
-
-    // Function to get player data by player_name
     const filterPlayersByName = async (playerName) => {
         try {
             setIsLoading(true);
@@ -61,55 +63,49 @@ export const PlayerDataProvider = ({children}) => {
             setIsLoading(false);
             setSelectedPlayersByName(data);
         } catch (error) {
+            console.error('Error filtering players by name:', error);
             setIsLoading(false);
         }
     };
 
-    // Function to delete player by id
     const deletePlayerById = async (playerId) => {
         try {
             setIsLoading(true);
-            const response = await axios.delete(`http://localhost:8000/api/crud/delete/${playerId}/`);
-            const data = response.data;
+            await axios.delete(`http://localhost:8000/api/crud/delete/${playerId}/`);
             setIsLoading(false);
-            setDeletePlayer(data);
         } catch (error) {
+            console.error('Error deleting player by ID:', error);
             setIsLoading(false);
         }
     };
 
-    const setPlayerInfoData = (data) => {
-        setPlayerInfo(data);
-    }
-
-    // Function to create new players
-    const createPlayers = async (formData) => {
+    // New API to fetch player stats
+    const getPlayerStats = async (playerId) => {
         try {
             setIsLoading(true);
-            const response = await axios.post('http://localhost:8000/api/crud/create/', formData);
+            const response = await axios.get(`http://localhost:8000/api/player/stats/${playerId}`);
             const data = response.data;
             setCreatedPlayer(data)
             setCreatedPlayerStatus(response.status)
             setIsLoading(false);
+            return data;
         } catch (error) {
+            console.error('Error fetching player stats:', error);
             setIsLoading(false);
+            return null;
         }
     };
 
     const contextData = {
         playerData,
         playerDict,
-        selectedPlayerData: selectedPlayerData,
-        selectedPlayersByName: selectedPlayersByName,
-        deletePlayer: deletePlayer,
-        playerInfo: playerInfo,
-        createdPlayer: createdPlayer,
-        createdPlayerStatus: createdPlayerStatus,
-        getPlayerDataById: getPlayerDataById,
-        deletePlayerById: deletePlayerById,
-        filterPlayersByName: filterPlayersByName,
-        setPlayerInfoData: setPlayerInfoData,
-        createPlayers: createPlayers,
+        selectedPlayerData,
+        selectedSecondPlayerData,
+        selectedPlayersByName,
+        getPlayerDataById,
+        filterPlayersByName,
+        deletePlayerById,
+        getPlayerStats, // Add getPlayerStats to the context
     };
 
     if (!isLoading) {
@@ -121,17 +117,14 @@ export const PlayerDataProvider = ({children}) => {
     } else {
         return (
             <div className="mt-48">
-                <Spinner/>
+                <Spinner />
             </div>
-        )
+        );
     }
 };
 
 PlayerDataProvider.propTypes = {
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node,
-    ]).isRequired,
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 };
 
 export default ManagePlayersContext;
