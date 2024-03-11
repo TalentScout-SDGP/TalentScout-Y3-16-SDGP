@@ -106,9 +106,18 @@ def rankPlayers(request):
             # Get the content root directory (assuming this script is within the project)
             content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
 
-            # Construct the path to the pickle file from the content root
-            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_Test_model.pkl'
-            pickle_file_path = os.path.join(content_root, relative_pickle_path)
+            if playing_role == 'Batsman' and selected_format == 'Test':
+                # Construct the path to the pickle file from the content root
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_Test_model.pkl'
+                pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+            elif playing_role == 'Batsman' and selected_format == 'T20':
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_T20_model.pkl'
+                pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+            elif playing_role == 'Batsman' and selected_format == 'T20':
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_T20_model.pkl'
+                pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
             print(numeric_columns)
             for player_info in player_list:
