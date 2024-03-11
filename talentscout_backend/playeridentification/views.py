@@ -64,8 +64,14 @@ def rankPlayers(request):
 
             filtered_players = Player.objects.filter(query)
             print(query)
-            stats_dict = {}
+            player_list = []  # List to store dictionaries for each player
             for player in filtered_players:
+                player_dict = {
+                    'player_id': player.pk,
+                    'player_name': player.full_name,  # Assuming your Player model has a 'name' field
+                    'stats': []
+                }
+
                 player_stats = []
 
                 # Fetch relevant stats based on the playing role
@@ -81,14 +87,17 @@ def rankPlayers(request):
                         PlayerWicketKeeping.objects.filter(player=player, format=selected_format), many=True).data
                 else:
                     stats = []
-
                 for stat in stats:
+                    player_stats = {}
                     for key, value in stat.items():
                         if key != 'batting_id' and key != 'format' and key != 'player':
-                            player_stats.append(value)
+                            player_stats[key] = value
 
-                    # Store player_stats for the current player ID in stats_dict
-                stats_dict[player.pk] = player_stats
+                    # Append player_stats to the 'stats' key in the player_dict
+                    player_dict['stats'].append(player_stats)
+
+                    # Append the player_dict to the player_list
+                player_list.append(player_dict)
 
             # Get the absolute path of the current script
             current_script_path = os.path.abspath(__file__)
@@ -113,7 +122,7 @@ def rankPlayers(request):
             for player_id, stats in stats_dict.items():
                 print(player_id, stats)
 
-            return Response(stats_dict, status=status.HTTP_200_OK)
+            return Response(player_list, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
