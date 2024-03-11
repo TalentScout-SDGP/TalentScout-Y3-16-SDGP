@@ -81,22 +81,34 @@ def rankPlayers(request):
                         PlayerWicketKeeping.objects.filter(player=player, format=selected_format), many=True).data
                 else:
                     stats = []
-                print(stats, "heeeeeeee")
+
                 for stat in stats:
-                    print(stat)
                     for key, value in stat.items():
-                        print(key, value)
                         if key != 'batting_id' and key != 'format' and key != 'player':
                             player_stats.append(value)
-                    print("Lol____________")
 
                     # Store player_stats for the current player ID in stats_dict
                 stats_dict[player.pk] = player_stats
 
+            # Get the absolute path of the current script
+            current_script_path = os.path.abspath(__file__)
+
+            # Get the content root directory (assuming this script is within the project)
+            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+            # Construct the path to the pickle file from the content root
+            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Bowling_Test_model.pkl'
+            pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+            print(numeric_columns)
             for player_id, stats in stats_dict.items():
-                print(f"Player ID: {player_id}")
-                print("Stats:", stats)
-                print("---------------")
+                print(player_id, stats)  # Adjust the path accordingly
+                with open(pickle_file_path, 'rb') as file:
+                    loaded_model = pickle.load(file)
+                new_player_stats = pd.DataFrame([stats], columns=numeric_columns)
+                predicted_ppi = loaded_model.predict(new_player_stats)
+                print(player_id, predicted_ppi)
+
             return Response(stats_dict, status=status.HTTP_200_OK)
 
         else:
