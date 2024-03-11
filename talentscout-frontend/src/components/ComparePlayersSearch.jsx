@@ -13,6 +13,7 @@ function ComparePlayersSearch() {
     const [playerId1, setPlayerId1] = useState(null);
     const [playerId2, setPlayerId2] = useState(null);
     const [isCompareClicked, setIsCompareClicked] = useState(false); // State to track if compare button is clicked
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange1 = (event) => {
         const input = event.target.value;
@@ -50,12 +51,13 @@ function ComparePlayersSearch() {
 
     const handleSubmit = () => {
         if (!playerId1 || !playerId2) {
-            console.log('Please select two players');
+            setErrorMessage('Please Select Two Players to Compare');
             return;
         }
         getPlayerDataById(playerId1);
         getPlayerDataById(playerId2, true); // Call for the second player and pass true as the second argument
         setIsCompareClicked(true); // Set isCompareClicked to true when compare button is clicked
+        setErrorMessage(''); // Clear any previous error message
     };
 
     return (
@@ -127,6 +129,7 @@ function ComparePlayersSearch() {
                                  className="inline me-2"></img>
                             Compare
                         </button>
+                        {errorMessage && <p className="pt-3 text-red-500">{errorMessage}</p>}
                     </div>
                 </div>
             </div>
