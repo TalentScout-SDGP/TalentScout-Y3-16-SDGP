@@ -8,6 +8,10 @@ from crud_api.serializers import PlayerBattingSerializer, PlayerBowlingSerialize
 import pickle
 import csv
 import pandas as pd
+import os
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
 
 # Global variables initialization
 format_input = "odi"
@@ -20,14 +24,15 @@ batting_stats_order = ['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'S
 
 @api_view(['POST'])
 def rankPlayers(request):
+    global numeric_columns
     if request.method == 'POST':
         serializer = FormDataSerializer(data=request.data)
         if serializer.is_valid():
             data = serializer.validated_data
 
             playing_role = data['playing_role']
-            batting_style = data['batting_style']
-            bowling_style = data['bowling_style']
+            batting_style = data('batting_style')
+            bowling_style = data('bowling_style')
             age_min_value = data['age_min_value']
             age_max_value = data['age_max_value']
             selected_format = data['format']
@@ -38,11 +43,15 @@ def rankPlayers(request):
                 query &= Q(playing_role=playing_role)
 
             if playing_role == "Bowler":
+
+                numeric_columns = bowling_stats_order
                 if bowling_style:
                     query &= Q(bowling_style=bowling_style)
                 if selected_format:
                     query &= Q(playerbowling__format=selected_format)
             elif playing_role == "Batsman":
+
+                numeric_columns = batting_stats_order
                 if batting_style:
                     query &= Q(batting_style=batting_style)
                 if selected_format:
@@ -57,10 +66,15 @@ def rankPlayers(request):
 
             filtered_players = Player.objects.filter(query)
             print(query)
-            stats_list = []
-            stats_values = []
-
+            player_list = []  # List to store dictionaries for each player
             for player in filtered_players:
+                player_dict = {
+                    'player_id': player.pk,
+                    'player_name': player.full_name,  # Assuming your Player model has a 'name' field
+                    'stats': []
+                }
+
+                player_stats = []
 
                 # Fetch relevant stats based on the playing role
 
@@ -75,26 +89,55 @@ def rankPlayers(request):
                         PlayerWicketKeeping.objects.filter(player=player, format=selected_format), many=True).data
                 else:
                     stats = []
-
-                player_stats = {}
                 for stat in stats:
-                    for key, value in stat.items():
-                        if key != 'batting_id' and key != 'format':
-                            player_stats[key] = value
-                            stats_values.append(value)
-                stats_list.append(player_stats)
+                    # Extract only the numerical values and append them to a list
+                    player_stats_values = [value for key, value in stat.items() if
+                                           key not in ['batting_id', 'format', 'player']]
 
-            print(stats_values)
+                    # Append the list of numerical values to the 'stats' key in the player_dict
+                    player_dict['stats'].append(player_stats_values)
 
-            grouped_stats_values = [stats_values[i:i + 13] for i in range(0, len(stats_values), 13)]
-            print(grouped_stats_values)
+                    # Append the player_dict to the player_list
+                player_list.append(player_dict)
 
-            # # model_path = 'talentscout_backend/playeridentification/Pickle_Models/trained_Batting_TEST_model.pkl'  # Adjust the path accordingly
-            # with open(model_path, 'rb') as file:
-                loaded_model = pickle.load(model_file)
-            new_player_stats = pd.DataFrame([stats_order], columns=numeric_columns)
+            # Get the absolute path of the current script
+            current_script_path = os.path.abspath(__file__)
 
-            return Response(stats_list, status=status.HTTP_200_OK)
+            # Get the content root directory (assuming this script is within the project)
+            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+
+            print(numeric_columns)
+            for player_info in player_list:
+                player_id = player_info['player_id']
+                player_name = player_info['player_name']
+                player_stats_list = player_info['stats']
+
+                print(f"Player ID: {player_id}, Player Name: {player_name}")
+
+                for stats_values in player_stats_list:
+                    print("Stats Values:", stats_values)
+
+                    # Calculate PPI using the pickle model
+                    with open(pickle_file_path, 'rb') as file:
+                        loaded_model = pickle.load(file)
+
+                    new_player_stats = pd.DataFrame([stats_values], columns=numeric_columns)
+                    predicted_ppi = loaded_model.predict(new_player_stats)
+
+                    # Update the stats_dict with the calculated PPI
+                    player_info['PPI'] = player_info.pop('stats')
+                    player_info['PPI'] = predicted_ppi
+
+            sorted_player_list = sorted(player_list, key=lambda x: x['PPI'], reverse=True)
+
+            for player_info in sorted_player_list:
+                player_id = player_info['player_id']
+                player_name = player_info['player_name']
+                PPI = player_info['PPI']
+
+                print(f"Player ID: {player_id}, Player Name: {player_name} , PPI: {PPI} ")
+            return Response(sorted_player_list, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
