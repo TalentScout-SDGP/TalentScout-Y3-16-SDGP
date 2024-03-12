@@ -53,7 +53,7 @@ function App() {
     return (
         <div className='bg-white'>
             <Router>
-                <ToastContainer autoClose={20000}/>
+                <ToastContainer autoClose={10000}/>
                 <AuthProvider>
                     <PlayerDataProvider>
                         <PlayerRankingProvider>

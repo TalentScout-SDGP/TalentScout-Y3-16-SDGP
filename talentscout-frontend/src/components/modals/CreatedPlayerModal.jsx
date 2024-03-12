@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {Button, Dialog, Card, CardBody} from "@material-tailwind/react";
 
-export function CreatePlayerModal() {
+export function CreatedPlayerModal() {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
 
@@ -40,4 +40,4 @@ export function CreatePlayerModal() {
     );
 }
 
-export default CreatePlayerModal;
+export default CreatedPlayerModal;

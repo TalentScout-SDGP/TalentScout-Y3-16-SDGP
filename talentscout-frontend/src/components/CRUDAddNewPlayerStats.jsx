@@ -1,18 +1,20 @@
 import {useState, useContext, useEffect} from 'react'
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
-import CreatePlayerModal from "./modals/CreatePlayerModal.jsx";
+import CreatedPlayerModal from "./modals/CreatedPlayerModal.jsx";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
-// TODO - Navigate to the created players profile
 // TODO - Add validations for all fields (Regex for BBI)
+// TODO - Navigate to the created players profile
 // TODO - Prevent navigation before submission (add a check)
-// TODO - Add created_by value
 function CRUDAddNewPlayerStats() {
     // State for Tab Change
     const [activeMainTab, setActiveMainTab] = useState('Test');
     const [activeSubTab, setActiveSubTab] = useState('Batting');
     const {playerInfo, createdPlayer, createdPlayerStatus, createPlayers} = useContext(ManagePlayersContext);
-    const [isPlayerCreated, setIsPlayerCreated] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const [isPlayerCreated, setIsPlayerCreated] = useState(false);
+    const [createdPlayerId, setCreatedPlayerId] = useState(0);
 
     // Function to handle Tab Change
     const handleMainTabChange = (mainTab) => {
@@ -25,18 +27,15 @@ function CRUDAddNewPlayerStats() {
     };
 
     useEffect(() => {
-        if (createdPlayerStatus === 201) {
-            console.log("Player Created Successfully");
-            setIsPlayerCreated(true);
-        }
-    }, [createdPlayerStatus]);
-
-
-    useEffect(() => {
         if (Object.keys(playerInfo).length !== 0) {
             setIsVisible(true);
         }
-    }, [playerInfo]);
+        if (createdPlayerStatus === 201) {
+            setCreatedPlayerId(createdPlayer.player_id);
+            setIsPlayerCreated(true);
+        }
+    }, [createdPlayerStatus, playerInfo]);
+
 
     // BATTING STATS
     const [testBattingStats, setTestBattingStats] = useState({
@@ -159,54 +158,59 @@ function CRUDAddNewPlayerStats() {
     });
 
     const handleInputChange = (e, format, category) => {
-        switch (category) {
-            case 'Batting':
-                switch (format) {
-                    case 'Test':
-                        setTestBattingStats({...testBattingStats, [e.target.name]: e.target.value});
-                        break;
-                    case 'ODI':
-                        setODIBattingStats({...odiBattingStats, [e.target.name]: e.target.value});
-                        break;
-                    case 'T20':
-                        setT20BattingStats({...t20BattingStats, [e.target.name]: e.target.value});
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 'Bowling':
-                switch (format) {
-                    case 'Test':
-                        setTestBowlingStats({...testBowlingStats, [e.target.name]: e.target.value});
-                        break;
-                    case 'ODI':
-                        setODIBowlingStats({...odiBowlingStats, [e.target.name]: e.target.value});
-                        break;
-                    case 'T20':
-                        setT20BowlingStats({...t20BowlingStats, [e.target.name]: e.target.value});
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 'WicketKeeping':
-                switch (format) {
-                    case 'Test':
-                        setTestWicketKeepingStats({...testWicketKeepingStats, [e.target.name]: e.target.value});
-                        break;
-                    case 'ODI':
-                        setODIWicketKeepingStats({...odiWicketKeepingStats, [e.target.name]: e.target.value});
-                        break;
-                    case 'T20':
-                        setT20WicketKeepingStats({...t20WicketKeepingStats, [e.target.name]: e.target.value});
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
+
+        if (/^\d*$/.test(e.target.value)) {
+            switch (category) {
+                case 'Batting':
+                    switch (format) {
+                        case 'Test':
+                            setTestBattingStats({...testBattingStats, [e.target.name]: e.target.value});
+                            break;
+                        case 'ODI':
+                            setODIBattingStats({...odiBattingStats, [e.target.name]: e.target.value});
+                            break;
+                        case 'T20':
+                            setT20BattingStats({...t20BattingStats, [e.target.name]: e.target.value});
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 'Bowling':
+                    switch (format) {
+                        case 'Test':
+                            setTestBowlingStats({...testBowlingStats, [e.target.name]: e.target.value});
+                            break;
+                        case 'ODI':
+                            setODIBowlingStats({...odiBowlingStats, [e.target.name]: e.target.value});
+                            break;
+                        case 'T20':
+                            setT20BowlingStats({...t20BowlingStats, [e.target.name]: e.target.value});
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 'WicketKeeping':
+                    switch (format) {
+                        case 'Test':
+                            setTestWicketKeepingStats({...testWicketKeepingStats, [e.target.name]: e.target.value});
+                            break;
+                        case 'ODI':
+                            setODIWicketKeepingStats({...odiWicketKeepingStats, [e.target.name]: e.target.value});
+                            break;
+                        case 'T20':
+                            setT20WicketKeepingStats({...t20WicketKeepingStats, [e.target.name]: e.target.value});
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            toast.error('Invalid Input, Please Enter A Valid Number.');
         }
     };
 
@@ -1018,7 +1022,7 @@ function CRUDAddNewPlayerStats() {
         )
     } else if (isPlayerCreated) {
         return (
-            <CreatePlayerModal/>
+            <CreatedPlayerModal playerId={createdPlayerId}/>
         )
     } else {
         return (
