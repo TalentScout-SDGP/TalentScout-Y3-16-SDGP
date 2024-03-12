@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -6,9 +6,23 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const ContactUs = () => {
   const form = useRef();
+  const [isValid, setIsValid] = useState(true);
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    const firstName = form.current['user_name'].value;
+    const email = form.current['user_email'].value;
+    const message = form.current['message'].value;
+
+    // Check if all required fields are filled
+    if (firstName.trim() === '' || email.trim() === '' || message.trim() === '') {
+      setIsValid(false);
+      toast.error('Please fill in all fields.');
+      return;
+    }
+
+    setIsValid(true);
 
     emailjs
       .sendForm('service_g46mydq', 'template_mmgh86u', form.current, {
