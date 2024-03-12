@@ -1,4 +1,4 @@
-import {useState, useContext, useEffect} from "react";
+import {useState, useContext} from "react";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
@@ -9,7 +9,6 @@ function PlayerProfilesSearch() {
     const [filteredResults, setFilteredResults] = useState([]);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [playerId, setPlayerId] = useState([]);
-
 
     const handleChange = (event) => {
         const input = event.target.value;

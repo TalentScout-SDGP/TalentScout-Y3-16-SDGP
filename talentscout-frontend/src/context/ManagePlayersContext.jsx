@@ -2,13 +2,16 @@ import {createContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import Spinner from '../components/shared/Spinner.jsx';
 import PropTypes from 'prop-types';
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 const ManagePlayersContext = createContext();
 
 export const PlayerDataProvider = ({children}) => {
     const [playerData, setPlayerData] = useState([]);
-    const [selectedPlayerData, setSelectedPlayerData] = useState(null);
+    const [selectedPlayerData, setSelectedPlayerData] = useState({});
     const [selectedSecondPlayerData, setSelectedSecondPlayerData] = useState({});
+    const [updatePlayerData, setUpdatePlayerData] = useState({});
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
     const [playerDict, setPlayerDict] = useState({});
     const [isLoading, setIsLoading] = useState(false);
@@ -30,14 +33,14 @@ export const PlayerDataProvider = ({children}) => {
                 setPlayerDict(playerDict);
                 setIsLoading(false);
             } catch (error) {
-                console.error('Error fetching player data:', error);
+                toast.error('Something went wrong. Please try again.');
                 setIsLoading(false);
             }
         };
         fetchData();
     }, []);
 
-    const getPlayerDataById = async (playerId, isSecondPlayer = false) => {
+    const getPlayerDataById = async (playerId, isSecondPlayer = false, page) => {
         try {
             setIsLoading(true);
             const response = await axios.get(`http://localhost:8000/api/crud/${playerId}/`);
@@ -45,11 +48,13 @@ export const PlayerDataProvider = ({children}) => {
             setIsLoading(false);
             if (isSecondPlayer) {
                 setSelectedSecondPlayerData(data);
+            } else if (page === 'manage_players') {
+                setUpdatePlayerData(data);
             } else {
                 setSelectedPlayerData(data);
             }
         } catch (error) {
-            console.error('Error fetching player data by ID:', error);
+            toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
         }
     };
@@ -62,7 +67,7 @@ export const PlayerDataProvider = ({children}) => {
             setIsLoading(false);
             setSelectedPlayersByName(data);
         } catch (error) {
-            console.error('Error filtering players by name:', error);
+            toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
         }
     };
@@ -80,7 +85,7 @@ export const PlayerDataProvider = ({children}) => {
             setCreatedPlayer(data);
             setCreatedPlayerStatus(201);
         } catch (error) {
-            console.error('Error creating player by ID:', error);
+            toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
             setCreatedPlayerStatus(400);
         }
@@ -92,7 +97,7 @@ export const PlayerDataProvider = ({children}) => {
             await axios.delete(`http://localhost:8000/api/crud/delete/${playerId}/`);
             setIsLoading(false);
         } catch (error) {
-            console.error('Error deleting player by ID:', error);
+            toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
         }
     };
@@ -102,6 +107,7 @@ export const PlayerDataProvider = ({children}) => {
         playerDict,
         selectedPlayerData,
         selectedSecondPlayerData,
+        updatePlayerData,
         selectedPlayersByName,
         playerInfo,
         createdPlayer,

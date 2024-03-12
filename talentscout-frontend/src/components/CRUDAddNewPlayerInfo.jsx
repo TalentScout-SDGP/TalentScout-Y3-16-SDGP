@@ -4,19 +4,34 @@ import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
 function CRUDAddNewPlayerInfo() {
-    const {selectedPlayerData, setPlayerInfoData} = useContext(ManagePlayersContext);
+    let {updatePlayerData, setPlayerInfoData} = useContext(ManagePlayersContext);
     const userString = localStorage.getItem('user');
     const email = userString ? JSON.parse(userString).email : "";
 
+    if (Object.keys(updatePlayerData).length === 0) {
+        updatePlayerData = null;
+    }
+
+    let formattedBirthDate = null;
+
+    if (updatePlayerData) {
+        const birth_date = updatePlayerData.player.birth_date;
+        const parsedDate = new Date(birth_date);
+        const year = parsedDate.getFullYear();
+        const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
+        const day = parsedDate.getDate().toString().padStart(2, '0');
+        formattedBirthDate = year + '-' + month + '-' + day;
+    }
+
     const [playerInfo, setPlayerInfo] = useState({
-        full_name: selectedPlayerData ? selectedPlayerData.player.full_name : '',
-        also_known_as: selectedPlayerData ? selectedPlayerData.player.also_known_as : '',
-        birth_date: '',
-        age: selectedPlayerData ? selectedPlayerData.player.age : '',
-        playing_role: selectedPlayerData ? selectedPlayerData.player.playing_role : '',
-        batting_style: selectedPlayerData ? selectedPlayerData.player.batting_style : '',
-        bowling_style: selectedPlayerData ? selectedPlayerData.player.bowling_style : '',
-        created_by: selectedPlayerData ? selectedPlayerData.player.created_by : '',
+        full_name: updatePlayerData ? updatePlayerData.player.full_name : '',
+        also_known_as: updatePlayerData ? updatePlayerData.player.also_known_as : '',
+        birth_date: formattedBirthDate ?? '',
+        age: updatePlayerData ? updatePlayerData.player.age : '',
+        playing_role: updatePlayerData ? updatePlayerData.player.playing_role : '',
+        batting_style: updatePlayerData ? updatePlayerData.player.batting_style : '',
+        bowling_style: updatePlayerData ? updatePlayerData.player.bowling_style : '',
+        created_by: updatePlayerData ? updatePlayerData.player.created_by : '',
     });
 
     // Function to calculate age from birth_date
@@ -46,6 +61,7 @@ function CRUDAddNewPlayerInfo() {
             toast.error('Please fill in all the required fields (*).');
         } else {
             toast.success('Player Info added, Proceed to add Player Stats.');
+            console.log('Player Info:', playerInfo);
             setPlayerInfoData(playerInfo);
         }
     }
