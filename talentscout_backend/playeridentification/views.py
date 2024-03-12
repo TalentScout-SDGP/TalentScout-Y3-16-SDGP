@@ -7,6 +7,7 @@ from django.db.models import Q
 from crud_api.serializers import PlayerBattingSerializer, PlayerBowlingSerializer, PlayerWicketKeepingSerializer
 import pickle
 import csv
+import pandas as pd
 
 # Global variables initialization
 format_input = "odi"
@@ -57,6 +58,7 @@ def rankPlayers(request):
             filtered_players = Player.objects.filter(query)
             print(query)
             stats_list = []
+            stats_values = []
 
             for player in filtered_players:
 
@@ -74,9 +76,23 @@ def rankPlayers(request):
                 else:
                     stats = []
 
-                stats_list.extend(stats)  # Append stats to the list
-            for stats in stats_list:
-                print(stats)
+                player_stats = {}
+                for stat in stats:
+                    for key, value in stat.items():
+                        if key != 'batting_id' and key != 'format':
+                            player_stats[key] = value
+                            stats_values.append(value)
+                stats_list.append(player_stats)
+
+            print(stats_values)
+
+            grouped_stats_values = [stats_values[i:i + 13] for i in range(0, len(stats_values), 13)]
+            print(grouped_stats_values)
+
+            # model_path = 'talentscout_backend/playeridentification/Pickle_Models/trained_Batting_TEST_model.pkl'  # Adjust the path accordingly
+            # with open(model_path, 'rb') as file:
+            #     loaded_model = pickle.load(model_file)
+            # new_player_stats = pd.DataFrame([stats_order], columns=numeric_columns)
 
             return Response(stats_list, status=status.HTTP_200_OK)
 
