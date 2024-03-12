@@ -4,14 +4,17 @@ import CreatedPlayerModal from "./modals/CreatedPlayerModal.jsx";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
-// TODO - Navigate to the created players profile
-// TODO - Prevent navigation before submission (add a check)
-
 function CRUDAddNewPlayerStats() {
     // State for Tab Change
     const [activeMainTab, setActiveMainTab] = useState('Test');
     const [activeSubTab, setActiveSubTab] = useState('Batting');
-    const {playerInfo, createdPlayer, createdPlayerStatus, createPlayers} = useContext(ManagePlayersContext);
+    let {
+        playerInfo,
+        createdPlayer,
+        createdPlayerStatus,
+        updatePlayerData,
+        createPlayers
+    } = useContext(ManagePlayersContext);
     const [isPlayerCreated, setIsPlayerCreated] = useState(false);
     const [createdPlayerId, setCreatedPlayerId] = useState(0);
 
@@ -32,126 +35,145 @@ function CRUDAddNewPlayerStats() {
         }
     }, [createdPlayerStatus, playerInfo]);
 
+    if (Object.keys(updatePlayerData).length === 0) {
+        updatePlayerData = null;
+    }
+
+    const getBattingStats = (format) => {
+        return (updatePlayerData && updatePlayerData.batting_stats) ? updatePlayerData.batting_stats.find(stats => stats.format === format) || {} : {};
+    };
+
+    const getBowlingStats = (format) => {
+        return (updatePlayerData && updatePlayerData.bowling_stats) ? updatePlayerData.bowling_stats.find(stats => stats.format === format) || {} : {};
+    };
+
+    const getWicketKeepingStats = (format) => {
+        return (updatePlayerData && updatePlayerData.wicketkeeping_stats) ? updatePlayerData.wicketkeeping_stats.find(stats => stats.format === format) || {} : {};
+    };
+
+
+    console.log("CHECK: ", getBattingStats('ODI').matches);
 
     // BATTING STATS
     const [testBattingStats, setTestBattingStats] = useState({
         format: 'Test',
-        matches: 0,
-        runs: 0,
-        innings: 0,
-        no: 0,
-        hs: 0,
-        avg: 0,
-        bf: 0,
-        sr: 0,
-        centuries: 0,
-        fifties: 0,
-        fours: 0,
-        sixes: 0,
+        matches: updatePlayerData ? getBattingStats('Test').matches ?? 0 : 0,
+        runs: updatePlayerData ? getBattingStats('Test').runs ?? 0 : 0,
+        innings: updatePlayerData ? getBattingStats('Test').innings ?? 0 : 0,
+        no: updatePlayerData ? getBattingStats('Test').no ?? 0 : 0,
+        hs: updatePlayerData ? getBattingStats('Test').hs ?? 0 : 0,
+        avg: updatePlayerData ? getBattingStats('Test').avg ?? 0 : 0,
+        bf: updatePlayerData ? getBattingStats('Test').bf ?? 0 : 0,
+        sr: updatePlayerData ? getBattingStats('Test').sr ?? 0 : 0,
+        centuries: updatePlayerData ? getBattingStats('Test').centuries ?? 0 : 0,
+        fifties: updatePlayerData ? getBattingStats('Test').fifties ?? 0 : 0,
+        fours: updatePlayerData ? getBattingStats('Test').fours ?? 0 : 0,
+        sixes: updatePlayerData ? getBattingStats('Test').sixes ?? 0 : 0,
     });
 
     const [odiBattingStats, setODIBattingStats] = useState({
         format: 'ODI',
-        matches: 0,
-        runs: 0,
-        innings: 0,
-        no: 0,
-        hs: 0,
-        avg: 0,
-        bf: 0,
-        sr: 0,
-        centuries: 0,
-        fifties: 0,
-        fours: 0,
-        sixes: 0,
+        matches: updatePlayerData ? getBattingStats('ODI').matches ?? 0 : 0,
+        runs: updatePlayerData ? getBattingStats('ODI').runs ?? 0 : 0,
+        innings: updatePlayerData ? getBattingStats('ODI').innings ?? 0 : 0,
+        no: updatePlayerData ? getBattingStats('ODI').no ?? 0 : 0,
+        hs: updatePlayerData ? getBattingStats('ODI').hs ?? 0 : 0,
+        avg: updatePlayerData ? getBattingStats('ODI').avg ?? 0 : 0,
+        bf: updatePlayerData ? getBattingStats('ODI').bf ?? 0 : 0,
+        sr: updatePlayerData ? getBattingStats('ODI').sr ?? 0 : 0,
+        centuries: updatePlayerData ? getBattingStats('ODI').centuries ?? 0 : 0,
+        fifties: updatePlayerData ? getBattingStats('ODI').fifties ?? 0 : 0,
+        fours: updatePlayerData ? getBattingStats('ODI').fours ?? 0 : 0,
+        sixes: updatePlayerData ? getBattingStats('ODI').sixes ?? 0 : 0,
     });
 
     const [t20BattingStats, setT20BattingStats] = useState({
         format: 'T20',
-        matches: 0,
-        runs: 0,
-        innings: 0,
-        no: 0,
-        hs: 0,
-        avg: 0,
-        bf: 0,
-        sr: 0,
-        centuries: 0,
-        fifties: 0,
-        fours: 0,
-        sixes: 0,
+        matches: updatePlayerData ? getBattingStats('T20').matches ?? 0 : 0,
+        runs: updatePlayerData ? getBattingStats('T20').runs ?? 0 : 0,
+        innings: updatePlayerData ? getBattingStats('T20').innings ?? 0 : 0,
+        no: updatePlayerData ? getBattingStats('T20').no ?? 0 : 0,
+        hs: updatePlayerData ? getBattingStats('T20').hs ?? 0 : 0,
+        avg: updatePlayerData ? getBattingStats('T20').avg ?? 0 : 0,
+        bf: updatePlayerData ? getBattingStats('T20').bf ?? 0 : 0,
+        sr: updatePlayerData ? getBattingStats('T20').sr ?? 0 : 0,
+        centuries: updatePlayerData ? getBattingStats('T20').centuries ?? 0 : 0,
+        fifties: updatePlayerData ? getBattingStats('T20').fifties ?? 0 : 0,
+        fours: updatePlayerData ? getBattingStats('T20').fours ?? 0 : 0,
+        sixes: updatePlayerData ? getBattingStats('T20').sixes ?? 0 : 0,
     });
 
     // BOWLING STATS
     const [testBowlingStats, setTestBowlingStats] = useState({
         format: 'Test',
-        matches: 0,
-        wickets: 0,
-        innings: 0,
-        overs: 0,
-        runs: 0,
-        bbi: '',
-        avg: 0,
-        econ: 0,
-        sr: 0,
-        four_ws: 0,
-        five_ws: 0,
+        matches: updatePlayerData ? getBowlingStats('Test').matches ?? 0 : 0,
+        wickets: updatePlayerData ? getBowlingStats('Test').wickets ?? 0 : 0,
+        innings: updatePlayerData ? getBowlingStats('Test').innings ?? 0 : 0,
+        overs: updatePlayerData ? getBowlingStats('Test').overs ?? 0 : 0,
+        runs: updatePlayerData ? getBowlingStats('Test').runs ?? 0 : 0,
+        bbi: updatePlayerData ? getBowlingStats('Test').bbi ?? '' : '',
+        avg: updatePlayerData ? getBowlingStats('Test').avg ?? 0 : 0,
+        econ: updatePlayerData ? getBowlingStats('Test').econ ?? 0 : 0,
+        sr: updatePlayerData ? getBowlingStats('Test').sr ?? 0 : 0,
+        four_ws: updatePlayerData ? getBowlingStats('Test').four_ws ?? 0 : 0,
+        five_ws: updatePlayerData ? getBowlingStats('Test').five_ws ?? 0 : 0,
     });
 
     const [odiBowlingStats, setODIBowlingStats] = useState({
         format: 'ODI',
-        matches: 0,
-        wickets: 0,
-        innings: 0,
-        overs: 0,
-        runs: 0,
-        bbi: '',
-        avg: 0,
-        econ: 0,
-        sr: 0,
-        four_ws: 0,
-        five_ws: 0,
+        matches: updatePlayerData ? getBowlingStats('ODI').matches ?? 0 : 0,
+        wickets: updatePlayerData ? getBowlingStats('ODI').wickets ?? 0 : 0,
+        innings: updatePlayerData ? getBowlingStats('ODI').innings ?? 0 : 0,
+        overs: updatePlayerData ? getBowlingStats('ODI').overs ?? 0 : 0,
+        runs: updatePlayerData ? getBowlingStats('ODI').runs ?? 0 : 0,
+        bbi: updatePlayerData ? getBowlingStats('ODI').bbi ?? '' : '',
+        avg: updatePlayerData ? getBowlingStats('ODI').avg ?? 0 : 0,
+        econ: updatePlayerData ? getBowlingStats('ODI').econ ?? 0 : 0,
+        sr: updatePlayerData ? getBowlingStats('ODI').sr ?? 0 : 0,
+        four_ws: updatePlayerData ? getBowlingStats('ODI').four_ws ?? 0 : 0,
+        five_ws: updatePlayerData ? getBowlingStats('ODI').five_ws ?? 0 : 0,
     });
 
     const [t20BowlingStats, setT20BowlingStats] = useState({
         format: 'T20',
-        matches: 0,
-        wickets: 0,
-        innings: 0,
-        overs: 0,
-        runs: 0,
-        bbi: '',
-        avg: 0,
-        econ: 0,
-        sr: 0,
-        four_ws: 0,
-        five_ws: 0,
+        matches: updatePlayerData ? getBowlingStats('T20').matches ?? 0 : 0,
+        wickets: updatePlayerData ? getBowlingStats('T20').wickets ?? 0 : 0,
+        innings: updatePlayerData ? getBowlingStats('T20').innings ?? 0 : 0,
+        overs: updatePlayerData ? getBowlingStats('T20').overs ?? 0 : 0,
+        runs: updatePlayerData ? getBowlingStats('T20').runs ?? 0 : 0,
+        bbi: updatePlayerData ? getBowlingStats('T20').bbi ?? '' : '',
+        avg: updatePlayerData ? getBowlingStats('T20').avg ?? 0 : 0,
+        econ: updatePlayerData ? getBowlingStats('T20').econ ?? 0 : 0,
+        sr: updatePlayerData ? getBowlingStats('T20').sr ?? 0 : 0,
+        four_ws: updatePlayerData ? getBowlingStats('T20').four_ws ?? 0 : 0,
+        five_ws: updatePlayerData ? getBowlingStats('T20').five_ws ?? 0 : 0,
     });
 
     // WICKETKEEPING STATS
     const [testWicketKeepingStats, setTestWicketKeepingStats] = useState({
         format: 'Test',
-        matches: 0,
-        innings: 0,
-        catches: 0,
-        stumping: 0,
+        matches: updatePlayerData ? getWicketKeepingStats('Test').matches ?? 0 : 0,
+        innings: updatePlayerData ? getWicketKeepingStats('Test').innings ?? 0 : 0,
+        catches: updatePlayerData ? getWicketKeepingStats('Test').catches ?? 0 : 0,
+        stumping: updatePlayerData ? getWicketKeepingStats('Test').stumping ?? 0 : 0,
     });
 
     const [odiWicketKeepingStats, setODIWicketKeepingStats] = useState({
         format: 'ODI',
-        matches: 0,
-        innings: 0,
-        catches: 0,
-        stumping: 0,
+        matches: updatePlayerData ? getWicketKeepingStats('ODI').matches ?? 0 : 0,
+        innings: updatePlayerData ? getWicketKeepingStats('ODI').innings ?? 0 : 0,
+        catches: updatePlayerData ? getWicketKeepingStats('ODI').catches ?? 0 : 0,
+        stumping: updatePlayerData ? getWicketKeepingStats('ODI').stumping ?? 0 : 0,
     });
 
     const [t20WicketKeepingStats, setT20WicketKeepingStats] = useState({
         format: 'T20',
-        matches: 0,
-        innings: 0,
-        catches: 0,
-        stumping: 0,
+        matches: updatePlayerData ? getWicketKeepingStats('T20').matches ?? 0 : 0,
+        innings: updatePlayerData ? getWicketKeepingStats('T20').innings ?? 0 : 0,
+        catches: updatePlayerData ? getWicketKeepingStats('T20').catches ?? 0 : 0,
+        stumping: updatePlayerData ? getWicketKeepingStats('T20').stumping ?? 0 : 0,
     });
+
 
     const handleInputChange = (e, format, category) => {
         if (/^[\d\/]*$/.test(e.target.value)) {
