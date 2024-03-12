@@ -8,16 +8,14 @@ import 'react-toastify/dist/ReactToastify.css'
 const ManagePlayersContext = createContext();
 
 export const PlayerDataProvider = ({children}) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [playerDict, setPlayerDict] = useState({});
+    const [playerInfo, setPlayerInfo] = useState({});
     const [playerData, setPlayerData] = useState([]);
     const [selectedPlayerData, setSelectedPlayerData] = useState({});
     const [selectedSecondPlayerData, setSelectedSecondPlayerData] = useState({});
-    const [updatePlayerData, setUpdatePlayerData] = useState({});
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
-    const [playerDict, setPlayerDict] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
-    const [playerInfo, setPlayerInfo] = useState({});
-    const [createdPlayer, setCreatedPlayer] = useState();
-    const [createdPlayerStatus, setCreatedPlayerStatus] = useState(0);
+    const [updatePlayerData, setUpdatePlayerData] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -79,30 +77,24 @@ export const PlayerDataProvider = ({children}) => {
     const createPlayers = async (playerInfo) => {
         try {
             setIsLoading(true);
-            const response = await axios.post('http://localhost:8000/api/crud/create/', playerInfo);
-            const data = response.data;
+            await axios.post('http://localhost:8000/api/crud/create/', playerInfo);
+            toast.success('Player Created Successfully!')
             setIsLoading(false);
-            setCreatedPlayer(data);
-            setCreatedPlayerStatus(201);
         } catch (error) {
             toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
-            setCreatedPlayerStatus(400);
         }
     }
 
     const updatePlayers = async (playerInfo, playerId) => {
         try {
             setIsLoading(true);
-            const response = await axios.put(`http://localhost:8000/api/crud/update/${playerId}/`, playerInfo);
-            const data = response.data;
+            await axios.put(`http://localhost:8000/api/crud/update/${playerId}/`, playerInfo);
+            toast.success('Player Updated Successfully!')
             setIsLoading(false);
-            setCreatedPlayer(data);
-            setCreatedPlayerStatus(200);
         } catch (error) {
             toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
-            setCreatedPlayerStatus(400);
         }
     }
 
@@ -118,21 +110,19 @@ export const PlayerDataProvider = ({children}) => {
     };
 
     const contextData = {
-        playerData,
-        playerDict,
-        selectedPlayerData,
-        selectedSecondPlayerData,
-        updatePlayerData,
-        selectedPlayersByName,
-        playerInfo,
-        createdPlayer,
-        createdPlayerStatus,
-        getPlayerDataById,
-        filterPlayersByName,
-        deletePlayerById,
-        setPlayerInfoData,
-        createPlayers,
-        updatePlayers
+        playerData: playerData,
+        playerDict: playerDict,
+        playerInfo: playerInfo,
+        selectedPlayerData: selectedPlayerData,
+        selectedSecondPlayerData: selectedSecondPlayerData,
+        selectedPlayersByName: selectedPlayersByName,
+        updatePlayerData: updatePlayerData,
+        getPlayerDataById: getPlayerDataById,
+        filterPlayersByName: filterPlayersByName,
+        deletePlayerById: deletePlayerById,
+        setPlayerInfoData: setPlayerInfoData,
+        createPlayers: createPlayers,
+        updatePlayers: updatePlayers,
     };
 
     if (!isLoading) {

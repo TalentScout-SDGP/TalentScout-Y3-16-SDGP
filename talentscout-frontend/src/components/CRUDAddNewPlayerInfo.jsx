@@ -57,7 +57,7 @@ function CRUDAddNewPlayerInfo() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (playerInfo.full_name === '' || playerInfo.birth_date === '' || playerInfo.playing_role === '') {
+        if (playerInfo.full_name === '' || playerInfo.birth_date === '' || playerInfo.playing_role === '' || playerInfo.batting_style === '' || playerInfo.bowling_style === '') {
             toast.error('Please fill in all the required fields (*).');
         } else {
             toast.success('Player Info added, Proceed to add Player Stats.');
@@ -131,7 +131,8 @@ function CRUDAddNewPlayerInfo() {
                                 </div>
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
-                                    <label className="w-full text-sm md:text-md lg:text-base">Batting Style: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Batting Style<span
+                                        className="text-primary-red font-bold">*</span>: </label>
                                     <select name="batting_style" value={playerInfo.batting_style}
                                             onChange={handleChange}
                                             className="w-full text-sm md:text-md lg:text-base p-1 text-2 border-2 border-black rounded-lg shadow-md focus:outline-none"
@@ -159,7 +160,8 @@ function CRUDAddNewPlayerInfo() {
                                 </div>
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
-                                    <label className="w-full text-sm md:text-md lg:text-base">Bowling Style: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Bowling Style<span
+                                        className="text-primary-red font-bold">*</span>: </label>
                                     <select name="bowling_style" value={playerInfo.bowling_style}
                                             onChange={handleChange}
                                             className="w-full text-sm md:text-md lg:text-base p-1 text-2 border-2 border-black rounded-lg shadow-md focus:outline-none"
