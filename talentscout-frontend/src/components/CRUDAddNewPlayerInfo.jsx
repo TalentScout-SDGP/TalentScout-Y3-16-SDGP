@@ -4,19 +4,19 @@ import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
 function CRUDAddNewPlayerInfo() {
-    const {setPlayerInfoData} = useContext(ManagePlayersContext);
+    const {selectedPlayerData, setPlayerInfoData} = useContext(ManagePlayersContext);
     const userString = localStorage.getItem('user');
     const email = userString ? JSON.parse(userString).email : "";
 
     const [playerInfo, setPlayerInfo] = useState({
-        full_name: '',
-        also_known_as: '',
+        full_name: selectedPlayerData ? selectedPlayerData.player.full_name : '',
+        also_known_as: selectedPlayerData ? selectedPlayerData.player.also_known_as : '',
         birth_date: '',
-        age: '',
-        playing_role: '',
-        batting_style: '',
-        bowling_style: "",
-        created_by: '',
+        age: selectedPlayerData ? selectedPlayerData.player.age : '',
+        playing_role: selectedPlayerData ? selectedPlayerData.player.playing_role : '',
+        batting_style: selectedPlayerData ? selectedPlayerData.player.batting_style : '',
+        bowling_style: selectedPlayerData ? selectedPlayerData.player.bowling_style : '',
+        created_by: selectedPlayerData ? selectedPlayerData.player.created_by : '',
     });
 
     // Function to calculate age from birth_date
@@ -66,13 +66,13 @@ function CRUDAddNewPlayerInfo() {
                                 <label className="text-sm md:text-md lg:text-base">Full Name<span
                                     className="text-primary-red font-bold">*</span>: </label>
                                 <input type="text" name="full_name" value={playerInfo.full_name} onChange={handleChange}
-                                       className="w-full p-0.5 md:p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
+                                       className="w-full p-0.5 md:p-1 text-sm md:text-md lg:text-base border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
                             </div>
                             <div className="flex flex-col gap-y-2">
                                 <label className="text-sm md:text-md lg:text-base">Also Known As: </label>
                                 <input type="text" name="also_known_as" value={playerInfo.also_known_as}
                                        onChange={handleChange}
-                                       className="w-full p-0.5 md:p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
+                                       className="w-full p-0.5 md:p-1 text-sm md:text-md lg:text-base border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
                             </div>
                             <div
                                 className="grid grid-cols-1 xl:grid-cols-2 gap-x-12 gap-y-6 lg:gap-y-10 justify-center items-center mb-3 lg:mt-4">

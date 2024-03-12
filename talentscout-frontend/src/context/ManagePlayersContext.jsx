@@ -7,7 +7,7 @@ const ManagePlayersContext = createContext();
 
 export const PlayerDataProvider = ({children}) => {
     const [playerData, setPlayerData] = useState([]);
-    const [selectedPlayerData, setSelectedPlayerData] = useState({});
+    const [selectedPlayerData, setSelectedPlayerData] = useState(null);
     const [selectedSecondPlayerData, setSelectedSecondPlayerData] = useState({});
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
     const [playerDict, setPlayerDict] = useState({});

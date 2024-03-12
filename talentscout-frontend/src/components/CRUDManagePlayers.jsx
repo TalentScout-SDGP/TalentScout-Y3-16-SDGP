@@ -1,10 +1,11 @@
 import {useContext} from 'react';
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 import {FaTrash, FaEdit, FaPlus} from 'react-icons/fa';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const CRUDManagePlayers = () => {
-    const {selectedPlayersByName, deletePlayerById} = useContext(ManagePlayersContext);
+    const {selectedPlayersByName, deletePlayerById, getPlayerDataById} = useContext(ManagePlayersContext);
+    const navigate = useNavigate()
     const userString = localStorage.getItem('user');
     const email = userString ? JSON.parse(userString).email : "Initial";
 
@@ -41,7 +42,8 @@ const CRUDManagePlayers = () => {
 
     function handleUpdatePlayer(playerId) {
         console.log('Update player with id: ' + playerId);
-        
+        getPlayerDataById(playerId);
+        navigate('/add_players')
     }
 
     if (!isAvailable) {

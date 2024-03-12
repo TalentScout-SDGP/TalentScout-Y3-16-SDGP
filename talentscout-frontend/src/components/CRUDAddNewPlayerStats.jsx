@@ -12,7 +12,6 @@ function CRUDAddNewPlayerStats() {
     const [activeMainTab, setActiveMainTab] = useState('Test');
     const [activeSubTab, setActiveSubTab] = useState('Batting');
     const {playerInfo, createdPlayer, createdPlayerStatus, createPlayers} = useContext(ManagePlayersContext);
-    const [isVisible, setIsVisible] = useState(false);
     const [isPlayerCreated, setIsPlayerCreated] = useState(false);
     const [createdPlayerId, setCreatedPlayerId] = useState(0);
 
@@ -27,9 +26,6 @@ function CRUDAddNewPlayerStats() {
     };
 
     useEffect(() => {
-        if (Object.keys(playerInfo).length !== 0) {
-            setIsVisible(true);
-        }
         if (createdPlayerStatus === 201) {
             setCreatedPlayerId(createdPlayer.player_id);
             setIsPlayerCreated(true);
