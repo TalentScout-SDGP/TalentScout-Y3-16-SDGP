@@ -158,8 +158,7 @@ function CRUDAddNewPlayerStats() {
     });
 
     const handleInputChange = (e, format, category) => {
-
-        if (/^\d*$/.test(e.target.value)) {
+        if (/^[\d\/]*$/.test(e.target.value)) {
             switch (category) {
                 case 'Batting':
                     switch (format) {
@@ -217,6 +216,33 @@ function CRUDAddNewPlayerStats() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (testBowlingStats) {
+            if (testBowlingStats.bbi) {
+                if (!/^\d+\/\d+$/.test(testBowlingStats.bbi)) {
+                    toast.error('Invalid BBI Format, Please enter BBI in following format (Runs/Wicket) Ex:40/2.');
+                    return;
+                }
+            }
+        }
+
+        if (odiBowlingStats) {
+            if (odiBowlingStats.bbi) {
+                if (!/^\d+\/\d+$/.test(odiBowlingStats.bbi)) {
+                    toast.error('Invalid BBI Format, Please enter BBI in following format (Runs/Wicket) Ex:40/2.');
+                    return;
+                }
+            }
+        }
+
+        if (t20BowlingStats) {
+            if (t20BowlingStats.bbi) {
+                if (!/^\d+\/\d+$/.test(t20BowlingStats.bbi)) {
+                    toast.error('Invalid BBI Format, Please enter BBI in following format (Runs/Wicket) Ex:40/2.');
+                    return;
+                }
+            }
+        }
+
         const checkAndPush = (stats, array) => {
             const isNotEmpty = stats.matches > 0;
             if (isNotEmpty) array.push(stats);
@@ -247,7 +273,8 @@ function CRUDAddNewPlayerStats() {
         return (
             <div className="font-poppins">
                 <div className="md:container px-2">
-                    <div className="shadow-xl bg-primary-ts_purple my-12 lg:w-full rounded-lg px-7 lg:px-16 pt-12 py-2">
+                    <div
+                        className="shadow-outer bg-primary-ts_purple my-12 lg:w-full rounded-lg px-7 lg:px-16 pt-12 py-2">
                         <div
                             className="shadow-outer section-header flex justify-center gap-x-2 sm:gap-x-0 bg-primary-Tab_color w-fit mx-auto mb-5 py-1 px-2 rounded-3xl font-semibold text-sm md:text-md lg:text-base">
                             <button onClick={() => handleMainTabChange('Test')}
@@ -438,7 +465,6 @@ function CRUDAddNewPlayerStats() {
                                                            value={testBowlingStats.bbi}
                                                            onChange={(e) => handleInputChange(e, 'Test', 'Bowling')}
                                                            className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
-                                                    <span>Enter BBI in this Format - (Runs/Wickets) Ex:40/2</span>
                                                 </div>
                                                 <div className="grid grid-cols-12 items-center gap-x-6">
                                                     <label
