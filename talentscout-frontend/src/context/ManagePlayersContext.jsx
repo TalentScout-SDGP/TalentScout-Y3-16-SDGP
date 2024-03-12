@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import {createContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import Spinner from '../components/shared/Spinner.jsx';
 import PropTypes from 'prop-types';
@@ -12,7 +12,6 @@ export const PlayerDataProvider = ({children}) => {
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
     const [playerDict, setPlayerDict] = useState({});
     const [isLoading, setIsLoading] = useState(false);
-    const [deletePlayer, setDeletePlayer] = useState([]);
     const [playerInfo, setPlayerInfo] = useState({});
     const [createdPlayer, setCreatedPlayer] = useState();
     const [createdPlayerStatus, setCreatedPlayerStatus] = useState(0);
@@ -68,6 +67,25 @@ export const PlayerDataProvider = ({children}) => {
         }
     };
 
+    const setPlayerInfoData = async (data) => {
+        setPlayerInfo(data);
+    }
+
+    const createPlayers = async (playerInfo) => {
+        try {
+            setIsLoading(true);
+            const response = await axios.post('http://localhost:8000/api/crud/create/', playerInfo);
+            const data = response.data;
+            setIsLoading(false);
+            setCreatedPlayer(data);
+            setCreatedPlayerStatus(201);
+        } catch (error) {
+            console.error('Error creating player by ID:', error);
+            setIsLoading(false);
+            setCreatedPlayerStatus(400);
+        }
+    }
+
     const deletePlayerById = async (playerId) => {
         try {
             setIsLoading(true);
@@ -79,33 +97,20 @@ export const PlayerDataProvider = ({children}) => {
         }
     };
 
-    // New API to fetch player stats
-    const getPlayerStats = async (playerId) => {
-        try {
-            setIsLoading(true);
-            const response = await axios.get(`http://localhost:8000/api/player/stats/${playerId}`);
-            const data = response.data;
-            setCreatedPlayer(data)
-            setCreatedPlayerStatus(response.status)
-            setIsLoading(false);
-            return data;
-        } catch (error) {
-            console.error('Error fetching player stats:', error);
-            setIsLoading(false);
-            return null;
-        }
-    };
-
     const contextData = {
         playerData,
         playerDict,
         selectedPlayerData,
         selectedSecondPlayerData,
         selectedPlayersByName,
+        playerInfo,
+        createdPlayer,
+        createdPlayerStatus,
         getPlayerDataById,
         filterPlayersByName,
         deletePlayerById,
-        getPlayerStats, // Add getPlayerStats to the context
+        setPlayerInfoData,
+        createPlayers
     };
 
     if (!isLoading) {
@@ -117,7 +122,7 @@ export const PlayerDataProvider = ({children}) => {
     } else {
         return (
             <div className="mt-48">
-                <Spinner />
+                <Spinner/>
             </div>
         );
     }
