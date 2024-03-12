@@ -48,6 +48,12 @@ const ComparePlayerStats = () => {
         const [runs1, wickets1] = bbi1.split('/').map(Number);
         const [runs2, wickets2] = bbi2.split('/').map(Number);
 
+        if (bbi1 === '0') {
+            return 'player2';
+        } else if (bbi2 === '0') {
+            return 'player1';
+        }
+
         if (wickets1 === wickets2) {
             return runs1 < runs2 ? 'player1' : 'player2';
         } else if (wickets1 > wickets2) {
@@ -65,8 +71,8 @@ const ComparePlayerStats = () => {
                          className={`stats-row  grid grid-cols-12 items-center justify-center mx-6 ${index !== statsData.length - 1 ? 'border-b-2 border-primary-light_gray' : ''} py-3`}>
                         <div
                             className={`col-span-4 text-center lg:text-base sm:text-sm text-xs ${
-                                stat.statPlayer1 !== undefined
-                                    ? stat.description === 'BBI'
+                                stat.statPlayer1 !== undefined && stat.statPlayer1 !== 0 && stat.statPlayer1 !== '0'
+                                    ? stat.description === 'BBI' && stat.statPlayer2 !== undefined
                                         ? compareBBI(stat.statPlayer1, stat.statPlayer2) === 'player1'
                                             ? 'bg-primary-green'
                                             : 'bg-primary-red'
@@ -84,8 +90,8 @@ const ComparePlayerStats = () => {
                         <div className="stat-description col-span-4 text-center font-semibold">{stat.description}</div>
                         <div
                             className={`col-span-4 text-center lg:text-base sm:text-sm text-xs ${
-                                stat.statPlayer2 !== undefined
-                                    ? stat.description === 'BBI'
+                                stat.statPlayer2 !== undefined && stat.statPlayer2 !== 0 && stat.statPlayer2 !== '0'
+                                    ? stat.description === 'BBI' && stat.statPlayer1 !== undefined
                                         ? compareBBI(stat.statPlayer1, stat.statPlayer2) === 'player2'
                                             ? 'bg-primary-green'
                                             : 'bg-primary-red'
