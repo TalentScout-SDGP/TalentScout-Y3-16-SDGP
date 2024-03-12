@@ -4,7 +4,7 @@ import CreatedPlayerModal from "./modals/CreatedPlayerModal.jsx";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
-// TODO - Add validations for all fields (Regex for BBI)
+// TODO - Add Regex for BBI
 // TODO - Navigate to the created players profile
 // TODO - Prevent navigation before submission (add a check)
 function CRUDAddNewPlayerStats() {
@@ -438,6 +438,7 @@ function CRUDAddNewPlayerStats() {
                                                            value={testBowlingStats.bbi}
                                                            onChange={(e) => handleInputChange(e, 'Test', 'Bowling')}
                                                            className="col-span-9 w-full md:p-1 border-2 border-black rounded-lg shadow-md"/>
+                                                    <span>Enter BBI in this Format - (Runs/Wickets) Ex:40/2</span>
                                                 </div>
                                                 <div className="grid grid-cols-12 items-center gap-x-6">
                                                     <label

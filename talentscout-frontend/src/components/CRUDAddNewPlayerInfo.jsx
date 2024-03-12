@@ -1,5 +1,7 @@
 import {useContext, useState} from "react";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 function CRUDAddNewPlayerInfo() {
     const {setPlayerInfoData} = useContext(ManagePlayersContext);
@@ -39,6 +41,9 @@ function CRUDAddNewPlayerInfo() {
     };
 
     const handleSubmit = (e) => {
+        if (playerInfo.full_name === '' || playerInfo.birth_date === '' || playerInfo.playing_role === '') {
+            toast.error('Please fill in all the required fields (*).');
+        }
         e.preventDefault()
         setPlayerInfoData(playerInfo);
     }
@@ -56,7 +61,8 @@ function CRUDAddNewPlayerInfo() {
                         className="bg-primary-ts_purple rounded-b-lg font-semibold py-8 px-2 sm:px-4 md:px-6 lg:px-10 xl:px-12">
                         <form onSubmit={handleSubmit}>
                             <div className="flex flex-col gap-y-2">
-                                <label className="text-sm md:text-md lg:text-base">Full Name: </label>
+                                <label className="text-sm md:text-md lg:text-base">Full Name<span
+                                    className="text-primary-red font-bold">*</span>: </label>
                                 <input type="text" name="full_name" value={playerInfo.full_name} onChange={handleChange}
                                        className="w-full p-0.5 md:p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
                             </div>
@@ -69,14 +75,16 @@ function CRUDAddNewPlayerInfo() {
                             <div
                                 className="grid grid-cols-1 xl:grid-cols-2 gap-x-12 gap-y-6 lg:gap-y-10 justify-center items-center mb-3 lg:mt-4">
                                 <div className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center">
-                                    <label className="w-full text-sm md:text-md lg:text-base">Birth Date: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Birth Date<span
+                                        className="text-primary-red font-bold">*</span>: </label>
                                     <input type="date" name="birth_date" value={playerInfo.birth_date}
                                            onChange={handleChange}
                                            className="w-full text-sm md:text-md lg:text-base p-1 border-2 border-black rounded-lg shadow-md"/>
                                 </div>
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
-                                    <label className="w-full text-sm md:text-md lg:text-base">Playing Role: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Playing Role<span
+                                        className="text-primary-red font-bold">*</span>: </label>
                                     <select name="playing_role" value={playerInfo.playing_role}
                                             onChange={handleChange}
                                             className="w-full p-1 text-sm md:text-md lg:text-base border-2 border-black rounded-lg shadow-md focus:outline-none"
