@@ -58,6 +58,9 @@ def rankPlayers(request):
                     print("lol")
                     stats = PlayerBowlingSerializer(
                         PlayerBowling.objects.filter(player=player, format=selected_format), many=True).data
+                elif playing_role == 'WicketKeeper':
+                    stats = PlayerWicketKeepingSerializer(
+                        PlayerWicketKeeping.objects.filter(player=player, format=selected_format), many=True).data
                 else:
                     stats = []
 
