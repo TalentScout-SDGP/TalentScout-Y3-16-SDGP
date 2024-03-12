@@ -111,13 +111,7 @@ def rankPlayers(request):
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_Test_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
-            elif playing_role == 'Batsman' and selected_format == 'T20':
-                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_T20_model.pkl'
-                pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
-            elif playing_role == 'Batsman' and selected_format == 'Odi':
-                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_ODI_model.pkl'
-                pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
             print(numeric_columns)
             for player_info in player_list:
