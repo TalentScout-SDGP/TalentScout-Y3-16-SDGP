@@ -23,11 +23,16 @@ def rankPlayers(request):
             print(playing_role, batting_style, bowling_style, age_min_value, age_max_value, selected_format)
 
             query = Q()
-
-            if playing_role:
-                query &= Q(playing_role=playing_role)
-            if bowling_style:
-                query &= Q(bowling_style=bowling_style)
+            if playing_role == "Bowler":
+                if bowling_style:
+                    query &= Q(bowling_style=bowling_style)
+                if selected_format:
+                    query &= Q(playerbowling__format=selected_format)
+            elif playing_role == "Batsman":
+                if batting_style:
+                    query &= Q(batting_style=batting_style)
+                if selected_format:
+                    query &= Q(playerbatting__format=selected_format)
             print(query)
             if age_min_value is not None and age_max_value is not None:
                 query &= Q(age__range=(age_min_value, age_max_value))
