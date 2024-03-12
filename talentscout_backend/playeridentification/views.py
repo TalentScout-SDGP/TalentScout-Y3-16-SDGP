@@ -89,8 +89,8 @@ def rankPlayers(request):
             grouped_stats_values = [stats_values[i:i + 13] for i in range(0, len(stats_values), 13)]
             print(grouped_stats_values)
 
-            # model_path = 'talentscout_backend/playeridentification/Pickle_Models/trained_Batting_TEST_model.pkl'  # Adjust the path accordingly
-            with open(model_path, 'rb') as file:
+            # # model_path = 'talentscout_backend/playeridentification/Pickle_Models/trained_Batting_TEST_model.pkl'  # Adjust the path accordingly
+            # with open(model_path, 'rb') as file:
                 loaded_model = pickle.load(model_file)
             new_player_stats = pd.DataFrame([stats_order], columns=numeric_columns)
 
