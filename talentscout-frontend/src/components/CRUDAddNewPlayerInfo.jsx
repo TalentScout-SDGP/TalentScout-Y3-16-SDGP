@@ -3,6 +3,9 @@ import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 
 function CRUDAddNewPlayerInfo() {
     const {setPlayerInfoData} = useContext(ManagePlayersContext);
+    const userString = localStorage.getItem('user');
+    const email = userString ? JSON.parse(userString).email : "";
+
     const [playerInfo, setPlayerInfo] = useState({
         full_name: '',
         also_known_as: '',
@@ -11,6 +14,7 @@ function CRUDAddNewPlayerInfo() {
         playing_role: '',
         batting_style: '',
         bowling_style: "",
+        created_by: '',
     });
 
     // Function to calculate age from birth_date
@@ -30,8 +34,8 @@ function CRUDAddNewPlayerInfo() {
             ...playerInfo,
             [e.target.name]: e.target.value,
             age: e.target.name === 'birth_date' ? calculateAge(e.target.value) : playerInfo.age,
+            created_by: email,
         });
-
     };
 
     const handleSubmit = (e) => {
