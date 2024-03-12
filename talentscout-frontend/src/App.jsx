@@ -14,6 +14,7 @@ import OurTeamPage from "./pages/OurTeamPage.jsx";
 import VerifyOTPPage from "./pages/VerifyOTPPage.jsx";
 import ForgetPassword from "./components/ForgetPassword.jsx";
 import ResetPassword from "./components/ResetPassword.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 // React Router
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
@@ -73,6 +74,8 @@ function App() {
                                 <Route exact path='/verify_otp' element={<VerifyOTPPage/>}/>
                                 <Route path="/forget_password" element={<ForgetPassword/>}/>
                                 <Route path="/password-reset-confirm/:uid/:token" element={<ResetPassword/>}/>
+                                <Route path="*" element={<NotFound/>}/>
+
                                 {/*TODO End:Delete Following Routes & Page Files*/}
                                 <Route exact path='/sulan' element={<FrontendSulan/>}/>
                                 <Route exact path='/agrani' element={<FrontendAgrani/>}/>

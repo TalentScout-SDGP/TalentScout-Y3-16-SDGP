@@ -4,9 +4,9 @@ import CreatedPlayerModal from "./modals/CreatedPlayerModal.jsx";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
-// TODO - Add Regex for BBI
 // TODO - Navigate to the created players profile
 // TODO - Prevent navigation before submission (add a check)
+
 function CRUDAddNewPlayerStats() {
     // State for Tab Change
     const [activeMainTab, setActiveMainTab] = useState('Test');
