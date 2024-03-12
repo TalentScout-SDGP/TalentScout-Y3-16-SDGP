@@ -4,8 +4,17 @@ from rest_framework import status
 from .serializers import FormDataSerializer
 from crud_api.models import Player, PlayerBatting, PlayerBowling, PlayerWicketKeeping
 from django.db.models import Q
-from crud_api.serializers import PlayerSerializer, PlayerBattingSerializer, PlayerBowlingSerializer, \
-    PlayerWicketKeepingSerializer
+from crud_api.serializers import PlayerBattingSerializer, PlayerBowlingSerializer, PlayerWicketKeepingSerializer
+import pickle
+import csv
+
+# Global variables initialization
+format_input = "odi"
+playing_role = "bowling"
+wicketkeeping_stats_order = ['Matches', 'Innings', 'Highest Score', 'Balls Faced', '100s', '6s', 'Catches', 'Runs',
+                             'Not Outs', 'Average', 'Strike Rate', '50s', '4s', 'Stumps']
+bowling_stats_order = ['Matches', 'Wickets', 'Innings', 'Overs', 'Runs', 'BBI', 'Avg', 'Econ', 'SR', '4Ws', '5Ws']
+batting_stats_order = ['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR', '100s', '50s', '4s', '6s']
 
 
 @api_view(['POST'])
@@ -47,14 +56,13 @@ def rankPlayers(request):
 
             filtered_players = Player.objects.filter(query)
             print(query)
-            player_stats = []
+            stats_list = []
 
             for player in filtered_players:
 
                 # Fetch relevant stats based on the playing role
 
                 if playing_role == 'Batsman':
-
                     stats = PlayerBattingSerializer(
                         PlayerBatting.objects.filter(player=player, format=selected_format), many=True).data
                 elif playing_role == 'Bowler':
@@ -66,15 +74,11 @@ def rankPlayers(request):
                 else:
                     stats = []
 
-                player_serializer = PlayerSerializer(player).data
-                player_serializer.update({
-                    'stats': stats,
-                })
+                stats_list.extend(stats)  # Append stats to the list
+            for stats in stats_list:
+                print(stats)
 
-                player_stats.append(player_serializer)
-
-            return Response(player_stats, status=status.HTTP_200_OK)
-
+            return Response(stats_list, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
