@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 import ComparePlayerStats from "./ComparePlayerStats.jsx";
-import Spinner from "./shared/Spinner.jsx";
 
 function ComparePlayersInfo() {
     const {selectedPlayerData, selectedSecondPlayerData} = useContext(ManagePlayersContext);
