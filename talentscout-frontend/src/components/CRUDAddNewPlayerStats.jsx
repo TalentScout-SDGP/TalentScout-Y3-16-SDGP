@@ -13,7 +13,8 @@ function CRUDAddNewPlayerStats() {
         createdPlayer,
         createdPlayerStatus,
         updatePlayerData,
-        createPlayers
+        createPlayers,
+        updatePlayers
     } = useContext(ManagePlayersContext);
     const [isPlayerCreated, setIsPlayerCreated] = useState(false);
     const [createdPlayerId, setCreatedPlayerId] = useState(0);
@@ -50,9 +51,6 @@ function CRUDAddNewPlayerStats() {
     const getWicketKeepingStats = (format) => {
         return (updatePlayerData && updatePlayerData.wicketkeeping_stats) ? updatePlayerData.wicketkeeping_stats.find(stats => stats.format === format) || {} : {};
     };
-
-
-    console.log("CHECK: ", getBattingStats('ODI').matches);
 
     // BATTING STATS
     const [testBattingStats, setTestBattingStats] = useState({
@@ -242,7 +240,6 @@ function CRUDAddNewPlayerStats() {
                 }
             }
         }
-
         if (odiBowlingStats) {
             if (odiBowlingStats.bbi) {
                 if (!/^\d+\/\d+$/.test(odiBowlingStats.bbi)) {
@@ -251,7 +248,6 @@ function CRUDAddNewPlayerStats() {
                 }
             }
         }
-
         if (t20BowlingStats) {
             if (t20BowlingStats.bbi) {
                 if (!/^\d+\/\d+$/.test(t20BowlingStats.bbi)) {
@@ -260,7 +256,6 @@ function CRUDAddNewPlayerStats() {
                 }
             }
         }
-
         if (Object.keys(playerInfo).length === 0) {
             toast.error('Please enter & submit player information first.');
             return;
@@ -289,7 +284,12 @@ function CRUDAddNewPlayerStats() {
             bowling_data: bowling_data,
             wicketkeeping_data: wicketkeeping_data,
         };
-        createPlayers(player_info);
+
+        if (Object.keys(updatePlayerData).length > 0) {
+            updatePlayers(player_info, updatePlayerData.player.player_id);
+        } else {
+            createPlayers(player_info);
+        }
     };
 
     if (!isPlayerCreated) {

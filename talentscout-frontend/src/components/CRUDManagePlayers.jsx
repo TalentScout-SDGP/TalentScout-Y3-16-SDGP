@@ -41,7 +41,6 @@ const CRUDManagePlayers = () => {
     };
 
     function handleUpdatePlayer(playerId) {
-        console.log('Update player with id: ' + playerId);
         getPlayerDataById(playerId, false, 'manage_players');
         navigate('/add_players')
     }

@@ -10,7 +10,7 @@ export function CreatedPlayerModal() {
     }, []);
 
     const handleGoBack = () => {
-        window.location.reload()
+        window.location.href = '/manage_players';
     }
 
     return (

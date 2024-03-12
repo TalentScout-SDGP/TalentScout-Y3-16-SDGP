@@ -91,6 +91,21 @@ export const PlayerDataProvider = ({children}) => {
         }
     }
 
+    const updatePlayers = async (playerInfo, playerId) => {
+        try {
+            setIsLoading(true);
+            const response = await axios.put(`http://localhost:8000/api/crud/update/${playerId}/`, playerInfo);
+            const data = response.data;
+            setIsLoading(false);
+            setCreatedPlayer(data);
+            setCreatedPlayerStatus(200);
+        } catch (error) {
+            toast.error('Something went wrong. Please try again.');
+            setIsLoading(false);
+            setCreatedPlayerStatus(400);
+        }
+    }
+
     const deletePlayerById = async (playerId) => {
         try {
             setIsLoading(true);
@@ -116,7 +131,8 @@ export const PlayerDataProvider = ({children}) => {
         filterPlayersByName,
         deletePlayerById,
         setPlayerInfoData,
-        createPlayers
+        createPlayers,
+        updatePlayers
     };
 
     if (!isLoading) {

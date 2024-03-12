@@ -61,7 +61,6 @@ function CRUDAddNewPlayerInfo() {
             toast.error('Please fill in all the required fields (*).');
         } else {
             toast.success('Player Info added, Proceed to add Player Stats.');
-            console.log('Player Info:', playerInfo);
             setPlayerInfoData(playerInfo);
         }
     }
