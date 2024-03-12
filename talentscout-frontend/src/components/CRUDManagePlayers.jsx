@@ -40,7 +40,8 @@ const CRUDManagePlayers = () => {
     };
 
     function handleUpdatePlayer(playerId) {
-        // update player logic here
+        console.log('Update player with id: ' + playerId);
+        
     }
 
     if (!isAvailable) {

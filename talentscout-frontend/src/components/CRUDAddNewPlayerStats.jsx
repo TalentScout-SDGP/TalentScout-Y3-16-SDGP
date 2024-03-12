@@ -243,6 +243,11 @@ function CRUDAddNewPlayerStats() {
             }
         }
 
+        if (Object.keys(playerInfo).length === 0) {
+            toast.error('Please enter & submit player information first.');
+            return;
+        }
+
         const checkAndPush = (stats, array) => {
             const isNotEmpty = stats.matches > 0;
             if (isNotEmpty) array.push(stats);
@@ -269,7 +274,7 @@ function CRUDAddNewPlayerStats() {
         createPlayers(player_info);
     };
 
-    if (isVisible && !isPlayerCreated) {
+    if (!isPlayerCreated) {
         return (
             <div className="font-poppins">
                 <div className="md:container px-2">
@@ -1050,10 +1055,6 @@ function CRUDAddNewPlayerStats() {
     } else if (isPlayerCreated) {
         return (
             <CreatedPlayerModal playerId={createdPlayerId}/>
-        )
-    } else {
-        return (
-            <div></div>
         )
     }
 }

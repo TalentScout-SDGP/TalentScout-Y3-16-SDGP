@@ -41,11 +41,13 @@ function CRUDAddNewPlayerInfo() {
     };
 
     const handleSubmit = (e) => {
+        e.preventDefault()
         if (playerInfo.full_name === '' || playerInfo.birth_date === '' || playerInfo.playing_role === '') {
             toast.error('Please fill in all the required fields (*).');
+        } else {
+            toast.success('Player Info added, Proceed to add Player Stats.');
+            setPlayerInfoData(playerInfo);
         }
-        e.preventDefault()
-        setPlayerInfoData(playerInfo);
     }
 
     return (
