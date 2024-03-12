@@ -87,8 +87,9 @@ function ComparePlayersSearch() {
                             />
                             {filteredResults1.length > 0 && searchTerm1 !== "" && (
                                 <div
-                                    className="dropdown bg-primary-ts_purple w-1/2 absolute top-12 z-10 rounded-lg p-4 -mt-2">
-                                    {filteredResults1.map((result, index) => (
+                                    className="dropdown bg-primary-ts_purple w-1/2 absolute top-12 z-10 rounded-lg p-4 -mt-2 overflow-y-auto max-h-40" // Set max height and enable scrolling
+                                >
+                                    {filteredResults1.slice(0, 20).map((result, index) => (
                                         <div
                                             key={index}
                                             onClick={() => handleSelect1(result)}
@@ -110,8 +111,9 @@ function ComparePlayersSearch() {
                             />
                             {filteredResults2.length > 0 && searchTerm2 !== "" && (
                                 <div
-                                    className="dropdown bg-primary-ts_purple w-1/2 absolute top-12 z-10 rounded-lg p-4 -mt-2">
-                                    {filteredResults2.map((result, index) => (
+                                    className="dropdown bg-primary-ts_purple w-1/2 absolute top-12 z-10 rounded-lg p-4 -mt-2 overflow-y-auto max-h-40" // Set max height and enable scrolling
+                                >
+                                    {filteredResults2.slice(0, 12).map((result, index) => (
                                         <div
                                             key={index}
                                             onClick={() => handleSelect2(result)}
