@@ -92,7 +92,7 @@ def rankPlayers(request):
             # model_path = 'talentscout_backend/playeridentification/Pickle_Models/trained_Batting_TEST_model.pkl'  # Adjust the path accordingly
             # with open(model_path, 'rb') as file:
             #     loaded_model = pickle.load(model_file)
-            # new_player_stats = pd.DataFrame([stats_order], columns=numeric_columns)
+            new_player_stats = pd.DataFrame([stats_order], columns=numeric_columns)
 
             return Response(stats_list, status=status.HTTP_200_OK)
 
