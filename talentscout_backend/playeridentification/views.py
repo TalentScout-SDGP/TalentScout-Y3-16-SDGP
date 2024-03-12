@@ -31,8 +31,8 @@ def rankPlayers(request):
             data = serializer.validated_data
 
             playing_role = data['playing_role']
-            batting_style = data('batting_style')
-            bowling_style = data('bowling_style')
+            batting_style = data.get('batting_style')
+            bowling_style = data.get('bowling_style')
             age_min_value = data['age_min_value']
             age_max_value = data['age_max_value']
             selected_format = data['format']
@@ -106,6 +106,18 @@ def rankPlayers(request):
             # Get the content root directory (assuming this script is within the project)
             content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
 
+            if playing_role == 'Batsman' and selected_format == 'Test':
+                # Construct the path to the pickle file from the content root
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_Test_model.pkl'
+                pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+            elif playing_role == 'Batsman' and selected_format == 'T20':
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_T20_model.pkl'
+                pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+            elif playing_role == 'Batsman' and selected_format == 'Odi':
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_Model/trained_Batting_ODI_model.pkl'
+                pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
             print(numeric_columns)
             for player_info in player_list:
