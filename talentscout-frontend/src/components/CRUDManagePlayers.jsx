@@ -1,9 +1,11 @@
-import {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect} from 'react';
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 import {Link, useNavigate} from 'react-router-dom';
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import {FaTrash, FaEdit, FaPlus} from 'react-icons/fa';
+
+// TODO fix error toast message after update
 
 const CRUDManagePlayers = () => {
     const {selectedPlayersByName, searched, deletePlayerById, getPlayerDataById} = useContext(ManagePlayersContext);
