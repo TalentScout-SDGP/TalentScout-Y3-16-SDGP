@@ -99,57 +99,20 @@ def rankPlayers(request):
 
                     # Append the player_dict to the player_list
                 player_list.append(player_dict)
+            string_values_list = []
 
-            # Get the absolute path of the current script
-            current_script_path = os.path.abspath(__file__)
-
-            # Get the content root directory (assuming this script is within the project)
-            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
-
-            if playing_role == 'Batsman' and selected_format == 'Test':
-                # Construct the path to the pickle file from the content root
-                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_Test_model.pkl'
-                pickle_file_path = os.path.join(content_root, relative_pickle_path)
-
-            elif playing_role == 'Batsman' and selected_format == 'T20':
-                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_T20_model.pkl'
-                pickle_file_path = os.path.join(content_root, relative_pickle_path)
-
-            elif playing_role == 'Batsman' and selected_format == 'Odi':
-                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_ODI_model.pkl.pkl'
-                pickle_file_path = os.path.join(content_root, relative_pickle_path)
-
-            print(numeric_columns)
             for player_info in player_list:
-                player_id = player_info['player_id']
-                player_name = player_info['player_name']
-                player_stats_list = player_info['stats']
+                    for stats_values in player_info['stats']:
+                        for value in stats_values:
+                            if isinstance(value, str):
+                                string_values_list.append(value)
 
-                print(f"Player ID: {player_id}, Player Name: {player_name}")
+            print(string_values_list)
 
-                for stats_values in player_stats_list:
-                    print("Stats Values:", stats_values)
 
-                    # Calculate PPI using the pickle model
-                    with open(pickle_file_path, 'rb') as file:
-                        loaded_model = pickle.load(file)
 
-                    new_player_stats = pd.DataFrame([stats_values], columns=numeric_columns)
-                    predicted_ppi = loaded_model.predict(new_player_stats)
-
-                    # Update the stats_dict with the calculated PPI
-                    player_info['PPI'] = player_info.pop('stats')
-                    player_info['PPI'] = predicted_ppi
-
-            sorted_player_list = sorted(player_list, key=lambda x: x['PPI'], reverse=True)
-
-            for player_info in sorted_player_list:
-                player_id = player_info['player_id']
-                player_name = player_info['player_name']
-                PPI = player_info['PPI']
-
-                print(f"Player ID: {player_id}, Player Name: {player_name} , PPI: {PPI} ")
-            return Response(sorted_player_list, status=status.HTTP_200_OK)
+            return Response(player_list, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
