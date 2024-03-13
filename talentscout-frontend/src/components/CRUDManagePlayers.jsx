@@ -1,14 +1,26 @@
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
+import {Link, useNavigate} from 'react-router-dom';
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import {FaTrash, FaEdit, FaPlus} from 'react-icons/fa';
-import {Link} from 'react-router-dom';
+
+// TODO fix error toast message after update
 
 const CRUDManagePlayers = () => {
-    const {selectedPlayersByName, deletePlayerById} = useContext(ManagePlayersContext);
-    const email = JSON.parse(localStorage.getItem('user')).email;
+    const {selectedPlayersByName, searched, deletePlayerById, getPlayerDataById} = useContext(ManagePlayersContext);
+    const navigate = useNavigate()
+    const userString = localStorage.getItem('user');
+    const email = userString ? JSON.parse(userString).email : "Initial";
 
     let playersArray = [];
     let isAvailable = false;
+
+    useEffect(() => {
+        if (searched === true && selectedPlayersByName.length === 0) {
+            toast.error("No players available for the given search criteria.")
+        }
+    }, [selectedPlayersByName, searched]);
 
     const generatePlayersArray = () => {
         const playersArray = [];
@@ -31,7 +43,7 @@ const CRUDManagePlayers = () => {
         isAvailable = true;
     }
 
-    const deletePlayer = (playerId) => {
+    const handleDeletePlayer = (playerId) => {
         deletePlayerById(playerId)
             .then(() => {
                 window.location.reload();
@@ -39,7 +51,8 @@ const CRUDManagePlayers = () => {
     };
 
     function handleUpdatePlayer(playerId) {
-        // update player logic here
+        getPlayerDataById(playerId, false, 'manage_players');
+        navigate('/add_players')
     }
 
     if (!isAvailable) {
@@ -80,7 +93,7 @@ const CRUDManagePlayers = () => {
                                             onClick={player.createdBy === email ? () => handleUpdatePlayer(player.id) : undefined}/>
                                         <FaTrash
                                             className={`text-xl hover:scale-105 ${player.createdBy === email ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
-                                            onClick={player.createdBy === email ? () => deletePlayer(player.id) : undefined}/>
+                                            onClick={player.createdBy === email ? () => handleDeletePlayer(player.id) : undefined}/>
                                     </div>
                                 </div>
                             ))
