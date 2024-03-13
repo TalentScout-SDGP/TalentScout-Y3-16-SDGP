@@ -116,3 +116,40 @@ def rankPlayers(request):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+
+def sorted_BBIs(BBIs):
+    # Function to get key for sorting BBIs
+    def get_bbi_key(x):
+        try:
+            bbi_parts = x.split('/')
+            if len(bbi_parts) == 2:
+                return -int(bbi_parts[1]), int(bbi_parts[0])
+            else:
+                return 0, 0  # Return a small value if BBI is missing or invalid
+        except ValueError:
+            return 0, 0
+
+    # Find the best BBI
+    best_bbis = sorted(BBIs, key=lambda x: get_bbi_key(x), reverse=True)
+
+    # Allocate count to each BBI based on index
+    bbi_counts = {}
+    base_count = 1  # Starting count value for non-duplicate items
+    for s in best_bbis:
+        if s in bbi_counts:
+            # If the string is a duplicate, assign the same count value
+            count = bbi_counts[s]
+        elif s == '0':
+            # If the string is not a duplicate, assign the base count value
+            count = 0
+        else:
+            # If the string is not a duplicate, assign the base count value
+            count = base_count
+            base_count += 1
+
+        # Update the count in the dictionary for the current string
+        bbi_counts[s] = count
+        print(f"String: {s}, Count: {count}")
+
+    return bbi_counts
