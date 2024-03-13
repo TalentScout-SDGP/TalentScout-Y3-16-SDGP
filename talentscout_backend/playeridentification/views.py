@@ -24,6 +24,7 @@ def rankPlayers(request):
     global numeric_columns
     if request.method == 'POST':
         serializer = FormDataSerializer(data=request.data)
+        print(request.data)
         if serializer.is_valid():
             data = serializer.validated_data
             # Catching Frontend formats
@@ -112,11 +113,10 @@ def rankPlayers(request):
                 string_values_list = []
 
                 for player_info in player_list:
-                        for stats_values in player_info['stats']:
-                            for value in stats_values:
-                                if isinstance(value, str):
-                                    string_values_list.append(value)
-
+                    for stats_values in player_info['stats']:
+                        for value in stats_values:
+                            if isinstance(value, str):
+                                string_values_list.append(value)
 
                 bbi_counts = sorted_BBIs(string_values_list)
                 # Append the player_dict to the player_list
@@ -145,8 +145,8 @@ def rankPlayers(request):
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_T20_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
-            elif playing_role == 'Batsman' and selected_format == 'Odi':
-                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_ODI_model.pkl.pkl'
+            elif playing_role == 'Batsman' and selected_format == 'ODI':
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_ODI_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
             elif playing_role == 'Bowler' and selected_format == 'Test':
@@ -157,7 +157,7 @@ def rankPlayers(request):
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Bowling_T20_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
-            elif playing_role == 'Bowler' and selected_format == 'Odi':
+            elif playing_role == 'Bowler' and selected_format == 'ODI':
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Bowling_ODI_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
@@ -169,7 +169,7 @@ def rankPlayers(request):
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_T20_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
-            elif playing_role == 'Wicket Keeper' and selected_format == 'Odi':
+            elif playing_role == 'Wicket Keeper' and selected_format == 'ODI':
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_ODI_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
@@ -213,7 +213,8 @@ def rankPlayers(request):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
- # Function to get key for sorting BBIs
+
+# Function to get key for sorting BBIs
 def sorted_BBIs(BBIs):
     def get_bbi_key(x):
         try:

@@ -43,7 +43,7 @@ const CRUDManagePlayers = () => {
         isAvailable = true;
     }
 
-    const deletePlayer = (playerId) => {
+    const handleDeletePlayer = (playerId) => {
         deletePlayerById(playerId)
             .then(() => {
                 window.location.reload();
@@ -93,7 +93,7 @@ const CRUDManagePlayers = () => {
                                             onClick={player.createdBy === email ? () => handleUpdatePlayer(player.id) : undefined}/>
                                         <FaTrash
                                             className={`text-xl hover:scale-105 ${player.createdBy === email ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
-                                            onClick={player.createdBy === email ? () => deletePlayer(player.id) : undefined}/>
+                                            onClick={player.createdBy === email ? () => handleDeletePlayer(player.id) : undefined}/>
                                     </div>
                                 </div>
                             ))
