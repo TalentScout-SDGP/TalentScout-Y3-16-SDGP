@@ -144,6 +144,8 @@ def updatePlayer(request, player_id):
     except Player.DoesNotExist:
         return Response({"error": "Player not found"}, status=status.HTTP_404_NOT_FOUND)
 
+    request.data['birth_date'] = formatBirthDate(request.data['birth_date'])
+
     if request.method == 'PUT':
         player_serializer = PlayerSerializer(player_instance, data=request.data)
         if player_serializer.is_valid():

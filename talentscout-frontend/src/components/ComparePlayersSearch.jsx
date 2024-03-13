@@ -9,12 +9,9 @@ function ComparePlayersSearch() {
     const [searchTerm2, setSearchTerm2] = useState("");
     const [filteredResults1, setFilteredResults1] = useState([]);
     const [filteredResults2, setFilteredResults2] = useState([]);
-    const [selectedPlayer1, setSelectedPlayer1] = useState(null);
-    const [selectedPlayer2, setSelectedPlayer2] = useState(null);
     const [playerId1, setPlayerId1] = useState(null);
     const [playerId2, setPlayerId2] = useState(null);
-    const [isCompareClicked, setIsCompareClicked] = useState(false); // State to track if compare button is clicked
-    const [errorMessage, setErrorMessage] = useState('');
+    const [isCompareClicked, setIsCompareClicked] = useState(false);
 
     const handleChange1 = (event) => {
         const input = event.target.value;
@@ -39,7 +36,6 @@ function ComparePlayersSearch() {
         setPlayerId1(playerId);
         setSearchTerm1(selectedPlayer);
         setFilteredResults1([]);
-        setSelectedPlayer1(selectedPlayer);
     };
 
     const handleSelect2 = (selectedPlayer) => {
@@ -47,18 +43,19 @@ function ComparePlayersSearch() {
         setPlayerId2(playerId);
         setSearchTerm2(selectedPlayer);
         setFilteredResults2([]);
-        setSelectedPlayer2(selectedPlayer);
     };
 
     const handleSubmit = () => {
         if (!playerId1 || !playerId2) {
-            toast.error("Please Select Two Players to Compare")
+            toast.error("Please select two players to compare.")
+            return;
+        } else if (playerId1 === playerId2) {
+            toast.error("Please select two different players to compare.")
             return;
         }
         getPlayerDataById(playerId1);
-        getPlayerDataById(playerId2, true); // Call for the second player and pass true as the second argument
-        setIsCompareClicked(true); // Set isCompareClicked to true when compare button is clicked
-        setErrorMessage(''); // Clear any previous error message
+        getPlayerDataById(playerId2, true);
+        setIsCompareClicked(true);
     };
 
     return (
@@ -87,7 +84,7 @@ function ComparePlayersSearch() {
                             />
                             {filteredResults1.length > 0 && searchTerm1 !== "" && (
                                 <div
-                                    className="dropdown bg-primary-ts_purple w-1/2 absolute top-12 z-10 rounded-lg p-4 -mt-2 overflow-y-auto max-h-40" // Set max height and enable scrolling
+                                    className="dropdown bg-primary-ts_purple w-1/2 absolute top-12 z-10 rounded-lg p-4 -mt-2 overflow-y-auto max-h-80 border-2 border-gray-700"
                                 >
                                     {filteredResults1.slice(0, 20).map((result, index) => (
                                         <div
@@ -111,7 +108,7 @@ function ComparePlayersSearch() {
                             />
                             {filteredResults2.length > 0 && searchTerm2 !== "" && (
                                 <div
-                                    className="dropdown bg-primary-ts_purple w-1/2 absolute top-12 z-10 rounded-lg p-4 -mt-2 overflow-y-auto max-h-40" // Set max height and enable scrolling
+                                    className="dropdown bg-primary-ts_purple w-1/2 absolute top-12 z-10 rounded-lg p-4 -mt-2 overflow-y-auto max-h-80 border-2 border-gray-700"
                                 >
                                     {filteredResults2.slice(0, 12).map((result, index) => (
                                         <div

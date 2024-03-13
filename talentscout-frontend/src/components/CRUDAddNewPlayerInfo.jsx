@@ -1,16 +1,37 @@
 import {useContext, useState} from "react";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 function CRUDAddNewPlayerInfo() {
-    const {setPlayerInfoData} = useContext(ManagePlayersContext);
+    let {updatePlayerData, setPlayerInfoData} = useContext(ManagePlayersContext);
+    const userString = localStorage.getItem('user');
+    const email = userString ? JSON.parse(userString).email : "";
+
+    if (Object.keys(updatePlayerData).length === 0) {
+        updatePlayerData = null;
+    }
+
+    let formattedBirthDate = null;
+
+    if (updatePlayerData) {
+        const birth_date = updatePlayerData.player.birth_date;
+        const parsedDate = new Date(birth_date);
+        const year = parsedDate.getFullYear();
+        const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
+        const day = parsedDate.getDate().toString().padStart(2, '0');
+        formattedBirthDate = year + '-' + month + '-' + day;
+    }
+
     const [playerInfo, setPlayerInfo] = useState({
-        full_name: '',
-        also_known_as: '',
-        birth_date: '',
-        age: '',
-        playing_role: '',
-        batting_style: '',
-        bowling_style: "",
+        full_name: updatePlayerData ? updatePlayerData.player.full_name : '',
+        also_known_as: updatePlayerData ? updatePlayerData.player.also_known_as : '',
+        birth_date: formattedBirthDate ?? '',
+        age: updatePlayerData ? updatePlayerData.player.age : '',
+        playing_role: updatePlayerData ? updatePlayerData.player.playing_role : '',
+        batting_style: updatePlayerData ? updatePlayerData.player.batting_style : '',
+        bowling_style: updatePlayerData ? updatePlayerData.player.bowling_style : '',
+        created_by: updatePlayerData ? updatePlayerData.player.created_by : '',
     });
 
     // Function to calculate age from birth_date
@@ -30,13 +51,18 @@ function CRUDAddNewPlayerInfo() {
             ...playerInfo,
             [e.target.name]: e.target.value,
             age: e.target.name === 'birth_date' ? calculateAge(e.target.value) : playerInfo.age,
+            created_by: email,
         });
-
     };
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setPlayerInfoData(playerInfo);
+        if (playerInfo.full_name === '' || playerInfo.birth_date === '' || playerInfo.playing_role === '' || playerInfo.batting_style === '' || playerInfo.bowling_style === '') {
+            toast.error('Please fill in all the required fields (*).');
+        } else {
+            toast.success('Player Info added, Proceed to add Player Stats.');
+            setPlayerInfoData(playerInfo);
+        }
     }
 
     return (
@@ -52,27 +78,30 @@ function CRUDAddNewPlayerInfo() {
                         className="bg-primary-ts_purple rounded-b-lg font-semibold py-8 px-2 sm:px-4 md:px-6 lg:px-10 xl:px-12">
                         <form onSubmit={handleSubmit}>
                             <div className="flex flex-col gap-y-2">
-                                <label className="text-sm md:text-md lg:text-base">Full Name: </label>
+                                <label className="text-sm md:text-md lg:text-base">Full Name<span
+                                    className="text-primary-red font-bold">*</span>: </label>
                                 <input type="text" name="full_name" value={playerInfo.full_name} onChange={handleChange}
-                                       className="w-full p-0.5 md:p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
+                                       className="w-full p-0.5 md:p-1 text-sm md:text-md lg:text-base border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
                             </div>
                             <div className="flex flex-col gap-y-2">
                                 <label className="text-sm md:text-md lg:text-base">Also Known As: </label>
                                 <input type="text" name="also_known_as" value={playerInfo.also_known_as}
                                        onChange={handleChange}
-                                       className="w-full p-0.5 md:p-1 text-2 border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
+                                       className="w-full p-0.5 md:p-1 text-sm md:text-md lg:text-base border-2 border-black rounded-lg mb-3 lg:mb-5 shadow-md"/>
                             </div>
                             <div
                                 className="grid grid-cols-1 xl:grid-cols-2 gap-x-12 gap-y-6 lg:gap-y-10 justify-center items-center mb-3 lg:mt-4">
                                 <div className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center">
-                                    <label className="w-full text-sm md:text-md lg:text-base">Birth Date: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Birth Date<span
+                                        className="text-primary-red font-bold">*</span>: </label>
                                     <input type="date" name="birth_date" value={playerInfo.birth_date}
                                            onChange={handleChange}
                                            className="w-full text-sm md:text-md lg:text-base p-1 border-2 border-black rounded-lg shadow-md"/>
                                 </div>
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
-                                    <label className="w-full text-sm md:text-md lg:text-base">Playing Role: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Playing Role<span
+                                        className="text-primary-red font-bold">*</span>: </label>
                                     <select name="playing_role" value={playerInfo.playing_role}
                                             onChange={handleChange}
                                             className="w-full p-1 text-sm md:text-md lg:text-base border-2 border-black rounded-lg shadow-md focus:outline-none"
@@ -102,7 +131,8 @@ function CRUDAddNewPlayerInfo() {
                                 </div>
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
-                                    <label className="w-full text-sm md:text-md lg:text-base">Batting Style: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Batting Style<span
+                                        className="text-primary-red font-bold">*</span>: </label>
                                     <select name="batting_style" value={playerInfo.batting_style}
                                             onChange={handleChange}
                                             className="w-full text-sm md:text-md lg:text-base p-1 text-2 border-2 border-black rounded-lg shadow-md focus:outline-none"
@@ -130,7 +160,8 @@ function CRUDAddNewPlayerInfo() {
                                 </div>
                                 <div
                                     className="flex flex-col xl:flex-row w-full gap-y-2 justify-center items-center relative">
-                                    <label className="w-full text-sm md:text-md lg:text-base">Bowling Style: </label>
+                                    <label className="w-full text-sm md:text-md lg:text-base">Bowling Style<span
+                                        className="text-primary-red font-bold">*</span>: </label>
                                     <select name="bowling_style" value={playerInfo.bowling_style}
                                             onChange={handleChange}
                                             className="w-full text-sm md:text-md lg:text-base p-1 text-2 border-2 border-black rounded-lg shadow-md focus:outline-none"
