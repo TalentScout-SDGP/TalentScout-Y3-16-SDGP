@@ -84,6 +84,7 @@ export const PlayerDataProvider = ({children}) => {
             setIsLoading(false);
             setUpdatePlayerData({});
             setSelectedPlayersByName([]);
+            setPlayerInfo({});
             navigate('/manage_players');
         } catch (error) {
             toast.error('Something went wrong. Please try again.');
@@ -99,9 +100,10 @@ export const PlayerDataProvider = ({children}) => {
             setIsLoading(false);
             setUpdatePlayerData({});
             setSelectedPlayersByName([]);
+            setPlayerInfo({});
             navigate('/manage_players');
         } catch (error) {
-            toast.error('Something went wrong. Please try again.');
+            toast.error('Something went wrong. Please save player info first and then try again.');
             setIsLoading(false);
         }
     }

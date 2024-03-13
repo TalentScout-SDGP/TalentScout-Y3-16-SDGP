@@ -245,7 +245,7 @@ function CRUDAddNewPlayerStats() {
             }
         }
         if (Object.keys(playerInfo).length === 0) {
-            toast.error('Please enter & submit player information first.');
+            toast.error('Please submit player details first.');
             return;
         }
 
