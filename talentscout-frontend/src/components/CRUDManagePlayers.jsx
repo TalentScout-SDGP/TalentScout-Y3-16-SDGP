@@ -1,7 +1,9 @@
 import {useContext, useEffect} from 'react';
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
-import {FaTrash, FaEdit, FaPlus} from 'react-icons/fa';
 import {Link, useNavigate} from 'react-router-dom';
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+import {FaTrash, FaEdit, FaPlus} from 'react-icons/fa';
 
 const CRUDManagePlayers = () => {
     const {selectedPlayersByName, deletePlayerById, getPlayerDataById} = useContext(ManagePlayersContext);
@@ -11,6 +13,12 @@ const CRUDManagePlayers = () => {
 
     let playersArray = [];
     let isAvailable = false;
+
+    useEffect(() => {
+        if (selectedPlayersByName.length === 0) {
+            toast.error("No players available for the given search criteria.")
+        }
+    }, []);
 
     const generatePlayersArray = () => {
         const playersArray = [];

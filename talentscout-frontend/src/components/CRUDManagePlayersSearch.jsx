@@ -1,9 +1,9 @@
 import {useContext, useState} from "react";
 import AdminLoginModal from "./modals/AdminLoginModal.jsx";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
+import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
-import {Link} from "react-router-dom";
 import {FaPlus} from "react-icons/fa";
 
 function CRUDManagePlayersSearch() {
