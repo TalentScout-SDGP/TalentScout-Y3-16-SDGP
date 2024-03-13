@@ -1,6 +1,8 @@
 import {useContext, useState} from "react";
 import AdminLoginModal from "./modals/AdminLoginModal.jsx";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import {Link} from "react-router-dom";
 import {FaPlus} from "react-icons/fa";
 
@@ -16,7 +18,11 @@ function CRUDManagePlayersSearch() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        filterPlayersByName(playerName);
+        if (playerName === '') {
+            toast.error('Please enter a player name to search.')
+        } else {
+            filterPlayersByName(playerName);
+        }
     }
 
     return (

@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 import {FaTrash, FaEdit, FaPlus} from 'react-icons/fa';
 import {Link, useNavigate} from 'react-router-dom';
