@@ -191,10 +191,10 @@ def rankPlayers(request):
 
                     new_player_stats = pd.DataFrame([stats_values], columns=numeric_columns)
                     predicted_ppi = loaded_model.predict(new_player_stats)
-
+                    rounded_ppi = round(predicted_ppi[0], 2)
                     # Update the stats_dict with the calculated PPI
                     player_info['PPI'] = player_info.pop('stats')
-                    player_info['PPI'] = predicted_ppi
+                    player_info['PPI'] = rounded_ppi
 
             sorted_player_list = sorted(player_list, key=lambda x: x['PPI'], reverse=True)
 
@@ -205,7 +205,7 @@ def rankPlayers(request):
 
                 print(f"Player ID: {player_id}, Player Name: {player_name} , PPI: {PPI} ")
 
-            return Response(player_list, status=status.HTTP_200_OK)
+            return Response(sorted_player_list, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
