@@ -4,6 +4,7 @@ import Spinner from '../components/shared/Spinner.jsx';
 import PropTypes from 'prop-types';
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+import {useNavigate} from "react-router-dom";
 
 const ManagePlayersContext = createContext();
 
@@ -16,6 +17,7 @@ export const PlayerDataProvider = ({children}) => {
     const [selectedSecondPlayerData, setSelectedSecondPlayerData] = useState({});
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
     const [updatePlayerData, setUpdatePlayerData] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -81,6 +83,8 @@ export const PlayerDataProvider = ({children}) => {
             toast.success('Player Created Successfully!')
             setIsLoading(false);
             setUpdatePlayerData({});
+            setSelectedPlayersByName([]);
+            navigate('/manage_players');
         } catch (error) {
             toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
@@ -94,6 +98,8 @@ export const PlayerDataProvider = ({children}) => {
             toast.success('Player Updated Successfully!')
             setIsLoading(false);
             setUpdatePlayerData({});
+            setSelectedPlayersByName([]);
+            navigate('/manage_players');
         } catch (error) {
             toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
