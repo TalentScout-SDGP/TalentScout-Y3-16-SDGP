@@ -109,6 +109,8 @@ def rankPlayers(request):
 
             print(string_values_list)
 
+            sorted_BBIs(string_values_list)
+
 
 
             return Response(player_list, status=status.HTTP_200_OK)
