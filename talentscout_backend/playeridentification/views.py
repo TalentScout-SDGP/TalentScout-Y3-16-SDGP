@@ -157,8 +157,7 @@ def rankPlayers(request):
             print(numeric_columns)
             for player_info in player_list:
                 player_id = player_info['player_id']
-                player_name = player_info['player_name']
-                player_stats_list = player_info['stats']
+
 
                 print(f"Player ID: {player_id}, Player Name: {player_name}")
 
