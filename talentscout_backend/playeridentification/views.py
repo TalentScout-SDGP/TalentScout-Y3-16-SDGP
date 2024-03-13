@@ -14,10 +14,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
 # Global variables initialization
-format_input = "odi"
-playing_role = "bowling"
-wicketkeeping_stats_order = ['Matches', 'Innings', 'Highest Score', 'Balls Faced', '100s', '6s', 'Catches', 'Runs',
-                             'Not Outs', 'Average', 'Strike Rate', '50s', '4s', 'Stumps']
+
+wicketkeeping_stats_order = ['Matches', 'Innings', 'Ct', 'St']
 bowling_stats_order = ['Matches', 'Wickets', 'Innings', 'Overs', 'Runs', 'BBI', 'Avg', 'Econ', 'SR', '4Ws', '5Ws']
 batting_stats_order = ['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR', '100s', '50s', '4s', '6s']
 
@@ -43,12 +41,19 @@ def rankPlayers(request):
                 query &= Q(playing_role=playing_role)
 
             if playing_role == "Bowler":
-
                 numeric_columns = bowling_stats_order
                 if bowling_style:
                     query &= Q(bowling_style=bowling_style)
                 if selected_format:
                     query &= Q(playerbowling__format=selected_format)
+
+            if playing_role == "Wicket Keeper":
+                if bowling_style:
+                    query &= Q(bowling_style=bowling_style)
+                if batting_style:
+                    query &= Q(batting_style=batting_style)
+                if selected_format:
+                    query &= Q(playerwicketkeeping__format=selected_format)
 
             elif playing_role == "Batsman":
                 numeric_columns = batting_stats_order
@@ -63,8 +68,6 @@ def rankPlayers(request):
                 query &= Q(age__gte=age_min_value)
             elif age_max_value is not None:
                 query &= Q(age__lte=age_max_value)
-            if selected_format:
-                query &= Q(playerwicketkeeping__format=selected_format)
 
             filtered_players = Player.objects.filter(query)
             print(query)
@@ -86,15 +89,17 @@ def rankPlayers(request):
                 elif playing_role == 'Bowler':
                     stats = PlayerBowlingSerializer(
                         PlayerBowling.objects.filter(player=player, format=selected_format), many=True).data
-                elif playing_role == 'WicketKeeper':
+                elif playing_role == 'Wicket Keeper':
                     stats = PlayerWicketKeepingSerializer(
                         PlayerWicketKeeping.objects.filter(player=player, format=selected_format), many=True).data
                 else:
                     stats = []
+                print(stats)
                 for stat in stats:
                     # Extract only the numerical values and append them to a list
                     player_stats_values = [value for key, value in stat.items() if
-                                           key not in ['WicketKeeping_id','bowling_id','batting_id', 'format', 'player']]
+                                           key not in ['WicketKeeping_id', 'bowling_id', 'batting_id', 'format',
+                                                       'player']]
 
                     # Append the list of numerical values to the 'stats' key in the player_dict
                     player_dict['stats'].append(player_stats_values)
@@ -106,7 +111,6 @@ def rankPlayers(request):
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 
 def sorted_BBIs(BBIs):
