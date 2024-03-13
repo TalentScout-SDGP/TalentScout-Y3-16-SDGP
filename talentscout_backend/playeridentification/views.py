@@ -49,8 +49,8 @@ def rankPlayers(request):
                     query &= Q(bowling_style=bowling_style)
                 if selected_format:
                     query &= Q(playerbowling__format=selected_format)
-            elif playing_role == "Batsman":
 
+            elif playing_role == "Batsman":
                 numeric_columns = batting_stats_order
                 if batting_style:
                     query &= Q(batting_style=batting_style)
@@ -63,6 +63,8 @@ def rankPlayers(request):
                 query &= Q(age__gte=age_min_value)
             elif age_max_value is not None:
                 query &= Q(age__lte=age_max_value)
+            if selected_format:
+                query &= Q(playerwicketkeeping__format=selected_format)
 
             filtered_players = Player.objects.filter(query)
             print(query)
@@ -92,16 +94,13 @@ def rankPlayers(request):
                 for stat in stats:
                     # Extract only the numerical values and append them to a list
                     player_stats_values = [value for key, value in stat.items() if
-                                           key not in ['Wicket Keeper','bowling_id','batting_id', 'format', 'player']]
+                                           key not in ['WicketKeeping_id','bowling_id','batting_id', 'format', 'player']]
 
                     # Append the list of numerical values to the 'stats' key in the player_dict
                     player_dict['stats'].append(player_stats_values)
 
                     # Append the player_dict to the player_list
                 player_list.append(player_dict)
-
-
-
 
             return Response(player_list, status=status.HTTP_200_OK)
 
