@@ -99,7 +99,7 @@ def rankPlayers(request):
                 for stat in stats:
                     # Extract only the numerical values and append them to a list
                     player_stats_values = [value for key, value in stat.items() if
-                                           key not in ['WicketKeeping_id', 'bowling_id', 'batting_id', 'format',
+                                           key not in ['wicketkeeping_id', 'bowling_id', 'batting_id', 'format',
                                                        'player']]
 
                     # Append the list of numerical values to the 'stats' key in the player_dict
