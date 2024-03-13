@@ -6,7 +6,6 @@ from crud_api.models import Player, PlayerBatting, PlayerBowling, PlayerWicketKe
 from django.db.models import Q
 from crud_api.serializers import PlayerBattingSerializer, PlayerBowlingSerializer, PlayerWicketKeepingSerializer
 import pickle
-import csv
 import pandas as pd
 import os
 from sklearn.model_selection import train_test_split
@@ -14,7 +13,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
 # Global variables initialization
-
+# stats order lists initialization
 wicketkeeping_stats_order = ['Matches', 'Innings', 'Ct', 'St']
 bowling_stats_order = ['Matches', 'Wickets', 'Innings', 'Overs', 'Runs', 'BBI', 'Avg', 'Econ', 'SR', '4Ws', '5Ws']
 batting_stats_order = ['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR', '100s', '50s', '4s', '6s']
@@ -27,7 +26,7 @@ def rankPlayers(request):
         serializer = FormDataSerializer(data=request.data)
         if serializer.is_valid():
             data = serializer.validated_data
-
+            # Catching Frontend formats
             playing_role = data['playing_role']
             batting_style = data.get('batting_style')
             bowling_style = data.get('bowling_style')
@@ -39,14 +38,14 @@ def rankPlayers(request):
             query = Q()
             if playing_role:
                 query &= Q(playing_role=playing_role)
-
+            # Using filters for the Bowler
             if playing_role == "Bowler":
                 numeric_columns = bowling_stats_order
                 if bowling_style:
                     query &= Q(bowling_style=bowling_style)
                 if selected_format:
                     query &= Q(playerbowling__format=selected_format)
-
+            # Using filters for the Wicket Keeper
             if playing_role == "Wicket Keeper":
                 numeric_columns = wicketkeeping_stats_order
                 if bowling_style:
@@ -56,6 +55,7 @@ def rankPlayers(request):
                 if selected_format:
                     query &= Q(playerwicketkeeping__format=selected_format)
 
+            # Using filters for the batsman
             elif playing_role == "Batsman":
                 numeric_columns = batting_stats_order
                 if batting_style:
@@ -71,7 +71,10 @@ def rankPlayers(request):
                 query &= Q(age__lte=age_max_value)
 
             filtered_players = Player.objects.filter(query)
+
+            # print the current using query formats
             print(query)
+
             player_list = []  # List to store dictionaries for each player
             for player in filtered_players:
                 player_dict = {
@@ -80,10 +83,7 @@ def rankPlayers(request):
                     'stats': []
                 }
 
-                player_stats = []
-
                 # Fetch relevant stats based on the playing role
-
                 if playing_role == 'Batsman':
                     stats = PlayerBattingSerializer(
                         PlayerBatting.objects.filter(player=player, format=selected_format), many=True).data
@@ -95,7 +95,7 @@ def rankPlayers(request):
                         PlayerWicketKeeping.objects.filter(player=player, format=selected_format), many=True).data
                 else:
                     stats = []
-                print(stats)
+
                 for stat in stats:
                     # Extract only the numerical values and append them to a list
                     player_stats_values = [value for key, value in stat.items() if
@@ -105,7 +105,7 @@ def rankPlayers(request):
                     # Append the list of numerical values to the 'stats' key in the player_dict
                     player_dict['stats'].append(player_stats_values)
 
-                    # Append the player_dict to the player_list
+                # Append the player_dict to the player_list
                 player_list.append(player_dict)
 
             if playing_role == "Bowler":
@@ -117,13 +117,13 @@ def rankPlayers(request):
                                 if isinstance(value, str):
                                     string_values_list.append(value)
 
-                print(string_values_list)
 
                 bbi_counts = sorted_BBIs(string_values_list)
+                # Append the player_dict to the player_list
 
+                # print the bbi counts
+                print(bbi_counts)
                 # Replace BBI strings with their corresponding count values
-
-                # Loop through the player_list and replace BBI strings with counts
                 for player_info in player_list:
                     for stats_values in player_info['stats']:
                         for i, value in enumerate(stats_values):
@@ -173,8 +173,9 @@ def rankPlayers(request):
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_ODI_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
-
+            # printing the using stats order--
             print(numeric_columns)
+
             for player_info in player_list:
                 player_id = player_info['player_id']
                 player_name = player_info['player_name']
@@ -191,6 +192,7 @@ def rankPlayers(request):
 
                     new_player_stats = pd.DataFrame([stats_values], columns=numeric_columns)
                     predicted_ppi = loaded_model.predict(new_player_stats)
+                    # Round UP the PPI value
                     rounded_ppi = round(predicted_ppi[0], 2)
                     # Update the stats_dict with the calculated PPI
                     player_info['PPI'] = player_info.pop('stats')
@@ -203,6 +205,7 @@ def rankPlayers(request):
                 player_name = player_info['player_name']
                 PPI = player_info['PPI']
 
+                # printing Players ppi name and player ID--
                 print(f"Player ID: {player_id}, Player Name: {player_name} , PPI: {PPI} ")
 
             return Response(sorted_player_list, status=status.HTTP_200_OK)
@@ -210,9 +213,8 @@ def rankPlayers(request):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+ # Function to get key for sorting BBIs
 def sorted_BBIs(BBIs):
-    # Function to get key for sorting BBIs
     def get_bbi_key(x):
         try:
             bbi_parts = x.split('/')
