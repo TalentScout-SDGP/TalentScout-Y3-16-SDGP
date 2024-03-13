@@ -116,9 +116,6 @@ def rankPlayers(request):
             # Loop through the player_list and replace BBI strings with counts
             for player_info in player_list:
                 for stats_values in player_info['stats']:
-                    for i, value in enumerate(stats_values):
-                        if isinstance(value, str) and value in bbi_counts:
-                            stats_values[i] = bbi_counts[value]
 
 
 
