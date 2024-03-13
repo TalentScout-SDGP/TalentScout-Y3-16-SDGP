@@ -141,6 +141,14 @@ def rankPlayers(request):
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_ODI_model.pkl.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
+            elif playing_role == 'Bowler' and selected_format == 'Test':
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_ODI_model.pkl.pkl'
+                pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+
+
+
+
             print(numeric_columns)
             for player_info in player_list:
                 player_id = player_info['player_id']
