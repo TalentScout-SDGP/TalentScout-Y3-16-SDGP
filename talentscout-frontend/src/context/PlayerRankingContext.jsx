@@ -8,30 +8,45 @@ const PlayerRankingContext = createContext();
 
 export const PlayerRankingProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
+    const [filters, setFilters] = useState();
     const [rankedPlayers, setRankedPlayers] = useState([]);
 
     const rankPlayers = async (formData, age_min_value, age_max_value) => {
-        const {format, playing_role, batting_style, bowling_style} = formData;
+        let playerFilters = {};
+
+        const {batting_style, bowling_style} = formData;
+
+        if (batting_style === '') {
+            delete formData.batting_style;
+        }
+
+        if (bowling_style === '') {
+            delete formData.bowling_style;
+        }
+
+        playerFilters = {
+            ...formData,
+            age_min_value: age_min_value,
+            age_max_value: age_max_value,
+        };
+
+        console.log('Filters:', filters);
+        setFilters(playerFilters);
+
         try {
             setIsLoading(true);
-            const response = await axios.post('http://localhost:8000/api/rank/', {
-                format,
-                playing_role,
-                batting_style,
-                bowling_style,
-                age_min_value,
-                age_max_value
-            });
+            const response = await axios.post('http://localhost:8000/api/rank/', playerFilters);
             console.log('Response From Backend:', response.data);
             setRankedPlayers(response.data);
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
-            console.log('Error Sending Data!!!!')
+            toast.error("Something went wrong. Please try again.");
         }
     }
 
     const contextData = {
+        filters: filters,
         rankedPlayers: rankedPlayers,
         rankPlayers: rankPlayers,
     };
