@@ -142,9 +142,12 @@ def rankPlayers(request):
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
             elif playing_role == 'Bowler' and selected_format == 'Test':
-                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_ODI_model.pkl.pkl'
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Bowling_Test_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
+            elif playing_role == 'Bowler' and selected_format == 'T20':
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Bowling_T20_model.pkl'
+                pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
 
 
