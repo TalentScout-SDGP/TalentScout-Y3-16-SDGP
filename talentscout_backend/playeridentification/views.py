@@ -48,6 +48,7 @@ def rankPlayers(request):
                     query &= Q(playerbowling__format=selected_format)
 
             if playing_role == "Wicket Keeper":
+                numeric_columns = wicketkeeping_stats_order
                 if bowling_style:
                     query &= Q(bowling_style=bowling_style)
                 if batting_style:
