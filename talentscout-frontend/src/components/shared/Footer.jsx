@@ -109,10 +109,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex lg:gap-y-6 flex-col gap-y-4 md:gap-y-8 text-white col-span-12 lg:col-span-3 md:mt-8 lg:mt-16 lg:ps-0 items-center lg:items-start order-2 lg:order-2">
-          <Link to="/about_us" className="text-sm md:text-md lg:text-base">
+          <Link to="/about_us" className="text-sm md:text-md lg:text-base duration-3000 transition-transform hover:scale-105">
             About Us
           </Link>
-          <Link to="/our_team" className="text-sm md:text-md lg:text-base">
+          <Link to="/our_team" className="text-sm md:text-md lg:text-base duration-3000 transition-transform hover:scale-105">
             Our Team
           </Link>
         </div>
