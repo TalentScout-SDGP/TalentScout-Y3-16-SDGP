@@ -164,6 +164,9 @@ def rankPlayers(request):
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_Test_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
+            elif playing_role == 'Wicket Keeper' and selected_format == 'T20':
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_T20_model.pkl'
+                pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
             print(numeric_columns)
             for player_info in player_list:
