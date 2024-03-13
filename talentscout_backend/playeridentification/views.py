@@ -92,7 +92,7 @@ def rankPlayers(request):
                 for stat in stats:
                     # Extract only the numerical values and append them to a list
                     player_stats_values = [value for key, value in stat.items() if
-                                           key not in ['batting_id', 'format', 'player']]
+                                           key not in ['bowling_id','batting_id', 'format', 'player']]
 
                     # Append the list of numerical values to the 'stats' key in the player_dict
                     player_dict['stats'].append(player_stats_values)
@@ -149,7 +149,9 @@ def rankPlayers(request):
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Bowling_T20_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
-
+            elif playing_role == 'Bowler' and selected_format == 'Odi':
+                relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Bowling_ODI_model.pkl'
+                pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
 
             print(numeric_columns)
@@ -184,10 +186,7 @@ def rankPlayers(request):
                 print(f"Player ID: {player_id}, Player Name: {player_name} , PPI: {PPI} ")
 
 
-
-
-
-            return Response(player_list, status=status.HTTP_200_OK)
+            return Response(sorted_player_list, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
