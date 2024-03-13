@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 import {Link, useNavigate} from 'react-router-dom';
 import {toast} from "react-toastify";
@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import {FaTrash, FaEdit, FaPlus} from 'react-icons/fa';
 
 const CRUDManagePlayers = () => {
-    const {selectedPlayersByName, deletePlayerById, getPlayerDataById} = useContext(ManagePlayersContext);
+    const {selectedPlayersByName, searched, deletePlayerById, getPlayerDataById} = useContext(ManagePlayersContext);
     const navigate = useNavigate()
     const userString = localStorage.getItem('user');
     const email = userString ? JSON.parse(userString).email : "Initial";
@@ -15,10 +15,10 @@ const CRUDManagePlayers = () => {
     let isAvailable = false;
 
     useEffect(() => {
-        if (selectedPlayersByName.length === 0) {
+        if (searched === true && selectedPlayersByName.length === 0) {
             toast.error("No players available for the given search criteria.")
         }
-    }, []);
+    }, [selectedPlayersByName, searched]);
 
     const generatePlayersArray = () => {
         const playersArray = [];

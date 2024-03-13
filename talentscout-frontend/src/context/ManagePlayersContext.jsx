@@ -16,6 +16,7 @@ export const PlayerDataProvider = ({children}) => {
     const [selectedPlayerData, setSelectedPlayerData] = useState({});
     const [selectedSecondPlayerData, setSelectedSecondPlayerData] = useState({});
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
+    const [searched, setSearched] = useState(false);
     const [updatePlayerData, setUpdatePlayerData] = useState({});
     const navigate = useNavigate();
 
@@ -66,6 +67,7 @@ export const PlayerDataProvider = ({children}) => {
             const data = response.data;
             setIsLoading(false);
             setSelectedPlayersByName(data);
+            setSearched(true)
         } catch (error) {
             toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
@@ -126,6 +128,7 @@ export const PlayerDataProvider = ({children}) => {
         selectedPlayerData: selectedPlayerData,
         selectedSecondPlayerData: selectedSecondPlayerData,
         selectedPlayersByName: selectedPlayersByName,
+        searched: searched,
         updatePlayerData: updatePlayerData,
         getPlayerDataById: getPlayerDataById,
         filterPlayersByName: filterPlayersByName,
