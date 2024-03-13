@@ -100,7 +100,7 @@ class PlayerProfilesTest(unittest.TestCase):
         time.sleep(2)
         self.assertEqual(actual_result, "Full Name : Rahal Amarasinghe",
                          f"Page title is incorrect: Expected '{expected_result}' but found '{actual_result}'")
-        print("TEST 5 PASSED")
+        print("TEST 5 PASSED SUCCESSFULLY")
         self.driver.refresh()
         time.sleep(5)
 
