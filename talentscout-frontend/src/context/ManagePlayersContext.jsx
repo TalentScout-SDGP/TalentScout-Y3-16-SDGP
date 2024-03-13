@@ -80,6 +80,7 @@ export const PlayerDataProvider = ({children}) => {
             await axios.post('http://localhost:8000/api/crud/create/', playerInfo);
             toast.success('Player Created Successfully!')
             setIsLoading(false);
+            setUpdatePlayerData({});
         } catch (error) {
             toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
@@ -92,6 +93,7 @@ export const PlayerDataProvider = ({children}) => {
             await axios.put(`http://localhost:8000/api/crud/update/${playerId}/`, playerInfo);
             toast.success('Player Updated Successfully!')
             setIsLoading(false);
+            setUpdatePlayerData({});
         } catch (error) {
             toast.error('Something went wrong. Please try again.');
             setIsLoading(false);
