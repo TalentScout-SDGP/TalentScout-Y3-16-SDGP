@@ -39,14 +39,6 @@ library.add(fab, fas, far);
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
-//TODO End:Delete Following Imports
-import FrontendAgrani from "./pages/FrontendAgrani.jsx";
-import FrontendChamath from "./pages/FrontendChamath.jsx";
-import FrontendDinuka from "./pages/FrontendDinuka.jsx";
-import FrontendSulan from "./pages/FrontendSulan.jsx";
-import FrontendDulhan from "./pages/FrontendDulhan.jsx";
-import FrontendLinuka from "./pages/FrontendLinuka.jsx";
-
 function App() {
     const user = JSON.parse(localStorage.getItem('user'));
     const isAdmin = JSON.parse(localStorage.getItem('isSuperuser'));
@@ -75,14 +67,6 @@ function App() {
                                 <Route path="/forget_password" element={<ForgetPassword/>}/>
                                 <Route path="/password-reset-confirm/:uid/:token" element={<ResetPassword/>}/>
                                 <Route path="*" element={<NotFound/>}/>
-
-                                {/*TODO End:Delete Following Routes & Page Files*/}
-                                <Route exact path='/sulan' element={<FrontendSulan/>}/>
-                                <Route exact path='/agrani' element={<FrontendAgrani/>}/>
-                                <Route exact path='/chamath' element={<FrontendChamath/>}/>
-                                <Route exact path='/dinuka' element={<FrontendDinuka/>}/>
-                                <Route exact path='/dulhan' element={<FrontendDulhan/>}/>
-                                <Route exact path='/linuka' element={<FrontendLinuka/>}/>
                             </Routes>
                             <Footer/>
                         </PlayerRankingProvider>
