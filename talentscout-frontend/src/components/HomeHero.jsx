@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 function HomeHero() {
     return (
         <div className="font-poppins">
-            <div className="md:container mx-0 px-2 sm:px-8 ">
+            <div className="md:container mx-0 px-8 sm:px-8 ">
                 <div
                     className="bg-cover bg-center h-[350px] md:h-[450px] lg:h-[550px] flex items-center justify-center rounded-lg md:rounded-3xl my-6 md:my-12 shadow-outer"
                     style={{backgroundImage: `url(${import.meta.env.BASE_URL}hero-bg.png)`}}>
