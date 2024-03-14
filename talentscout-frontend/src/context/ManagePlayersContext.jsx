@@ -87,6 +87,7 @@ export const PlayerDataProvider = ({children}) => {
             setUpdatePlayerData({});
             setSelectedPlayersByName([]);
             setPlayerInfo({});
+            setSearched(false)
             navigate('/manage_players');
         } catch (error) {
             toast.error('Something went wrong. Please try again.');
@@ -103,6 +104,7 @@ export const PlayerDataProvider = ({children}) => {
             setUpdatePlayerData({});
             setSelectedPlayersByName([]);
             setPlayerInfo({});
+            setSearched(false)
             navigate('/manage_players');
         } catch (error) {
             toast.error('Something went wrong. Please save player info first and then try again.');
@@ -130,6 +132,7 @@ export const PlayerDataProvider = ({children}) => {
         selectedPlayersByName: selectedPlayersByName,
         searched: searched,
         updatePlayerData: updatePlayerData,
+        setSearched: setSearched,
         getPlayerDataById: getPlayerDataById,
         filterPlayersByName: filterPlayersByName,
         deletePlayerById: deletePlayerById,

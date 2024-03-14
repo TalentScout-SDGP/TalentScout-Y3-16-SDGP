@@ -5,10 +5,14 @@ import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import {FaTrash, FaEdit, FaPlus} from 'react-icons/fa';
 
-// TODO fix error toast message after update
-
 const CRUDManagePlayers = () => {
-    const {selectedPlayersByName, searched, deletePlayerById, getPlayerDataById} = useContext(ManagePlayersContext);
+    const {
+        selectedPlayersByName,
+        searched,
+        setSearched,
+        deletePlayerById,
+        getPlayerDataById
+    } = useContext(ManagePlayersContext);
     const navigate = useNavigate()
     const userString = localStorage.getItem('user');
     const email = userString ? JSON.parse(userString).email : "Initial";
@@ -19,6 +23,7 @@ const CRUDManagePlayers = () => {
     useEffect(() => {
         if (searched === true && selectedPlayersByName.length === 0) {
             toast.error("No players available for the given search criteria.")
+            setSearched(false);
         }
     }, [selectedPlayersByName, searched]);
 

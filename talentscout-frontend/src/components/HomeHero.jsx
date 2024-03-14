@@ -14,7 +14,8 @@ function HomeHero() {
                         <p className="hidden lg:block text-white text-base lg:text-xl mb-6">Unleash the power of cricket
                             data with
                             TalentScout! Analyze player statistics, compare profiles, and discover the stars of
-                            tomorrow. Whether you're a coach, scout, or a passionate fan, our platform empowers you to
+                            tomorrow. Whether you&apos;re a coach, scout, or a passionate fan, our platform empowers you
+                            to
                             make informed decisions and stay ahead in the game.</p>
                         <p className="block lg:hidden text-white text-base lg:text-xl mb-6">Unleash the power of cricket
                             data with
