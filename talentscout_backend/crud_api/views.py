@@ -25,15 +25,8 @@ def getPlayerStats(player):
 @api_view(['GET'])
 def getAllPlayers(request):
     if request.method == 'GET':
-        players = Player.objects.all()
-        player_data = []
-
-        for player in players:
-            player_serializer = PlayerSerializer(player).data
-            player_serializer.update(getPlayerStats(player))
-            player_data.append(player_serializer)
-
-        return Response(player_data, status=status.HTTP_200_OK)
+        players = Player.objects.all().values('full_name', 'player_id')
+        return Response(players, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -143,6 +136,8 @@ def updatePlayer(request, player_id):
         player_instance = Player.objects.get(player_id=player_id)
     except Player.DoesNotExist:
         return Response({"error": "Player not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    request.data['birth_date'] = formatBirthDate(request.data['birth_date'])
 
     if request.method == 'PUT':
         player_serializer = PlayerSerializer(player_instance, data=request.data)

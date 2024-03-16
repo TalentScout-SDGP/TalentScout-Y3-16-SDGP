@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 function HomeHero() {
     return (
         <div className="font-poppins">
-            <div className="md:container mx-0 px-2 sm:px-8 ">
+            <div className="md:container mx-0 px-8 sm:px-8 ">
                 <div
                     className="bg-cover bg-center h-[350px] md:h-[450px] lg:h-[550px] flex items-center justify-center rounded-lg md:rounded-3xl my-6 md:my-12 shadow-outer"
                     style={{backgroundImage: `url(${import.meta.env.BASE_URL}hero-bg.png)`}}>
@@ -14,7 +14,8 @@ function HomeHero() {
                         <p className="hidden lg:block text-white text-base lg:text-xl mb-6">Unleash the power of cricket
                             data with
                             TalentScout! Analyze player statistics, compare profiles, and discover the stars of
-                            tomorrow. Whether you're a coach, scout, or a passionate fan, our platform empowers you to
+                            tomorrow. Whether you&apos;re a coach, scout, or a passionate fan, our platform empowers you
+                            to
                             make informed decisions and stay ahead in the game.</p>
                         <p className="block lg:hidden text-white text-base lg:text-xl mb-6">Unleash the power of cricket
                             data with

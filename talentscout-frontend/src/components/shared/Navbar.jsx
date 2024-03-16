@@ -46,23 +46,23 @@ const Navbar = () => {
                     className={`${isOpen ? 'flex' : 'hidden'} lg:flex lg:flex-row flex-col font-bold text-sm justify-between xl:gap-x-4 bg-primary-ts_purple mt-3 lg:mt-0 lg:p-2 
                     rounded-lg lg:rounded-button shadow-lg`}>
                     <NavLink style={NavLinkStyles} to="/"
-                             className="text-xs xl:text-sm text-black hover:bg-primary-ts_blue hover:text-white py-2 px-4 rounded-3xl transition-transform duration-3000 transform md:hover:scale-105">
+                             className="text-xs lg:text-sm xl:text-md text-black hover:bg-primary-ts_blue hover:text-white py-2 px-4 rounded-3xl transition-transform duration-3000 transform md:hover:scale-105">
                         Home
                     </NavLink>
                     <NavLink style={NavLinkStyles} to="/explore_players"
-                             className="text-xs xl:text-sm text-black hover:bg-primary-ts_blue hover:text-white py-2 px-4 rounded-3xl transition-transform duration-3000 transform md:hover:scale-105">
+                             className="text-xs lg:text-sm xl:text-md text-black hover:bg-primary-ts_blue hover:text-white py-2 px-4 rounded-3xl transition-transform duration-3000 transform md:hover:scale-105">
                         Explore Players
                     </NavLink>
                     <NavLink style={NavLinkStyles} to="/compare_players"
-                             className="text-xs xl:text-sm text-black hover:bg-primary-ts_blue hover:text-white py-2 px-4 rounded-3xl transition-transform duration-3000 transform md:hover:scale-105">
+                             className="text-xs lg:text-sm xl:text-md text-black hover:bg-primary-ts_blue hover:text-white py-2 px-4 rounded-3xl transition-transform duration-3000 transform md:hover:scale-105">
                         Compare Players
                     </NavLink>
                     <NavLink style={NavLinkStyles} to="/player_profiles"
-                             className="text-xs xl:text-sm text-black hover:bg-primary-ts_blue hover:text-white py-2 px-4 rounded-3xl transition-transform duration-3000 transform md:hover:scale-105">
+                             className="text-xs lg:text-sm xl:text-md text-black hover:bg-primary-ts_blue hover:text-white py-2 px-4 rounded-3xl transition-transform duration-3000 transform md:hover:scale-105">
                         Player Profiles
                     </NavLink>
                     <NavLink style={NavLinkStyles} to="/manage_players"
-                             className="text-xs xl:text-sm text-black hover:bg-primary-ts_blue hover:text-white py-2 px-4 rounded-3xl transition-transform duration-3000 transform md:hover:scale-105">
+                             className="text-xs lg:text-sm xl:text-md text-black hover:bg-primary-ts_blue hover:text-white py-2 px-4 rounded-3xl transition-transform duration-3000 transform md:hover:scale-105">
                         Manage Players
                     </NavLink>
                 </div>

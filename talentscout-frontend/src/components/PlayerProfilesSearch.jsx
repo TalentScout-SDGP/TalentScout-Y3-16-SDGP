@@ -1,5 +1,7 @@
 import {useState, useContext} from "react";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 function PlayerProfilesSearch() {
     const {playerDict, getPlayerDataById} = useContext(ManagePlayersContext);
@@ -26,8 +28,8 @@ function PlayerProfilesSearch() {
     };
 
     const handleSubmit = () => {
-        if (playerId === []) {
-            console.log('Please select a player');
+        if (searchTerm === "") {
+            toast.error("Please Enter a Player Name to Search")
         } else {
             getPlayerDataById(playerId);
         }

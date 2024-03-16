@@ -138,8 +138,7 @@ export const AuthProvider = ({children}) => {
                 }
             );
         } else {
-            // TODO Dinuka - Add a toast message here
-            console.log("Google API is not yet loaded.");
+            toast.error("Something went wrong! Please try again.")
         }
     };
 
@@ -165,8 +164,7 @@ export const AuthProvider = ({children}) => {
                     toast.success("Login Successful!")
                 }
             } catch (error) {
-                // TODO Dinuka - Add a toast message here
-                console.log(error)
+                toast.error("Something went wrong! Please try again.")
             }
         }
     }

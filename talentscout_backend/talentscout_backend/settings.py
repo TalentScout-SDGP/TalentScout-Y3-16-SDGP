@@ -1,22 +1,15 @@
+import os
 import environ
 from pathlib import Path
 from datetime import timedelta
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-# TODO encrypt these data
 SECRET_KEY = 'django-insecure-7az+h-g&j%*bdl-20f4d@ptxc)cljqcom4v7rva5+-ubt5kso+'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# TODO encrypt these data
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -49,6 +42,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'talentscout_backend.urls'
@@ -78,8 +72,12 @@ WSGI_APPLICATION = 'talentscout_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'talentscout_backend',
+        'USER': 'talentscout_backend_user',
+        'PASSWORD': 'N3mZ5mIImMPBD6F6jeky37ZyRrf5KNEC',
+        'HOST': 'dpg-cnqk82v109ks73fc6fj0-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
 
@@ -131,6 +129,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -138,24 +140,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    'https://talentscout.vercel.app',
     "https://development-talentscout-sdgp.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
+    'https://talentscout.vercel.app',
     "https://development-talentscout-sdgp.vercel.app",
 ]
 
-# TODO encrypt these data
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
 EMAIL_HOST_USER = '09e53970250446'
 EMAIL_HOST_PASSWORD = 'b3a2e418a343ac'
-# TODO replace with talentscout email
+
 DEFAULT_FROM_EMAIL = 'dinukahamarasinghe@gmail.com'
 EMAIL_PORT = '2525'
 EMAIL_USE_TLS = True
 
-# TODO encrypt these data
 GOOGLE_CLIENT_ID = "266127850805-ae29j50o0l2f6ubf8s9k162g63l9ltgm.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET = "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"
 SOCIAL_AUTH_PASSWORD = "sdsdasdca1ds5dsdas"

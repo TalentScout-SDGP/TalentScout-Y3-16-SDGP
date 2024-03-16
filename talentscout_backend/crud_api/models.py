@@ -86,7 +86,7 @@ class PlayerBowling(models.Model):
     matches = models.IntegerField(null=True, blank=True)
     wickets = models.IntegerField(null=True, blank=True)
     innings = models.IntegerField(null=True, blank=True)
-    overs = models.IntegerField(null=True, blank=True)
+    overs = models.FloatField(null=True, blank=True)
     runs = models.IntegerField(null=True, blank=True)
     bbi = models.CharField(max_length=10, null=True, blank=True)
     avg = models.FloatField(null=True, blank=True)
@@ -121,4 +121,3 @@ class PlayerWicketKeeping(models.Model):
 
     def __str__(self):
         return str(self.player) + ' - ' + self.format
-

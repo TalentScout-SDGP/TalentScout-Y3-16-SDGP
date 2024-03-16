@@ -14,6 +14,7 @@ import OurTeamPage from "./pages/OurTeamPage.jsx";
 import VerifyOTPPage from "./pages/VerifyOTPPage.jsx";
 import ForgetPassword from "./components/ForgetPassword.jsx";
 import ResetPassword from "./components/ResetPassword.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 // React Router
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
@@ -38,14 +39,6 @@ library.add(fab, fas, far);
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
-//TODO End:Delete Following Imports
-import FrontendAgrani from "./pages/FrontendAgrani.jsx";
-import FrontendChamath from "./pages/FrontendChamath.jsx";
-import FrontendDinuka from "./pages/FrontendDinuka.jsx";
-import FrontendSulan from "./pages/FrontendSulan.jsx";
-import FrontendDulhan from "./pages/FrontendDulhan.jsx";
-import FrontendLinuka from "./pages/FrontendLinuka.jsx";
-
 function App() {
     const user = JSON.parse(localStorage.getItem('user'));
     const isAdmin = JSON.parse(localStorage.getItem('isSuperuser'));
@@ -53,7 +46,7 @@ function App() {
     return (
         <div className='bg-white'>
             <Router>
-                <ToastContainer autoClose={20000}/>
+                <ToastContainer autoClose={10000}/>
                 <AuthProvider>
                     <PlayerDataProvider>
                         <PlayerRankingProvider>
@@ -73,13 +66,7 @@ function App() {
                                 <Route exact path='/verify_otp' element={<VerifyOTPPage/>}/>
                                 <Route path="/forget_password" element={<ForgetPassword/>}/>
                                 <Route path="/password-reset-confirm/:uid/:token" element={<ResetPassword/>}/>
-                                {/*TODO End:Delete Following Routes & Page Files*/}
-                                <Route exact path='/sulan' element={<FrontendSulan/>}/>
-                                <Route exact path='/agrani' element={<FrontendAgrani/>}/>
-                                <Route exact path='/chamath' element={<FrontendChamath/>}/>
-                                <Route exact path='/dinuka' element={<FrontendDinuka/>}/>
-                                <Route exact path='/dulhan' element={<FrontendDulhan/>}/>
-                                <Route exact path='/linuka' element={<FrontendLinuka/>}/>
+                                <Route path="*" element={<NotFound/>}/>
                             </Routes>
                             <Footer/>
                         </PlayerRankingProvider>
