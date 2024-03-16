@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
 
     const signUp = async (formData) => {
         setIsLoading(true);
-        const res = await axios.post("http://localhost:8000/api/auth/register/", formData)
+        const res = await axios.post("https://talentscout-y3-16-sdgp.onrender.com/api/auth/register/", formData)
         const response = res.data
         if (res.status === 201) {
             setIsLoading(false)
@@ -30,7 +30,7 @@ export const AuthProvider = ({children}) => {
     const verifyOTP = async (otp) => {
         try {
             setIsLoading(true)
-            const response = await axios.post('http://localhost:8000/api/auth/verify-email/', {'otp': otp})
+            const response = await axios.post('https://talentscout-y3-16-sdgp.onrender.com/api/auth/verify-email/', {'otp': otp})
             if (response.status === 200) {
                 setIsLoading(false)
                 navigate('/login')
@@ -51,7 +51,7 @@ export const AuthProvider = ({children}) => {
     const login = async (loginData) => {
         try {
             setIsLoading(true);
-            const res = await axios.post("http://localhost:8000/api/auth/login/", loginData)
+            const res = await axios.post("https://talentscout-y3-16-sdgp.onrender.com/api/auth/login/", loginData)
             setIsLoading(false)
             const response = res.data;
             const user = {"email": response.email, "full_name": response.full_name}
@@ -105,7 +105,7 @@ export const AuthProvider = ({children}) => {
 
     const googleAuth = async (response) => {
         const payload = response.credential
-        const server_res = await axios.post("http://localhost:8000/api/auth/google/", {'access_token': payload})
+        const server_res = await axios.post("https://talentscout-y3-16-sdgp.onrender.com/api/auth/google/", {'access_token': payload})
         const user = {
             "email": server_res.data.email,
             "full name": server_res.data.full_name
