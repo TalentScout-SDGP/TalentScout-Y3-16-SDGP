@@ -25,15 +25,8 @@ def getPlayerStats(player):
 @api_view(['GET'])
 def getAllPlayers(request):
     if request.method == 'GET':
-        players = Player.objects.all()
-        player_data = []
-
-        for player in players:
-            player_serializer = PlayerSerializer(player).data
-            player_serializer.update(getPlayerStats(player))
-            player_data.append(player_serializer)
-
-        return Response(player_data, status=status.HTTP_200_OK)
+        players = Player.objects.all().values('full_name', 'player_id')
+        return Response(players, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
