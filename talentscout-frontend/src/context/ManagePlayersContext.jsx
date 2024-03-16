@@ -24,7 +24,7 @@ export const PlayerDataProvider = ({children}) => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-                const response = await axios.get('http://localhost:8000/api/crud/');
+                const response = await axios.get('https://talentscout-y3-16-sdgp.onrender.com/api/crud/');
                 const data = response.data;
                 setPlayerData(data);
                 const playerDict = {};
@@ -44,7 +44,7 @@ export const PlayerDataProvider = ({children}) => {
     const getPlayerDataById = async (playerId, isSecondPlayer = false, page) => {
         try {
             setIsLoading(true);
-            const response = await axios.get(`http://localhost:8000/api/crud/${playerId}/`);
+            const response = await axios.get(`https://talentscout-y3-16-sdgp.onrender.com/api/crud/${playerId}/`);
             const data = response.data;
             setIsLoading(false);
             if (isSecondPlayer) {
@@ -63,7 +63,7 @@ export const PlayerDataProvider = ({children}) => {
     const filterPlayersByName = async (playerName) => {
         try {
             setIsLoading(true);
-            const response = await axios.get(`http://localhost:8000/api/crud/filter?full_name=${playerName}`);
+            const response = await axios.get(`https://talentscout-y3-16-sdgp.onrender.com/api/crud/filter?full_name=${playerName}`);
             const data = response.data;
             setIsLoading(false);
             setSelectedPlayersByName(data);
@@ -81,7 +81,7 @@ export const PlayerDataProvider = ({children}) => {
     const createPlayers = async (playerInfo) => {
         try {
             setIsLoading(true);
-            await axios.post('http://localhost:8000/api/crud/create/', playerInfo);
+            await axios.post('https://talentscout-y3-16-sdgp.onrender.com/api/crud/create/', playerInfo);
             toast.success('Player Created Successfully!')
             setIsLoading(false);
             setUpdatePlayerData({});
@@ -98,7 +98,7 @@ export const PlayerDataProvider = ({children}) => {
     const updatePlayers = async (playerInfo, playerId) => {
         try {
             setIsLoading(true);
-            await axios.put(`http://localhost:8000/api/crud/update/${playerId}/`, playerInfo);
+            await axios.put(`https://talentscout-y3-16-sdgp.onrender.com/api/crud/update/${playerId}/`, playerInfo);
             toast.success('Player Updated Successfully!')
             setIsLoading(false);
             setUpdatePlayerData({});
@@ -115,7 +115,7 @@ export const PlayerDataProvider = ({children}) => {
     const deletePlayerById = async (playerId) => {
         try {
             setIsLoading(true);
-            await axios.delete(`http://localhost:8000/api/crud/delete/${playerId}/`);
+            await axios.delete(`https://talentscout-y3-16-sdgp.onrender.com/api/crud/delete/${playerId}/`);
             setIsLoading(false);
         } catch (error) {
             toast.error('Something went wrong. Please try again.');

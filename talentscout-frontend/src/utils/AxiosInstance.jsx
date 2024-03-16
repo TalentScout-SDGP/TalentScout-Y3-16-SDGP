@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 
 const token = localStorage.getItem('access') ? JSON.parse(localStorage.getItem('access')) : ""
 const refresh_token = localStorage.getItem('refresh') ? JSON.parse(localStorage.getItem('refresh')) : ""
-const baseUrl = 'http://localhost:8000/api/'
+const baseUrl = 'https://talentscout-y3-16-sdgp.onrender.com/api/'
 
 const axiosInstance = axios.create({
     baseURL: baseUrl,
