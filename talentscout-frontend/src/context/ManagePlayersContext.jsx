@@ -116,6 +116,12 @@ export const PlayerDataProvider = ({children}) => {
         try {
             setIsLoading(true);
             await axios.delete(`https://talentscout-y3-16-sdgp.onrender.com/api/crud/delete/${playerId}/`);
+            toast.success('Player Deleted Successfully.');
+            setIsLoading(false);
+            setUpdatePlayerData({});
+            setSelectedPlayersByName([]);
+            setPlayerInfo({});
+            setSearched(false)
             setIsLoading(false);
         } catch (error) {
             toast.error('Something went wrong. Please try again.');

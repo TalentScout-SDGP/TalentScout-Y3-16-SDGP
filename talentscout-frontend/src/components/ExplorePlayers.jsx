@@ -33,7 +33,7 @@ function ExplorePlayers() {
         e.preventDefault();
         if (format === '' || playing_role === '') {
             toast.error("Please select format and playing role.");
-        } else if (format === '' && playing_role === 'Batsman' && batting_style === '') {
+        } else if (format !== '' && playing_role === 'Batsman' && batting_style === '') {
             toast.error("Please select batting style.");
         } else if (format !== '' && playing_role === 'Bowler' && bowling_style === '') {
             toast.error("Please select bowling style.");

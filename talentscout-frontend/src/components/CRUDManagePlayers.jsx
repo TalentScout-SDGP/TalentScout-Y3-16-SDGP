@@ -50,9 +50,6 @@ const CRUDManagePlayers = () => {
 
     const handleDeletePlayer = (playerId) => {
         deletePlayerById(playerId)
-            .then(() => {
-                window.location.reload();
-            })
     };
 
     function handleUpdatePlayer(playerId) {
