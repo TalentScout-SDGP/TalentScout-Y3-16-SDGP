@@ -75,13 +75,24 @@ export const AuthProvider = ({children}) => {
     }
 
     const logout = async (refresh) => {
-        await AxiosInstance.post('/auth/logout/', {'refresh_token': refresh})
-        localStorage.removeItem('access')
-        localStorage.removeItem('refresh')
-        localStorage.removeItem('user')
-        localStorage.removeItem('isSuperuser')
-        window.location.reload();
-
+        try {
+            setIsLoading(true)
+            const res = await AxiosInstance.post('/auth/logout/', {'refresh_token': refresh})
+            if (res.status === 204) {
+                localStorage.removeItem('access')
+                localStorage.removeItem('refresh')
+                localStorage.removeItem('user')
+                localStorage.removeItem('isSuperuser')
+                window.location.reload();
+            }
+        } catch (error) {
+            setIsLoading(false)
+            localStorage.removeItem('access')
+            localStorage.removeItem('refresh')
+            localStorage.removeItem('user')
+            localStorage.removeItem('isSuperuser')
+            window.location.reload();
+        }
     }
 
     const forgetPassword = async (email) => {
