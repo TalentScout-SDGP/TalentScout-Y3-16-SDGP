@@ -1,4 +1,4 @@
-import {createContext, useState, useEffect} from 'react'
+import {createContext, useState} from 'react'
 import {useNavigate, useSearchParams} from 'react-router-dom'
 import axios from "axios";
 import {toast} from "react-toastify";
@@ -12,17 +12,19 @@ export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false)
     const [responseError, setResponseError] = useState('')
     const navigate = useNavigate()
-    const [searchParams] = useSearchParams()
 
     const signUp = async (formData) => {
-        setIsLoading(true);
-        const res = await axios.post("https://talentscout-y3-16-sdgp.onrender.com/api/auth/register/", formData)
-        const response = res.data
-        if (res.status === 201) {
-            setIsLoading(false)
-            navigate('/verify_otp')
-            toast.success(response.message)
-        } else {
+        try {
+            setIsLoading(true);
+            const res = await axios.post("https://talentscout-y3-16-sdgp.onrender.com/api/auth/register/", formData)
+            const response = res.data
+            if (res.status === 201) {
+                setIsLoading(false)
+                navigate('/verify_otp')
+                toast.success(response.message)
+            }
+        } catch (error) {
+            toast.error('Something went wrong. Please try again.')
             setIsLoading(false)
         }
     }
@@ -67,19 +69,19 @@ export const AuthProvider = ({children}) => {
         } catch (error) {
             if (error.response.status === 401) {
                 setIsLoading(false)
+                toast.error('Invalid email or password. Please try again.')
             }
         }
     }
 
     const logout = async (refresh) => {
-        const res = await AxiosInstance.post('/auth/logout/', {'refresh_token': refresh})
-        if (res.status === 204) {
-            localStorage.removeItem('access')
-            localStorage.removeItem('refresh')
-            localStorage.removeItem('user')
-            localStorage.removeItem('isSuperuser')
-            window.location.reload();
-        }
+        await AxiosInstance.post('/auth/logout/', {'refresh_token': refresh})
+        localStorage.removeItem('access')
+        localStorage.removeItem('refresh')
+        localStorage.removeItem('user')
+        localStorage.removeItem('isSuperuser')
+        window.location.reload();
+
     }
 
     const forgetPassword = async (email) => {
@@ -142,40 +144,6 @@ export const AuthProvider = ({children}) => {
         }
     };
 
-    const signInWithGithub = () => {
-        window.location.assign(`https://github.com/login/oauth/authorize/?client_id=${import.meta.env.VITE_GITHUB_ID}`)
-    }
-
-    const sendGithubCode = async () => {
-        if (searchParams) {
-            try {
-                const qcode = searchParams.get('code')
-                const response = await AxiosInstance.post('/auth/github/', {'code': qcode})
-                const result = response.data
-                if (response.status === 200) {
-                    const user = {
-                        'email': result.email,
-                        'names': result.full_name
-                    }
-                    localStorage.setItem('access', JSON.stringify(result.access_token))
-                    localStorage.setItem('refresh', JSON.stringify(result.refresh_token))
-                    localStorage.setItem('user', JSON.stringify(user))
-                    navigate('/')
-                    toast.success("Login Successful!")
-                }
-            } catch (error) {
-                toast.error("Something went wrong! Please try again.")
-            }
-        }
-    }
-
-    let code = searchParams.get('code')
-    useEffect(() => {
-        if (code) {
-            sendGithubCode()
-        }
-    }, [code])
-
 
     const contextData = {
         isLoading: isLoading,
@@ -187,7 +155,6 @@ export const AuthProvider = ({children}) => {
         resetPassword: resetPassword,
         logout: logout,
         renderGoogleButton: renderGoogleButton,
-        signInWithGithub: signInWithGithub
     }
 
     return (
