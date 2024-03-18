@@ -32,10 +32,10 @@ function ComparePlayersInfo() {
                             className="grid grid-cols-3 sm:grid-cols-8 md:grid-cols-12 text-center col-span-6 order-3 md:order-2 mt-6 sm:mt-12 md:mt-0">
                             <div
                                 className="flex flex-col gap-y-8 sm:col-span-3 md:col-span-3 border-r border-black xl:text-base lg:text-md md:text-sm text-xs">
-                                <p className="font-semibold text-black"> {selectedSecondPlayerData.player.age === 'NULL' ? '-' : selectedSecondPlayerData.player.age}</p>
-                                <p className="font-semibold text-black">{selectedSecondPlayerData.player.batting_style === 'NULL' ? '-' : selectedSecondPlayerData.player.batting_style}</p>
-                                <p className="font-semibold text-black">{selectedSecondPlayerData.player.bowling_style === 'NULL' ? '-' : selectedSecondPlayerData.player.bowling_style}</p>
-                                <p className="font-semibold text-black">{selectedSecondPlayerData.player.playing_role === 'NULL' ? '-' : selectedSecondPlayerData.player.playing_role}</p>
+                                <p className="font-semibold text-black"> {selectedPlayerData.player.age === 'NULL' ? '-' : selectedPlayerData.player.age}</p>
+                                <p className="font-semibold text-black">{selectedPlayerData.player.batting_style === 'NULL' ? '-' : selectedPlayerData.player.batting_style}</p>
+                                <p className="font-semibold text-black">{selectedPlayerData.player.bowling_style === 'NULL' ? '-' : selectedPlayerData.player.bowling_style}</p>
+                                <p className="font-semibold text-black">{selectedPlayerData.player.playing_role === 'NULL' ? '-' : selectedPlayerData.player.playing_role}</p>
                             </div>
                             <div
                                 className="flex flex-col gap-y-8 sm:col-span-2 md:col-span-6 xl:text-base lg:text-md md:text-sm text-xs">
