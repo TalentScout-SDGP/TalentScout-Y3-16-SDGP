@@ -15,7 +15,7 @@ def sendOtp(email):
     subject = "One time passcode for Email Verification"
     otp_code = generateOtp()
     user = User.objects.get(email=email)
-    current_site = "myAuth.com"
+    current_site = "Talentscout"
     email_body = (f"Hi! {user.first_name} Thank you for signing up for {current_site}. "
                   f"Your one time passcode for email verification is {otp_code}.")
     from_email = settings.DEFAULT_FROM_EMAIL
