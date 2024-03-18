@@ -27,7 +27,7 @@ class RegisterUserView(GenericAPIView):
                            f'Your passcode has been successfully sent to your email.\n'
                            f'Please check your inbox to verify and complete the registration process.'
             }, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'message': 'Something went wrong'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class VerifyUserEmail(GenericAPIView):
@@ -98,7 +98,7 @@ class SetNewPassword(GenericAPIView):
     def patch(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        return Response({'message': 'Password reset successfully'}, status=status.HTTP_200_OK)
+        return Response({'message': 'Your password has been successfully updated.'}, status=status.HTTP_200_OK)
 
 
 class LogoutUserView(GenericAPIView):
