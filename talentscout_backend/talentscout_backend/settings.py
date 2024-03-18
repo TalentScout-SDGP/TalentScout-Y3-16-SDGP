@@ -67,7 +67,6 @@ LOGOUT_REDIRECT_URL = '/admin/logout/'
 WSGI_APPLICATION = 'talentscout_backend.wsgi.application'
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -95,7 +94,6 @@ REST_FRAMEWORK = {
 }
 
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -113,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -124,7 +121,6 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
 
@@ -133,7 +129,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -149,13 +144,13 @@ CSRF_TRUSTED_ORIGINS = [
     "https://development-talentscout-sdgp.vercel.app",
 ]
 
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '09e53970250446'
-EMAIL_HOST_PASSWORD = 'b3a2e418a343ac'
-
-DEFAULT_FROM_EMAIL = 'dinukahamarasinghe@gmail.com'
-EMAIL_PORT = '2525'
+DEFAULT_FROM_EMAIL = 'talentscout.help@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'talentscout.help@gmail.com'
+EMAIL_HOST_PASSWORD = 'ktdbbmbsfoqavyhs'
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 GOOGLE_CLIENT_ID = "266127850805-ae29j50o0l2f6ubf8s9k162g63l9ltgm.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET = "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"

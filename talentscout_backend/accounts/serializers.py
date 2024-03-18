@@ -7,7 +7,6 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import smart_bytes, force_str
 from django.urls import reverse
 from .utils import send_normal_email
-from django.contrib.sites.shortcuts import get_current_site
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 
@@ -92,7 +91,7 @@ class PasswordResetRequestSerializer(serializers.Serializer):
             relative_link = relative_link.replace('/api/auth', '')
 
             abslink = f'http://localhost:5173{relative_link}'
-            email_body = f'Hi, Use the link below to reset your password \n {abslink}'
+            email_body = f'Hi {user.first_name}, Use the link below to reset your password \n {abslink}'
             data = {
                 'email_subject': 'Reset Your password',
                 'email_body': email_body,
