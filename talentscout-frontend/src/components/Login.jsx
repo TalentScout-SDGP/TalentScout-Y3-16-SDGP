@@ -22,10 +22,6 @@ function Login() {
             setError('All fields are required!');
         } else {
             login(loginData);
-            const user = JSON.parse(localStorage.getItem('user'));
-            if (!user) {
-                setError('Invalid credentials, Please try again.');
-            }
         }
     }
 
@@ -130,14 +126,6 @@ function Login() {
                             className="grid grid-cols-1 2xl:grid-cols-2 gap-y-4 2xl:gap-y-0 items-center justify-center my-6">
                             <div className="flex w-full">
                                 <div id="signInDiv" className="w-[280px]"></div>
-                            </div>
-                            <div className="flex w-full">
-                                <button
-                                    className="relative w-[280px] border border-gray-300 rounded-3xl py-2.5 bg-white text-sm font-weight-normal flex items-center justify-center">
-                                    <img src={import.meta.env.BASE_URL + 'user-github.png'} alt="github-logo"
-                                         className="align-center absolute left-3"></img>
-                                    <span>Sign In with Github</span>
-                                </button>
                             </div>
                         </div>
                     </div>
