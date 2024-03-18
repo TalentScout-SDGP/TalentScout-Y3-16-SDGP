@@ -15,6 +15,7 @@ export const PlayerDataProvider = ({children}) => {
     const [playerData, setPlayerData] = useState([]);
     const [selectedPlayerData, setSelectedPlayerData] = useState({});
     const [selectedSecondPlayerData, setSelectedSecondPlayerData] = useState({});
+    const [playerProfileData, setPlayerProfileData] = useState({});
     const [selectedPlayersByName, setSelectedPlayersByName] = useState([]);
     const [searched, setSearched] = useState(false);
     const [updatePlayerData, setUpdatePlayerData] = useState({});
@@ -51,6 +52,8 @@ export const PlayerDataProvider = ({children}) => {
                 setSelectedSecondPlayerData(data);
             } else if (page === 'manage_players') {
                 setUpdatePlayerData(data);
+            } else if (page === 'player_profiles') {
+                setPlayerProfileData(data);
             } else {
                 setSelectedPlayerData(data);
             }
@@ -135,6 +138,7 @@ export const PlayerDataProvider = ({children}) => {
         playerInfo: playerInfo,
         selectedPlayerData: selectedPlayerData,
         selectedSecondPlayerData: selectedSecondPlayerData,
+        playerProfileData: playerProfileData,
         selectedPlayersByName: selectedPlayersByName,
         searched: searched,
         updatePlayerData: updatePlayerData,
