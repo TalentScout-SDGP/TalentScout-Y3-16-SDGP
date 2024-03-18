@@ -1,5 +1,4 @@
 import {useContext, useState} from "react";
-import {Link} from "react-router-dom";
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 import Spinner from "./shared/Spinner.jsx";
 import PlayerProfileStats from "./PlayerProfileStats.jsx";
@@ -44,12 +43,6 @@ function PlayerProfilesInfo() {
                                             : {playerProfileData.player.batting_style === "NULL" ? "N/A" : playerProfileData.player.batting_style}</div>
                                         <div>Bowling Style
                                             : {playerProfileData.player.bowling_style === "NULL" ? "N/A" : playerProfileData.player.bowling_style}</div>
-                                        <Link to='/' className='mx-auto lg:mx-0 text-xs sm:text-sm md:text-md lg:text-base bg-primary-yellow text-black font-semibold rounded-button px-4 md:py-1 shadow-lg border-primary-ts_blue border-2
-                            hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform hover:scale-105'>
-                                            <img src={import.meta.env.BASE_URL + 'compare-icon.png'} alt="compare-icon"
-                                                 className="inline px-0"></img>
-                                            Compare
-                                        </Link>
                                     </div>
                                 </div>
                             </div>
