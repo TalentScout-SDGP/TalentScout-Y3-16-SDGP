@@ -2,7 +2,7 @@ import {useContext, useState} from 'react';
 import ManagePlayersContext from "../context/ManagePlayersContext.jsx";
 
 function PlayerProfileStats() {
-    const {selectedPlayerData} = useContext(ManagePlayersContext);
+    const {playerProfileData} = useContext(ManagePlayersContext);
     const [selectedTab, setSelectedTab] = useState('testStats');
 
     const handleTabChange = (option) => {
@@ -10,15 +10,15 @@ function PlayerProfileStats() {
     };
 
     const getBattingStats = (format) => {
-        return selectedPlayerData.batting_stats.find(stats => stats.format === format) || {};
+        return playerProfileData.batting_stats.find(stats => stats.format === format) || {};
     };
 
     const getBowlingStats = (format) => {
-        return selectedPlayerData.bowling_stats.find(stats => stats.format === format) || {};
+        return playerProfileData.bowling_stats.find(stats => stats.format === format) || {};
     };
 
     const getWicketKeepingStats = (format) => {
-        return selectedPlayerData.wicketkeeping_stats.find(stats => stats.format === format) || {};
+        return playerProfileData.wicketkeeping_stats.find(stats => stats.format === format) || {};
     };
 
     const playerStats = {

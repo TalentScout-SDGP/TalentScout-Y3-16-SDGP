@@ -31,7 +31,7 @@ function PlayerProfilesSearch() {
         if (searchTerm === "") {
             toast.error("Please Enter a Player Name to Search")
         } else {
-            getPlayerDataById(playerId);
+            getPlayerDataById(playerId, false, 'player_profiles');
         }
     }
 
