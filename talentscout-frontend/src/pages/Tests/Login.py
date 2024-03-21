@@ -79,7 +79,32 @@ class LoginTest(unittest.TestCase):
         self.assertTrue(logerr.is_displayed())
         print("TEST 4 PASSED")
 
+    # Test case -5
+    def test_login_with_correct_credentials(self):
+        """ Test Case to verify login with Correct Credentials"""
+        time.sleep(5)
+        gmail = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        gmail.click()
+        gmail.send_keys("qatestuser@gmail.com")
+        pas = self.driver.find_element(By.XPATH,
+                                       "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[2]/input")
+        pas.click()
+        pas.send_keys("talentscout@123")
+        time.sleep(3)
+        log = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        log.click()
+        time.sleep(10)
+        home = self.driver.find_element(By.XPATH,"/html/body/div/div/div[3]/div[1]/div/div/div/h1")
+        self.assertEqual("Welcome To TalentScout",home.text)
+        print("TEST 5 PASSED")
 
+    # Test case - 6
+    def test_login_with_google_auth(self):
+        """ Test Case to verify login with Google Auth"""
+        time.sleep(5)
+        google = self.driver.find_element(By.XPATH, '//*[@id="signInDiv"]')
+        google.click()
+        #Manual Testing for google auth login
 
 
 if __name__ == "__main__":
