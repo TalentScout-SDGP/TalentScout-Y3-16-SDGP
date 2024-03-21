@@ -61,7 +61,47 @@ class PlayerProfilesTest(unittest.TestCase):
         self.driver.refresh()
         time.sleep(5)
 
+    # Test case - 4
+    def test_tab_navigation(self):
+        # Check if tab navigation works correctly
+        time.sleep(5)
+        name1 = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div/div/input")
+        name1.click()
+        name1.send_keys("Dasun Dilshan")
+        time.sleep(2)
+        self.driver.find_element(By.XPATH, '/html/body/div/div/div[3]/div/div/div/div/div/div/div/div').click()
+        searchButton = self.driver.find_element(By.XPATH, '/html/body/div/div/div[3]/div/div/div/div/div/button')
+        searchButton.click()
+        time.sleep(7)
+        tabs = self.driver.find_element(By.XPATH,
+                                        "/html/body/div/div/div[3]/div/div[2]/div[2]/div/div/div[1]/div/div/button[2]")
+        tabs.click()
+        self.assertTrue(tabs.get_attribute("class").find("active") != -1)
+        print("TEST 4 PASSED")
 
+    # Test case - 5
+    def test_searching_a_player(self):
+        time.sleep(5)
+        search_input = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div[1]/div/div/div/div/input")
+        expected_result = search_input.send_keys("Rahal Amarasinghe")
+        time.sleep(2)
+        select_dropdown = self.driver.find_element(By.XPATH,
+                                                   '/html/body/div/div/div[3]/div/div[1]/div/div/div/div/div/div')
+        select_dropdown.click()
+        search_button = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div/button")
+
+        # Click the search button without entering a player name
+        search_button.click()
+        time.sleep(5)
+        # Wait for dropdown to appear
+        name = self.driver.find_element(By.XPATH, "//div[contains(text(), 'Full Name')]")
+        actual_result = name.text
+        time.sleep(2)
+        self.assertEqual(actual_result, "Full Name : Rahal Amarasinghe",
+                         f"Page title is incorrect: Expected '{expected_result}' but found '{actual_result}'")
+        print("TEST 5 PASSED")
+        self.driver.refresh()
+        time.sleep(5)
 
 
 if __name__ == "__main__":
