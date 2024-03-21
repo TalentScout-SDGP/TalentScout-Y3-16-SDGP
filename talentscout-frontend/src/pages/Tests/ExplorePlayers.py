@@ -95,6 +95,92 @@ class TestExplorePlayers(unittest.TestCase):
         self.assertEqual(test_select.text, "Test")
         print("TEST 3 PASSED")
 
+    # Test case - 4
+    def test_dynamic_batting_selection(self):
+        """ Test Case to verify the dynamic generation of Batting style selection when Batsman is selected as the
+        Playing Role"""
+        time.sleep(8)
+        login_field = self.driver.find_element(By.XPATH, '//*[@id=":r5:"]/div/div/a')
+        login_field.click()
+        email_field = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        email_field.send_keys("qatestuser@gmail.com")
+
+        pas_field = self.driver.find_element(By.XPATH, '//*[@id="login-password"]')
+        pas_field.send_keys("talentscout@123")
+        time.sleep(5)
+
+        login_button = self.driver.find_element(By.XPATH,
+                                                "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        login_button.click()
+        time.sleep(10)
+
+        exp_nav = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div/div[2]/a[2]')
+        exp_nav.click()
+        time.sleep(5)
+
+        format_select = self.driver.find_element(By.XPATH,
+                                                 "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[1]/div[2]/select")
+        format_select.click()
+        test_select = self.driver.find_element(By.XPATH,
+                                               "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[1]/div[2]/select/option[2]")
+        test_select.click()
+        time.sleep(2)
+
+        play_role = self.driver.find_element(By.XPATH,
+                                             "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[3]/div[2]/select")
+        play_role.click()
+        bat_select = self.driver.find_element(By.XPATH,
+                                              "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[3]/div[2]/select/option[2]")
+        bat_select.click()
+        time.sleep(2)
+
+        bat_style = self.driver.find_element(By.XPATH,
+                                             "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[4]/div[1]")
+        assert bat_style.is_displayed(), "Element didn't appear after selection"
+
+    # Test case - 5
+    def test_dynamic_bowling_selection(self):
+        """ Test Case to verify the dynamic generation of Bowling style selection when Batsman is selected as the
+        Playing Role"""
+        time.sleep(8)
+        login_field = self.driver.find_element(By.XPATH, '//*[@id=":r5:"]/div/div/a')
+        login_field.click()
+        email_field = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        email_field.send_keys("qatestuser@gmail.com")
+
+        pas_field = self.driver.find_element(By.XPATH, '//*[@id="login-password"]')
+        pas_field.send_keys("talentscout@123")
+        time.sleep(5)
+
+        login_button = self.driver.find_element(By.XPATH,
+                                                "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        login_button.click()
+        time.sleep(10)
+
+        exp_nav = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div/div[2]/a[2]')
+        exp_nav.click()
+        time.sleep(5)
+
+        format_select = self.driver.find_element(By.XPATH,
+                                                 "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[1]/div[2]/select")
+        format_select.click()
+        test_select = self.driver.find_element(By.XPATH,
+                                               "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[1]/div[2]/select/option[2]")
+        test_select.click()
+        time.sleep(2)
+
+        play_role = self.driver.find_element(By.XPATH,
+                                             "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[3]/div[2]/select")
+        play_role.click()
+        bowl_select = self.driver.find_element(By.XPATH,
+                                               "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[3]/div[2]/select/option[3]")
+        bowl_select.click()
+        time.sleep(2)
+
+        bowl_style = self.driver.find_element(By.XPATH,
+                                              "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[4]/div[1]")
+        assert bowl_style.is_displayed(), "Element didn't appear after selection"
+
 
 
 
