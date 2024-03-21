@@ -36,6 +36,31 @@ class PlayerProfilesTest(unittest.TestCase):
         self.driver.refresh()
         time.sleep(5)
 
+    # Test case - 2
+    def test_page_title_(self):
+        expected_title = "TalentScout | Frontend"
+        actual_title = self.driver.title
+        self.assertEqual(actual_title, expected_title,
+                         f"Page title is incorrect: Expected '{expected_title}' but found '{actual_title}'")
+        print("TEST 2 PASSED")
+        self.driver.refresh()
+        time.sleep(5)
+
+    # Test case - 3
+    def test_search_player(self):
+        time.sleep(5)
+        search_input = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div[1]/div/div/div/div/input")
+        expected_result = search_input.send_keys("Player Name")
+        time.sleep(5)  # Wait for dropdown to appear
+        actual_result = search_input.send_keys(Keys.RETURN)
+        self.assertEqual(actual_result, expected_result,
+                         f"Page title is incorrect: Expected '{expected_result}' but found '{actual_result}'")
+        search_input.clear()
+        time.sleep(2)
+        print("TEST 3 PASSED")
+        self.driver.refresh()
+        time.sleep(5)
+
 
 
 
