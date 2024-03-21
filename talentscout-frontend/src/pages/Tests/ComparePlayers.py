@@ -93,7 +93,28 @@ class TestComparePlayersSearch(unittest.TestCase):
         self.assertTrue(batting_tab.get_attribute("class").find("active") != -1)
         print("TEST 3 PASSED")
 
-
+    # Test case  4
+    def test_player_comparison(self):
+        """ Test Case to verify that Stats of Searched players are loaded for Comparison"""
+        time.sleep(5)
+        name1 = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div[1]/div/div/div/div[1]/input")
+        name1.click()
+        name1.send_keys("Dasun Dilshan")
+        time.sleep(2)
+        self.driver.find_element(By.XPATH, '/html/body/div/div/div[3]/div[1]/div/div/div/div[1]/div/div').click()
+        name2 = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div[1]/div/div/div/div[2]/input")
+        name2.click()
+        name2.send_keys("Rahal Amarasinghe")
+        self.driver.find_element(By.XPATH, '/html/body/div/div/div[3]/div[1]/div/div/div/div[2]/div/div').click()
+        time.sleep(2)
+        compButton = self.driver.find_element(By.XPATH, '/html/body/div/div/div[3]/div[1]/div/div/div/button')
+        compButton.click()
+        time.sleep(2)
+        test_tab = self.driver.find_element(By.XPATH, "//button[contains(text(), 'ODI')]")
+        test_tab.click()
+        time.sleep(3)
+        self.assertTrue(test_tab.get_attribute("class").find("active") != -1)
+        print("TEST 4 PASSED")
 
 
 if __name__ == "__main__":
