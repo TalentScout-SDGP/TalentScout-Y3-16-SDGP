@@ -313,7 +313,55 @@ class ManagePlayersTest(unittest.TestCase):
         self.assertEqual(toast_message, "Player Updated Successfully!")
         print("TEST 8 PASSED")
 
+    # Test case - 9
+    def test_player_delete_function(self):
+        """ Test Case to verify access to delete a player created by the logged in admin"""
+        time.sleep(8)
+        log_pg = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[3]/a[1]")
+        log_pg.click()
+        time.sleep(5)
+        email_field = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        email_field.send_keys("qatestuser@gmail.com")
 
+        pas_field = self.driver.find_element(By.XPATH, '//*[@id="login-password"]')
+        pas_field.send_keys("talentscout@123")
+        time.sleep(5)
+
+        login_button = self.driver.find_element(By.XPATH,
+                                                "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        login_button.click()
+        time.sleep(10)
+
+        man_nav = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div/div[2]/a[5]')
+        man_nav.click()
+        time.sleep(2)
+        search_inp = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div[1]/div/div/div/input")
+        search_inp.click()
+        search_inp.send_keys('Test Player Edited')
+        time.sleep(3)
+        search = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div[1]/div/div/div/button")
+        search.click()
+        time.sleep(10)
+        delete = self.driver.find_element(By.CSS_SELECTOR, "svg.text-xl:nth-child(2)")
+        delete.click()
+        time.sleep(8)
+        search_inp = self.driver.find_element(By.XPATH,"No players available for the given search criteria.")
+        search_inp.click()
+        search_inp.send_keys("Test Player Edited")
+        time.sleep(2)
+        search_but = self.driver.find_element(By.XPATH,"/html/body/div/div/div[3]/div[1]/div/div/div/button")
+        search_but.click()
+        time.sleep(2)
+        WebDriverWait(self.driver, 5).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, "Toastify__toast-body"))
+        )
+
+        # Get the toast error message text
+        toast_message = self.driver.find_element(By.CLASS_NAME, "Toastify__toast-body").text
+
+        # Assert that the toast error message matches the expected message
+        self.assertEqual(toast_message, "No players available for the given search criteria.")
+        print("TEST 9 PASSED SUCCESSFULLY")
 
 
 if __name__ == "__main__":
