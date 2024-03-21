@@ -181,7 +181,98 @@ class TestExplorePlayers(unittest.TestCase):
                                               "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[4]/div[1]")
         assert bowl_style.is_displayed(), "Element didn't appear after selection"
 
+    # Test case - 6
+    def test_wicketkeeping_selection(self):
+        """ Test Case to verify the wicketkeeper selection"""
+        time.sleep(8)
+        login_field = self.driver.find_element(By.XPATH, '//*[@id=":r5:"]/div/div/a')
+        login_field.click()
+        email_field = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        email_field.send_keys("qatestuser@gmail.com")
 
+        pas_field = self.driver.find_element(By.XPATH, '//*[@id="login-password"]')
+        pas_field.send_keys("talentscout@123")
+        time.sleep(5)
+
+        login_button = self.driver.find_element(By.XPATH,
+                                                "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        login_button.click()
+        time.sleep(10)
+
+        exp_nav = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div/div[2]/a[2]')
+        exp_nav.click()
+        time.sleep(5)
+
+        format_select = self.driver.find_element(By.XPATH,
+                                                 "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[1]/div[2]/select")
+        format_select.click()
+        test_select = self.driver.find_element(By.XPATH,
+                                               "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[1]/div[2]/select/option[2]")
+        test_select.click()
+        time.sleep(2)
+
+        play_role = self.driver.find_element(By.XPATH,
+                                             "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[3]/div[2]/select")
+        play_role.click()
+        wk_select = self.driver.find_element(By.XPATH,
+                                             "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[3]/div[2]/select/option[4]")
+        wk_select.click()
+        time.sleep(2)
+
+        assert wk_select.is_selected()
+
+    # Test case - 7
+    def test_player_ranking_system(self):
+        """ Test Case to verify the generation of Ranking system for player Exploration based on selected criteria"""
+        time.sleep(8)
+        login_field = self.driver.find_element(By.XPATH, '//*[@id=":r5:"]/div/div/a')
+        login_field.click()
+        email_field = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        email_field.send_keys("qatestuser@gmail.com")
+
+        pas_field = self.driver.find_element(By.XPATH, '//*[@id="login-password"]')
+        pas_field.send_keys("talentscout@123")
+        time.sleep(5)
+
+        login_button = self.driver.find_element(By.XPATH,
+                                                "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        login_button.click()
+        time.sleep(10)
+
+        exp_nav = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div/div[2]/a[2]')
+        exp_nav.click()
+        time.sleep(5)
+
+        format_select = self.driver.find_element(By.XPATH,
+                                                 "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[1]/div[2]/select")
+        format_select.click()
+        test_select = self.driver.find_element(By.XPATH,
+                                               "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[1]/div[2]/select/option[2]")
+        test_select.click()
+        time.sleep(2)
+
+        play_role = self.driver.find_element(By.XPATH,
+                                             "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[3]/div[2]/select")
+        play_role.click()
+        bat_select = self.driver.find_element(By.XPATH,
+                                              "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[3]/div[2]/select/option[2]")
+        bat_select.click()
+        time.sleep(2)
+
+        bat_style = self.driver.find_element(By.XPATH,
+                                             "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[4]/div[2]/select")
+        rh_select = self.driver.find_element(By.XPATH,
+                                             "/html/body/div/div/div[3]/div/div[1]/div/div/form/div[1]/div[4]/div[2]/select/option[2]")
+        rh_select.click()
+        time.sleep(2)
+
+        submit_button = self.driver.find_element(By.XPATH, "//button[contains(text(),'Submit')]")
+        submit_button.click()
+        time.sleep(3)
+
+        ranking_container = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div[2]/div")
+        assert ranking_container.is_displayed()
+        print("TEST 7 PASSED")
 
 
 if __name__ == "__main__":
