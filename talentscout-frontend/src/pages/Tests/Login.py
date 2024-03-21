@@ -41,6 +41,44 @@ class LoginTest(unittest.TestCase):
         self.assertTrue(pas.is_displayed())
         print("TEST 2 PASSED")
 
+    # Test case -3
+    def test_login_with_incorrect_password(self):
+        """ Test Case to verify login restriction with an incorrect password"""
+        time.sleep(5)
+        gmail = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        gmail.click()
+        gmail.send_keys("qatestuser@gmail.com")
+        pas = self.driver.find_element(By.XPATH,
+                                       "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[2]/input")
+        pas.click()
+        pas.send_keys("1234")
+        time.sleep(3)
+        log = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        log.click()
+        time.sleep(2)
+        logerr = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[2]/form/div/p")
+        self.assertTrue(logerr.is_displayed())
+        print("TEST 3 PASSED")
+
+    # Test case -4
+    def test_login_with_incorrect_email(self):
+        """ Test Case to verify login restriction with an incorrect email"""
+        time.sleep(5)
+        gmail = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        gmail.click()
+        gmail.send_keys("test@gmail.com")
+        pas = self.driver.find_element(By.XPATH,
+                                       "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[2]/input")
+        pas.click()
+        pas.send_keys("talentscout@123")
+        time.sleep(3)
+        log = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        log.click()
+        time.sleep(2)
+        logerr = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[2]/form/div/p")
+        self.assertTrue(logerr.is_displayed())
+        print("TEST 4 PASSED")
+
 
 
 
