@@ -191,6 +191,43 @@ class ManagePlayersTest(unittest.TestCase):
         self.assertEqual(toast_message, "Player Info added, Proceed to add Player Stats.")
         print('TEST 3 PASSED')
 
+    # Test Case - 4
+    def test_navigation_through_formats_in_stats(self):
+        """ Test Case to validate that admin user can navigate through all tabs to add stats for different formats"""
+        time.sleep(8)
+        log_pg = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[3]/a[1]")
+        log_pg.click()
+        time.sleep(5)
+        email_field = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        email_field.send_keys("qatestuser@gmail.com")
+
+        pas_field = self.driver.find_element(By.XPATH, '//*[@id="login-password"]')
+        pas_field.send_keys("talentscout@123")
+        time.sleep(5)
+
+        login_button = self.driver.find_element(By.XPATH,
+                                                "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        login_button.click()
+        time.sleep(10)
+
+        man_nav = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div/div[2]/a[5]')
+        man_nav.click()
+        time.sleep(2)
+
+        add_new_p = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div[1]/div/div/div/a")
+        add_new_p.click()
+        time.sleep(3)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        wkTab = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div[2]/div/div/div[2]/button[3]")
+        wkTab.click()
+        time.sleep(2)
+        self.assertTrue(wkTab.get_attribute("class").find("active") != -1)
+        wkEle = self.driver.find_element(By.XPATH,
+                                         "/html/body/div/div/div[3]/div[2]/div/div/div[3]/form/div[1]/div/div[4]/label")
+        self.assertTrue("Stumping:", wkEle.text)
+        time.sleep(3)
+        print('TEST 4 PASSED')
+
 
 
 
