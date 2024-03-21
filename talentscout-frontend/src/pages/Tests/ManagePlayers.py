@@ -94,6 +94,76 @@ class ManagePlayersTest(unittest.TestCase):
         self.assertEqual(toast_message, "Please enter a player name to search.")
         print('TEST 3 PASSED')
 
+    # Test case - 4
+    def test_player_retrieval_from_search(self):
+        """ Test Case to verify that searched players are loaded to the system"""
+        time.sleep(8)
+        log_pg = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[3]/a[1]")
+        log_pg.click()
+        time.sleep(5)
+        email_field = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        email_field.send_keys("qatestuser@gmail.com")
+
+        pas_field = self.driver.find_element(By.XPATH, '//*[@id="login-password"]')
+        pas_field.send_keys("talentscout@123")
+        time.sleep(5)
+
+        login_button = self.driver.find_element(By.XPATH,
+                                                "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        login_button.click()
+        time.sleep(10)
+
+        man_nav = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div/div[2]/a[5]')
+        man_nav.click()
+        time.sleep(2)
+        search_inp = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div[1]/div/div/div/input")
+        search_inp.click()
+        expected_player = 'Pinnaduwage Wanindu Hasaranga de Silva'
+        search_inp.send_keys(expected_player)
+        time.sleep(3)
+        search = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div[1]/div/div/div/button")
+        search.click()
+        time.sleep(5)
+        actual_output_player = self.driver.find_element(By.XPATH,
+                                                        "/html/body/div/div/div[3]/div[2]/div/div[2]/div[2]/div[2]")
+        self.assertEqual(expected_player, actual_output_player.text)
+        print("TEST 4 PASSED")
+
+    # Test case - 5
+    def test_player_edit_restrictions(self):
+        """ Test Case to verify access restriction to edit or delete players who are not added to the system by the
+        logged in user"""
+        time.sleep(8)
+        log_pg = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[3]/a[1]")
+        log_pg.click()
+        time.sleep(5)
+        email_field = self.driver.find_element(By.XPATH, '//*[@id="login-email"]')
+        email_field.send_keys("qatestuser@gmail.com")
+
+        pas_field = self.driver.find_element(By.XPATH, '//*[@id="login-password"]')
+        pas_field.send_keys("talentscout@123")
+        time.sleep(5)
+
+        login_button = self.driver.find_element(By.XPATH,
+                                                "/html/body/div[1]/div/div[3]/div/div/div[2]/form/div/div[3]/button")
+        login_button.click()
+        time.sleep(10)
+
+        man_nav = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div/div[2]/a[5]')
+        man_nav.click()
+        time.sleep(2)
+        search_inp = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div[1]/div/div/div/input")
+        search_inp.click()
+        search_inp.send_keys('Kusal Janith')
+        time.sleep(3)
+        search = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div[1]/div/div/div/button")
+        search.click()
+        time.sleep(10)
+        edit = self.driver.find_element(By.CSS_SELECTOR, "svg.text-xl:nth-child(1)")
+        cursor_property = edit.value_of_css_property("cursor")
+        assert cursor_property == "not-allowed", "Cursor is not set to not-allowed"
+        print('TEST 5 PASSED')
+
 
 
 
