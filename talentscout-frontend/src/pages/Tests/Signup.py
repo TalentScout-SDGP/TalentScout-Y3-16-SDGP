@@ -55,7 +55,72 @@ class SignUpTest(unittest.TestCase):
             err.text)
         print("TEST 3 PASSED")
 
+    # Test case - 4
+    def test_password_confirm_password_mismatch(self):
+        """ Test Case to verify password length is greater than 7"""
+        time.sleep(5)
+        email_inp = self.driver.find_element(By.ID, "sign-up-email")
+        email_inp.click()
+        email_inp.send_keys("test@gmail.com")
+        time.sleep(2)
+        name = self.driver.find_element(By.XPATH,"/html/body/div[1]/div/div[3]/div/div[1]/div[1]/form/div[2]/div/input")
+        name.click()
+        name.send_keys("Test")
+        sname = self.driver.find_element(By.XPATH,"/html/body/div[1]/div/div[3]/div/div[1]/div[1]/form/div[3]/div/input")
+        sname.click()
+        sname.send_keys("User")
+        pas = self.driver.find_element(By.ID, "sign-up-password")
+        pas.click()
+        pas.send_keys("Testman@123")
+        time.sleep(2)
+        con_pas = self.driver.find_element(By.XPATH,
+                                           "/html/body/div[1]/div/div[3]/div/div[1]/div[1]/form/div[5]/div/input")
+        con_pas.click()
+        con_pas.send_keys("Testman@23")
+        time.sleep(2)
+        createBut = self.driver.find_element(By.XPATH,"/html/body/div[1]/div/div[3]/div/div[1]/div[1]/form/div[7]/button")
+        createBut.click()
+        time.sleep(1)
+        notify = self.driver.find_element(By.XPATH,"/html/body/div[1]/div/div[3]/div/div[1]/div[1]/form/div[7]/p")
+        self.assertTrue(notify.is_displayed())
+        print("TEST 4 PASSED")
 
+    # Test case - 5
+    def test_successful_signup(self):
+        """ Test Case to verify a successful login"""
+        time.sleep(5)
+        email_inp = self.driver.find_element(By.ID, "sign-up-email")
+        email_inp.click()
+        email_inp.send_keys("testy1@gmail.com")
+        time.sleep(2)
+        name = self.driver.find_element(By.XPATH,"/html/body/div[1]/div/div[3]/div/div[1]/div[1]/form/div[2]/div/input")
+        name.click()
+        name.send_keys("Test")
+        sname = self.driver.find_element(By.XPATH,"/html/body/div[1]/div/div[3]/div/div[1]/div[1]/form/div[3]/div/input")
+        sname.click()
+        sname.send_keys("User")
+        pas = self.driver.find_element(By.ID, "sign-up-password")
+        pas.click()
+        pas.send_keys("Testman@123")
+        time.sleep(2)
+        con_pas = self.driver.find_element(By.XPATH,
+                                           "/html/body/div[1]/div/div[3]/div/div[1]/div[1]/form/div[5]/div/input")
+        con_pas.click()
+        con_pas.send_keys("Testman@123")
+        time.sleep(2)
+        createBut = self.driver.find_element(By.XPATH,"/html/body/div[1]/div/div[3]/div/div[1]/div[1]/form/div[7]/button")
+        createBut.click()
+        time.sleep(13)
+        WebDriverWait(self.driver, 5).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, "Toastify__toast-body"))
+        )
+
+        # Get the toast error message text
+        toast_message = self.driver.find_element(By.CLASS_NAME, "Toastify__toast-body").text
+
+        # Assert that the toast error message matches the expected message
+        self.assertEqual(toast_message, "Thank you for signing up! Your passcode has been successfully sent to your email. Please check your inbox to verify and complete the registration process.")
+        print("TEST 5 PASSED")
 
 
 
