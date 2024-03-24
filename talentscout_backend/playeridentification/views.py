@@ -24,7 +24,7 @@ def rankPlayers(request):
     global numeric_columns
     if request.method == 'POST':
         serializer = FormDataSerializer(data=request.data)
-        print(request.data)
+
         if serializer.is_valid():
             data = serializer.validated_data
             # Catching Frontend formats
@@ -34,7 +34,7 @@ def rankPlayers(request):
             age_min_value = data['age_min_value']
             age_max_value = data['age_max_value']
             selected_format = data['format']
-            print(playing_role, batting_style, bowling_style, age_min_value, age_max_value, selected_format)
+
 
             query = Q()
             if playing_role:
@@ -72,9 +72,6 @@ def rankPlayers(request):
                 query &= Q(age__lte=age_max_value)
 
             filtered_players = Player.objects.filter(query)
-
-            # print the current using query formats
-            print(query)
 
             player_list = []  # List to store dictionaries for each player
             for player in filtered_players:
@@ -121,8 +118,7 @@ def rankPlayers(request):
                 bbi_counts = sorted_BBIs(string_values_list)
                 # Append the player_dict to the player_list
 
-                # print the bbi counts
-                print(bbi_counts)
+
                 # Replace BBI strings with their corresponding count values
                 for player_info in player_list:
                     for stats_values in player_info['stats']:
@@ -173,18 +169,12 @@ def rankPlayers(request):
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_ODI_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
-            # printing the using stats order--
-            print(numeric_columns)
-
             for player_info in player_list:
                 player_id = player_info['player_id']
                 player_name = player_info['player_name']
                 player_stats_list = player_info['stats']
 
-                print(f"Player ID: {player_id}, Player Name: {player_name}")
-
                 for stats_values in player_stats_list:
-                    print("Stats Values:", stats_values)
 
                     # Calculate PPI using the pickle model
                     with open(pickle_file_path, 'rb') as file:
@@ -205,14 +195,10 @@ def rankPlayers(request):
                 player_name = player_info['player_name']
                 PPI = player_info['PPI']
 
-                # printing Players ppi name and player ID--
-                print(f"Player ID: {player_id}, Player Name: {player_name} , PPI: {PPI} ")
-
             return Response(sorted_player_list, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 # Function to get key for sorting BBIs
 def sorted_BBIs(BBIs):
@@ -246,6 +232,5 @@ def sorted_BBIs(BBIs):
 
         # Update the count in the dictionary for the current string
         bbi_counts[s] = count
-        print(f"String: {s}, Count: {count}")
 
     return bbi_counts
