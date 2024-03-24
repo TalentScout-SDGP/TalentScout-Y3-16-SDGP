@@ -68,8 +68,10 @@ def calculate_ppi(format_input, playing_role, stats):
         exit()
     # stats = [0 if isnan(value) else value for value in stats]
     # Calculate PPI using the selected weights and provided stats
-
+    ppi = sum(value * weights.get(stat, 0) for stat, value in zip(stats_order, stats))
     return ppi
+class TestBackendFunctionality(unittest.TestCase):
+    def test_calculate_ppi_odi_Bowling(self):
 
 
 
