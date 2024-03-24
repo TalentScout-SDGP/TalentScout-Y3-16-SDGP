@@ -35,6 +35,7 @@ def rankPlayers(request):
             age_max_value = data['age_max_value']
             selected_format = data['format']
 
+
             query = Q()
             if playing_role:
                 query &= Q(playing_role=playing_role)
@@ -71,9 +72,6 @@ def rankPlayers(request):
                 query &= Q(age__lte=age_max_value)
 
             filtered_players = Player.objects.filter(query)
-
-
-
 
             player_list = []  # List to store dictionaries for each player
             for player in filtered_players:
@@ -171,17 +169,12 @@ def rankPlayers(request):
                 relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_ODI_model.pkl'
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
-
-
             for player_info in player_list:
                 player_id = player_info['player_id']
                 player_name = player_info['player_name']
                 player_stats_list = player_info['stats']
 
-
-
                 for stats_values in player_stats_list:
-
 
                     # Calculate PPI using the pickle model
                     with open(pickle_file_path, 'rb') as file:
@@ -202,13 +195,10 @@ def rankPlayers(request):
                 player_name = player_info['player_name']
                 PPI = player_info['PPI']
 
-
-
             return Response(sorted_player_list, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 # Function to get key for sorting BBIs
 def sorted_BBIs(BBIs):
@@ -242,6 +232,5 @@ def sorted_BBIs(BBIs):
 
         # Update the count in the dictionary for the current string
         bbi_counts[s] = count
-
 
     return bbi_counts
