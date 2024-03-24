@@ -40,4 +40,10 @@ def calculate_ppi(format_input, playing_role, stats):
         "t20": {"Matches": 0.05, "Wickets": 0.25, "Innings": 0.05, "Overs": 0.10, "Runs": 0.05, "BBI": 0.05,
                 "Avg": 0.10, "Econ": 0.10, "SR": 0.05, "4Ws": 0.05, "5Ws": 0.05}
     }
+    wicketkeeping_weights = {
+        "test": {"Matches": 0.07, "Innings": 0.07, "Ct": 0.12, "St": 0.09},
+        "odi": {"Matches": 0.06, "Innings": 0.06, "Ct": 0.10, "St": 0.10},
+        "t20": {"Matches": 0.05, "Innings": 0.05, "Ct": 0.08, "St": 0.12}
+    }
+
 
