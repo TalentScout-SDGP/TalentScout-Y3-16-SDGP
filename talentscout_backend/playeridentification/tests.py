@@ -219,6 +219,37 @@ class TestBackendFunctionality(unittest.TestCase):
             # Get the content root directory (assuming this script is within the project)
             content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
 
+            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_ODI_model.pkl'
+            pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+            with open(pickle_file_path,
+                      'rb') as model_file:
+                loaded_model = pickle.load(model_file)
+            new_player_stats = pd.DataFrame([Bowling_stats],
+                                            columns=['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR',
+                                                     '100s', '50s', '4s', '6s'])
+            predicted_ppi = loaded_model.predict(new_player_stats)
+            expected_ppi = round(predicted_ppi[0], 2)
+
+            # Act
+            actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
+            actual_ppi = round(actual_ppi, 2)
+
+            # Assert
+            self.assertEqual(actual_ppi, expected_ppi)
+
+        def test_calculate_ppi_Odi_WK(self):
+            # Arrange
+            format_input = "odi"
+            playing_role = "wicket keeping"
+            Bowling_stats = [7, 7, 2, 2, ]
+
+            current_script_path = os.path.abspath(__file__)
+            # Get the content root directory (assuming this script is within the project)
+            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_ODI_model.pkl'
+            pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
 
 
