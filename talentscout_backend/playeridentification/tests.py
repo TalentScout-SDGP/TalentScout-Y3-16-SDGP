@@ -32,3 +32,12 @@ def calculate_ppi(format_input, playing_role, stats):
                 "SR": 0.13,
                 "100s": 0.07, "50s": 0.04, "4s": 0.04, "6s": 0.05}
     }
+    bowling_weights = {
+        "test": {"Matches": 0.05, "Wickets": 0.25, "Innings": 0.05, "Overs": 0.10, "Runs": 0.05, "BBI": 0.05,
+                 "Avg": 0.10, "Econ": 0.10, "SR": 0.05, "4Ws": 0.05, "5Ws": 0.05},
+        "odi": {"Matches": 0.05, "Wickets": 0.25, "Innings": 0.05, "Overs": 0.10, "Runs": 0.05, "BBI": 0.05,
+                "Avg": 0.10, "Econ": 0.10, "SR": 0.05, "4Ws": 0.05, "5Ws": 0.05},
+        "t20": {"Matches": 0.05, "Wickets": 0.25, "Innings": 0.05, "Overs": 0.10, "Runs": 0.05, "BBI": 0.05,
+                "Avg": 0.10, "Econ": 0.10, "SR": 0.05, "4Ws": 0.05, "5Ws": 0.05}
+    }
+
