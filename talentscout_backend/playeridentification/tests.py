@@ -20,7 +20,6 @@ stats = []
 
 
 def calculate_ppi(format_input, playing_role, stats):
-
     # Define weightage types for batting, bowling, and wicket keeping
     batting_weights = {
         "test": {"Matches": 0.08, "Runs": 0.20, "Innings": 0.08, "NO": 0.06, "HS": 0.06, "Avg": 0.22, "BF": 0.08,
@@ -32,6 +31,7 @@ def calculate_ppi(format_input, playing_role, stats):
                 "SR": 0.13,
                 "100s": 0.07, "50s": 0.04, "4s": 0.04, "6s": 0.05}
     }
+
     bowling_weights = {
         "test": {"Matches": 0.05, "Wickets": 0.25, "Innings": 0.05, "Overs": 0.10, "Runs": 0.05, "BBI": 0.05,
                  "Avg": 0.10, "Econ": 0.10, "SR": 0.05, "4Ws": 0.05, "5Ws": 0.05},
@@ -40,11 +40,13 @@ def calculate_ppi(format_input, playing_role, stats):
         "t20": {"Matches": 0.05, "Wickets": 0.25, "Innings": 0.05, "Overs": 0.10, "Runs": 0.05, "BBI": 0.05,
                 "Avg": 0.10, "Econ": 0.10, "SR": 0.05, "4Ws": 0.05, "5Ws": 0.05}
     }
+
     wicketkeeping_weights = {
         "test": {"Matches": 0.07, "Innings": 0.07, "Ct": 0.12, "St": 0.09},
         "odi": {"Matches": 0.06, "Innings": 0.06, "Ct": 0.10, "St": 0.10},
         "t20": {"Matches": 0.05, "Innings": 0.05, "Ct": 0.08, "St": 0.12}
     }
+
     # Select the appropriate weightage type based on format_input and playing_role
     if playing_role == "batting":
         weights = batting_weights.get(format_input, {})
@@ -55,7 +57,7 @@ def calculate_ppi(format_input, playing_role, stats):
     else:
         print("Invalid playing role entered.")
         return None
-
+    # print(weights)
 
     if playing_role == "batting":
         stats_order = batting_stats_order
@@ -70,12 +72,14 @@ def calculate_ppi(format_input, playing_role, stats):
     # Calculate PPI using the selected weights and provided stats
     ppi = sum(value * weights.get(stat, 0) for stat, value in zip(stats_order, stats))
     return ppi
+
 class TestBackendFunctionality(unittest.TestCase):
+
     def test_calculate_ppi_odi_Bowling(self):
         # Arrange
         format_input = "odi"
         playing_role = "bowling"
-        Bowling_stats = [3, 6, 3, 28.0, 183, 28, 30.5, 6.53, 28.0, 0, 0]
+        Bowling_stats = [3,6,3,28.0,183,28,30.5,6.53,28.0,0,0]
 
         current_script_path = os.path.abspath(__file__)
         # Get the content root directory (assuming this script is within the project)
@@ -95,11 +99,11 @@ class TestBackendFunctionality(unittest.TestCase):
         actual_ppi = round(actual_ppi, 2)
         self.assertEqual(actual_ppi, expected_ppi)
 
-        def test_calculate_ppi_test_Bowling(self):
+    def test_calculate_ppi_test_Bowling(self):
             # Arrange
             format_input = "test"
             playing_role = "bowling"
-            Bowling_stats = [2, 2, 3, 23.0, 118, 25, 59.0, 5.13, 69.0, 0, 0]
+            Bowling_stats = [2,2,3,23.0,118,25,59.0,5.13,69.0,0,0]
 
             current_script_path = os.path.abspath(__file__)
             # Get the content root directory (assuming this script is within the project)
@@ -124,15 +128,16 @@ class TestBackendFunctionality(unittest.TestCase):
             # Assert
             self.assertEqual(actual_ppi, expected_ppi)
 
-        def test_calculate_ppi_T20_Bowling(self):
+    def test_calculate_ppi_T20_Bowling(self):
             # Arrange
             format_input = "t20"
             playing_role = "bowling"
-            Bowling_stats = [5, 7, 3, 9.3, 49, 73, 7.0, 5.15, 8.14, 1, 0]
+            Bowling_stats = [5,7,3,9.3,49,73,7.0,5.15,8.14,1,0]
 
             current_script_path = os.path.abspath(__file__)
             # Get the content root directory (assuming this script is within the project)
             content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
             relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Bowling_T20_model.pkl'
             pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
@@ -152,156 +157,129 @@ class TestBackendFunctionality(unittest.TestCase):
             # Assert
             self.assertEqual(actual_ppi, expected_ppi)
 
-        def test_calculate_ppi_T20_Batting(self):
-            # Arrange
-            format_input = "t20"
-            playing_role = "batting"
-            Bowling_stats = [3, 18, 3, 1, 14, 9.0, 28, 64.28, 0, 0, 1, 0]
-
-            current_script_path = os.path.abspath(__file__)
-            # Get the content root directory (assuming this script is within the project)
-            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
-
-            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_T20_model.pkl'
-            pickle_file_path = os.path.join(content_root, relative_pickle_path)
-
-            with open(pickle_file_path,
-                      'rb') as model_file:
-                loaded_model = pickle.load(model_file)
-            new_player_stats = pd.DataFrame([Bowling_stats],
-                                            columns=['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR',
-                                                     '100s', '50s', '4s', '6s'])
-            predicted_ppi = loaded_model.predict(new_player_stats)
-            expected_ppi = round(predicted_ppi[0], 2)
-
-            # Act
-            actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
-            actual_ppi = round(actual_ppi, 2)
-
-            # Assert
-            self.assertEqual(actual_ppi, expected_ppi)
-
-        def test_calculate_ppi_Test_Batting(self):
-            # Arrange
-            format_input = "test"
-            playing_role = "batting"
-            Bowling_stats = [2, 45, 3, 2, 20, 45.0, 94, 47.87, 0, 0, 3, 0]
-
-            current_script_path = os.path.abspath(__file__)
-            # Get the content root directory (assuming this script is within the project)
-            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
-            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_Test_model.pkl'
-            pickle_file_path = os.path.join(content_root, relative_pickle_path)
-
-            with open(pickle_file_path,
-                      'rb') as model_file:
-                loaded_model = pickle.load(model_file)
-            new_player_stats = pd.DataFrame([Bowling_stats],
-                                            columns=['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR',
-                                                     '100s', '50s', '4s', '6s'])
-            predicted_ppi = loaded_model.predict(new_player_stats)
-            expected_ppi = round(predicted_ppi[0], 2)
-
-            # Act
-            actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
-            actual_ppi = round(actual_ppi, 2)
-
-            # Assert
-            self.assertEqual(actual_ppi, expected_ppi)
-
-        def test_calculate_ppi_Odi_Batting(self):
-            # Arrange
-            format_input = "odi"
-            playing_role = "batting"
-            Bowling_stats = [5, 179, 4, 0, 122, 44.75, 133, 134.58, 1, 0, 21, 9]
-
-            current_script_path = os.path.abspath(__file__)
-            # Get the content root directory (assuming this script is within the project)
-            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
-
-            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_ODI_model.pkl'
-            pickle_file_path = os.path.join(content_root, relative_pickle_path)
-
-            with open(pickle_file_path,
-                      'rb') as model_file:
-                loaded_model = pickle.load(model_file)
-            new_player_stats = pd.DataFrame([Bowling_stats],
-                                            columns=['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR',
-                                                     '100s', '50s', '4s', '6s'])
-            predicted_ppi = loaded_model.predict(new_player_stats)
-            expected_ppi = round(predicted_ppi[0], 2)
-
-            # Act
-            actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
-            actual_ppi = round(actual_ppi, 2)
-
-            # Assert
-            self.assertEqual(actual_ppi, expected_ppi)
-
-        def test_calculate_ppi_Odi_WK(self):
-            # Arrange
-            format_input = "odi"
-            playing_role = "wicket keeping"
-            Bowling_stats = [7, 7, 2, 2, ]
-
-            current_script_path = os.path.abspath(__file__)
-            # Get the content root directory (assuming this script is within the project)
-            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
-
-            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_ODI_model.pkl'
-            pickle_file_path = os.path.join(content_root, relative_pickle_path)
-
-            with open(pickle_file_path, 'rb') as model_file:
-                loaded_model = pickle.load(model_file)
-            new_player_stats = pd.DataFrame([Bowling_stats],
-                                            columns=['Matches', 'Innings', 'Ct', 'St'])
-            predicted_ppi = loaded_model.predict(new_player_stats)
-            expected_ppi = round(predicted_ppi[0], 2)
-
-            # Act
-            actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
-            actual_ppi = round(actual_ppi, 2)
-
-            # Assert
-            self.assertEqual(actual_ppi, expected_ppi)
-
-        def test_calculate_ppi_T20_WK(self):
-            # Arrange
-            format_input = "t20"
-            playing_role = "wicket keeping"
-            Bowling_stats = [4, 4, 0, 0]
-            current_script_path = os.path.abspath(__file__)
-            # Get the content root directory (assuming this script is within the project)
-            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
-
-            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_T20_model.pkl'
-            pickle_file_path = os.path.join(content_root, relative_pickle_path)
-
-            with open(pickle_file_path,
-                      'rb') as model_file:
-                loaded_model = pickle.load(model_file)
-            new_player_stats = pd.DataFrame([Bowling_stats],
-                                            columns=['Matches', 'Innings', 'Ct', 'St'])
-            predicted_ppi = loaded_model.predict(new_player_stats)
-            expected_ppi = round(predicted_ppi[0], 2)
-
-            # Act
-            actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
-            actual_ppi = round(actual_ppi, 2)
-
-            # Assert
-            self.assertEqual(actual_ppi, expected_ppi)
-
-    def test_calculate_ppi_Test_WK(self):
+    def test_calculate_ppi_T20_Batting(self):
         # Arrange
-        format_input = "test"
-        playing_role = "wicket keeping"
-        Bowling_stats = [9, 15, 6, 0]
+        format_input = "t20"
+        playing_role = "batting"
+        Bowling_stats = [3,18,3,1,14,9.0,28,64.28,0,0,1,0]
+
         current_script_path = os.path.abspath(__file__)
         # Get the content root directory (assuming this script is within the project)
         content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
 
-        relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_Test_model.pkl'
+        relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_T20_model.pkl'
+        pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+
+
+        with open(pickle_file_path,
+                  'rb') as model_file:
+            loaded_model = pickle.load(model_file)
+        new_player_stats = pd.DataFrame([Bowling_stats],
+                                        columns=['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR', '100s', '50s', '4s', '6s'])
+        predicted_ppi = loaded_model.predict(new_player_stats)
+        expected_ppi = round(predicted_ppi[0], 2)
+
+        # Act
+        actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
+        actual_ppi = round(actual_ppi, 2)
+
+        # Assert
+        self.assertEqual(actual_ppi, expected_ppi)
+
+    def test_calculate_ppi_Test_Batting(self):
+        # Arrange
+        format_input = "test"
+        playing_role = "batting"
+        Bowling_stats = [2,45,3,2,20,45.0,94,47.87,0,0,3,0]
+
+        current_script_path = os.path.abspath(__file__)
+        # Get the content root directory (assuming this script is within the project)
+        content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+        relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_Test_model.pkl'
+        pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+        with open(pickle_file_path,
+                  'rb') as model_file:
+            loaded_model = pickle.load(model_file)
+        new_player_stats = pd.DataFrame([Bowling_stats],
+                                        columns=['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR', '100s', '50s', '4s', '6s'])
+        predicted_ppi = loaded_model.predict(new_player_stats)
+        expected_ppi = round(predicted_ppi[0], 2)
+
+        # Act
+        actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
+        actual_ppi = round(actual_ppi, 2)
+
+        # Assert
+        self.assertEqual(actual_ppi, expected_ppi)
+
+    def test_calculate_ppi_Odi_Batting(self):
+        # Arrange
+        format_input = "odi"
+        playing_role = "batting"
+        Bowling_stats = [5,179,4,0,122,44.75,133,134.58,1,0,21,9]
+
+        current_script_path = os.path.abspath(__file__)
+        # Get the content root directory (assuming this script is within the project)
+        content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+        relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_ODI_model.pkl'
+        pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+        with open(pickle_file_path,
+                  'rb') as model_file:
+            loaded_model = pickle.load(model_file)
+        new_player_stats = pd.DataFrame([Bowling_stats],
+                                        columns=['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'SR', '100s', '50s', '4s', '6s'])
+        predicted_ppi = loaded_model.predict(new_player_stats)
+        expected_ppi = round(predicted_ppi[0], 2)
+
+        # Act
+        actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
+        actual_ppi = round(actual_ppi, 2)
+
+        # Assert
+        self.assertEqual(actual_ppi, expected_ppi)
+
+    def test_calculate_ppi_Odi_WK(self):
+        # Arrange
+        format_input = "odi"
+        playing_role = "wicket keeping"
+        Bowling_stats = [7,7,2,2,]
+
+        current_script_path = os.path.abspath(__file__)
+        # Get the content root directory (assuming this script is within the project)
+        content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+        relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_ODI_model.pkl'
+        pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+        with open(pickle_file_path, 'rb') as model_file:
+            loaded_model = pickle.load(model_file)
+        new_player_stats = pd.DataFrame([Bowling_stats],
+                                        columns=['Matches', 'Innings', 'Ct', 'St'])
+        predicted_ppi = loaded_model.predict(new_player_stats)
+        expected_ppi = round(predicted_ppi[0], 2)
+
+        # Act
+        actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
+        actual_ppi = round(actual_ppi, 2)
+
+        # Assert
+        self.assertEqual(actual_ppi, expected_ppi)
+
+    def test_calculate_ppi_T20_WK(self):
+        # Arrange
+        format_input = "t20"
+        playing_role = "wicket keeping"
+        Bowling_stats = [4,4,0,0]
+        current_script_path = os.path.abspath(__file__)
+        # Get the content root directory (assuming this script is within the project)
+        content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+        relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_T20_model.pkl'
         pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
         with open(pickle_file_path,
@@ -319,10 +297,35 @@ class TestBackendFunctionality(unittest.TestCase):
         # Assert
         self.assertEqual(actual_ppi, expected_ppi)
 
+    def test_calculate_ppi_Test_WK(self):
+        # Arrange
+        format_input = "test"
+        playing_role = "wicket keeping"
+        Bowling_stats = [9,15,6,0]
+        current_script_path = os.path.abspath(__file__)
+        # Get the content root directory (assuming this script is within the project)
+        content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+        relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_WK_Test_model.pkl'
+        pickle_file_path = os.path.join(content_root, relative_pickle_path)
+
+        with open(pickle_file_path ,
+                  'rb') as model_file:
+            loaded_model = pickle.load(model_file)
+        new_player_stats = pd.DataFrame([Bowling_stats],
+                                        columns=['Matches', 'Innings', 'Ct', 'St'])
+        predicted_ppi = loaded_model.predict(new_player_stats)
+        expected_ppi = round(predicted_ppi[0], 2)
+
+        # Act
+        actual_ppi = calculate_ppi(format_input, playing_role, Bowling_stats)
+        actual_ppi = round(actual_ppi, 2)
+
+        # Assert
+        self.assertEqual(actual_ppi, expected_ppi)
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
-
