@@ -45,5 +45,31 @@ def calculate_ppi(format_input, playing_role, stats):
         "odi": {"Matches": 0.06, "Innings": 0.06, "Ct": 0.10, "St": 0.10},
         "t20": {"Matches": 0.05, "Innings": 0.05, "Ct": 0.08, "St": 0.12}
     }
+    # Select the appropriate weightage type based on format_input and playing_role
+    if playing_role == "batting":
+        weights = batting_weights.get(format_input, {})
+    elif playing_role == "bowling":
+        weights = bowling_weights.get(format_input, {})
+    elif playing_role == "wicket keeping":
+        weights = wicketkeeping_weights.get(format_input, {})
+    else:
+        print("Invalid playing role entered.")
+        return None
+
+
+    if playing_role == "batting":
+        stats_order = batting_stats_order
+    elif playing_role == "bowling":
+        stats_order = bowling_stats_order
+    elif playing_role == "wicket keeping":
+        stats_order = wicketkeeping_stats_order
+    else:
+        print("Invalid playing role entered.")
+        exit()
+    # stats = [0 if isnan(value) else value for value in stats]
+    # Calculate PPI using the selected weights and provided stats
+    ppi = sum(value * weights.get(stat, 0) for stat, value in zip(stats_order, stats))
+    return ppi
+
 
 
