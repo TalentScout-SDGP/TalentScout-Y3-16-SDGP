@@ -77,5 +77,10 @@ class TestBackendFunctionality(unittest.TestCase):
         playing_role = "bowling"
         Bowling_stats = [3, 6, 3, 28.0, 183, 28, 30.5, 6.53, 28.0, 0, 0]
 
+        current_script_path = os.path.abspath(__file__)
+        # Get the content root directory (assuming this script is within the project)
+        content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+
 
 
