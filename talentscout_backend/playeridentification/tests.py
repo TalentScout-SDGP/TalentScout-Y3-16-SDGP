@@ -152,6 +152,18 @@ class TestBackendFunctionality(unittest.TestCase):
             # Assert
             self.assertEqual(actual_ppi, expected_ppi)
 
+        def test_calculate_ppi_T20_Batting(self):
+            # Arrange
+            format_input = "t20"
+            playing_role = "batting"
+            Bowling_stats = [3, 18, 3, 1, 14, 9.0, 28, 64.28, 0, 0, 1, 0]
+
+            current_script_path = os.path.abspath(__file__)
+            # Get the content root directory (assuming this script is within the project)
+            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+            relative_pickle_path = 'talentscout_backend/playeridentification/Pickle_models/trained_Batting_T20_model.pkl'
+            pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
 
 
