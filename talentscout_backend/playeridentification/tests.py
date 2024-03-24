@@ -124,6 +124,17 @@ class TestBackendFunctionality(unittest.TestCase):
             # Assert
             self.assertEqual(actual_ppi, expected_ppi)
 
+        def test_calculate_ppi_T20_Bowling(self):
+            # Arrange
+            format_input = "t20"
+            playing_role = "bowling"
+            Bowling_stats = [5, 7, 3, 9.3, 49, 73, 7.0, 5.15, 8.14, 1, 0]
+
+            current_script_path = os.path.abspath(__file__)
+            # Get the content root directory (assuming this script is within the project)
+            content_root = os.path.dirname(os.path.dirname(os.path.dirname(current_script_path)))
+
+
 
 
 
