@@ -72,6 +72,10 @@ def calculate_ppi(format_input, playing_role, stats):
     return ppi
 class TestBackendFunctionality(unittest.TestCase):
     def test_calculate_ppi_odi_Bowling(self):
+        # Arrange
+        format_input = "odi"
+        playing_role = "bowling"
+        Bowling_stats = [3, 6, 3, 28.0, 183, 28, 30.5, 6.53, 28.0, 0, 0]
 
 
 
