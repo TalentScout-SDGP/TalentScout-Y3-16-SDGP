@@ -22,7 +22,7 @@ selection.
 - Provides a user-friendly interface and navigation to all the application features.
 - Accessible to all visitors without any restrictions.
 
-### 2. Core Feature Page (Player Identification)
+### 2. Explore Players Page (Player Identification)
 
 - **Restricted Access:** Only available to logged-in users.
 - **Functionality:** Allows users to filter players based on criteria such as playing format and role.
@@ -65,6 +65,8 @@ You may need to adjust certain configurations, such as database settings and API
 configured before starting the services. Specific details may vary depending on your development setup and the specifics of your local system
 
 ```bash
+# TO BE UPDATED!!!!
+
 # Clone the repository
 git clone https://github.com/your-username/your-repository.git
 
