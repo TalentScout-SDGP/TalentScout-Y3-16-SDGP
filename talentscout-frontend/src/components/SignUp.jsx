@@ -241,6 +241,10 @@ function SignUp() {
                                     </defs>
                                 </svg>
                             </div>
+                            <p className="text-xs lg:text-sm mt-4 text-black-600">
+                                <b>Note:</b> Choosing 'Admin' as your role will require approval from an existing administrator before your account is granted administrative
+                                privileges.
+                            </p>
                             <div className="flex flex-wrap mt-8 mb-6">
                                 <p className='font-semibold text-red-500 my-4'>{error ? error : ''} </p>
                                 <button

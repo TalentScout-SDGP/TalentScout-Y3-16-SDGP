@@ -13,8 +13,29 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 class GetAllUsers(GenericAPIView):
     def get(self, request):
-        users = User.objects.all().values('email', 'first_name', 'last_name', 'is_verified')
+        users = User.objects.all().values('email', 'first_name', 'last_name', 'is_staff', 'is_superuser', 'is_verified')
         return Response(users, status=status.HTTP_200_OK)
+
+
+class ApproveAdminView(GenericAPIView):
+    def patch(self, request, email):
+        try:
+            user = User.objects.get(email=email)
+            user.is_superuser = True
+            user.save()
+            return Response({'message': 'Admin permissions granted'}, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+
+class DeleteUserByEmailView(GenericAPIView):
+    def delete(self, request, email):
+        try:
+            user = User.objects.get(email=email)
+            user.delete()
+            return Response({'message': 'User deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+        except User.DoesNotExist:
+            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
 class RegisterUserView(GenericAPIView):

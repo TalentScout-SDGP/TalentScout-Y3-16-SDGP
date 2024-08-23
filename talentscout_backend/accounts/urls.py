@@ -1,10 +1,12 @@
 from django.urls import path
-from .views import GetAllUsers, RegisterUserView, VerifyUserEmail, LoginUserView, PasswordResetConfirmView, \
+from .views import GetAllUsers, ApproveAdminView, DeleteUserByEmailView, RegisterUserView, VerifyUserEmail, LoginUserView, PasswordResetConfirmView, \
     PasswordResetRequestView, SetNewPassword, LogoutUserView
 from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     path('all-users/', GetAllUsers.as_view(), name='all-users'),
+    path('approve-admin/<str:email>/', ApproveAdminView.as_view(), name='approve-admin'),
+    path('delete-user/<str:email>/', DeleteUserByEmailView.as_view(), name='delete-user'),
     path('register/', RegisterUserView.as_view(), name='register'),
     path('verify-email/', VerifyUserEmail.as_view(), name='verify-email'),
     path('login/', LoginUserView.as_view(), name='login'),

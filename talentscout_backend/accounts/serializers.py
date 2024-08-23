@@ -34,7 +34,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
             password=validated_data['password'],
-            is_superuser=validated_data['is_superuser'],
+            is_superuser=False,
             is_staff=is_staff
         )
         return user

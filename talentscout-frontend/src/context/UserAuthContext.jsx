@@ -27,6 +27,40 @@ export const AuthProvider = ({children}) => {
         }
     };
 
+    const approveUser = async (userEmail) => {
+        setIsLoading(true);
+        try {
+            const res = await axios.patch(`http://localhost:8000/api/auth/approve-admin/${userEmail}/`, {
+                is_approved: true
+            });
+            if (res.status === 200) {
+                toast.success('User approved successfully');
+                getAllUsers();
+            }
+        } catch (error) {
+            toast.error('Failed to approve user. Please try again.');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+
+    const deleteUser = async (userEmail) => {
+        setIsLoading(true);
+        try {
+            const res = await axios.delete(`http://localhost:8000/api/auth/delete-user/${userEmail}/`);
+            if (res.status === 204) {
+                toast.success('User deleted successfully');
+                getAllUsers();
+            }
+        } catch (error) {
+            toast.error('Failed to delete user. Please try again.');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+
     const signUp = async (formData) => {
         try {
             setIsLoading(true);
@@ -174,6 +208,8 @@ export const AuthProvider = ({children}) => {
         isLoading: isLoading,
         responseError: responseError,
         getAllUsers: getAllUsers,
+        deleteUser: deleteUser,
+        approveUser: approveUser,
         signUp: signUp,
         verifyOTP: verifyOTP,
         login: login,

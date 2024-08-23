@@ -44,6 +44,8 @@ function App() {
     const user = JSON.parse(localStorage.getItem('user'));
     const isAdmin = JSON.parse(localStorage.getItem('isSuperuser'));
 
+    console.log(isAdmin);
+
     return (
         <div className='bg-white'>
             <Router>
@@ -60,7 +62,7 @@ function App() {
                                 <Route exact path='/manage_players' element={<ManagePlayers/>}/>
                                 <Route exact path='/add_players'
                                        element={!user && !isAdmin ? <Navigate to="/"/> : <AddPlayers/>}/>
-                                <Route exact path='/admins'
+                                <Route exact path='/manage_users'
                                        element={!user && !isAdmin ? <Navigate to="/"/> : <ManageUsers/>}/>
                                 <Route exact path='/login' element={user ? <Navigate to="/"/> : <LoginPage/>}/>
                                 <Route exact path='/sign_up' element={user ? <Navigate to="/"/> : <SignUpPage/>}/>
