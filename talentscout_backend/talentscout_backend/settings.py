@@ -67,17 +67,23 @@ LOGOUT_REDIRECT_URL = '/admin/logout/'
 WSGI_APPLICATION = 'talentscout_backend.wsgi.application'
 
 # Database
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'talentscout_backend',
-        'USER': 'talentscout_backend_user',
-        'PASSWORD': 'N3mZ5mIImMPBD6F6jeky37ZyRrf5KNEC',
-        'HOST': 'dpg-cnqk82v109ks73fc6fj0-a.oregon-postgres.render.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'talentscout_backend',
+#         'USER': 'talentscout_backend_user',
+#         'PASSWORD': 'N3mZ5mIImMPBD6F6jeky37ZyRrf5KNEC',
+#         'HOST': 'dpg-cnqk82v109ks73fc6fj0-a.oregon-postgres.render.com',
+#         'PORT': '5432',
+#     }
+# }
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
@@ -135,13 +141,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     'https://talentscout.vercel.app',
-    "https://development-talentscout-sdgp.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
     'https://talentscout.vercel.app',
-    "https://development-talentscout-sdgp.vercel.app",
 ]
 
 DEFAULT_FROM_EMAIL = 'talentscout.help@gmail.com'
@@ -156,5 +160,5 @@ GOOGLE_CLIENT_ID = "266127850805-ae29j50o0l2f6ubf8s9k162g63l9ltgm.apps.googleuse
 GOOGLE_CLIENT_SECRET = "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"
 SOCIAL_AUTH_PASSWORD = "sdsdasdca1ds5dsdas"
 
-GITHUB_CLIENT_ID = "a853fabaf2b90950c2f0"
-GITHUB_SECRET_ID = "9e81c84915bdab861e7d9d4627c2a98cd50dc026"
+# GITHUB_CLIENT_ID = "a853fabaf2b90950c2f0"
+# GITHUB_SECRET_ID = "9e81c84915bdab861e7d9d4627c2a98cd50dc026"
