@@ -36,7 +36,7 @@ export const PlayerRankingProvider = ({children}) => {
 
         try {
             setIsLoading(true);
-            const response = await axios.post('https://talentscout-y3-16-sdgp.onrender.com/api/rank/', playerFilters);
+            const response = await axios.post('http://localhost:8000/api/rank/', playerFilters);
             console.log('Response From Backend:', response.data);
             setRankedPlayers(response.data);
             setIsLoading(false);

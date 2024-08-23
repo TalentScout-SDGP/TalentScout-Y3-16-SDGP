@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import rankPlayers
+from .views import rank_players
 
 urlpatterns = [
-    path('', rankPlayers, name='rank_players'),
+    path('', rank_players, name='rank_players'),
 ]

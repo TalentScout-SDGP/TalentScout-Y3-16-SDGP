@@ -11,6 +11,12 @@ from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 
+class GetAllUsers(GenericAPIView):
+    def get(self, request):
+        users = User.objects.all().values('email', 'first_name', 'is_verified')
+        return Response(users, status=status.HTTP_200_OK)
+
+
 class RegisterUserView(GenericAPIView):
     serializer_class = UserRegisterSerializer
 

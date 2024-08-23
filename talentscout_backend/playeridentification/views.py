@@ -8,9 +8,6 @@ from crud_api.serializers import PlayerBattingSerializer, PlayerBowlingSerialize
 import pickle
 import pandas as pd
 import os
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
 
 # Global variables initialization
 # stats order lists initialization
@@ -20,7 +17,7 @@ batting_stats_order = ['Matches', 'Runs', 'Innings', 'NO', 'HS', 'Avg', 'BF', 'S
 
 
 @api_view(['POST'])
-def rankPlayers(request):
+def rank_players(request):
     global numeric_columns
     if request.method == 'POST':
         serializer = FormDataSerializer(data=request.data)
@@ -34,7 +31,6 @@ def rankPlayers(request):
             age_min_value = data['age_min_value']
             age_max_value = data['age_max_value']
             selected_format = data['format']
-
 
             query = Q()
             if playing_role:
@@ -115,9 +111,8 @@ def rankPlayers(request):
                             if isinstance(value, str):
                                 string_values_list.append(value)
 
-                bbi_counts = sorted_BBIs(string_values_list)
+                bbi_counts = sorted_bbis(string_values_list)
                 # Append the player_dict to the player_list
-
 
                 # Replace BBI strings with their corresponding count values
                 for player_info in player_list:
@@ -170,12 +165,9 @@ def rankPlayers(request):
                 pickle_file_path = os.path.join(content_root, relative_pickle_path)
 
             for player_info in player_list:
-                player_id = player_info['player_id']
-                player_name = player_info['player_name']
                 player_stats_list = player_info['stats']
 
                 for stats_values in player_stats_list:
-
                     # Calculate PPI using the pickle model
                     with open(pickle_file_path, 'rb') as file:
                         loaded_model = pickle.load(file)
@@ -190,18 +182,14 @@ def rankPlayers(request):
 
             sorted_player_list = sorted(player_list, key=lambda x: x['PPI'], reverse=True)
 
-            for player_info in sorted_player_list:
-                player_id = player_info['player_id']
-                player_name = player_info['player_name']
-                PPI = player_info['PPI']
-
             return Response(sorted_player_list, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 # Function to get key for sorting BBIs
-def sorted_BBIs(BBIs):
+def sorted_bbis(bbis):
     def get_bbi_key(x):
         try:
             bbi_parts = x.split('/')
@@ -213,7 +201,7 @@ def sorted_BBIs(BBIs):
             return 0, 0
 
     # Find the best BBI
-    best_bbis = sorted(BBIs, key=lambda x: get_bbi_key(x), reverse=True)
+    best_bbis = sorted(bbis, key=lambda x: get_bbi_key(x), reverse=True)
 
     # Allocate count to each BBI based on index
     bbi_counts = {}
