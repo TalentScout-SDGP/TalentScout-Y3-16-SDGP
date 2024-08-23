@@ -9,9 +9,23 @@ import AxiosInstance from "../utils/AxiosInstance.jsx";
 const UserAuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
+    const [userData, setUserData] = useState({});
     const [isLoading, setIsLoading] = useState(false)
     const [responseError, setResponseError] = useState('')
     const navigate = useNavigate()
+
+    const getAllUsers = async () => {
+        try {
+            setIsLoading(true);
+            const response = await axios.get(`http://localhost:8000/api/auth/all-users/`);
+            const data = response.data;
+            setUserData(data);
+            setIsLoading(false);
+        } catch (error) {
+            toast.error('Something went wrong. Please try again.');
+            setIsLoading(false);
+        }
+    };
 
     const signUp = async (formData) => {
         try {
@@ -155,10 +169,11 @@ export const AuthProvider = ({children}) => {
         }
     };
 
-
     const contextData = {
+        userData: userData,
         isLoading: isLoading,
         responseError: responseError,
+        getAllUsers: getAllUsers,
         signUp: signUp,
         verifyOTP: verifyOTP,
         login: login,

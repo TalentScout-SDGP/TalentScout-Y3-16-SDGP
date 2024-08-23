@@ -12,6 +12,7 @@ import Footer from "./components/shared/Footer.jsx";
 import AboutUsPage from "./pages/AboutUsPage.jsx";
 import OurTeamPage from "./pages/OurTeamPage.jsx";
 import VerifyOTPPage from "./pages/VerifyOTPPage.jsx";
+import ManageUsers from "./components/ManageUsers.jsx";
 import ForgetPassword from "./components/ForgetPassword.jsx";
 import ResetPassword from "./components/ResetPassword.jsx";
 import NotFound from "./pages/NotFound.jsx";
@@ -59,6 +60,8 @@ function App() {
                                 <Route exact path='/manage_players' element={<ManagePlayers/>}/>
                                 <Route exact path='/add_players'
                                        element={!user && !isAdmin ? <Navigate to="/"/> : <AddPlayers/>}/>
+                                <Route exact path='/admins'
+                                       element={!user && !isAdmin ? <Navigate to="/"/> : <ManageUsers/>}/>
                                 <Route exact path='/login' element={user ? <Navigate to="/"/> : <LoginPage/>}/>
                                 <Route exact path='/sign_up' element={user ? <Navigate to="/"/> : <SignUpPage/>}/>
                                 <Route exact path='/about_us' element={<AboutUsPage/>}/>

@@ -69,9 +69,14 @@ const Navbar = () => {
                 <div
                     className={`${isOpen ? 'flex' : 'hidden'} user-buttons lg:flex flex-col lg:flex-row font-bold mt-3 justify-between lg:items-center ms-2 lg:ms-0 gap-y-2 lg:gap-y-0 lg:gap-x-4 lg:mt-0`}>
                     {user ? (
-                        <button onClick={handleLogout} className="text-sm bg-primary-ts_blue text-white rounded-button px-4 py-1 lg:py-3 shadow-lg border-primary-ts_blue border-2
+                        <>
+                            <Link to="/admins" className="text-sm ms-2 lg:ms-0">
+                                Manage Users
+                            </Link>
+                            <button onClick={handleLogout} className="text-sm bg-primary-ts_blue text-white rounded-button px-4 py-1 lg:py-3 shadow-lg border-primary-ts_blue border-2
                             hover:bg-white hover:text-primary-ts_blue hover:border-primary-ts_blue hover:border-2 duration-300 ease-in-out w-fit transition-transform duration-3000 transform md:hover:scale-105">Logout
-                        </button>
+                            </button>
+                        </>
                     ) : (
                         <>
                             <Link to="/login" className="text-sm ms-2 lg:ms-0">

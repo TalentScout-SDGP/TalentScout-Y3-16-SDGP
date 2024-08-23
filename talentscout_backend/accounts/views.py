@@ -13,7 +13,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 class GetAllUsers(GenericAPIView):
     def get(self, request):
-        users = User.objects.all().values('email', 'first_name', 'is_verified')
+        users = User.objects.all().values('email', 'first_name', 'last_name', 'is_verified')
         return Response(users, status=status.HTTP_200_OK)
 
 
