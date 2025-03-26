@@ -2,11 +2,6 @@
 
 # TalentScout - Cricket Talent Identification Platform
 
-
-<img src="https://i.ibb.co/DfKRfmw/TS-Logo.png" alt="TalentScout Logo" width="300" height="300">
-
-# TalentScout - Cricket Talent Identification Platform
-
 > 🚨 **Note:** This project was developed as part of the *Software Development Group Project* module at the [Informatics Institute of Technology (IIT), Sri Lanka].  
 > The platform is a prototype and is **not intended for commercial use**.
 
