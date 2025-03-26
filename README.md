@@ -2,14 +2,18 @@
 
 # TalentScout - Cricket Talent Identification Platform
 
-**IMPORTANT TO NOTE:** This project was developed as part of the [Informatics Institute Of Technology, Sri Lanka - Software Development Group Project module.
-The platform is a prototype and is not intended for commercial use.
 
-The platform is tailored for analyzing domestic Sri Lankan cricket players, drawing from a rich database of player statistics. Our machine learning model and statistical analysis
-tools are designed to adapt to new and varied types of cricket data, demonstrating the capability to generate reliable insights regardless of the dataset provided. This flexibility
-ensures that as long as the necessary cricket stats are available, TalentScout can effectively process and deliver meaningful outputs, supporting decision-making in player
-selection.
+<img src="https://i.ibb.co/DfKRfmw/TS-Logo.png" alt="TalentScout Logo" width="300" height="300">
 
+# TalentScout - Cricket Talent Identification Platform
+
+> 🚨 **Note:** This project was developed as part of the *Software Development Group Project* module at the [Informatics Institute of Technology (IIT), Sri Lanka].  
+> The platform is a prototype and is **not intended for commercial use**.
+
+---
+TalentScout is a web-based platform focused on analyzing and identifying domestic cricket talent in Sri Lanka. It leverages a machine learning-powered engine to provide statistical analysis and player insights. The system is flexible and adaptable to different cricket datasets, ensuring consistent, data-driven outputs for aiding player selection and scouting decisions.
+
+---
 ## # Project Links
 
 - Visit the [TalentScout Landing Page](https://talent-scout-landing-page.vercel.app/) for more information.
@@ -44,47 +48,59 @@ selection.
 - **CRUD Operations:** Admins can create, read, update, and delete player data.
 - **Integration:** Allows for updating the Machine Learning model with new player data or modifications.
 
-## # Technologies
 
-- **Frontend:** React, TailwindCSS
-- **Backend:** Django, Django Rest Framework
-- **Database:** SQLite (Development), PostgreSQL (Production)
+## 🧑‍💻 Tech Stack
 
-## # Security Features
+| Layer       | Technology              |
+|-------------|--------------------------|
+| Frontend    | React, Tailwind CSS      |
+| Backend     | Django, Django REST Framework |
+| Database    | SQLite (Development), PostgreSQL (Production) |
+| ML & Analysis | Python, scikit-learn, Pandas |
+| API Communication | REST API (Django REST Framework) |
 
-### HTTP-Only Cookies
-
-Our platform enhances security by leveraging HTTP-only cookies. This configuration helps mitigate the risk of client-side script access to the protected cookie data.
 
 ## # Setup
 
 To get this project up and running on your local machine for development and testing purposes, follow these steps:
 
-**Note on Configuration Changes**:-
-You may need to adjust certain configurations, such as database settings and API URLs, to suit your local development environment. Ensure that these settings are correctly
-configured before starting the services. Specific details may vary depending on your development setup and the specifics of your local system
-
+### 📦 Clone the repository
 ```bash
-# TO BE UPDATED!!!!
-
 # Clone the repository
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/TalentScout-SDGP/TalentScout-Y3-16-SDGP
 
-# Navigate to the project directory
-cd your-repository
+```
+### 🔧 Start The Backend
+```bash
+cd talentscout_backend
 
-# Install dependencies for the backend
+# 1) Create a Virtual Environment
+- For Windows:- python -m venv venv
+- For MacOS:- python3 -m venv venv
+
+# 2) Activate the Virtual Environment
+- For Windows:- venv\Scripts\activate
+- For MacOS:- source venv/bin/activate
+
+# Install Dependencies
 pip install -r requirements.txt
 
-# Navigate to the frontend directory
-cd frontend
+# Run the Development Server
+python manage.py runserver
+```
+**Backend should be running at:**  `http://127.0.0.1:8000/`
 
-# Install dependencies for the frontend
+### 💻 Start The Frontend
+```bash
+cd talentsccout-frontend
+
+# Install Node.js Dependencies
 npm install
 
-# Serve the React application
-npm start
+# Run the Frontend Development Server
+npm run dev
 ```
+**Frontend should be running at:**  `http://localhost:5173/`
 
 ## # Contributors
 
@@ -96,4 +112,3 @@ The TalentScout platform was brought to life by a dedicated team of developers:
 - **Sulan Kumarapperuma** - Team Member
 - **Chamath Mahapatuna** - Team Member
 - **Agrani Ranathunga** - Team Member
-
